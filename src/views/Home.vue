@@ -1,16 +1,19 @@
 <template>
   <div class="home">
       <h3> Search for games:</h3>
+<router-link :to="'/game'">
+  <button>Go to Gallery</button>
+</router-link> 
       <!-- <router-link :to="'/game/'+filterBy.name">
         <input  type="text" @input="setFilter" v-model="filterBy.name" placeholder="Search"  name="inputSearch">
       </router-link>  -->
       <!-- <GameList :games="gamesByFilterServer" @remove="removeGame"></GameList> -->
       <!-- {{games}} -->
-      <ul>
+      <!-- <ul>
         <li v-for="game in games" :key="game._id"> 
           <div>{{game.name}}</div>
         </li>
-      </ul>
+      </ul> -->
       <!-- <Gallery :games="currGames"></Gallery> -->
       <!-- <GameList :games="games" @remove="removeGame"></GameList> -->
   </div>
@@ -19,6 +22,7 @@
 <script>
 // @ is an alias to /src
 import GameService from '../services/GameService.js';
+
 // import Gallery from '@/views/Gallery.vue'
 
 export default {
@@ -38,14 +42,14 @@ export default {
     }
   },
   created() {
-    this.gamesToShow();
+    this.loadGames();
   },
   computed: {
     // currGames() {
     //   return this.$store.getters.currGames;
     // },
 
-    games(){
+    gamesForDisplay(){
       return this.$store.getters.gamesForDisplay
     }
     // gamesForDisplay() {
@@ -57,7 +61,7 @@ export default {
     // }
   },
   methods: {
-    gamesToShow() {
+    loadGames() {
       this.$store.dispatch({type:'loadGames'})
         .then(games => {
         //   eventBusService.$emit(SHOW_MSG, {
@@ -74,14 +78,14 @@ export default {
         //   });
         });
     },
-    removeGame(gameId) {
-        console.log('remove item...', gameId);
-        this.$store.dispatch({type: 'removeGame', gameId })
-            .then(() =>{
-                console.log('removed from game APP'); 
-                // eventBusService.$emit(SHOW_MSG, {txt: `Todo was removed`})
-            })
-    },
+    // removeGame(gameId) {
+    //     console.log('remove item...', gameId);
+    //     this.$store.dispatch({type: 'removeGame', gameId })
+    //         .then(() =>{
+    //             console.log('removed from game APP'); 
+    //             // eventBusService.$emit(SHOW_MSG, {txt: `Todo was removed`})
+    //         })
+    // },
     setFilter(ev) {
         // this.$store.commit({type: 'setFilter', filterBy: {name: ev.target.value} })
         this.$store.dispatch({type: 'sentFilter', filterBy: {name: ev.target.value} })

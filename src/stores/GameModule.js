@@ -54,6 +54,7 @@ export default {
             context.commit({ type: 'setGamesLoading', isLoading: true })
             return GameService.query()
                 .then(games => {
+                    console.log('games!!!',games)
                     // to update the mutation setGames
                     context.commit({ type: 'setGames', games })
                     return games;
@@ -78,10 +79,10 @@ export default {
         },
         saveGame(context, { savedGame }) {
             console.log('newgame in action', savedGame)
-            return GameService.savegame(savedGame)
+            return GameService.saveGame(savedGame)
                 .then((game) => {
                     console.log('savegame in store', game);
-                    context.commit({ type: 'savegame', game })
+                    context.commit({ type: 'saveGame', game })
                 })
         },
 

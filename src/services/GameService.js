@@ -17,7 +17,7 @@ function query() {
 
 export default {
     query,
-    getgameById,
+    getGameById,
     removeGame,
     saveGame,
     createEmptyGame,
@@ -43,7 +43,7 @@ function removeGame(gameId) {
         .then(res => res.data)
 }
 
-function getgameById(gameId) {
+function getGameById(gameId) {
     console.log('getgameById in game service front', gameId);
     return axios.get(`${GAME_URL}/${gameId}`)
         .then(res => {
@@ -86,7 +86,7 @@ function createEmptyGame() {
         addedAt: Date.now(),
         inStock: null,
     }
-    return toy;
+    return game;
 }
 
 

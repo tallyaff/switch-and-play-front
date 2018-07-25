@@ -32,8 +32,8 @@ export default new Router({
       component: Gallery
     },
     {
-      path: '/game/edit:gameId?',
-      name: 'game',
+      path: '/game/edit/:gameId?',
+      name: 'edit',
       component: EditGame
     },
 
