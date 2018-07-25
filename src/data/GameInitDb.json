@@ -1,4 +1,5 @@
 [
+    
     {
         "name": "Spiderman",
         "src": "img/gameImg/console/spiderman.jpg",
@@ -13,7 +14,6 @@
     },
     {
         "name": "Call of duty WWII",
-        "url": "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/5954/5954300_sd.jpg;maxHeight=640;maxWidth=550",
         "src": "img/gameImg/console/call_of_duty_WWII.jpg",
         "type": "child",
         "category": "console",
@@ -26,7 +26,6 @@
     },
     {
         "name": "Sonic forces",
-        "url": "https://image.smythstoys.com/original/desktop/162190.jpg",
         "src": "img/gameImg/console/sonic_forces.jpg",
         "type": "child",
         "category": "console",
@@ -39,7 +38,6 @@
     },
     {
         "name": "The last of us remastered",
-        "url": "https://media.playstation.com/is/image/SCEA/the-last-of-us-remastered-two-column-01-ps4-us-28jul14?$TwoColumn_Image$",
         "src": "img/gameImg/console/the_last_of_us_remastered.jpg",
         "type": "theen",
         "category": "console",
@@ -52,7 +50,6 @@
     },
     {
         "name": "The Phantom pain",
-        "url": "https://i5.walmartimages.com/asr/d1c37d11-46b5-4972-a1e1-897110722be3_1.3695c0f1add029c8b3ed0eb01f3c6412.jpeg?odnHeight=450&odnWidth=450&odnBg=FFFFFF",
         "src": "img/gameImg/console/the_phantom_pain.jpg",
         "type": "theen",
         "category": "console",
@@ -65,7 +62,6 @@
     },
     {
         "name": "Watch dogs",
-        "url": "https://img.mvideo.ru/Pdb/40062856b.jpg",
         "src": "img/gameImg/console/watch_dogs.jpg",
         "type": "theen",
         "category": "console",
@@ -78,7 +74,6 @@
     },
     {
         "name": "Sunset overdrive",
-        "url": "https://images-na.ssl-images-amazon.com/images/I/91vYszs19yL._SY445_.jpg",
         "src": "img/console/sunset_overdrive.jpg",
         "type": "theen",
         "category": "console",
@@ -91,7 +86,6 @@
     },
     {
         "name": "Gears of war 4",
-        "url": "https://target.scene7.com/is/image/Target/51169551?wid=488&hei=488&fmt=pjpeg",
         "src": "img/gameImg/console/gears_of_war4.jpg",
         "type": "theen",
         "category": "console",
@@ -104,7 +98,6 @@
     },
     {
         "name": "Halo 5 guardians",
-        "url": "https://s1.thcdn.com/productimg/600/600/10817160-1804334174602311.jpg",
         "src": "img/gameImg/console/ps4/halo5_guardians.jpg",
         "type": "theen",
         "category": "console",
@@ -117,7 +110,6 @@
     },
     {
         "name": "Playmobil children playground",
-        "url": "https://image.smythstoys.com/original/desktop/142571.jpg",
         "src": "img/gameImg/playmobil/playmobil_children_playground.jpg",
         "type": "child",
         "category": "playmobil",
@@ -130,20 +122,18 @@
     },
     {
         "name": "Playmobil school bus",
-        "url": "https:/https://target.scene7.com/is/image/Target/51426267_Alt01?wid=488&hei=488&fmt=pjpeg",
         "src": "img/gameImg/playmobil/playmobil_school_bus.jpg",
         "type": "child",
         "category": "playmobil",
         "desc": "Playmobil school bus - city life, for age 4+",
         "userId": "",
-        "condition": "Good",
+        "condition": "New",
         "isAvailble": true,
         "isNew": false,
         "addedAt": 1532415436
     },
     {
         "name": "Playmobil country",
-        "url": "https://cdn.alza.cz/ImgW.ashx?fd=f3&cd=HRAa7491",
         "src": "img/gameImg/playmobil/playmobil_country.jpg",
         "type": "child",
         "category": "playmobil",
@@ -156,13 +146,12 @@
     },
     {
         "name": "Barbie doll",
-        "url": "https://images.mattel.com/scene7/FHP65_01?$oslarge$&wid=549&hei=549",
         "src": "img/gameImg/doll/barbie_doll.jpg",
         "type": "child",
         "category": "doll",
         "desc": "Barbie doll, blonde, with red dress and ice-cream",
         "userId": "",
-        "condition": "Good",
+        "condition": "New",
         "isAvailble": true,
         "isNew": false,
         "addedAt": 1532432451
@@ -174,27 +163,25 @@
         "category": "doll",
         "desc": "Nahji doll, blonde, with red dress and ice-cream",
         "userId": "",
-        "condition": "Good",
+        "condition": "New",
         "isAvailble": true,
         "isNew": false,
         "addedAt": 1532435412
     },
     {
         "name": "Unicorn doll",
-        "url": "https://alexnld.com/wp-content/uploads/2018/04/462294cb-8566-448d-84ce-18c5ce98ad67.jpg",
         "src": "img/gameImg/doll/unicorn_doll.jpg",
         "type": "baby",
         "category": "doll",
         "desc": "Soft blue unicorn doll",
         "userId": "",
-        "condition": "Good",
+        "condition": "New",
         "isAvailble": true,
         "isNew": true,
         "addedAt": 1532436517
     },
     {
         "name": "Teddy bear doll",
-        "url": "https://pebble-pillows.com/wp-content/uploads/2015/08/teddy-bear-toy-doll-03-2.jpg",
         "src": "img/gameImg/doll/teddy_bear_doll.jpg",
         "type": "baby",
         "category": "doll",
