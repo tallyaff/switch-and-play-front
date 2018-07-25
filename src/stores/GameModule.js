@@ -1,6 +1,8 @@
 import GameService from '../services/GameService.js'
 
 
+import GameService from '../services/GameService.js'
+
 export default {
     state: {
         gamesLoading: false,
@@ -15,6 +17,9 @@ export default {
         },
         setGames(state, { games }) {
             state.games = games;
+        },
+        removeGame(state, { gameId }) {
+            state.games = state.games.filter(game => game._id !== gameId)
         },
         // setFilter(state, payload) {
         //   console.log('payload', payload.filterBy);
@@ -63,22 +68,19 @@ export default {
                     context.commit({ type: 'setGamesLoading', isLoading: false })
                 })
         },
-        // loadGame(context, { gameId }) {
-        //   console.log('route, gameId', {gameId });
-        //   return GameService.getGameById(gameId)
-        //     .then((game) => {
-        //       return game;
-        //     })
-        // },
-
-        sentFilter(context, { filterBy }) {
-            console.log('sentFilter: filterBy', filterBy.name)
-            return GameService.sentFilter(filterBy.name)
-                .then((games) => {
-                    console.log('users from server after sentFilter in store', games);
-                    context.commit({ type: 'gamesByFilterServer', games })
+        loadGame(context, { gameId }) {
+            console.log('route, gameId', { gameId });
+            return GameService.getGameById(gameId)
+                .then((game) => {
+                    return game;
                 })
-
+        },
+        removeGame(context, { gameId }) {
+            return GameService.removeGame(gameId)
+                .then(() => {
+                    console.log('remove after game service');
+                    context.commit({ type: 'removeGame', gameId })
+                })
         },
         saveGame(context, { savedGame }) {
             console.log('newgame in action', savedGame)

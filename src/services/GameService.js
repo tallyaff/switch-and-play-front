@@ -8,9 +8,9 @@ const GAME_URL = (process.env.NODE_ENV !== 'development' )
 export default {
     query,
     getgameById,
-    // removeToy,
+    removeToy,
     saveGame,
-    // createEmptyGame,
+    createEmptyGame,
     // sentFilter
 }
 
@@ -28,10 +28,10 @@ export default {
 
 // }
 
-// function removeToy(toyId) {
-//     return axios.delete(`${TOY_URL}/${toyId}`)
-//         .then(res => res.data)
-// }
+function removeGame(gameId) {
+    return axios.delete(`${GAME_URL}/${gameId}`)
+        .then(res => res.data)
+}
 
 function getgameById(gameId) {
     console.log('getgameById in game service front', gameId);
@@ -66,18 +66,18 @@ function saveGame(game) {
 }
 
 
-// function createEmptyGame() {
-//     var game = {
-//         name: '',
-//         type: '',
-//         desc: '',
-//         img: '',
-//         condition:'',
-//         addedAt: Date.now(),
-//         inStock: null,
-//     }
-//     return toy;
-// }
+function createEmptyGame() {
+    var game = {
+        name: '',
+        type: '',
+        desc: '',
+        img: '',
+        condition:'',
+        addedAt: Date.now(),
+        inStock: null,
+    }
+    return toy;
+}
 
 
 function query() {
