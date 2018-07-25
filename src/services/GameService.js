@@ -18,7 +18,7 @@ function query() {
 export default {
     query,
     getgameById,
-    removeToy,
+    removeGame,
     saveGame,
     createEmptyGame,
     // sentFilter

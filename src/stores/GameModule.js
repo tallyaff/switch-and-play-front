@@ -1,7 +1,6 @@
 import GameService from '../services/GameService.js'
 
 
-import GameService from '../services/GameService.js'
 
 export default {
     state: {
