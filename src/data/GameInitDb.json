@@ -7,7 +7,7 @@
         "category": "console",
         "desc": "Spiderman PS4 console game",
         "userId": "",
-        "condition": "brand new",
+        "condition": "Brand new",
         "isAvailble": true,
         "isNew": false,
         "addedAt": 1532459054
@@ -19,7 +19,7 @@
         "category": "console",
         "desc": "Call of duty WWII PS4 console game",
         "userId": "",
-        "condition": "used",
+        "condition": "Used",
         "isAvailble": true,
         "isNew": true,
         "addedAt": 1532448721
@@ -31,7 +31,7 @@
         "category": "console",
         "desc": "Sonic forces PS4 console game",
         "userId": "",
-        "condition": "brand new",
+        "condition": "Brand new",
         "isAvailble": true,
         "isNew": true,
         "addedAt": 1532415743
@@ -43,7 +43,7 @@
         "category": "console",
         "desc": "The last of us remastered PS4 console game",
         "userId": "",
-        "condition": "used",
+        "condition": "Used",
         "isAvailble": true,
         "isNew": false,
         "addedAt": 1532441156
@@ -55,7 +55,7 @@
         "category": "console",
         "desc": "The Phantom pain PS4 console game",
         "userId": "",
-        "condition": "used",
+        "condition": "Used",
         "isAvailble": true,
         "isNew": false,
         "addedAt": 1532441043
@@ -67,7 +67,7 @@
         "category": "console",
         "desc": "Watch dogs PS4 console game",
         "userId": "",
-        "condition": "brand new",
+        "condition": "Brand new",
         "isAvailble": true,
         "isNew": false,
         "addedAt": 1532432089
@@ -79,7 +79,7 @@
         "category": "console",
         "desc": "Sunset overdrive XBOX console game",
         "userId": "",
-        "condition": "brand new",
+        "condition": "Brand new",
         "isAvailble": true,
         "isNew": false,
         "addedAt": 1532431067
@@ -91,7 +91,7 @@
         "category": "console",
         "desc": "Gears of war 4 XBOX console game",
         "userId": "",
-        "condition": "used",
+        "condition": "Used",
         "isAvailble": true,
         "isNew": false,
         "addedAt": 1532432032
@@ -103,7 +103,7 @@
         "category": "console",
         "desc": "Halo 5 guardians XBOX console game",
         "userId": "",
-        "condition": "used",
+        "condition": "Used",
         "isAvailble": true,
         "isNew": true,
         "addedAt": 1532434321
@@ -115,7 +115,7 @@
         "category": "playmobil",
         "desc": "Playmobil children playground - city life, for age 5-10",
         "userId": "",
-        "condition": "used",
+        "condition": "Used",
         "isAvailble": true,
         "isNew": true,
         "addedAt": 1532427841
@@ -127,11 +127,7 @@
         "category": "playmobil",
         "desc": "Playmobil school bus - city life, for age 4+",
         "userId": "",
-<<<<<<< HEAD
-        "condition": "brand new",
-=======
         "condition": "New",
->>>>>>> 90761d7321e26374adad6f26dbd7855d5b2fe9ff
         "isAvailble": true,
         "isNew": false,
         "addedAt": 1532415436
@@ -143,7 +139,7 @@
         "category": "playmobil",
         "desc": "Playmobil country, for age 4-10",
         "userId": "",
-        "condition": "brand new",
+        "condition": "Brand new",
         "isAvailble": true,
         "isNew": false,
         "addedAt": 1532412748
@@ -155,11 +151,7 @@
         "category": "doll",
         "desc": "Barbie doll, blonde, with red dress and ice-cream",
         "userId": "",
-<<<<<<< HEAD
-        "condition": "brand new",
-=======
         "condition": "New",
->>>>>>> 90761d7321e26374adad6f26dbd7855d5b2fe9ff
         "isAvailble": true,
         "isNew": false,
         "addedAt": 1532432451
@@ -171,11 +163,7 @@
         "category": "doll",
         "desc": "Nahji doll, blonde, with red dress and ice-cream",
         "userId": "",
-<<<<<<< HEAD
-        "condition": "brand new",
-=======
         "condition": "New",
->>>>>>> 90761d7321e26374adad6f26dbd7855d5b2fe9ff
         "isAvailble": true,
         "isNew": false,
         "addedAt": 1532435412
@@ -187,11 +175,7 @@
         "category": "doll",
         "desc": "Soft blue unicorn doll",
         "userId": "",
-<<<<<<< HEAD
-        "condition": "brand new",
-=======
         "condition": "New",
->>>>>>> 90761d7321e26374adad6f26dbd7855d5b2fe9ff
         "isAvailble": true,
         "isNew": true,
         "addedAt": 1532436517
@@ -203,20 +187,19 @@
         "category": "doll",
         "desc": "Soft red teddy bear doll",
         "userId": "",
-        "condition": "brand new",
+        "condition": "Brand new",
         "isAvailble": true,
         "isNew": false,
         "addedAt": 1532433498
     },
     {
-<<<<<<< HEAD
         "name": "red tractor",
         "src": "/img/gameImg/wheels/red-tractor.jpg",
         "type": "child",
         "category": "wheels",
         "desc": "Red big tractor that actually the child can ride on! suitable for 3-5 years old.",
         "userId": "",
-        "condition": "brand new",
+        "condition": "Brand new",
         "isAvailble": true,
         "isNew": false,
         "addedAt": "24072018"
@@ -229,7 +212,7 @@
         "category": "doll",
         "desc": "doll-house with all the facilities... a little broken but in good condition",
         "userId": "",
-        "condition": "used",
+        "condition": "Used",
         "isAvailble": true,
         "isNew": false,
         "addedAt": "24072018"
@@ -241,7 +224,7 @@
         "category": "puzzle",
         "desc": "A real nice shapes board for 1-1.5 years old. Also can teach colors",
         "userId": "",
-        "condition": "brand new",
+        "condition": "Brand new",
         "isAvailble": true,
         "isNew": true,
         "addedAt": "24072018"
@@ -253,7 +236,7 @@
         "category": "wheels",
         "desc": "yellow tractor- your baby can play hours with it!",
         "userId": "",
-        "condition": "used",
+        "condition": "Used",
         "isAvailble": true,
         "isNew": false,
         "addedAt": "24072018"
@@ -266,7 +249,7 @@
         "category": "doll",
         "desc": "Huge unicorn to ride at!! It has some spots but generally in good condition.",
         "userId": "",
-        "condition": "used",
+        "condition": "Used",
         "isAvailble": true,
         "isNew": false,
         "addedAt": "24072018"
@@ -278,7 +261,7 @@
         "category": "wheels",
         "desc": "nice green tractor for babys!",
         "userId": "",
-        "condition": "brand new",
+        "condition": "Brand new",
         "isAvailble": true,
         "isNew": false,
         "addedAt": "24072018"
@@ -290,7 +273,7 @@
         "category": "console",
         "desc": "Fifa 2000 console game for Playstation.",
         "userId": "",
-        "condition": "brand new",
+        "condition": "Brand new",
         "isAvailble": true,
         "isNew": false,
         "addedAt": "24072018"
@@ -302,7 +285,7 @@
         "category": "console",
         "desc": "origin Mine Craft for x-box",
         "userId": "",
-        "condition": "brand new",
+        "condition": "Brand new",
         "isAvailble": true,
         "isNew": false,
         "addedAt": "24072018"
@@ -314,7 +297,7 @@
         "category": "board-game",
         "desc": "clasic monopol! Some cards are missing but you can still play with a lot of fun...",
         "userId": "",
-        "condition": "used",
+        "condition": "Used",
         "isAvailble": true,
         "isNew": false,
         "addedAt": "24072018"
@@ -326,7 +309,7 @@
         "category": "build",
         "desc": "awsome star-wars lego. more then 4000 pieces. for 12 years and up",
         "userId": "",
-        "condition": "used",
+        "condition": "Used",
         "isAvailble": true,
         "isNew": false,
         "addedAt": "24072018"
@@ -338,7 +321,7 @@
         "category": "lego",
         "desc": "Ninjago Lego for children (8-14) with instructions.",
         "userId": "",
-        "condition": "brand new",
+        "condition": "Brand new",
         "isAvailble": true,
         "isNew": false,
         "addedAt": "24072018"
@@ -350,7 +333,7 @@
         "category": "build",
         "desc": "Lego Duplo for children. Good for 2+ years old",
         "userId": "",
-        "condition": "new",
+        "condition": "New",
         "isAvailble": true,
         "isNew": true,
         "addedAt": "24072018"
@@ -362,7 +345,7 @@
         "category": "lego",
         "desc": "Classic Lego- the real one! for children of all ages",
         "userId": "",
-        "condition": "used",
+        "condition": "Used",
         "isAvailble": true,
         "isNew": false,
         "addedAt": "24072018"
@@ -374,7 +357,7 @@
         "category": "lego",
         "desc": "Really cute helicopter lego. Good for children 5-12. It has almost 200 pieces.",
         "userId": "",
-        "condition": "brand new",
+        "condition": "Brand new",
         "isAvailble": true,
         "isNew": false,
         "addedAt": "24072018"
@@ -386,7 +369,7 @@
         "category": "wheels",
         "desc": "red baby car with 3 wheels and steering wheel",
         "userId": "",
-        "condition": "brand new",
+        "condition": "Brand new",
         "isAvailble": true,
         "isNew": false,
         "addedAt": "24072018"
@@ -396,9 +379,9 @@
         "src": "/img/gameImg/bimba-juk.jpg",
         "type": "baby",
         "category": "wheels",
-        "desc": "small baby car, lighe-blue and yellow. barley used!",
+        "desc": "small baby car, lighe-blue and yellow. barley Used!",
         "userId": "",
-        "condition": "new",
+        "condition": "New",
         "isAvailble": true,
         "isNew": false,
         "addedAt": "24072018"
@@ -410,7 +393,7 @@
         "category": "wheels",
         "desc": "Wanna ride a Porch??!! you can have mine...",
         "userId": "",
-        "condition": "used",
+        "condition": "Used",
         "isAvailble": true,
         "isNew": false,
         "addedAt": "24072018"
@@ -422,7 +405,7 @@
         "category": "wheels",
         "desc": "excellent bike. color pink. It has training wheels and another seat to carry a doll. pink color",
         "userId": "",
-        "condition": "used",
+        "condition": "Used",
         "isAvailble": true,
         "isNew": false,
         "addedAt": "24072018"
@@ -434,7 +417,7 @@
         "category": "wheels",
         "desc": "2 wheels balance yellow bike. Good for age 3 and up",
         "userId": "",
-        "condition": "used",
+        "condition": "Used",
         "isAvailble": true,
         "isNew": false,
         "addedAt": "24072018"
@@ -446,7 +429,7 @@
         "category": "wheels",
         "desc": "very cool skate! orange color. seen from everywhere...",
         "userId": "",
-        "condition": "used",
+        "condition": "Used",
         "isAvailble": true,
         "isNew": false,
         "addedAt": "24072018"
@@ -458,7 +441,7 @@
         "category": "wheels",
         "desc": "blue BMX bikes with training wheels. Good for 3 years old but can suitable for 4 years.",
         "userId": "",
-        "condition": "brand new",
+        "condition": "Brand new",
         "isAvailble": true,
         "isNew": false,
         "addedAt": "24072018"
@@ -470,7 +453,7 @@
         "category": "wheels",
         "desc": "nice skateboard with blue board and yellow wheels",
         "userId": "",
-        "condition": "used",
+        "condition": "Used",
         "isAvailble": true,
         "isNew": false,
         "addedAt": "24072018"
@@ -480,9 +463,9 @@
         "src": "/img/gameImg/roller.jpg",
         "type": "child",
         "category": "wheels",
-        "desc": "complettly new roller blades. size 26",
+        "desc": "complettly New roller blades. size 26",
         "userId": "",
-        "condition": "new",
+        "condition": "New",
         "isAvailble": true,
         "isNew": false,
         "addedAt": "24072018"
@@ -494,7 +477,7 @@
         "category": "wheels",
         "desc": "nice and very light scooter. barely was in use",
         "userId": "",
-        "condition": "brand new",
+        "condition": "Brand new",
         "isAvailble": true,
         "isNew": false,
         "addedAt": "24072018"
@@ -507,12 +490,12 @@
         "category": "wheels",
         "desc": "green scooter with place for 2 legs",
         "userId": "",
-        "condition": "new",
+        "condition": "New",
         "isAvailble": true,
         "isNew": false,
         "addedAt": "24072018"
-    
-=======
+    },
+    {
         "name": "Atmosfear",
         "src": "img/board-game/atmosfear.jpg",
         "type": "teen",
@@ -535,6 +518,5 @@
         "isAvailble": true,
         "isNew": false,
         "addedAt": 1532433498
->>>>>>> 90761d7321e26374adad6f26dbd7855d5b2fe9ff
     }
 ]
