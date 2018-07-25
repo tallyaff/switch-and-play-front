@@ -36,26 +36,21 @@ export default {
         },
 
 
-        gamesByFilterServer(state, { games }) {
-            console.log('mutation gamesByFilterServer', games);
-            state.games = games;
-        }
+        // gamesByFilterServer(state, { games }) {
+        //     console.log('mutation gamesByFilterServer', games);
+        //     state.games = games;
+        // }
     },
     getters: {
-        currGames(state) {
-            return state.games;
+    
+        gamesForDisplay(state) {
+            console.log('stateUser', state.games);
+            return state.games
         },
-        // gamesForDisplay(state) {
-        //   return state.games.filter(game => game.name.includes(state.filterBy.name));
-        // },
-        gamesByFilterServer(state) {
-            console.log('geeters gamesByFilterServer', state.games);
-            return state.games;
-        }
-
+    
     },
     actions: {
-        loadGames(context, payload) {
+        loadGames(context) {
             // doing commit on this store mutation
             context.commit({ type: 'setGamesLoading', isLoading: true })
             return GameService.query()
@@ -84,7 +79,7 @@ export default {
         },
         saveGame(context, { savedGame }) {
             console.log('newgame in action', savedGame)
-            return gameService.savegame(savedGame)
+            return GameService.savegame(savedGame)
                 .then((game) => {
                     console.log('savegame in store', game);
                     context.commit({ type: 'savegame', game })

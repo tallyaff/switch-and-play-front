@@ -5,7 +5,13 @@
         <input  type="text" @input="setFilter" v-model="filterBy.name" placeholder="Search"  name="inputSearch">
       </router-link>  -->
       <!-- <GameList :games="gamesByFilterServer" @remove="removeGame"></GameList> -->
-      <Gallery :games="currGames"></Gallery>
+      <!-- {{games}} -->
+      <ul>
+        <li v-for="game in games" :key="game._id"> 
+          <div>{{game.name}}</div>
+        </li>
+      </ul>
+      <!-- <Gallery :games="currGames"></Gallery> -->
       <!-- <GameList :games="games" @remove="removeGame"></GameList> -->
   </div>
 </template>
@@ -13,12 +19,12 @@
 <script>
 // @ is an alias to /src
 import GameService from '../services/GameService.js';
-import Gallery from '@/views/Gallery.vue'
+// import Gallery from '@/views/Gallery.vue'
 
 export default {
   name: 'home',
   components: {
-    Gallery,
+    // Gallery,
 
   },
   data() {
@@ -32,22 +38,26 @@ export default {
     }
   },
   created() {
-    // this.loadGames();
+    this.gamesToShow();
   },
   computed: {
-    currGames() {
-      return this.$store.getters.currGames;
-    },
+    // currGames() {
+    //   return this.$store.getters.currGames;
+    // },
+
+    games(){
+      return this.$store.getters.gamesForDisplay
+    }
     // gamesForDisplay() {
     //   return this.$store.getters.gamesForDisplay;
     //   },
-    gamesByFilterServer() {
-      console.log('computed gamesByFilterServer in gameapp', this.$store.gamesByFilterServer);
-      return this.$store.getters.gamesByFilterServer;
-    }
+    // gamesByFilterServer() {
+    //   console.log('computed gamesByFilterServer in gameapp', this.$store.gamesByFilterServer);
+    //   return this.$store.getters.gamesByFilterServer;
+    // }
   },
   methods: {
-    loadGames() {
+    gamesToShow() {
       this.$store.dispatch({type:'loadGames'})
         .then(games => {
         //   eventBusService.$emit(SHOW_MSG, {
