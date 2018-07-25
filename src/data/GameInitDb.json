@@ -204,5 +204,29 @@
         "isAvailble": true,
         "isNew": false,
         "addedAt": 1532433498
+    },
+    {
+        "name": "Atmosfear",
+        "src": "img/board-game/atmosfear.jpg",
+        "type": "teen",
+        "category": "board-game",
+        "desc": "Atmosfear is an Australian horror video board game series released in 1991. Nostalgic and amazing game for teens",
+        "userId": "",
+        "condition": "Used",
+        "isAvailble": true,
+        "isNew": false,
+        "addedAt": 1532433498
+    },
+    {
+        "name": "carcassonne",
+        "src": "img/board-game/carcassonne.jpg",
+        "type": "teen",
+        "category": "board-game",
+        "desc": "a tile-based German-style board game for two to five players",
+        "userId": "",
+        "condition": "Used",
+        "isAvailble": true,
+        "isNew": false,
+        "addedAt": 1532433498
     }
 ]
