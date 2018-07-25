@@ -9,6 +9,19 @@ function query() {
         .then(res => res.data)
 }
 
+// function query(criteria = {name: '', type: [], category: [], userId: ''}) {
+//     console.log('criteria in query', criteria);
+//     var typeStr = criteria.type.join(',');
+//     console.log('typeStr', typeStr);
+//     var categoryStr = criteria.category.join(',');
+//     console.log('categoryStr', categoryStr);
+//     var queryParams = `?name=${criteria.name}&type=${typeStr}&category=${categoryStr}&userId=${criteria.userId}`;
+//     // var queryParams = `?name=${criteria.name}&type=${criteria.type}&category=${criteria.category}&userId=${criteria.userId}`;
+//     return axios.get(GAME_URL + queryParams)
+//         .then(res => {
+//             return res.data})
+// }
+
 // const GAME_URL = 'http://localhost:3000/game';
 
 // const GAME_URL = (process.env.NODE_ENV !== 'development' )

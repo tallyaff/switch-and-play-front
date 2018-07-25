@@ -4,50 +4,43 @@
 <router-link :to="'/game'">
   <button>Go to Gallery</button>
 </router-link> 
-      <!-- <router-link :to="'/game/'+filterBy.name">
-        <input  type="text" @input="setFilter" v-model="filterBy.name" placeholder="Search"  name="inputSearch">
-      </router-link>  -->
+      <h3></h3>
+
       <!-- <GameList :games="gamesByFilterServer" @remove="removeGame"></GameList> -->
+      <!-- {{currGames}}
+      <Gallery :games="currGames"></Gallery> -->
       <!-- {{games}} -->
-      <!-- <ul>
+      <GameFilter></GameFilter>
+      <ul>
         <li v-for="game in games" :key="game._id"> 
           <div>{{game.name}}</div>
         </li>
-      </ul> -->
-      <!-- <Gallery :games="currGames"></Gallery> -->
-      <!-- <GameList :games="games" @remove="removeGame"></GameList> -->
+      </ul>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import GameService from '../services/GameService.js';
+import GameService from '@/services/GameService.js';
+import Gallery from '@/views/Gallery.vue'
+import GameFilter from '@/components/GameFilter.vue'
 
 // import Gallery from '@/views/Gallery.vue'
 
 export default {
   name: 'home',
   components: {
+    GameFilter,
     // Gallery,
 
   },
   data() {
     return {
-        filterBy: {
-          name: '',
-          type: '',
-          category: '',
-          userId: ''
-        }
     }
   },
   created() {
     this.loadGames();
   },
   computed: {
-    // currGames() {
-    //   return this.$store.getters.currGames;
-    // },
 
     gamesForDisplay(){
       return this.$store.getters.gamesForDisplay
@@ -77,18 +70,6 @@ export default {
         //     type: 'danger'
         //   });
         });
-    },
-    // removeGame(gameId) {
-    //     console.log('remove item...', gameId);
-    //     this.$store.dispatch({type: 'removeGame', gameId })
-    //         .then(() =>{
-    //             console.log('removed from game APP'); 
-    //             // eventBusService.$emit(SHOW_MSG, {txt: `Todo was removed`})
-    //         })
-    // },
-    setFilter(ev) {
-        // this.$store.commit({type: 'setFilter', filterBy: {name: ev.target.value} })
-        this.$store.dispatch({type: 'sentFilter', filterBy: {name: ev.target.value} })
     },
   },
 };

@@ -5,7 +5,7 @@
             <ul>
             <!-- <li v-if="currToys" v-for="(toy ,idx) in currToys" :key="toy._id">
                 {{idx}} -->
-                <li v-if="games" v-for="game in games" :key="game._id">
+                <li class="masonry" v-if="games" v-for="game in games" :key="game._id">
                     <game-preview :game="game" @remove="$emit('remove', game._id)"></game-preview>
                     <!-- {{toy.name}} -->
 

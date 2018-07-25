@@ -6,9 +6,12 @@ export default {
     state: {
         gamesLoading: false,
         games: [],
-        // filterBy: {
-        //   name: '',
-        // },
+        filterBy: {
+            name: '',
+            type: [],
+            category: [],
+            userId: ''
+        }
     },
     mutations: {
         setGamesLoading(state, { isLoading }) {
@@ -41,21 +44,18 @@ export default {
         // }
     },
     getters: {
-    
+
         gamesForDisplay(state) {
             console.log('stateUser', state.games);
             return state.games
         },
-    
+
     },
     actions: {
         loadGames(context) {
-            // doing commit on this store mutation
             context.commit({ type: 'setGamesLoading', isLoading: true })
             return GameService.query()
                 .then(games => {
-                    console.log('games!!!',games)
-                    // to update the mutation setGames
                     context.commit({ type: 'setGames', games })
                     return games;
                 })
@@ -84,6 +84,15 @@ export default {
                     console.log('savegame in store', game);
                     context.commit({ type: 'saveGame', game })
                 })
+        },
+        setFilter(context, { filterBy }) {
+            console.log('setFilter in store: filterBy', filterBy)
+            return GameService.query(filterBy)
+                .then((games) => {
+                    console.log('users from server after sentFilter in store', games);
+                    context.commit({ type: 'gamesByFilterServer', games })
+                })
+
         },
 
     }
