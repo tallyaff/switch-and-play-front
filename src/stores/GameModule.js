@@ -51,11 +51,9 @@ export default {
     },
     actions: {
         loadGames(context, payload) {
-            // doing commit on this store mutation
             context.commit({ type: 'setGamesLoading', isLoading: true })
             return GameService.query()
                 .then(games => {
-                    // to update the mutation setGames
                     context.commit({ type: 'setGames', games })
                     return games;
                 })

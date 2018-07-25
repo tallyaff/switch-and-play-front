@@ -1,18 +1,19 @@
 <template>
   <div class="home">
-      <h3> Search for games:</h3>
+      <h3></h3>
+
       <!-- <router-link :to="'/game/'+filterBy.name">
         <input  type="text" @input="setFilter" v-model="filterBy.name" placeholder="Search"  name="inputSearch">
       </router-link>  -->
       <!-- <GameList :games="gamesByFilterServer" @remove="removeGame"></GameList> -->
+      {{currGames}}
       <Gallery :games="currGames"></Gallery>
       <!-- <GameList :games="games" @remove="removeGame"></GameList> -->
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import GameService from '../services/GameService.js';
+import GameService from '@/services/GameService.js';
 import Gallery from '@/views/Gallery.vue'
 
 export default {
@@ -32,7 +33,7 @@ export default {
     }
   },
   created() {
-    // this.loadGames();
+    this.loadGames();
   },
   computed: {
     currGames() {
