@@ -31,5 +31,6 @@ export default {
           // console.log('error loading');
       })
     },
+  }
 }
 </script>
