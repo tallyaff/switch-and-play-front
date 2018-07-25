@@ -1,4 +1,5 @@
 [
+    
     {
         "name": "Spiderman",
         "src": "img/gameImg/console/spiderman.jpg",
@@ -126,7 +127,11 @@
         "category": "playmobil",
         "desc": "Playmobil school bus - city life, for age 4+",
         "userId": "",
+<<<<<<< HEAD
         "condition": "brand new",
+=======
+        "condition": "New",
+>>>>>>> 90761d7321e26374adad6f26dbd7855d5b2fe9ff
         "isAvailble": true,
         "isNew": false,
         "addedAt": 1532415436
@@ -150,7 +155,11 @@
         "category": "doll",
         "desc": "Barbie doll, blonde, with red dress and ice-cream",
         "userId": "",
+<<<<<<< HEAD
         "condition": "brand new",
+=======
+        "condition": "New",
+>>>>>>> 90761d7321e26374adad6f26dbd7855d5b2fe9ff
         "isAvailble": true,
         "isNew": false,
         "addedAt": 1532432451
@@ -162,7 +171,11 @@
         "category": "doll",
         "desc": "Nahji doll, blonde, with red dress and ice-cream",
         "userId": "",
+<<<<<<< HEAD
         "condition": "brand new",
+=======
+        "condition": "New",
+>>>>>>> 90761d7321e26374adad6f26dbd7855d5b2fe9ff
         "isAvailble": true,
         "isNew": false,
         "addedAt": 1532435412
@@ -174,7 +187,11 @@
         "category": "doll",
         "desc": "Soft blue unicorn doll",
         "userId": "",
+<<<<<<< HEAD
         "condition": "brand new",
+=======
+        "condition": "New",
+>>>>>>> 90761d7321e26374adad6f26dbd7855d5b2fe9ff
         "isAvailble": true,
         "isNew": true,
         "addedAt": 1532436517
@@ -192,6 +209,7 @@
         "addedAt": 1532433498
     },
     {
+<<<<<<< HEAD
         "name": "red tractor",
         "src": "/img/gameImg/wheels/red-tractor.jpg",
         "type": "child",
@@ -494,5 +512,29 @@
         "isNew": false,
         "addedAt": "24072018"
     
+=======
+        "name": "Atmosfear",
+        "src": "img/board-game/atmosfear.jpg",
+        "type": "teen",
+        "category": "board-game",
+        "desc": "Atmosfear is an Australian horror video board game series released in 1991. Nostalgic and amazing game for teens",
+        "userId": "",
+        "condition": "Used",
+        "isAvailble": true,
+        "isNew": false,
+        "addedAt": 1532433498
+    },
+    {
+        "name": "carcassonne",
+        "src": "img/board-game/carcassonne.jpg",
+        "type": "teen",
+        "category": "board-game",
+        "desc": "a tile-based German-style board game for two to five players",
+        "userId": "",
+        "condition": "Used",
+        "isAvailble": true,
+        "isNew": false,
+        "addedAt": 1532433498
+>>>>>>> 90761d7321e26374adad6f26dbd7855d5b2fe9ff
     }
 ]
