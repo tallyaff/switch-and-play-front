@@ -1,13 +1,17 @@
 import GameService from '../services/GameService.js'
 
 
+
 export default {
     state: {
         gamesLoading: false,
         games: [],
-        // filterBy: {
-        //   name: '',
-        // },
+        filterBy: {
+            name: '',
+            type: [],
+            category: [],
+            userId: ''
+        }
     },
     mutations: {
         setGamesLoading(state, { isLoading }) {
@@ -15,6 +19,9 @@ export default {
         },
         setGames(state, { games }) {
             state.games = games;
+        },
+        removeGame(state, { gameId }) {
+            state.games = state.games.filter(game => game._id !== gameId)
         },
         // setFilter(state, payload) {
         //   console.log('payload', payload.filterBy);
@@ -31,26 +38,22 @@ export default {
         },
 
 
-        gamesByFilterServer(state, { games }) {
-            console.log('mutation gamesByFilterServer', games);
-            state.games = games;
-        }
+        // gamesByFilterServer(state, { games }) {
+        //     console.log('mutation gamesByFilterServer', games);
+        //     state.games = games;
+        // }
     },
     getters: {
-        currGames(state) {
-            return state.games;
+
+        gamesForDisplay(state) {
+            console.log('stateUser', state.games);
+            return state.games
         },
-        // gamesForDisplay(state) {
-        //   return state.games.filter(game => game.name.includes(state.filterBy.name));
-        // },
-        gamesByFilterServer(state) {
-            console.log('geeters gamesByFilterServer', state.games);
-            return state.games;
-        }
 
     },
     actions: {
-        loadGames(context, payload) {
+        loadGames(context) {
+            // doing commit on this store mutation
             context.commit({ type: 'setGamesLoading', isLoading: true })
             return GameService.query()
                 .then(games => {
@@ -61,30 +64,36 @@ export default {
                     context.commit({ type: 'setGamesLoading', isLoading: false })
                 })
         },
-        // loadGame(context, { gameId }) {
-        //   console.log('route, gameId', {gameId });
-        //   return GameService.getGameById(gameId)
-        //     .then((game) => {
-        //       return game;
-        //     })
-        // },
-
-        sentFilter(context, { filterBy }) {
-            console.log('sentFilter: filterBy', filterBy.name)
-            return GameService.sentFilter(filterBy.name)
+        loadGame(context, { gameId }) {
+            console.log('route, gameId', { gameId });
+            return GameService.getGameById(gameId)
+                .then((game) => {
+                    return game;
+                })
+        },
+        removeGame(context, { gameId }) {
+            return GameService.removeGame(gameId)
+                .then(() => {
+                    console.log('remove after game service');
+                    context.commit({ type: 'removeGame', gameId })
+                })
+        },
+        saveGame(context, { savedGame }) {
+            console.log('newgame in action', savedGame)
+            return GameService.savegame(savedGame)
+                .then((game) => {
+                    console.log('savegame in store', game);
+                    context.commit({ type: 'savegame', game })
+                })
+        },
+        setFilter(context, { filterBy }) {
+            console.log('setFilter in store: filterBy', filterBy)
+            return GameService.query(filterBy)
                 .then((games) => {
                     console.log('users from server after sentFilter in store', games);
                     context.commit({ type: 'gamesByFilterServer', games })
                 })
 
-        },
-        saveGame(context, { savedGame }) {
-            console.log('newgame in action', savedGame)
-            return gameService.savegame(savedGame)
-                .then((game) => {
-                    console.log('savegame in store', game);
-                    context.commit({ type: 'savegame', game })
-                })
         },
 
     }
