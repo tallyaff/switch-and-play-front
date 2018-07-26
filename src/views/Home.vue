@@ -12,7 +12,7 @@
       <!-- {{games}} -->
       <GameFilter></GameFilter>
       <ul>
-        <li v-for="game in games" :key="game._id"> 
+        <li v-for="game in gamesForDisplay" :key="game._id"> 
           <div>{{game.name}}</div>
         </li>
       </ul>

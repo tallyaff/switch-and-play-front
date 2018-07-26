@@ -2,11 +2,11 @@
   <div class="game-preview" v-if="game">
         <ul class="game-preview-container">
             <!-- :src="game.src"  -->
-            <li>{{game.name}}</li>
+            <li class="game-name-preview">{{game.name}}</li>
             <img :src="game.src" :alt="'no image'"/>
-            <li>Category: {{game.category}}</li>
-            <li>Condition: {{game.condition}}</li>
-            <li>Added at: {{game.addedAt}}</li>
+            <li class="game-category-preview">Category: {{game.category}}</li>
+            <li class="game-condition-preview">Condition: {{game.condition}}</li>
+            <li class="game-addedAt-preview">Added at: {{game.addedAt}}</li>
             <li>
                 <!-- v-if="user.isAdmin"  -->
                 <button class="btn btn-remove" @click="$emit('remove', game._id)">Remove</button> 
@@ -34,3 +34,13 @@ export default {
   }
 };
 </script>
+
+<style scoped lang="scss">
+  @import '../assets/scss/style.scss';
+    .game-name-preview {
+      font-size: rem(30px);
+      font-family: 'Ubuntu';
+  }
+
+
+</style>

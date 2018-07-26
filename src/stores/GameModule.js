@@ -36,19 +36,18 @@ export default {
             else state.games.push(game);
 
         },
-
-
+        
         // gamesByFilterServer(state, { games }) {
         //     console.log('mutation gamesByFilterServer', games);
         //     state.games = games;
         // }
     },
     getters: {
-
         gamesForDisplay(state) {
             console.log('stateUser', state.games);
             return state.games
         },
+        
 
     },
     actions: {
