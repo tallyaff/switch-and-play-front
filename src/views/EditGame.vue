@@ -89,7 +89,7 @@ export default {
 
 <style scoped lang="scss">
 
-@import '~@/assets/scss/style.scss';
+// @import '~@/assets/scss/style.scss';
 
 .edit-game{
   border : 1px solid $main-color;

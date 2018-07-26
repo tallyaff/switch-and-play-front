@@ -2,6 +2,9 @@
   <div class="game-preview" v-if="game">
         <ul class="game-preview-container">
             <!-- :src="game.src"  -->
+            {{game._id}}
+            <el-checkbox @change=" $emit('check', {gameId :game._id, checked:checked})
+            " v-model="checked" v-if="gameCheckbox" label="offer this game"></el-checkbox>
             <li class="game-name-preview">{{game.name}}</li>
             <img :src="game.src" :alt="'no image'"/>
             <li class="game-category-preview">Category: {{game.category}}</li>
@@ -20,12 +23,20 @@
 <script>
 export default {
   name: "GamePreview",
-  props: ["game"],
+  props: ["game","gameCheckbox"],
+  data(){
+    return{
+     checked : false
+    }
+  },
 
   methods: {
 
   },
   computed: {
+    // checked(){
+    //   $emit('check', game._id,this.checked)
+    // }
     // user() {
     //   // console.log('user!!!!!!!!!!!!!!!!!!', this.$store.getters.setLoginUser);
     //   return this.$store.getters.setLoginUser;
