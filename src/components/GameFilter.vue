@@ -9,6 +9,9 @@
             </label>
         <div>
             <h3>Type</h3>
+             <label >
+              <input type="checkbox" name="feature" value="all-types" v-model="filterBy.allTypes" @change="setFilter"/>All types
+            </label>
             <label >
               <input type="checkbox" name="feature" value="baby" v-model="filterBy.type" @change="setFilter"/>Baby
             </label>
@@ -21,6 +24,9 @@
         </div>
         <div>
             <h3>Category</h3>
+            <label >
+              <input type="checkbox" name="feature" value="all-categories" v-model="filterBy.allCategories" @change="setFilter"/>All categories
+            </label>
              <label >
               <input type="checkbox" name="feature" value="console" v-model="filterBy.category" @change="setFilter"/>Console
             </label>
@@ -60,7 +66,9 @@ export default {
         filterBy: {
           allByName: true,
           name: '',
+          allTypes: true,
           type: [],
+          allCategories: true,
           category: [],
           userId: ''
         }
