@@ -4,43 +4,43 @@
             <input type="text" v-model="filterBy.name" placeholder="Search for games" autofocus>
             <button>Search</button>
         </form>
-       <label>All<input type="checkbox" v-model="filterBy.name" @change="setFilter"/></label>
-
+            <label >
+              <input type="checkbox" name="feature" value="all" v-model="filterBy.allByName" @change="setFilter"/>All
+            </label>
         <div>
             <h3>Type</h3>
-            
             <label >
-              <input type="checkbox" name="feature" value="baby" checked v-model="filterBy.type" @change="setFilter"/>Baby
+              <input type="checkbox" name="feature" value="baby" v-model="filterBy.type" @change="setFilter"/>Baby
             </label>
             <label >
-              <input type="checkbox" name="feature" value="child" checked v-model="filterBy.type" @change="setFilter"/>Child
+              <input type="checkbox" name="feature" value="child" v-model="filterBy.type" @change="setFilter"/>Child
             </label>
             <label >
-              <input type="checkbox" name="feature" value="teen" checked v-model="filterBy.type" @change="setFilter"/>Teen
+              <input type="checkbox" name="feature" value="teen" v-model="filterBy.type" @change="setFilter"/>Teen
             </label>
         </div>
         <div>
             <h3>Category</h3>
              <label >
-              <input type="checkbox" name="feature" value="console" checked v-model="filterBy.category" @change="setFilter"/>Console
+              <input type="checkbox" name="feature" value="console" v-model="filterBy.category" @change="setFilter"/>Console
             </label>
              <label >
-              <input type="checkbox" name="feature" value="doll" checked v-model="filterBy.category" @change="setFilter"/>Doll
+              <input type="checkbox" name="feature" value="doll" v-model="filterBy.category" @change="setFilter"/>Doll
             </label>
              <label >
-              <input type="checkbox" name="feature" value="game-board" checked v-model="filterBy.category" @change="setFilter"/>Game board
+              <input type="checkbox" name="feature" value="board-game" v-model="filterBy.category" @change="setFilter"/>Board game
             </label>
              <label >
-              <input type="checkbox" name="feature" value="lego" checked v-model="filterBy.category" @change="setFilter"/>Lego
+              <input type="checkbox" name="feature" value="lego" v-model="filterBy.category" @change="setFilter"/>Lego
             </label>
              <label >
-              <input type="checkbox" name="feature" value="playmobil" checked v-model="filterBy.category" @change="setFilter"/>Playmobil
+              <input type="checkbox" name="feature" value="playmobil" v-model="filterBy.category" @change="setFilter"/>Playmobil
             </label>
              <label >
-              <input type="checkbox" name="feature" value="puzzle" checked v-model="filterBy.category" @change="setFilter"/>Puzzle
+              <input type="checkbox" name="feature" value="puzzle" v-model="filterBy.category" @change="setFilter"/>Puzzle
             </label>
              <label >
-              <input type="checkbox" name="feature" value="wheels" checked v-model="filterBy.category" @change="setFilter"/>Wheels
+              <input type="checkbox" name="feature" value="wheels" v-model="filterBy.category" @change="setFilter"/>Wheels
             </label>
         </div>
   </div>
@@ -58,6 +58,7 @@ export default {
   data() {
     return {
         filterBy: {
+          allByName: true,
           name: '',
           type: [],
           category: [],
