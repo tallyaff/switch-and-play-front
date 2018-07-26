@@ -1,8 +1,7 @@
 <template>
   <div class="game-list">
-
             <!-- <router-link v-if="user.isAdmin" tag="button" to="/toy/edit/">Add</router-link> -->
-            <ul v-if="games">
+            <ul class="game-cards-container flex" v-if="games">
             <!-- <li v-if="currToys" v-for="(toy ,idx) in currToys" :key="toy._id">
                 {{idx}} -->
                 <li class="game clean-list" v-for="game in games" :key="game._id">
@@ -36,13 +35,47 @@ export default {
 
 <style scoped lang="scss">
   @import '~@/assets/scss/style.scss';
-    .game {
+
+  .game-list {
+    width: 1200px;
+  }
+
+  .game-cards-container {
+    flex-wrap: wrap;
+    // flex-direction: row;
+    
+  }
+
+  li.game {
+      // cursor: pointer;
+  }
+
+  .game {
       width: 400px;
       border: 1px solid $border-color;  
       box-shadow: 0px 2px 4px 0px #d9d8d8;
       border-radius: 20px;
+      margin: rem(10px);
+      
+      transition: all 0.5s;
+  }
+
+
+
+   .game:hover {
+
+    transform: scale(0.95, 0.95);
     
   }
 
+//     cursor: pointer;
+//     
+//     border: 6px solid rgb(216, 215, 215);
+// }
+
+// .item-img:hover {
+//     
+
+// }
 
 </style>

@@ -41,6 +41,20 @@
 }
 
 
+.space-around {
+  justify-content: space-around;
+}
+
+
+
+.align-item {
+  align-self: center;
+}
+
+
+
+
+
 /* Breakpoint mixins */
 
 // @mixin for-mobile-only {

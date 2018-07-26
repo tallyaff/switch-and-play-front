@@ -1,16 +1,18 @@
 <template>
   <!-- <div class="game-preview" > -->
-        <ul class="game-preview-container flex column align-center clean-list" v-if="game">
-            <!-- :src="game.src"  -->
+        <ul class="game-preview-container flex column align-center clean-list space-between" v-if="game">
             <li class="game-name-preview">{{game.name}}</li>
             <div class="image-container" :style="{backgroundImage: url, backgroundSize: 'cover', backgroundPosition: 'center', backgroundrepeat: 'no-repeat'}">
-              <!-- this url{{url}} -->
-            <!-- <div class="image-container" :style="{backgroundImage: 'url('game.src}"> -->
-              <!-- <img :src="game.src" :alt="'no image'"/> -->
             </div>
-            <li class="game-category-preview">Category: {{game.category}}</li>
-            <li class="game-condition-preview">Condition: {{game.condition}}</li>
-            <li class="game-addedAt-preview">Added at: {{game.addedAt}}</li>
+            <li class="game-category-preview"><span>Category: </span> {{game.category}}</li>
+            <li class="game-condition-preview"><span>Condition: </span>{{game.condition}}</li>
+            <!-- <li class="game-addedAt-preview"><span>Added at: </span> {{game.addedAt}}</li> -->
+            <li class="game-addedAt-preview"><span>Added at: </span> {{game.addedAt | getDate }}</li>
+            <!-- <li class="game-addedAt-preview"><span>Added at: </span> {{1532359863 | getDate }}</li> -->
+            <!-- TODO: user location & name -->
+            <li v-if="game.isNew" class="game-new-icon"><img src="img/new-icon.png"></li>
+            <li class="game-location-preview"><span>Location: </span> </li>
+            <li class="game-user-name-preview"><span>by </span> </li>
             <li>
                 <!-- v-if="user.isAdmin"  -->
                 <button class="btn btn-remove" @click="$emit('remove', game._id)">Remove</button> 
@@ -26,56 +28,46 @@ export default {
   name: "GamePreview",
   props: ["game"],
   data() {
-    return {}
-    // url("../../media/examples/lizard.png");
+    return {};
   },
 
-  methods: {
-
-  },
+  methods: {},
   computed: {
-    // user() {
-    //   // console.log('user!!!!!!!!!!!!!!!!!!', this.$store.getters.setLoginUser);
-    //   return this.$store.getters.setLoginUser;
-    // },
     url() {
       return `url("${this.game.src}")`;
-    } 
- 
+    }
   }
 };
 </script>
 
-<style scoped lang="scss">
-  @import '../assets/scss/style.scss';
-    .game-name-preview {
-      font-size: rem(30px);
-      font-family: 'Ubuntu';
-    }
-    .game-name-preview {
-      padding: rem(10px);
 
-
+<style scoped>
+    .game-name-preview {
+      font-family: "Ubuntu";
+      text-transform: capitalize;
     }
+
     .image-container {
-      width: 100%;
-      height: 500px;
+      width: 300px;
+      height: 250px;
     }
-      img {
-      // height: 50%;
+    img {
       width: 100%;
-      // background-repeat: no-repeat;
 
-    // width: 400px;
-    // height: 500px;
-    // margin: 10px;
-    // background-size: cover;
-    // background-position: center;
-    // background-repeat: no-repeat;
-    cursor: pointer;
-    transition: all 0.5s;
+      /* cursor: pointer; */
+      transition: all 0.5s;
     
-  }
+    }
 
+    
+    .game-category-preview, .game-condition-preview, .game-addedAt-preview, .game-location-preview, .game-user-name-preview {
+        font-family: 'Lato-Bold';
+       
+    }
 
+    .game-user-name-preview span {
+      text-transform: capitalize;
+
+    }
+  
 </style>

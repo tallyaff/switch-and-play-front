@@ -12,3 +12,24 @@
 .no-margin{
   margin: 0 auto;
 }
+
+a {
+  text-decoration: none;
+}
+
+
+.pointer {
+  cursor: pointer;
+}
+
+.btn:focus {
+  outline: none;
+}
+
+.show {
+  display: block;
+}
+
+.text-align {
+  text-align: center;
+}
