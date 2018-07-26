@@ -6,6 +6,8 @@ import About from './views/About.vue'
 import Gallery from './views/Gallery.vue'
 import Login from './views/Login.vue'
 import EditGame from './views/EditGame.vue'
+import UserProfile from './views/ProfileDetails.vue'
+import UserActivity from './views/UserActivities.vue'
 
 
 Vue.use(Router)
@@ -41,6 +43,16 @@ export default new Router({
       path: '/game/edit/:gameId?',
       name: 'edit',
       component: EditGame
+    },
+    {
+      path: '/user/:userId',
+      name: 'user',
+      component: UserProfile
+    },
+    {
+      path: '/user/activity/:userId',
+      name: 'activity',
+      component: UserActivity
     },
 
   ]
