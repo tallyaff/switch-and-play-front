@@ -1,45 +1,49 @@
 <template>
     <section>
-        <h1>EDIT GAME CMP</h1>
-        <div class="edit-game" v-if="gameCopy">
- <h2>Id: {{gameCopy._id}}</h2>
-          <form @submit.prevent="saveGame">
-              <h2>game name:</h2>
-              <input type="text" v-model="gameCopy.name">
-              <h1>{{gameCopy.description}}</h1>
-               <h2>game descreption:</h2>
-              <input type="text" v-model="gameCopy.desc">
-              <h2>game type:</h2>
-             <h1>{{gameCopy.type}}</h1> 
-              <select v-model="gameCopy.type">
-                  <option value="baby">Baby</option>
-                  <option value="child">Child</option>
-                  <option value="teen">Teen</option>
-              </select>
-              <h1>{{gameCopy.category}}</h1>
-              <h2>game condition:</h2>
-              <select v-model="gameCopy.condition">
-                  <option value="brand-new">Brand new</option>
-                  <option value="new">New</option>
-                  <option value="used">Used</option>
-              </select>
-               <h2>game category:</h2>
-              <select v-model="gameCopy.category">
-                  <option value="board-game">Board-game</option>
-                  <option value="console">Console</option>
-                  <option value="doll">Doll</option>
-                  <option value="lego">Lego</option>
-                  <option value="playmobile">Playmobile</option>
-                  <option value="wheels">Wheels</option>
-                  <option value="puzzle">Puzzle</option>
-              </select>
-              <button>Save</button>
-          </form>
+    <h3>Edit your game!</h3>
+        <div class="edit-game no-margin" v-if="gameCopy">
+          <el-form class="no-margin" :label-position="labelPosition" @submit.native.prevent="saveGame"  style="width: 40%">
+              <el-form-item label="Name">
+              <el-input  v-model="gameCopy.name"/>
+              </el-form-item>
+              <el-form-item label="Descreption">
+              <el-input type="textarea" v-model="gameCopy.desc"/>
+              </el-form-item>
+              <el-form-item label="Category">
+              <el-select v-model="gameCopy.category">
+                  <el-option value="board-game">Board-game</el-option>
+                  <el-option value="console">Console</el-option>
+                  <el-option value="doll">Doll</el-option>
+                  <el-option value="lego">Lego</el-option>
+                  <el-option value="playmobile">Playmobile</el-option>
+                  <el-option value="wheels">Wheels</el-option>
+                  <el-option value="puzzle">Puzzle</el-option>
+              </el-select>
+              </el-form-item>
+<el-form-item label="Type">
+              <el-select v-model="gameCopy.type">
+                  <el-option value="baby">Baby</el-option>
+                  <el-option value="child">Child</el-option>
+                  <el-option value="teen">Teen</el-option>
+              </el-select>
+              </el-form-item>
+<el-form-item label="Condition">
+              <el-select v-model="gameCopy.condition">
+                  <el-option value="brand-new">Brand new</el-option>
+                  <el-option value="new">New</el-option>
+                  <el-option value="used">Used</el-option>
+              </el-select>
+              </el-form-item>
+              <el-button type="primary">Save</el-button>
+              <el-button>Cancel</el-button>
+          </el-form>
         </div>
     </section>
 </template>
 
 <script>
+
+
 import GameService from "@/services/GameService.js";
 
 export default {
@@ -47,7 +51,8 @@ export default {
   data() {
     return {
       currGame: null,
-      gameCopy: null
+      gameCopy: null,
+      labelPosition: 'left'
     };
   },
   created() {
@@ -81,5 +86,15 @@ export default {
   }
 };
 </script>
-<style>
+
+<style scoped lang="scss">
+
+@import '~@/assets/scss/style.scss';
+
+.edit-game{
+  border : 1px solid $main-color;
+  width: 55%;
+  padding: 20px;
+}
+
 </style>
