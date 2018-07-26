@@ -44,7 +44,7 @@ export default {
     },
     getters: {
         gamesForDisplay(state) {
-            console.log('stateUser', state.games);
+            console.log('stateGames', state.games);
             return state.games
         },
         
