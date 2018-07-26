@@ -1,18 +1,38 @@
 <template>
     <section>
+        <h1>EDIT GAME CMP</h1>
         <div class="edit-game" v-if="gameCopy">
  <h2>Id: {{gameCopy._id}}</h2>
-          <form @submit.prevent="savegame">
+          <form @submit.prevent="saveGame">
               <h2>game name:</h2>
               <input type="text" v-model="gameCopy.name">
+              <h1>{{gameCopy.description}}</h1>
+               <h2>game descreption:</h2>
+              <input type="text" v-model="gameCopy.desc">
               <h2>game type:</h2>
-              <input type="text" v-model="gameCopy.type">
-              <h2>game category:</h2>
-              <input type="text" v-model="gameCopy.createdAt">
-              <h2>game description:</h2>
-              <input type="text" v-model="gameCopy.inStock">
+             <h1>{{gameCopy.type}}</h1> 
+              <select v-model="gameCopy.type">
+                  <option value="baby">Baby</option>
+                  <option value="child">Child</option>
+                  <option value="teen">Teen</option>
+              </select>
+              <h1>{{gameCopy.category}}</h1>
               <h2>game condition:</h2>
-              <input type="text" v-model="gameCopy.inStock">
+              <select v-model="gameCopy.condition">
+                  <option value="brand-new">Brand new</option>
+                  <option value="new">New</option>
+                  <option value="used">Used</option>
+              </select>
+               <h2>game category:</h2>
+              <select v-model="gameCopy.category">
+                  <option value="board-game">Board-game</option>
+                  <option value="console">Console</option>
+                  <option value="doll">Doll</option>
+                  <option value="lego">Lego</option>
+                  <option value="playmobile">Playmobile</option>
+                  <option value="wheels">Wheels</option>
+                  <option value="puzzle">Puzzle</option>
+              </select>
               <button>Save</button>
           </form>
         </div>
@@ -20,7 +40,7 @@
 </template>
 
 <script>
-import GameService from '@/services/GameService.js'
+import GameService from "@/services/GameService.js";
 
 export default {
   name: "editGame",
@@ -35,7 +55,7 @@ export default {
   },
   methods: {
     loadGame() {
-    //   console.log("this.$route.params in edit cmp", this.$route.params.gameId);
+      //   console.log("this.$route.params in edit cmp", this.$route.params.gameId);
       if (this.$route.params.gameId) {
         // console.log("has params!!");
         this.$store
@@ -52,7 +72,7 @@ export default {
       }
     },
     saveGame() {
-      this.$store
+        this.$store
         .dispatch({ type: "saveGame", savedGame: this.gameCopy })
         .then(game => {
           console.log("savedGame from game APP");

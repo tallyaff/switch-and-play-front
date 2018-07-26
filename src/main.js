@@ -3,6 +3,7 @@ import App from './App.vue'
 import router from './router'
 import store from './stores/store.js'
 import './registerServiceWorker'
+import './assets/scss/style.scss'
 import axios from 'axios'
 axios.defaults.withCredentials = true;
 Vue.config.productionTip = false

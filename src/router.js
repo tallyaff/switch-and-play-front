@@ -5,6 +5,7 @@ import About from './views/About.vue'
 // import Contact from './views/Contact.vue'
 import Gallery from './views/Gallery.vue'
 import Login from './views/Login.vue'
+import EditGame from './views/EditGame.vue'
 
 
 Vue.use(Router)
@@ -36,5 +37,11 @@ export default new Router({
       name: 'game',
       component: Gallery
     },
+    {
+      path: '/game/edit/:gameId?',
+      name: 'edit',
+      component: EditGame
+    },
+
   ]
 })
