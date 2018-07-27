@@ -51,14 +51,14 @@ export default {
     },
     getters: {
         gamesForDisplay(state) {
-            console.log('stateGames', state.games);
+            // console.log('stateGames', state.games);
             return state.games
         },
         getUserGames(state){
             return state.loggedUserGames
         },
         gameForDisplay(state) {
-            console.log('stateGame', state.game);
+            // console.log('stateGame', state.game);
             return state.game
         }
     },
@@ -107,6 +107,7 @@ export default {
 
         },
         gamesById(context, { games }) {
+            console.log(games);
             games =  Promise.all(
                 games.map(gameId => {
                     return GameService.getGameById(gameId)
