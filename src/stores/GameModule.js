@@ -4,6 +4,9 @@ export default {
     state: {
         gamesLoading: false,
         games: [],
+        gamesBabyHome: [],
+        gamesChildHome: [],
+        gamesTeenHome: [],
         loggedUserGames: [],
         game: null,             
         filterBy: {
@@ -32,9 +35,7 @@ export default {
             foundGameIdx = state.games.findIndex(searchGame => searchGame._id === game._id);
             if (foundGameIdx !== -1) state.games.splice(foundGameIdx, 1, game);
             else state.games.push(game);
-
         },
-        
         gamesByFilterServer(state, { games }) {
             console.log('mutation gamesByFilterServer', games);
             state.games = games;
@@ -50,6 +51,18 @@ export default {
         gamesForDisplay(state) {
             console.log('stateGames', state.games);
             return state.games
+        },
+        gamesForBabyHomeDisplay(state) {
+            console.log('gamesForBabyHomeDisplay', state.gamesForBabyHome);
+            return state.gamesForBabyHome
+        },
+        gamesForChildHomeDisplay(state) {
+            console.log('gamesForChildHomeDisplay', state.gamesForChildHome);
+            return state.gamesForChildHome
+        },
+        gamesForTeenHomeDisplay(state) {
+            console.log('gamesForChildHomeDisplay', state.gamesForTeenHome);
+            return state.gamesForTeenHome
         },
         getUserGames(state){
             return state.loggedUserGames

@@ -6,19 +6,32 @@
     </router-link>
     <div class="filter-type home-baby-filter-container" >
       <h2 class="baby-title">Baby</h2>
+      <GameFilter></GameFilter>
+          <ul>
+            <li v-for="game in gamesForBabyHomeDisplay" :key="game._id"> 
+              <div>{{game.name}}</div>
+            </li>
+          </ul>
+      
     </div>
     <div class="filter-type home-child-filter-container" >
       <h2 class="baby-title">Child</h2>
+        <GameFilter></GameFilter>
+          <ul>
+            <li v-for="game in gamesForChildHomeDisplay" :key="game._id"> 
+              <div>{{game.name}}</div>
+            </li>
+          </ul>
     </div>
     <div class="filter-type home-teen-filter-container" >
       <h2 class="baby-title">Teen</h2>
+      <GameFilter></GameFilter>
+           <ul>
+            <li v-for="game in gamesForTeenHomeDisplay" :key="game._id"> 
+              <div>{{game.name}}</div>
+            </li>
+          </ul>
     </div>
-    <GameFilter></GameFilter>
-      <!-- <ul>
-        <li v-for="game in gamesForDisplay" :key="game._id"> 
-          <div>{{game.name}}</div>
-        </li>
-      </ul> -->
   </div>
 </template>
 
@@ -41,16 +54,23 @@ export default {
     }
   },
   created() {
-    this.loadGames();
+    // this.loadGames();
   },
   computed: {
 
     gamesForDisplay(){
       return this.$store.getters.gamesForDisplay
-    }
-    // gamesForDisplay() {
-    //   return this.$store.getters.gamesForDisplay;
-    //   },
+    },
+    gamesForBabyHomeDisplay(){
+      return this.$store.getters.gamesForBabyHomeDisplay
+    },
+    gamesForChildHomeDisplay(){
+      return this.$store.getters.gamesForChildHomeDisplay
+    },
+    gamesForTeenHomeDisplay(){
+      return this.$store.getters.gamesForTeenHomeDisplay
+    },
+
     // gamesByFilterServer() {
     //   console.log('computed gamesByFilterServer in gameapp', this.$store.gamesByFilterServer);
     //   return this.$store.getters.gamesByFilterServer;
