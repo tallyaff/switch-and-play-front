@@ -10,11 +10,14 @@ const URL = process.env.NODE_ENV !== 'development'
 var loggedinUser = UtilService.load(STORAGE_KEY) || null;
 
 function createUser(userDetails) {
+    console.log(userDetails,'newuser service front')
     return axios.post(`${URL}/signup`, userDetails)
         .then(res => {
             const user = res.data;
-            _setLoggedinUser(user);
+           _setLoggedinUser(user);
+           return user;
         })
+        
         .catch(err => err)
 }
 
