@@ -27,31 +27,34 @@ import UserRecievedRequests from '@/components/UserRecievedRequests.vue'
 import UserSentRequests from '@/components/UserSentRequests.vue'
 
 export default {
-//send userId to MatchModule.
-//gets from there an array with all the matches objs that this user involve
-//update the 3 components bind by the values in those objs ( isActive=true >> match; passive >> recieves; active>>requests)
+    name: "userActivity",
     components: {
         UserMatches,
         UserRecievedRequests,
         UserSentRequests
     },
-    data() {
-        return {
-            matches: [],
-            recieves: [],
-            requestes: [],
-        }
-},
     created() {
-        const userId = this.$route.params.userId;
-        console.log('userId', userId);
-        
-        // this.$store.dispatch({type: LOAD_USER, userId});
+        console.log('userId: ', this.$route.params.userId);
+        this.$store.dispatch({type: 'getMatch', 
+            user: this.$route.params.userId
+            })
     },
     computed: {
-        getMatches() {
-
+        loggedinUser(){
+            return this.$store.getters.loggedUser
+        },
+        matches() {
+            return this.$store.getters.getMatches;
+        },
+        recieves() {
+            return this.$store.getters.getRecieves;
+        },
+        requestes() {
+            return this.$store.getters.getRequestes;
         }
+    },
+    methods: {
+        
     }
 }
 </script>

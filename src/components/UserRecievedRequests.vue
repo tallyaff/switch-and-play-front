@@ -1,15 +1,15 @@
 <template>
     <section>
         <div>
-            <!-- <ul>
-                <li v-for="recieve in recieves" :key="recieve._id">
-                    <div>
-                        <p>I ask: {{recieve.game.name}}</p>
-                        <img :src="recieve.game.img"/>
-                        <p>from: {{recieve.user.name}}
+            <ul v-if="recieves">
+                <li v-for="recieve in recieves" :key="recieve._id" class="flex match-container">
+                    <div class="flex match">
+                        <h4>ask from me: </h4>
+                        <p>{{recieve.userPassiveGame.name}}</p>
+                        <!-- <img :src="match.passive.img"/> -->
                     </div>
                 </li>
-            <ul> -->
+            </ul>
         </div>
     </section>
 </template>
@@ -18,6 +18,9 @@
 export default {
     name: 'userRecieve',
     props: ["recieves"],
+    created() {
+        console.log('recieved&&&:', this.recieves);
+    }
 }
 </script>
 

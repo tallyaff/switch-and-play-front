@@ -6,6 +6,7 @@ import About from './views/About.vue'
 import Gallery from './views/Gallery.vue'
 import Login from './views/Login.vue'
 import EditGame from './views/EditGame.vue'
+import GameDetails from './views/GameDetails.vue'
 import UserProfile from './views/ProfileDetails.vue'
 import UserActivity from './views/UserActivities.vue'
 
@@ -38,6 +39,11 @@ export default new Router({
       path: '/game',
       name: 'game',
       component: Gallery
+    },
+    {
+      path: '/game/:gameId?',
+      name: 'game-details',
+      component: GameDetails
     },
     {
       path: '/game/edit/:gameId?',

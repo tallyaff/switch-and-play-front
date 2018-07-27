@@ -1,42 +1,66 @@
 import MatchService from '../services/MatchService.js'
+// import GameService from '../services/GameService.js';
 // export const LOAD_USER = 'User/actions/loadUser'
 
 export default {
     state: {
-        matches: [],
-        recieves: [],
-        requestes: [],
+        activities: [],
+        user: null,
+        // matches: [],
+        // recieves: [],
+        // requestes: [],
         
     },
     mutations: {
-        setMatches(state, payload ){
-            state.matches = payload.matches
-            // console.log('user from mutation!!!',state.user);
+        setMatch(state, payload) {
+            console.log('activities**: ', payload.activities);
+            state.activities = payload.activities
         },
-        setMatchesByUser(state, payload ){
-            state.matchesByUser = payload.matchesByUser
-        }
+        // setRec(state, payload) {
+        //     console.log('activities&&: ', payload.activities);
+        //     state.matches = payload.activities
+        // },
+        // setReq(state, payload) {
+        //     console.log('activities^^: ', payload.activities);
+        //     state.matches = payload.activities
+        // },
+        setCurrUser(state, payload) {
+            console.log('user^^: ', payload.payload);
+            state.user = payload.payload
+        },
+
     },
     getters: {
-        getMatch(state){
-            return state.matches
-        }
+        getMatches(state){
+            console.log('recieves!!&&&&: ', state.activities)
+            return state.activities.filter(activity => activity.isMatch)
+        },
+        getRecieves(state) {
+            return state.activities.filter(activity => activity.userPassiveGame && activity.isMatch === false)
+        },
+        getRequestes(state) {
+            return state.activities.filter(activity => activity.userActiveGames && activity.isMatch === false)
+        },
     },
     actions: {
-        // getMatch(context, payload) {
-        //     // console.log('currMatch from action***', payload.currMatch);
-        //     MatchService.getMatch(payload.match)
-        //        .then(currMatch => {
-        //         //    console.log('match from backend in front', currMatch);
-        //            context.commit({type: 'setMatches', currMatch})
-        //        })
-        // },
-        getMatchByUser(context, payload) {
-            MatchService.getMatch(payload.match)
-            .then(matchesByUser => {
-             //    console.log('match from backend in front', currMatch);
-                context.commit({type: 'setMatchesByUser', matchesByUser})
-            })
+        getMatch(context, payload) {
+            console.log('user from action***', payload.user);
+            context.commit({type: 'setCurrUser', payload: payload.user})
+            MatchService.getMatch(payload.user)
+               .then(activities => {
+                   console.log('match from backend in front', activities);
+                //    debugger
+                //    let activityMatch = activities.filter(activity => activity.isMatch)
+                //    console.log('activity:$$$', activityMatch);
+                   
+                //    GameService.getGameById()
+                   context.commit({type: 'setMatch', activities})
+                //    let activityRec = activities.filter(activity => activity.isMatch);
+                //    context.commit({type: 'setRec', activityRec})
+                //    let activityReq = activities.filter(activity => activity.isMatch)
+                //    context.commit({type: 'setReq', activityReq})
+                   })
+                   
         }
     }
 }

@@ -44,6 +44,8 @@ function _setLoggedinUser(user) {
     UtilService.store(STORAGE_KEY, loggedinUser)
 }
 
+
+
 export default {
     getUser,
     signup,
