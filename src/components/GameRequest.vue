@@ -20,21 +20,22 @@
     </div>
 </template>
 
+
 <script>
 import GamePreview from "@/components/GamePreview.vue";
+import MatchService from "../services/MatchService.js";
 
 export default {
   name: "GameRequest",
-//   props: ["game"],
   created() {
-          this.$store.dispatch({ type: "gamesById", games : this.user.games})
+    this.$store.dispatch({ type: "gamesById", games: this.user.games });
   },
   data() {
     return {
       textareaReq: "",
       gameCheckbox: true,
       gamesToSwitch: [],
-      ownerUserId:null,
+      ownerUserId: null
     };
   },
   components: {
@@ -43,7 +44,7 @@ export default {
   methods: {
     updateGamesToSwitch(data) {
       if (data.checked) {
-        this.gamesToSwitch.push(data.gameId);
+        this.gamesToSwitch.push(`ObjectId("${data.gameId}")`);
       } else {
         const gameIdx = this.gamesToSwitch.findIndex(
           game => game._id === data.gameId
@@ -52,26 +53,34 @@ export default {
       }
     },
     sendRequest() {
-      this.$store.dispatch({ type: "loadGame", gameId : this.$route.params.gameId})
-      .then(game =>{
-      this.ownerUserId = game.userId;
-      const matchReq = {userPasive : {userId : this.ownerUserId, gameId: this.$route.params.gameId},
-      userActive:{userId : this.user._id, games: this.gamesToSwitch}}
-      // MatchService.createMatch()
-      })
-      console.log("sending request",'gameslist',this.gamesToSwitch,
-      'passiveid',this.user._id,'activegameId',this.$route.params.gameId,'this.ownerUserId',this.ownerUserId );
+      this.$store
+        .dispatch({ type: "loadGame", gameId: this.$route.params.gameId })
+        .then(game => {
+          this.ownerUserId = game.userId;
+          const matchReq = {
+            userPasive: {
+              userId: `ObjectId("${this.ownerUserId}")`,
+              gameId: `ObjectId("${this.$route.params.gameId}")`
+            },
+            userActive: {
+              userId: `ObjectId("${this.user._id}")`,
+              games: this.gamesToSwitch
+            },
+            isMatch: false
+          };
+          MatchService.createMatch(matchReq);
+        });
     }
   },
-  computed:{
-      user(){
-          console.log(this.$store.getters.loggedUser)
-          return  this.$store.getters.loggedUser || {}
-      },
-      games(){
-          console.log(this.$store.getters.getUserGames)
-           return  this.$store.getters.getUserGames || []
-      }
+  computed: {
+    user() {
+      console.log(this.$store.getters.loggedUser);
+      return this.$store.getters.loggedUser || {};
+    },
+    games() {
+      console.log(this.$store.getters.getUserGames);
+      return this.$store.getters.getUserGames || [];
+    }
   }
 };
 </script>
