@@ -1,15 +1,15 @@
 <template>
     <section>
         <div>
-            <!-- <ul>
-                <li v-for="request in requestes" :key="request._id">
-                    <div>
-                        <p>I ask: {{request.game.name}}</p>
-                        <img :src="request.game.img"/>
-                        <p>from: {{request.user.name}}
+            <ul v-if="requestes">
+                <li v-for="request in requestes" :key="request._id" class="flex match-container">
+                    <div class="flex match">
+                        <h4>I ask: </h4>
+                        <p>{{request.userActiveGames[0].name}}</p>
+                        <!-- <img :src="match.passive.img"/> -->
                     </div>
                 </li>
-            <ul> -->
+            </ul>
         </div>
     </section>
 </template>
@@ -18,6 +18,9 @@
 export default {
     name: 'userRequest',
     props: ["requestes"],
+    created() {
+        console.log('requestes:&&', this.requestes);
+    },
 }
 </script>
 

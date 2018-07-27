@@ -8,7 +8,11 @@
                 {{idx}} -->
                 <li class="game clean-list" v-for="game in games" :key="game._id">
                 <!-- <li class="masonry" v-if="games" v-for="game in games" :key="game._id"> -->
-                    <game-preview :game="game" @remove="$emit('remove', game._id)"></game-preview>
+                    <game-preview  :game="game"
+                     @remove="$emit('remove', game._id)"
+                     >
+                    
+                     </game-preview>
                     <!-- {{toy.name}} -->
 
                 </li>
