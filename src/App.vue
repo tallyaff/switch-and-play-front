@@ -1,6 +1,10 @@
+
 <template>
   <div id="app">
-    <div id="nav">
+
+    <header></header>
+    <router-view/>
+    <!-- <div id="nav">
       <img src="img/logo.png">
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link> |
@@ -10,34 +14,34 @@
             Hello: {{'loggedinUser'? loggedinUser.username: 'guest'}}
         </p>
     </div>
-    <router-view/>
+    <router-view/> -->
   </div>
 </template>
 
 <script>
 
-import eventBus from 'services/EventBusService.js'
-import UserService from 'services/UserService.js';
+// import eventBus from 'services/EventBusService.js'
+// import UserService from 'services/UserService.js';
 
 export default {
 
-  created() {
-    eventBus.$on(EVENT_LOGIN_USER, user => {
-      console.log(user);
-      this.user = user;
-    });
-  },
-      data() {
-        return {
-             user: this.$store.getters.loggedUser
-        }
-    },
-    methods: {
-        logout() {
-            // this.userName = '';
-            // UserService.logout();
-        }
-    }
+  // created() {
+  //   eventBus.$on(EVENT_LOGIN_USER, user => {
+  //     console.log(user);
+  //     this.user = user;
+  //   });
+  // },
+  //     data() {
+  //       return {
+  //            user: this.$store.getters.loggedUser
+  //       }
+  //   },
+  //   methods: {
+  //       logout() {
+  //           // this.userName = '';
+  //           // UserService.logout();
+  //       }
+  //   }
 };
 </script>
 
