@@ -15,6 +15,9 @@ export default {
         loggedUser(state){
             console.log('user from usermodule:', state.user);
             return state.user
+        },
+        userGames(state){
+            if (state.user) return state.user.games
         }
         
     },
@@ -27,6 +30,7 @@ export default {
                    context.commit({type: 'setUser', currUser})
                })
         },
+
         
     }
 }

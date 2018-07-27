@@ -14,6 +14,16 @@ function getMatch(userId) {
         .catch(err => err)
 }
 
+function createMatch(matchStarter){
+    return axios.post(`${MATCH_URL}`, matchStarter)
+    .then(res => {
+        console.log('add match in front - res', res)
+        return res.data
+    })
+    .catch(err => console.log('Problem talking to server', err))
+
+}
+
 export default {
     getMatch,
 
