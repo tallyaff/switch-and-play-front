@@ -1,11 +1,11 @@
 import GameService from '../services/GameService.js'
 
-
-
 export default {
     state: {
         gamesLoading: false,
         games: [],
+        loggedUserGames: [],
+        game: null,             
         filterBy: {
             name: '',
             type: [],
@@ -19,6 +19,9 @@ export default {
         },
         setGames(state, { games }) {
             state.games = games;
+        },
+        setGame(state, { game }) {
+            state.game = game;
         },
         removeGame(state, { gameId }) {
             state.games = state.games.filter(game => game._id !== gameId)
@@ -35,15 +38,26 @@ export default {
         gamesByFilterServer(state, { games }) {
             console.log('mutation gamesByFilterServer', games);
             state.games = games;
+        },
+        loggedUserGames(state,{ games }){
+            state.loggedUserGames = games;
+            console.log(this.loggedUserGames,'this.loggedUserGames')
         }
+
+     
     },
     getters: {
         gamesForDisplay(state) {
-            console.log('stateUser', state.games);
+            console.log('stateGames', state.games);
             return state.games
         },
-        
-
+        getUserGames(state){
+            return state.loggedUserGames
+        },
+        gameForDisplay(state) {
+            console.log('stateGame', state.game);
+            return state.game
+        }
     },
     actions: {
         loadGames(context) {
@@ -61,6 +75,7 @@ export default {
             console.log('route, gameId', { gameId });
             return GameService.getGameById(gameId)
                 .then((game) => {
+                    context.commit({ type: 'setGame', game })
                     return game;
                 })
         },
@@ -88,8 +103,28 @@ export default {
                 })
 
         },
-
+        gamesById(context, { games }) {
+            games =  Promise.all(
+                games.map(gameId => {
+                    return GameService.getGameById(gameId)
+                        .then(game => {
+                            console.log('ofir',game)
+                            return game
+                        })
+                })
+            )
+            .then(games =>{
+                console.log(games,'gamesssss')
+                context.commit({ type: 'loggedUserGames', games })
+            })
+           
+            // console.log(games,'gamesssss')
+            // context.commit({ type: 'loggedUserGames', games })
+        }
     }
-}
+};
+
+
+
 
 

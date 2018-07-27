@@ -39,6 +39,8 @@ export default {
             this.$store.dispatch({type: 'getUser', 
             user: this.user
              })
+             console.log('user##', this.user);
+             
         },
         openSignupModal() {
 

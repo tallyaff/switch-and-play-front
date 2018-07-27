@@ -1,0 +1,80 @@
+<template>
+    <div class="game-request">
+        <h1>Create your request!</h1>   
+        {{user._id}}
+        <el-form>
+            <span>would like to switch the next games:</span>
+            <br>
+            <li class="game" v-for="game in games" :key="game._id">
+                <game-preview :game="game" :gameCheckbox="gameCheckbox" @check="updateGamesToSwitch">
+                </game-preview>
+                <li/>
+                <el-checkbox label="i will pick it up from your place"></el-checkbox>
+                <el-checkbox label="you will pick it up from my place"></el-checkbox>
+                <el-checkbox label="lets talk about it"></el-checkbox>
+                <el-input type="textarea" :autosize="{ minRows: 2, maxRows: 4}"
+                 placeholder="Enter some words to your request" v-model="textareaReq">
+                </el-input>
+                <el-button @click="sendRequest">Send your request!</el-button>
+        </el-form>
+    </div>
+</template>
+
+<script>
+import GamePreview from "@/components/GamePreview.vue";
+
+export default {
+  name: "GameRequest",
+//   props: ["game"],
+  created() {
+          this.$store.dispatch({ type: "gamesById", games : this.user.games})
+  },
+  data() {
+    return {
+      textareaReq: "",
+      gameCheckbox: true,
+      gamesToSwitch: [],
+      ownerUserId:null,
+    };
+  },
+  components: {
+    GamePreview
+  },
+  methods: {
+    updateGamesToSwitch(data) {
+      if (data.checked) {
+        this.gamesToSwitch.push(data.gameId);
+      } else {
+        const gameIdx = this.gamesToSwitch.findIndex(
+          game => game._id === data.gameId
+        );
+        this.gamesToSwitch.splice(gameIdx, 1);
+      }
+    },
+    sendRequest() {
+      this.$store.dispatch({ type: "loadGame", gameId : this.$route.params.gameId})
+      .then(game =>{
+      this.ownerUserId = game.userId;
+      const matchReq = {userPasive : {userId : this.ownerUserId, gameId: this.$route.params.gameId},
+      userActive:{userId : this.user._id, games: this.gamesToSwitch}}
+      // MatchService.createMatch()
+      })
+      console.log("sending request",'gameslist',this.gamesToSwitch,
+      'passiveid',this.user._id,'activegameId',this.$route.params.gameId,'this.ownerUserId',this.ownerUserId );
+    }
+  },
+  computed:{
+      user(){
+          console.log(this.$store.getters.loggedUser)
+          return  this.$store.getters.loggedUser || {}
+      },
+      games(){
+          console.log(this.$store.getters.getUserGames)
+           return  this.$store.getters.getUserGames || []
+      }
+  }
+};
+</script>
+
+<style scoped lang="scss">
+</style>
