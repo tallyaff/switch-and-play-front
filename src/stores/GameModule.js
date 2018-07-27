@@ -1,11 +1,10 @@
 import GameService from '../services/GameService.js'
 
-
-
 export default {
     state: {
         gamesLoading: false,
         games: [],
+        game: null,             
         filterBy: {
             name: '',
             type: [],
@@ -19,6 +18,9 @@ export default {
         },
         setGames(state, { games }) {
             state.games = games;
+        },
+        setGame(state, { game }) {
+            state.game = game;
         },
         removeGame(state, { gameId }) {
             state.games = state.games.filter(game => game._id !== gameId)
@@ -47,8 +49,10 @@ export default {
             console.log('stateGames', state.games);
             return state.games
         },
-        
-
+        gameForDisplay(state) {
+            console.log('stateGame', state.game);
+            return state.game
+        }
     },
     actions: {
         loadGames(context) {
@@ -66,6 +70,7 @@ export default {
             console.log('route, gameId', { gameId });
             return GameService.getGameById(gameId)
                 .then((game) => {
+                    context.commit({ type: 'setGame', game })
                     return game;
                 })
         },
