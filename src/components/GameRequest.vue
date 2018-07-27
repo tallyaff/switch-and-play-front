@@ -1,11 +1,11 @@
 <template>
     <div class="game-request">
-        <h1>Create your request!</h1>
-        
+        <h1>Create your request!</h1>   
+        {{user._id}}
         <el-form>
             <span>would like to switch the next games:</span>
             <br>
-            <li class="game" v-for="game in userGames" :key="game._id">
+            <li class="game" v-for="game in games" :key="game._id">
                 <game-preview :game="game" :gameCheckbox="gameCheckbox" @check="updateGamesToSwitch">
                 </game-preview>
                 <li/>
@@ -17,7 +17,6 @@
                 </el-input>
                 <el-button @click="sendRequest">Send your request!</el-button>
         </el-form>
-
     </div>
 </template>
 
@@ -26,21 +25,16 @@ import GamePreview from "@/components/GamePreview.vue";
 
 export default {
   name: "GameRequest",
-  props: ["game"],
+//   props: ["game"],
   created() {
-      this.user = this.$state.getters.loggedUser
-      loadGames(context)
-//    return this.$store.getters.loggedUser()
-//     console.log(lala,'lala')
-    //userid = putuserid
+          this.$store.dispatch({ type: "gamesById", games : this.user.games})
   },
   data() {
     return {
       textareaReq: "",
       gameCheckbox: true,
       gamesToSwitch: [],
-      userGames: [],
-      user: null,
+      ownerUserId:null,
     };
   },
   components: {
@@ -58,9 +52,27 @@ export default {
       }
     },
     sendRequest() {
-      console.log("sending request");
+      this.$store.dispatch({ type: "loadGame", gameId : this.$route.params.gameId})
+      .then(game =>{
+      this.ownerUserId = game.userId;
+      const matchReq = {userPasive : {userId : this.ownerUserId, gameId: this.$route.params.gameId},
+      userActive:{userId : this.user._id, games: this.gamesToSwitch}}
+      // MatchService.createMatch()
+      })
+      console.log("sending request",'gameslist',this.gamesToSwitch,
+      'passiveid',this.user._id,'activegameId',this.$route.params.gameId,'this.ownerUserId',this.ownerUserId );
     }
   },
+  computed:{
+      user(){
+          console.log(this.$store.getters.loggedUser)
+          return  this.$store.getters.loggedUser || {}
+      },
+      games(){
+          console.log(this.$store.getters.getUserGames)
+           return  this.$store.getters.getUserGames || []
+      }
+  }
 };
 </script>
 

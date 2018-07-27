@@ -6,6 +6,7 @@ export default {
     state: {
         gamesLoading: false,
         games: [],
+        loggedUserGames: [],
         filterBy: {
             name: '',
             type: [],
@@ -36,7 +37,11 @@ export default {
             else state.games.push(game);
 
         },
-        
+        loggedUserGames(state,{ games }){
+            state.loggedUserGames = games;
+            console.log(this.loggedUserGames,'this.loggedUserGames')
+        }
+
         // gamesByFilterServer(state, { games }) {
         //     console.log('mutation gamesByFilterServer', games);
         //     state.games = games;
@@ -44,10 +49,13 @@ export default {
     },
     getters: {
         gamesForDisplay(state) {
-            console.log('stateUser', state.games);
+            console.log('stateGames', state.games);
             return state.games
         },
-        
+        getUserGames(state){
+            return state.loggedUserGames
+        }
+
 
     },
     actions: {
@@ -93,8 +101,28 @@ export default {
                 })
 
         },
-
+        gamesById(context, { games }) {
+            games =  Promise.all(
+                games.map(gameId => {
+                    return GameService.getGameById(gameId)
+                        .then(game => {
+                            console.log('ofir',game)
+                            return game
+                        })
+                })
+            )
+            .then(games =>{
+                console.log(games,'gamesssss')
+                context.commit({ type: 'loggedUserGames', games })
+            })
+           
+            // console.log(games,'gamesssss')
+            // context.commit({ type: 'loggedUserGames', games })
+        }
     }
-}
+};
+
+
+
 
 

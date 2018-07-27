@@ -3,7 +3,7 @@
     {
         "name": "Spiderman",
         "src": "img/gameImg/console/spiderman.jpg",
-        "type": "theen",
+        "type": "teen",
         "category": "console",
         "desc": "Spiderman PS4 console game",
         "userId": "",
@@ -39,7 +39,7 @@
     {
         "name": "The last of us remastered",
         "src": "img/gameImg/console/the_last_of_us_remastered.jpg",
-        "type": "theen",
+        "type": "teen",
         "category": "console",
         "desc": "The last of us remastered PS4 console game",
         "userId": "",
@@ -51,7 +51,7 @@
     {
         "name": "The Phantom pain",
         "src": "img/gameImg/console/the_phantom_pain.jpg",
-        "type": "theen",
+        "type": "teen",
         "category": "console",
         "desc": "The Phantom pain PS4 console game",
         "userId": "",
@@ -63,7 +63,7 @@
     {
         "name": "Watch dogs",
         "src": "img/gameImg/console/watch_dogs.jpg",
-        "type": "theen",
+        "type": "teen",
         "category": "console",
         "desc": "Watch dogs PS4 console game",
         "userId": "",
@@ -75,7 +75,7 @@
     {
         "name": "Sunset overdrive",
         "src": "img/gameImg/console/sunset_overdrive.jpg",
-        "type": "theen",
+        "type": "teen",
         "category": "console",
         "desc": "Sunset overdrive XBOX console game",
         "userId": "",
@@ -87,7 +87,7 @@
     {
         "name": "Gears of war 4",
         "src": "img/gameImg/console/gears_of_war4.jpg",
-        "type": "theen",
+        "type": "teen",
         "category": "console",
         "desc": "Gears of war 4 XBOX console game",
         "userId": "",
@@ -99,7 +99,7 @@
     {
         "name": "Halo 5 guardians",
         "src": "img/gameImg/console/halo5_guardians.jpg",
-        "type": "theen",
+        "type": "teen",
         "category": "console",
         "desc": "Halo 5 guardians XBOX console game",
         "userId": "",
