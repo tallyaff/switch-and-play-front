@@ -26,11 +26,6 @@ export default {
         removeGame(state, { gameId }) {
             state.games = state.games.filter(game => game._id !== gameId)
         },
-        // setFilter(state, payload) {
-        //   console.log('payload', payload.filterBy);
-        //   state.filterBy = payload.filterBy;
-        //   console.log('state', state.filterBy);
-        // },
         saveGame(state, { game }) {
             console.log('mutation saveGame', game);
             let foundGameIdx = -1;
@@ -39,15 +34,17 @@ export default {
             else state.games.push(game);
 
         },
+        
+        gamesByFilterServer(state, { games }) {
+            console.log('mutation gamesByFilterServer', games);
+            state.games = games;
+        },
         loggedUserGames(state,{ games }){
             state.loggedUserGames = games;
             console.log(this.loggedUserGames,'this.loggedUserGames')
         }
 
-        // gamesByFilterServer(state, { games }) {
-        //     console.log('mutation gamesByFilterServer', games);
-        //     state.games = games;
-        // }
+     
     },
     getters: {
         gamesForDisplay(state) {
