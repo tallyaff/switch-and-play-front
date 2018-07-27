@@ -20,6 +20,8 @@
                 <router-link tag="button" :to="'/game/'+game._id">More details</router-link>
             </li>
         </ul>
+
+        
   <!-- </div> -->
 </template>
 
@@ -41,9 +43,13 @@ export default {
 </script>
 
 
-<style scoped>
+<style scoped lang="scss">
+    @import "../assets/scss/style.scss";
     .game-name-preview {
+      font-size: rem(30px);
       font-family: "Ubuntu";
+      padding: rem(20px);
+      color: $main-color;
       text-transform: capitalize;
     }
 
@@ -53,20 +59,27 @@ export default {
     }
     img {
       width: 100%;
-
-      /* cursor: pointer; */
+      cursor: pointer;
       transition: all 0.5s;
-    
     }
 
+    img:hover {
+      // background-color: #d9d8d82b;
+      // background-color: #f7b2532b;
+  }
     
     .game-category-preview, .game-condition-preview, .game-addedAt-preview, .game-location-preview, .game-user-name-preview {
+        padding: rem(5px);
+        color: $main-color; 
         font-family: 'Lato-Bold';
-       
+        span {
+          color: black;
+        }
     }
 
     .game-user-name-preview span {
       text-transform: capitalize;
+      color: $secondary-color;
 
     }
   

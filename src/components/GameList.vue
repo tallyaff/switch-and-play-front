@@ -1,6 +1,8 @@
 <template>
   <div class="game-list">
+  <!-- <div class="game-list masonry"> -->
             <!-- <router-link v-if="user.isAdmin" tag="button" to="/toy/edit/">Add</router-link> -->
+            <!-- <ul class="game-cards-container" v-if="games"> -->
             <ul class="game-cards-container flex" v-if="games">
             <!-- <li v-if="currToys" v-for="(toy ,idx) in currToys" :key="toy._id">
                 {{idx}} -->
@@ -37,45 +39,31 @@ export default {
   @import '~@/assets/scss/style.scss';
 
   .game-list {
-    width: 1200px;
+    width: 1800px;
+    // width: 1800px;
   }
 
   .game-cards-container {
-    flex-wrap: wrap;
-    // flex-direction: row;
-    
+    flex-wrap: wrap;    
   }
 
   li.game {
-      // cursor: pointer;
+      cursor: pointer;
   }
 
   .game {
-      width: 400px;
+      width: 300px;
       border: 1px solid $border-color;  
       box-shadow: 0px 2px 4px 0px #d9d8d8;
       border-radius: 20px;
       margin: rem(10px);
-      
       transition: all 0.5s;
   }
 
-
-
    .game:hover {
-
-    transform: scale(0.95, 0.95);
-    
+      transform: scale(0.95, 0.95);
+      box-shadow: 0px 2px 4px 0px $secondary-color;
+      // background-color: #d9d8d82b;
+      // background-color:  #f7b2532b;
   }
-
-//     cursor: pointer;
-//     
-//     border: 6px solid rgb(216, 215, 215);
-// }
-
-// .item-img:hover {
-//     
-
-// }
-
 </style>
