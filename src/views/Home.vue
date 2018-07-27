@@ -1,21 +1,24 @@
 <template>
   <div class="home">
-      <h3> Search for games:</h3>
-<router-link :to="'/game'">
-  <button>Go to Gallery</button>
-</router-link> 
-      <h3></h3>
-
-      <!-- <GameList :games="gamesByFilterServer" @remove="removeGame"></GameList> -->
-      <!-- {{currGames}}
-      <Gallery :games="currGames"></Gallery> -->
-      <!-- {{games}} -->
-      <GameFilter></GameFilter>
-      <ul>
+    <router-link :to="'/game'">
+      <!-- <button>Go to Gallery</button> -->
+      <el-button type="primary">Go to Gallery</el-button>
+    </router-link>
+    <div class="filter-type home-baby-filter-container" >
+      <h2 class="baby-title">Baby</h2>
+    </div>
+    <div class="filter-type home-child-filter-container" >
+      <h2 class="baby-title">Child</h2>
+    </div>
+    <div class="filter-type home-teen-filter-container" >
+      <h2 class="baby-title">Teen</h2>
+    </div>
+    <GameFilter></GameFilter>
+      <!-- <ul>
         <li v-for="game in gamesForDisplay" :key="game._id"> 
           <div>{{game.name}}</div>
         </li>
-      </ul>
+      </ul> -->
   </div>
 </template>
 
@@ -74,3 +77,13 @@ export default {
   },
 };
 </script>
+
+<style scoped lang="scss">
+  @import '~@/assets/scss/style.scss';
+    .filter-type {
+      
+
+  }
+
+
+</style>

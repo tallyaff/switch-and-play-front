@@ -1,8 +1,9 @@
 <template>
   <div class="home">
         <form @submit.prevent="setFilter" class="search">
-            <input type="text" v-model="filterBy.name" placeholder="Search for games" autofocus>
-            <button>Search</button>
+            <el-input class="search-input" type="text" v-model="filterBy.name" placeholder="Search for games" autofocus></el-input>
+            <!-- <button>Search</button> -->
+            <el-button class="btn search-btn" type="primary">Search</el-button>
         </form>
             <label >
               <input type="checkbox" name="feature" value="all" v-model="filterBy.allByName" @change="setFilter"/>All
@@ -93,3 +94,18 @@ export default {
   },
 };
 </script>
+
+<style scoped lang="scss">
+  @import '~@/assets/scss/style.scss';
+    .search-btn {
+      background-color: $main-color;  
+  }
+  .search .search-input {
+    width: 500px;
+    margin-bottom: rem(20px);
+    // height: 100px;
+    // box-shadow: inset 0 0 3px 0px #000000ab;
+  }
+
+
+</style>
