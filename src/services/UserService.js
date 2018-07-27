@@ -9,7 +9,7 @@ const URL = process.env.NODE_ENV !== 'development'
 
 var loggedinUser = UtilService.load(STORAGE_KEY) || null;
 
-function signup(userDetails) {
+function createUser(userDetails) {
     return axios.post(`${URL}/signup`, userDetails)
         .then(res => {
             const user = res.data;
@@ -48,7 +48,7 @@ function _setLoggedinUser(user) {
 
 export default {
     getUser,
-    signup,
+    createUser,
     logout,
     getLoggedinUser
 }

@@ -10,11 +10,11 @@ const GAME_URL = (process.env.NODE_ENV !== 'development')? '/game': '//localhost
 // }
 
 function query(criteria = {allByName: true, name: '', type: [], category: [], userId: ''}) {
-    console.log('criteria in query', criteria);
+    // console.log('criteria in query', criteria);
     var typeStr = criteria.type.join(',');
-    console.log('typeStr', typeStr);
+    // console.log('typeStr', typeStr);
     var categoryStr = criteria.category.join(',');
-    console.log('categoryStr', categoryStr);
+    // console.log('categoryStr', categoryStr);
     var queryParams = `?allByName=${criteria.allByName}&name=${criteria.name}&type=${typeStr}&category=${categoryStr}&userId=${criteria.userId}`;
 
     // var queryParams = `?name=${criteria.name}&type=${criteria.type}&category=${criteria.category}&userId=${criteria.userId}`;
@@ -62,7 +62,7 @@ function removeGame(gameId) {
 }
 
 function getGameById(gameId) {
-    console.log('getgameById in game service front', gameId);
+    // console.log('getgameById in game service front', gameId);
     return axios.get(`${GAME_URL}/${gameId}`)
         .then(res => {
             console.log('getgameById from server', res.data)
