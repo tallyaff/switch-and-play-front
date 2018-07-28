@@ -1,17 +1,18 @@
 <template>
 <section>
-    <h2> It is gallery comp</h2>
-        <p v-if="loggedinUser">
-            Hello: {{'loggedinUser'? loggedinUser.username: 'guest'}}
-        </p>
-        <router-link v-if="loggedinUser" :to="`/user/${loggedinUser._id}/`">
-            <button>my profile</button>
-        </router-link>
-        <router-link :to="'/game/edit/'">
-            <button>Add Game</button>
-        </router-link>
+    <p v-if="loggedinUser">
+        Hello: {{'loggedinUser'? loggedinUser.username: 'guest'}}
+    </p>
+    <router-link v-if="loggedinUser" :to="`/user/${loggedinUser._id}/`">
+        <button>my profile</button>
+    </router-link>
+    <router-link :to="'/game/edit/'">
+        <button class="btn btn-add-game">Add Game</button>
+    </router-link>
+    <div class="filter-images-container-gallery flex">
         <GameFilter></GameFilter> 
         <game-list :games="gamesForDisplay" @remove="removeGame"></game-list>
+    </div>
 </section>
 </template>
 
@@ -30,7 +31,7 @@
         },
         computed: {
             gamesForDisplay() {
-            return this.$store.getters.gamesForDisplay;
+                return this.$store.getters.gamesForDisplay;
             },
             loggedinUser(){
                 return this.$store.getters.loggedUser
@@ -57,5 +58,13 @@
 </script>
 
 <style>
+</style>
+
+<style scoped lang="scss">
+    @import "~@/assets/scss/style.scss";
+    .filter-images-container-gallery {
+    
+    }
+    
 </style>
 

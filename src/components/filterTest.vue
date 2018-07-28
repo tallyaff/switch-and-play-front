@@ -5,20 +5,30 @@
             <!-- <button>Search</button> -->
             <el-button class="btn search-btn" type="primary">Search</el-button>
         </form>
-              <el-checkbox class="checkbox-filter" label="All" value="all" v-model="filterBy.allByName" @change="setFilter">All</el-checkbox>
+            <label >
+              <el-checkbox class="checkbox-filter" type="checkbox" name="feature" value="all" v-model="filterBy.allByName" @change="setFilter">All</el-checkbox>
+            </label>
         <div>
             <h3>Type</h3>
-                <el-checkbox class="checkbox-filter" label="All types" value="all-types" v-model="filterBy.allTypes" @change="setFilter"></el-checkbox>
+                <label >
+                  <el-checkbox class="checkbox-filter" type="checkbox" name="feature" value="all-types" v-model="filterBy.allTypes" @change="setFilter">All types</el-checkbox>
+                </label>
                 <ul v-if="allFilterTypes">
                   <li v-for="oneType in allFilterTypes" :key="oneType._id"> 
-                      <el-checkbox class="checkbox-filter" :label='oneType' :value="oneType" v-model="filterBy.type" @change="setFilter"></el-checkbox>
+                    <label >
+                      <el-checkbox class="checkbox-filter" type="checkbox" name="feature" :value="oneType" v-model="filterBy.type" @change="setFilter">{{oneType}}</el-checkbox>
+                    </label>  
                   </li>
                 </ul>
             <h3>Category</h3>
-              <el-checkbox class="checkbox-filter" label="All categories" value="all-categories" v-model="filterBy.allCategories" @change="setFilter"></el-checkbox>
+              <label >
+                <el-checkbox class="checkbox-filter" type="checkbox" name="feature" value="all-categories" v-model="filterBy.allCategories" @change="setFilter">All categories</el-checkbox>
+              </label>
               <ul v-if="allFilterCategories">
                 <li v-for="oneCategory in allFilterCategories" :key="oneCategory"> 
-                    <el-checkbox class="checkbox-filter" :label='oneCategory' :value="oneCategory" v-model="filterBy.type" @change="setFilter">{{oneCategory}}</el-checkbox>
+                  <label >
+                    <el-checkbox class="checkbox-filter" type="checkbox" name="feature" :value="oneCategory" v-model="filterBy.type" @change="setFilter">{{oneCategory}}</el-checkbox>
+                  </label>  
                 </li>
               </ul>
          
@@ -70,8 +80,8 @@
 </template>
 
 <script>
-import debounce from 'lodash.debounce';
-import GameService from '@/services/GameService.js';
+import debounce from "lodash.debounce";
+import GameService from "@/services/GameService.js";
 
 export default {
   name: 'home',
@@ -89,7 +99,6 @@ export default {
       },
       allFilterTypes: null,
       allFilterCategories: null,
-    
     };
   },
   created() {
@@ -101,7 +110,7 @@ export default {
     // }, 2000)
 
     this.allFilterTypes = this.$store.getters.types;
-    console.log('allFilterTypes in home', this.allFilterTypes);
+    console.log("allFilterTypes in home", this.allFilterTypes);
     this.allFilterCategories = this.$store.getters.categories;
     console.log('allFilterCategories in home', this.allFilterCategories);
   },
@@ -121,20 +130,12 @@ export default {
       // console.log('setFilter in gameFilter cmp');
       // console.log('this.filterBy.allTypes', this.filterBy.allTypes);
       if (this.filterBy.allTypes) this.filterBy.type = this.$store.getters.types;
-      if (this.filterBy.type.length !== this.$store.getters.types.length) this.filterBy.allTypes = false;
-      console.log('this.filterBy.type', this.filterBy.type);
+      console.log("this.filterBy.type", this.filterBy.type);
       if (this.filterBy.allCategories) this.filterBy.category = this.$store.getters.categories;
-      if (this.filterBy.category.length !== this.$store.getters.categories.length) this.filterBy.allCategories = false;
-      console.log('this.filterBy.type', this.filterBy.category);
+      console.log("this.filterBy.type", this.filterBy.category);
       // if (this.filterBy.allCategories) this.filterBy.category = this.allFilterCategories;
 
-      this.$store.dispatch({ type: 'setFilter', filterBy: this.filterBy })
-        .then(games => {
-        //   eventBusService.$emit(SHOW_MSG, {
-        //     txt: `${Games.length} Games Loaded!`
-        //   });
-
-        })
+      this.$store.dispatch({ type: "setFilter", filterBy: this.filterBy });
     }, 2000)
   }
 };
@@ -143,13 +144,11 @@ export default {
 <style scoped lang="scss">
   @import "~@/assets/scss/style.scss";
 
+  .checkbox-filter {
+      color: $secondary-color;
+  }
   .filter-gallery-container {
     width: 250px;
-  }
-
-  .checkbox-filter {
-    color: $secondary-color;
-    text-transform: capitalize;
   }
   .search-btn {
     background-color: $main-color;
@@ -164,6 +163,5 @@ export default {
   .search-in-gallery {
     position: absolute;
     top: 20%;
-    margin: rem(20px);
   }
 </style>

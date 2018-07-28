@@ -9,9 +9,9 @@
                 <game-preview :game="game" :gameCheckbox="gameCheckbox" @check="updateGamesToSwitch">
                 </game-preview>
                 <li/>
-                <el-checkbox label="i will pick it up from your place"></el-checkbox>
-                <el-checkbox label="you will pick it up from my place"></el-checkbox>
-                <el-checkbox label="lets talk about it"></el-checkbox>
+                <el-checkbox class="checkbox-game-request" label="i will pick it up from your place"></el-checkbox>
+                <el-checkbox class="checkbox-game-request" label="you will pick it up from my place"></el-checkbox>
+                <el-checkbox class="checkbox-game-request" label="lets talk about it"></el-checkbox>
                 <el-input type="textarea" :autosize="{ minRows: 2, maxRows: 4}"
                  placeholder="Enter some words to your request" v-model="textareaReq">
                 </el-input>
@@ -86,4 +86,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
+    @import "~@/assets/scss/style.scss";
+    .checkbox-game-request {
+      color: $main-color;
+    }
+    
 </style>
