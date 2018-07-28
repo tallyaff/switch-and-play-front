@@ -13,8 +13,8 @@
         <h2 class="type-title-home baby-title">Baby</h2>
         <!-- <GameFilter></GameFilter> -->
         <ul v-if="gamesForBabyHomeDisplay" class="cards-container-home align-center flex justify-center clean-list">
-          <li class="card-home" v-for="game in gamesForBabyHomeDisplay" :key="game._id"> 
-            <el-card>
+          <li v-for="game in gamesForBabyHomeDisplay" :key="game._id"> 
+            <el-card class="card-home">
                   <img :src="game.src" class="image-card">
                   <div style="padding: 14px;">
                     <span class="card-game-name">{{game.name}}</span>
@@ -188,7 +188,7 @@ export default {
   }
   .card-home {
     margin: rem(10px);
-    width: rem(500px);
+    width: rem(250px);
     transition: all 0.5s;
     cursor: pointer;
     .image-card {

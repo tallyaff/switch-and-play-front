@@ -41,6 +41,20 @@
 }
 
 
+.space-around {
+  justify-content: space-around;
+}
+
+
+
+.align-item {
+  align-self: center;
+}
+
+
+
+
+
 /* Breakpoint mixins */
 
 // @mixin for-mobile-only {
@@ -48,3 +62,32 @@
 //     @content;
 //   }
 // }
+
+.masonry {
+	margin: 0 auto 2em;
+	column-gap: 1em;
+}
+
+@media only screen and (min-width: 1400px) {
+	.masonry {
+		column-count: 5;
+	}
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1399px) {
+	.masonry {
+		column-count: 4;
+	}
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+	.masonry {
+		column-count: 3;
+	}
+}
+
+@media only screen and (min-width: 540px) and (max-width: 767px) {
+	.masonry {
+		column-count: 2;
+	}
+}

@@ -64,7 +64,7 @@ function removeGame(gameId) {
 }
 
 function getGameById(gameId) {
-    console.log('getgameById in game service front', gameId);
+    // console.log('getgameById in game service front', gameId);
     return axios.get(`${GAME_URL}/${gameId}`)
         .then(res => {
             console.log('getgameById from server', res.data)

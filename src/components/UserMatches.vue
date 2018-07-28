@@ -9,6 +9,7 @@
                         <p>{{match.userPassiveGame.name}}</p>
                         <!-- <img :src="match.passive.img"/> -->
                     </div>
+                    <i class="fa fa-arrows-h"></i>
                     <div class="flex match">
                         <h4>I recieved: </h4>
                         <p>{{match.userActiveGames[0].name}}</p>
@@ -46,11 +47,12 @@ export default {
         display: flex
     }
     .match-container {
-        border: 1px solid;
         margin: 5px;
         padding: 5px;
     }
     .match {
         margin: 10px;
+        padding: 5px;
+        border: 1px solid;
     }
 </style>

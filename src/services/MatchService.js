@@ -15,6 +15,7 @@ function getMatch(userId) {
 }
 
 function createMatch(matchStarter){
+    console.log('match service recived:',matchStarter)
     return axios.post(`${MATCH_URL}`, matchStarter)
     .then(res => {
         console.log('add match in front - res', res)
@@ -26,5 +27,5 @@ function createMatch(matchStarter){
 
 export default {
     getMatch,
-
+    createMatch
 }
