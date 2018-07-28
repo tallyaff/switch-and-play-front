@@ -17,7 +17,7 @@
             <el-card>
                   <img :src="game.src" class="image-card">
                   <div style="padding: 14px;">
-                    <span>{{game.name}}</span>
+                    <span class="card-game-name">{{game.name}}</span>
                     <div class="bottom clearfix">
                       <time class="time">{{ currentDate }}</time>
                       <el-button type="text" class="user-name">User Name</el-button>
@@ -188,7 +188,7 @@ export default {
   }
   .card-home {
     margin: rem(10px);
-    width: rem(400px);
+    width: rem(500px);
     transition: all 0.5s;
     cursor: pointer;
     .image-card {
@@ -198,8 +198,11 @@ export default {
         // background-position: center;
         // background-size: cover;
     }
-    .card-home:hover {
+    &:hover {
       transform: scale(0.95, 0.95);
+    }
+    .card-game-name {
+      text-transform: capitalize;
     }
   }
 
@@ -231,6 +234,8 @@ export default {
   .clearfix:after {
       clear: both
   }
+
+ 
 
 
 </style>
