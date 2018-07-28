@@ -495,6 +495,35 @@
         "isNew": false,
         "addedAt": "24072018"
     },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     {
         "name": "Atmosfear",
         "src": "img/gameImg/game-board/atmosfear.jpg",
@@ -507,6 +536,9 @@
         "isNew": false,
         "addedAt": 1532433498
     },
+
+
+    
     {
         "name": "carcassonne",
         "src": "img/gameImg/game-board/carcassonne.jpg",
@@ -515,6 +547,162 @@
         "desc": "a tile-based German-style board game for two to five players",
         "userId": "",
         "condition": "Used",
+        "isAvailble": true,
+        "isNew": false,
+        "addedAt": 1532433498
+    },
+    {
+        "name": "dixit",
+        "src": "img/gameImg/game-board/dixit.jpg",
+        "type": "teen",
+        "category": "board-game",
+        "desc": "nice board game with cards, my son got this game as a gift, but he already has one.",
+        "userId": "",
+        "condition": "Brand new",
+        "isAvailble": true,
+        "isNew": false,
+        "addedAt": 1532433498
+    },
+    {
+        "name": "guillotine",
+        "src": "img/gameImg/game-board/guillotine.jpg",
+        "type": "teen",
+        "category": "board-game",
+        "desc": "cool game related to the french revolution. for two to fivee players",
+        "userId": "",
+        "condition": "Used",
+        "isAvailble": true,
+        "isNew": false,
+        "addedAt": 1532433498
+    },
+    {
+        "name": "katamino",
+        "src": "img/gameImg/puzzle/katamino.jpg",
+        "type": "teen",
+        "category": "board-game",
+        "desc": "classic puzzle for people who like strategic game challeng",
+        "userId": "",
+        "condition": "Used",
+        "isAvailble": true,
+        "isNew": false,
+        "addedAt": 1532433498
+    },
+    {
+        "name": "monopoly",
+        "src": "img/gameImg/game-board/monopoly.jpg",
+        "type": "teen",
+        "category": "board-game",
+        "desc": "the classic and famous version",
+        "userId": "",
+        "condition": "Brand new",
+        "isAvailble": true,
+        "isNew": false,
+        "addedAt": 1532433498
+    },
+    {
+        "name": "pandemic",
+        "src": "img/gameImg/game-board/pandemic.jpg",
+        "type": "teen",
+        "category": "board-game",
+        "desc": "in really good condition. the gameplay is based on cooperation rather than on competitiveness, so i really recommend this game",
+        "userId": "",
+        "condition": "Brand new",
+        "isAvailble": true,
+        "isNew": false,
+        "addedAt": 1532433498
+    },
+    {
+        "name": "power grid",
+        "src": "img/gameImg/game-board/powergris.jpg",
+        "type": "teen",
+        "category": "board-game",
+        "desc": "I bought my child but he does not like board games",
+        "userId": "",
+        "condition": "Brand new",
+        "isAvailble": true,
+        "isNew": false,
+        "addedAt": 1532433498
+    },
+    {
+        "name": "puerto rico",
+        "src": "img/gameImg/game-board/puertorico.jpg",
+        "type": "teen",
+        "category": "board-game",
+        "desc": "In Puerto Rico players assume the roles of colonial governors on the island of Puerto Rico.The aim of the game is to amass victory points by shipping goods to Europe or by constructing buildings.",
+        "userId": "",
+        "condition": "New",
+        "isAvailble": true,
+        "isNew": false,
+        "addedAt": 1532433498
+    },
+    {
+        "name": "risk",
+        "src": "img/gameImg/game-board/risk.jpg",
+        "type": "teen",
+        "category": "board-game",
+        "desc": "Risk is a turn-based board game designed for two to six participants. The game takes place on a map of the world, divided into forty-two plots. Each player controls certain countries and must fight with his armies in the other players.",
+        "userId": "",
+        "condition": "New",
+        "isAvailble": true,
+        "isNew": false,
+        "addedAt": 1532433498
+    },
+    {
+        "name": "squad leaders",
+        "src": "img/gameImg/game-board/squadleaders.png",
+        "type": "teen",
+        "category": "board-game",
+        "desc": "My son really like this game, so he got the new addition. monopoly or something alike will be a great deal!",
+        "userId": "",
+        "condition": "New",
+        "isAvailble": true,
+        "isNew": false,
+        "addedAt": 1532433498
+    },
+    {
+        "name": "ticket to ride",
+        "src": "img/gameImg/game-board/ticketToRide.jpg",
+        "type": "teen",
+        "category": "board-game",
+        "desc": "offer this game and looking for a simple and nice game for a 4 years old girl",
+        "userId": "",
+        "condition": "New",
+        "isAvailble": true,
+        "isNew": false,
+        "addedAt": 1532433498
+    },
+    {
+        "name": "world map",
+        "src": "img/gameImg/puzzle/worldmap.jpg",
+        "type": "teen",
+        "category": "puzzle",
+        "desc": "very good for knowledge of geography. good condition",
+        "userId": "",
+        "condition": "Used",
+        "isAvailble": true,
+        "isNew": false,
+        "addedAt": 1532433498
+    },
+    {
+        "name": "puzzle of animals",
+        "src": "img/gameImg/puzzle/puzzleanimals.jpg",
+        "type": "baby",
+        "category": "puzzle",
+        "desc": "very cute. looking for a puzzle for children",
+        "userId": "",
+        "condition": "Used",
+        "isAvailble": true,
+        "isNew": false,
+        "addedAt": 1532433498
+    },
+    {
+        "name": "shapes puzzle",
+        "src": "img/gameImg/puzzle/puzzlesmall.jpg",
+        "type": "baby",
+        "category": "puzzle",
+        "desc": "in a really good condition",
+        "userId": "",
+        "condition": "New",
         "isAvailble": true,
         "isNew": false,
         "addedAt": 1532433498
