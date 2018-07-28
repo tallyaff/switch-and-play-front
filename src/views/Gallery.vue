@@ -19,6 +19,7 @@
 <script>
     import GameList from "@/components/GameList.vue";
     import GameFilter from '@/components/GameFilter.vue'
+    import Header from "@/components/Header.vue";
 
     export default {
         name: "Gallery",

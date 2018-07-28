@@ -3,6 +3,8 @@
 </template>
 
 <script>
+import eventBus from 'services/EventBusService.js'
+import UserService from 'services/UserService.js';
 export default {
 
 }
