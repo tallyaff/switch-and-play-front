@@ -4,17 +4,21 @@ export default {
     state: {
         gamesLoading: false,
         games: [],
+        gamesForHomepage: [],
         gamesBabyHome: [],
         gamesChildHome: [],
         gamesTeenHome: [],
         loggedUserGames: [],
-        game: null,             
+        game: null,  
+        filterSearchHome: {},           
         filterBy: {
             name: '',
             type: [],
             category: [],
             userId: ''
-        }
+        },
+        allFilterTypes: ['baby', 'child', 'teen'],
+        allFilterCategories: ['console', 'doll', 'board-game', 'lego', 'playmobil', 'puzzle', 'wheels'],
     },
     mutations: {
         setGamesLoading(state, { isLoading }) {
@@ -40,29 +44,52 @@ export default {
             console.log('mutation gamesByFilterServer', games);
             state.games = games;
         },
+        gamesByFilterSearch(state, { games }) {
+            console.log('mutation gamesByFilterSearch', games);
+            state.games = games;
+        },
+        loadGamesForHomepage(state, { games }) {
+            console.log('mutation loadGamesForHomepage', games);
+            state.loadGamesForHomepage = games;
+            state.gamesBabyHome = state.loadGamesForHomepage.filter(game => game.type === 'baby');            
+            state.gamesChildHome = state.loadGamesForHomepage.filter(game => game.type === 'child');
+            state.gamesTeenHome = state.loadGamesForHomepage.filter(game => game.type === 'teen');
+        },
+        setFilter(state, { filterBy }) {
+            console.log('mutation setFilter', filterBy);
+            state.filterBy = filterBy;
+            console.log('mutation setFilter state.filterBy', state.filterBy);
+        },
+        setSearchHome(state, { filterBy }) {
+            console.log('mutation setSearchHome', filterBy);
+            state.filterSearchHome = filterBy;
+            console.log('mutation setFilter state.filterSearchHome', state.filterSearchHome);
+        },
         loggedUserGames(state,{ games }){
             state.loggedUserGames = games;
             console.log(this.loggedUserGames,'this.loggedUserGames')
         }
-
-     
     },
     getters: {
+        types(state) {
+            return state.allFilterTypes
+        },
+        categories(state) {
+            // console.log('categories', state.allFilterCategories);
+            return state.allFilterCategories
+        },
         gamesForDisplay(state) {
             console.log('stateGames', state.games);
             return state.games
         },
         gamesForBabyHomeDisplay(state) {
-            console.log('gamesForBabyHomeDisplay', state.gamesForBabyHome);
-            return state.gamesForBabyHome
+            return state.gamesBabyHome
         },
         gamesForChildHomeDisplay(state) {
-            console.log('gamesForChildHomeDisplay', state.gamesForChildHome);
-            return state.gamesForChildHome
+            return state.gamesChildHome
         },
         gamesForTeenHomeDisplay(state) {
-            console.log('gamesForChildHomeDisplay', state.gamesForTeenHome);
-            return state.gamesForTeenHome
+            return state.gamesTeenHome
         },
         getUserGames(state){
             return state.loggedUserGames
@@ -84,6 +111,18 @@ export default {
                     context.commit({ type: 'setGamesLoading', isLoading: false })
                 })
         },
+        loadGamesForHomepage(context) {
+            return GameService.query()
+            // context.commit({ type: 'setGamesLoading', isLoading: true })
+                .then(games => {
+                    context.commit({ type: 'loadGamesForHomepage', games })
+                    return games;
+                })
+                .finally(() => {
+                    // context.commit({ type: 'setGamesLoading', isLoading: false })
+                })
+        },
+
         loadGame(context, { gameId }) {
             console.log('route, gameId', { gameId });
             return GameService.getGameById(gameId)
@@ -108,13 +147,22 @@ export default {
                 })
         },
         setFilter(context, { filterBy }) {
+            context.commit({ type: 'setFilter', filterBy })
             console.log('setFilter in store: filterBy', filterBy)
             return GameService.query(filterBy)
                 .then((games) => {
                     console.log('users from server after sentFilter in store', games);
                     context.commit({ type: 'gamesByFilterServer', games })
                 })
-
+        },
+        setSearchHome(context, { filterBy }){
+            context.commit({ type: 'setSearchHome', filterBy })
+            console.log('setSearchHome in store: filterBy', filterBy)
+            return GameService.query(filterBy)
+                .then((games) => {
+                    console.log('users from server after setSearchHome in store', games);
+                    context.commit({ type: 'gamesByFilterSearch', games })
+                })
         },
         gamesById(context, { games }) {
             games =  Promise.all(

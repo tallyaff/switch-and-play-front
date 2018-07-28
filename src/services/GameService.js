@@ -11,9 +11,11 @@ const GAME_URL = (process.env.NODE_ENV !== 'development')? '/game': '//localhost
 
 function query(criteria = {allByName: true, name: '', type: [], category: [], userId: ''}) {
     console.log('criteria in query', criteria);
-    var typeStr = criteria.type.join(',');
+    var typeStr = '';
+    if (criteria.type) typeStr = criteria.type.join(',');
     console.log('typeStr', typeStr);
-    var categoryStr = criteria.category.join(',');
+    var categoryStr = '';
+    if (criteria.category) categoryStr = criteria.category.join(',');
     console.log('categoryStr', categoryStr);
     var queryParams = `?allByName=${criteria.allByName}&name=${criteria.name}&type=${typeStr}&category=${categoryStr}&userId=${criteria.userId}`;
 

@@ -10,17 +10,20 @@
         <router-link :to="'/game/edit/'">
             <button>Add Game</button>
         </router-link>
+        <GameFilter></GameFilter> 
         <game-list :games="gamesForDisplay" @remove="removeGame"></game-list>
 </section>
 </template>
 
 <script>
     import GameList from "@/components/GameList.vue";
+    import GameFilter from '@/components/GameFilter.vue'
 
     export default {
         name: "Gallery",
         components: {
-            GameList
+            GameList,
+            GameFilter
         },
         created() {
             this.loadGames();
