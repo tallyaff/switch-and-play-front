@@ -1,39 +1,42 @@
 <template>
     <div class="header">
-    <nav-bar></nav-bar>
+        <nav-bar :loggedinUser.sync="loggedinUser" @logout="logout"></nav-bar>
         <p v-if="loggedinUser">
-            Hello: {{'loggedinUser'? loggedinUser.username: 'guest'}}
+            Hello {{'loggedinUser'? loggedinUser.username: 'guest'}}
         </p>
-        </div>
+        <p v-else>
+            Hello Guest
+        </p>
+    </div>
 </template>
 
 <script>
-import eventBus from "../services/EventBusService.js";
-import UserService from "../services/UserService.js";
-import NavBar from '@/components/NavBar.vue'
+    import { eventBus, EVENT_LOGIN_USER } from "../services/EventBusService.js";
+    import UserService from "../services/UserService.js";
+    import UtilService from "../services/UtilService.js";
+    import NavBar from "@/components/NavBar.vue";
 
-export default {
-  created() {
-    eventBus.$on(EVENT_LOGIN_USER, user => {
-      console.log(user);
-      this.user = user;
-    });
-  },
-  data() {
-    return {
-      user: this.$store.getters.loggedUser
+    export default {
+        created() {
+            eventBus.$on(EVENT_LOGIN_USER, loggedinUser => {
+                console.log(this.loggedinUser, "this.loggedinUser");
+                this.loggedinUser = loggedinUser;
+            })
+        },
+        data() {
+            return {
+                loggedinUser: UserService.getLoggedinUser() || null
+            }
+        },
+        methods: {
+            logout() {
+                UserService.logout()
+            }
+        },
+        components: {
+            NavBar
+        }
     };
-  },
-  methods: {
-    logout() {
-      // this.userName = '';
-      // UserService.logout();
-    }
-  },
-  components:{
-      NavBar,
-  }
-};
 </script>
 
 <style>

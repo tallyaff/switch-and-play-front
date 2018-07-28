@@ -60,22 +60,21 @@ export default {
   },
   methods: {
     login() {
-      console.log("login user##", this.user);
+      // console.log("login user##", this.user);
       this.$store
         .dispatch({
           type: "getUser",
           user: this.user
         })
         .then(_ => {
-          eventBus.$emit(EVENT_LOGIN_USER, user);
+            console.log(this.user.username,'res login function before emit eventbus')
+          eventBus.$emit(EVENT_LOGIN_USER, this.user.username);
         })
         .catch(err => console.log(err));
     },
 
-
-
     signup() {
-      console.log("signup user**", this.newUser);
+      // console.log("signup user**", this.newUser);
       this.$store
         .dispatch({
           type: "createUser",
@@ -88,7 +87,7 @@ export default {
     },
 
 
-    
+
     openSignupModal() {
       this.signupForm = true;
       this.loginForm = false;
