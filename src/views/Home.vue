@@ -129,18 +129,9 @@ export default {
     loadGamesForHomepage() {
       this.$store.dispatch({type:'loadGamesForHomepage'})
         .then(games => {
-        //   eventBusService.$emit(SHOW_MSG, {
-        //     txt: `${Games.length} Games Loaded!`
-        //   });
-
         })
         .catch(err => {
             console.log('err', err);
-            
-        //   eventBusService.$emit(SHOW_MSG, {
-        //     txt: `Failed to Load Games`,
-        //     type: 'danger'
-        //   });
         });
     },
     setSearchHome() {
@@ -148,9 +139,6 @@ export default {
       this.$store.dispatch({ type: 'setSearchHome', filterBy: this.filterBy })
           .then(games => {
             this.$router.push('/game');
-        //   eventBusService.$emit(SHOW_MSG, {
-        //     txt: `${Games.length} Games Loaded!`
-        //   });
 
         })
     },
@@ -210,9 +198,11 @@ export default {
     // width: 800px;
     justify-content: center;
   }
+
   .cards-container-home {
     width: 100%;
   }
+
   .card-home {
     position: relative;
     margin: rem(10px);

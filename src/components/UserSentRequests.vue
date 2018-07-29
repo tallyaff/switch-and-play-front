@@ -1,12 +1,13 @@
 <template>
     <section>
-        <div>
-            <ul v-if="requestes">
-                <li v-for="request in requestes" :key="request._id" class="flex match-container">
-                    <div class="flex match">
-                        <h4>I ask: </h4>
-                        <p>{{request.userActiveGames[0].name}}</p>
-                        <!-- <img :src="match.passive.img"/> -->
+        <div class="flex column match-container">
+            <h3>Games I ask:</h3>
+            <ul v-if="requestes" class="flex games-box">
+                <li v-for="request in requestes" :key="request._id">
+                    <div class="flex column game-box">
+                        <h5>{{request.userActiveGames[0].name}}</h5>
+                        <img :src="request.userActiveGames[0].src"/>
+                        <h6>from: {puki}</h6>
                     </div>
                 </li>
             </ul>
@@ -24,6 +25,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped lang="scss">
+  @import "~@/assets/scss/style.scss";
 
 </style>

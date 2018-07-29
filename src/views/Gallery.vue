@@ -41,14 +41,6 @@ export default {
     }
   },
   methods: {
-    loadGames() {
-      this.$store
-        .dispatch({ type: "loadGames" })
-        .then(games => {})
-        .catch(err => {
-          console.log("err", err);
-        });
-    },
     checkIfDisplay() {
       console.log("this.loggedinUser", this.loggedinUser);
       if (!this.loggedinUser) {
@@ -63,6 +55,21 @@ export default {
           }
         });
       } else this.$router.push("/game/edit");
+    },
+    loadGames() {
+      this.$store
+        .dispatch({ type: "loadGames" })
+        .then(games => {})
+        .catch(err => {
+          console.log("err", err);
+        });
+    },
+    setNotification() {
+      console.log("setNotification");
+      if (this.getNotificationCount.length > 0) {
+        this.notificationCount = this.getNotificationCount.length;
+        this.notification = true;
+      }
     },
     removeGame(gameId) {
       swal({
@@ -90,13 +97,12 @@ export default {
 };
 </script>
 
-<style>
+<style scoped lang="scss">
 .swal-text {
   font-family: "Ubuntu";
   color: #0d72fa;
   font-size: 20px !important;
 }
-
 .swal-title {
   font-family: "Ubuntu";
   font-size: 20px;
@@ -108,4 +114,6 @@ export default {
 .filter-images-container-gallery {
 }
 </style>
+    
+
 

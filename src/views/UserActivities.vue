@@ -2,19 +2,16 @@
     <section>
         <div>
             <div>
-                <h3>Games I switched:</h3>
-                <UserMatches :matches="matches">
-                </UserMatches>
-            </div>
-            <div>
-                <h3>Games people ask from me:</h3>
                 <UserRecievedRequests :recieves="recieves">
                 </UserRecievedRequests>
             </div>
             <div>
-                <h3>Games I ask:</h3>
                 <UserSentRequests :requestes="requestes">
                 </UserSentRequests>
+            </div>
+            <div>
+                <UserMatches :matches="matches">
+                </UserMatches>
             </div>
         </div>
     </section>
@@ -35,6 +32,7 @@ export default {
     },
     created() {
         console.log('userId: ', this.$route.params.userId);
+        console.log('recieves^^^^: ', this.recieves);
         this.$store.dispatch({type: 'getMatch', 
             user: this.$route.params.userId
             })
@@ -59,6 +57,8 @@ export default {
 }
 </script>
 
-<style>
+<style scoped lang="scss">
+  @import "~@/assets/scss/style.scss";
+
 
 </style>

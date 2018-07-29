@@ -85,9 +85,7 @@ export default {
         })
         .catch(err => console.log(err));
     },
-
-
-
+    
     openSignupModal() {
       this.signupForm = true;
       this.loginForm = false;

@@ -1,20 +1,29 @@
 <template>
     <section>
-        <div>
+        <div class="flex column match-container">
+            <h3>Games I switched:</h3>
             <ul v-if="matches">
-                <li v-for="match in matches" :key="match._id" class="flex match-container">
-                    <div class="flex match">
+                <li v-for="match in matches" :key="match._id" class="flex games-box">
+                    <div class="flex column games-container">
                         <h4>I gave: </h4>
-                        <!-- <p>{{showGame}}</p> -->
-                        <p>{{match.userPassiveGame.name}}</p>
-                        <!-- <img :src="match.passive.img"/> -->
+                        <div class="flex column game-box">
+                            <!-- <p>{{showGame}}</p> -->
+                            <p>{{match.userPassiveGame.name}}</p>
+                            <img :src="match.userPassiveGame.src"/>
+                            <h6>to: {shuki}</h6>
+                        </div>
                     </div>
+                    <h3>⇆</h3>
+                    <!--fab icon doesnt work !! -->
                     <i class="fa fa-arrows-h"></i>
-                    <div class="flex match">
+                    <i class="fa fa-trash"></i>
+                    <div class="flex column games-container">
                         <h4>I recieved: </h4>
-                        <p>{{match.userActiveGames[0].name}}</p>
-                        <!-- <img :src="match.active.game.img"/>
-                        <p>from: {{match.active.user.name}} -->
+                        <div class="flex column game-box">
+                            <p>{{match.userActiveGames[0].name}}</p>
+                            <img :src="match.userActiveGames[0].src"/>
+                            <h6>from: {puki}</h6>
+                        </div>
                     </div>
                 </li>
             </ul>
@@ -39,20 +48,7 @@ export default {
 }
 </script>
 
-<style>
-    h4, p {
-        margin: 0;
-    }
-    .flex {
-        display: flex
-    }
-    .match-container {
-        margin: 5px;
-        padding: 5px;
-    }
-    .match {
-        margin: 10px;
-        padding: 5px;
-        border: 1px solid;
-    }
+<style scoped lang="scss">
+  @import "~@/assets/scss/style.scss";
+  
 </style>
