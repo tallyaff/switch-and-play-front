@@ -27,6 +27,7 @@ export default {
             return state.activities.filter(activity => activity.isMatch)
         },
         getRecieves(state) {
+            // debugger;
             console.log('recieves!!: ', state.activities);            
             return state.activities.filter(activity => activity.userPassiveGame && activity.isMatch === false)
         },

@@ -10,6 +10,9 @@ export default {
             state.user = payload.currUser
             console.log('user from mutation!!!',state.user);
         },
+        logoutUser(state){
+            state.user = null
+        },
         saveUser(state, payload ){
             state.user = payload.user
             console.log('saveUser from mutation!!!',state.user);
@@ -22,7 +25,7 @@ export default {
         },
         userGames(state){
             if (state.user) return state.user.games
-        }
+        },
         
     },
     actions: {

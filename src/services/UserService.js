@@ -61,6 +61,7 @@ function saveUser(user) {
 function getLoggedinUser() {
     return loggedinUser
 }
+
 function _setLoggedinUser(user) {
     loggedinUser = user;
     UtilService.store(STORAGE_KEY, loggedinUser);

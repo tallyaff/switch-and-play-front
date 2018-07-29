@@ -2,8 +2,8 @@
   <!-- <div class="game-preview" > -->
         <ul class="game-preview-container flex column align-center clean-list space-between" v-if="game">
             <!-- :src="game.src"  -->
-            <!-- {{game._id}} -->
-            <el-checkbox @change=" $emit('check', {gameId :game._id, checked:checked})
+            {{game._id}}
+            <el-checkbox checked @change=" $emit('check', {gameId :game._id, checked:checked})
             " v-model="checked" v-if="gameCheckbox" label="offer this game"></el-checkbox>
             <li class="game-name-preview">{{game.name}}</li>
             <div class="image-container" :style="{backgroundImage: url, backgroundSize: 'cover', backgroundPosition: 'center', backgroundrepeat: 'no-repeat'}">
