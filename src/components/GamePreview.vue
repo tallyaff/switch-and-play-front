@@ -2,7 +2,7 @@
   <!-- <div class="game-preview" > -->
         <ul class="game-preview-container flex column align-center clean-list space-between" v-if="game">
             <!-- :src="game.src"  -->
-            {{game._id}}
+            <!-- {{game._id}} -->
             <el-checkbox @change=" $emit('check', {gameId :game._id, checked:checked})
             " v-model="checked" v-if="gameCheckbox" label="offer this game"></el-checkbox>
             <li class="game-name-preview">{{game.name}}</li>
@@ -19,9 +19,9 @@
             <li class="game-user-name-preview"><span>by </span> </li>
             <li>
                 <!-- v-if="user.isAdmin"  -->
-                <button class="btn btn-remove" @click="$emit('remove', game._id)">Remove</button> 
-                <router-link  tag="button" :to="'/game/edit/'+game._id">Edit</router-link> 
-                <router-link tag="button" :to="'/game/'+game._id">More details</router-link>
+                <button v-if="loggedinUser === 'game.userId'" class="btn btn-remove" @click="$emit('remove', game._id)">Remove</button> 
+                <router-link v-if="loggedinUser === 'game.userId'" tag="button" :to="'/game/edit/'+game._id">Edit</router-link> 
+                <router-link v-if="loggedinUser === 'game.userId'" tag="button" :to="'/game/'+game._id">More details</router-link>
             </li>
         </ul>
 
@@ -45,7 +45,11 @@ export default {
   computed: {
     url() {
       return `url("${this.game.src}")`;
-    }
+    },
+    loggedinUser() {
+      // console.log(this.$store.getters.loggedUser);
+      return this.$store.getters.loggedUser || {};
+    },
     // checked(){
     //   $emit('check', game._id,this.checked)
     // }

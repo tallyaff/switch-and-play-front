@@ -1,32 +1,24 @@
 <template>
-<section>
-
-    <!-- <router-link v-if="loggedinUser" :to="`/user/${loggedinUser._id}/`">
-        <button>my profile</button>
-    </router-link> -->
-    
+    <section>
+        <div class="user-icons-container flex">
+            <p v-if="loggedinUser">
+                Hello: {{'loggedinUser'? loggedinUser.username: 'guest'}}
+            </p>
+            <router-link v-if="loggedinUser" :to="`/user/activity/${loggedinUser._id}`">
+                <button :class="notification? 'btn notification': 'btn no-notification'" :setNotification="setNotification">
+                    {{notificationCount}}
+                </button>
+            </router-link>
+            <router-link v-if="loggedinUser" :to="`/user/${loggedinUser._id}/`">
+                <button>my profile</button>
+            </router-link>
         
-    <div class="user-icons-container flex">
-        <p v-if="loggedinUser">
-            Hello: {{'loggedinUser'? loggedinUser.username: 'guest'}}
-        </p>
-        <router-link v-if="loggedinUser" :to="`/user/activity/${loggedinUser._id}`">
-            <button :class="notification? 'btn notification': 'btn no-notification'" :setNotification="setNotification">
-                {{notificationCount}}
-            </button>
-        </router-link>
-        <router-link v-if="loggedinUser" :to="`/user/${loggedinUser._id}/`">
-            <button>my profile</button>
-        </router-link>
-        <router-link :to="'/game/edit/'">
-            <button @click="checkIfDisplay" class="btn btn-add-game">Add Game</button>
-        </router-link>
-    </div>
-    <div class="filter-images-container-gallery flex">
-        <GameFilter></GameFilter> 
-        <game-list :games="gamesForDisplay" @remove="removeGame"></game-list>
-    </div>
-</section>
+        </div>
+        <div class="filter-images-container-gallery flex">
+            <GameFilter></GameFilter> 
+            <game-list :games="gamesForDisplay" @remove="removeGame"></game-list>
+        </div>
+    </section>
 </template>
 
 <script>
@@ -90,21 +82,6 @@ export default {
                 this.notification = true;
             }
         },
-        checkIfDisplay() {
-            console.log('this.loggedinUser',this.loggedinUser)
-            if (!this.loggedinUser) {
-                swal({
-                title: "Please login to add your game",
-                buttons: ["Not now", "Login"]
-                }).then(willLogin => {
-                    if (willLogin) {
-                        this.$router.push("/login");
-                    } else {
-                        swal.close();
-                    }
-                });
-            } else this.$router.push("/game/edit");
-        },
         removeGame(gameId) {
             swal({
                 title: "Are you sure you want to delete this game?",
@@ -158,6 +135,7 @@ export default {
   font-family: "Ubuntu";
   font-size: 20px;
 }
+
 </style>
 
     
