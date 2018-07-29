@@ -39,6 +39,44 @@
 import { eventBus, EVENT_LOGIN_USER } from "../services/EventBusService.js";
 
 export default {
+    name: 'Login',
+    data() {
+        return {
+            user: {
+                username: '',
+                password: ''
+            },
+            newUser: {
+                username: '',
+                password: '',
+                email: '',
+                city: ''
+            },
+            signupForm: false,
+            loginForm: true
+        }
+    },
+    methods: {
+        login() {
+            console.log('login user##', this.user);
+            this.$store.dispatch({type: 'getUser', 
+            user: this.user
+             })
+        },
+        signup() {
+            console.log('signup user**', this.newUser);
+            this.$store.dispatch({type: 'createUser', 
+            newUser: this.newUser
+            })
+        },
+        openSignupModal() {
+            this.signupForm = true;
+            debugger
+            this.loginForm = false;
+        },
+    },
+    
+}
   name: "Login",
   data() {
     return {
