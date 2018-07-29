@@ -51,6 +51,12 @@ function logout() {
         });
 }
 
+function saveUser(user) {
+    // console.log('upadte game in fron service', game)
+    return axios.put(`${URL}/${user._id}`, user)
+        .then(res => res.data)
+        .catch(err => console.log('Problem talking to server', err))
+}
 
 function getLoggedinUser() {
     return loggedinUser
@@ -63,11 +69,13 @@ function _setLoggedinUser(user) {
 
 
 
+
 export default {
     getUser,
     createUser,
     logout,
     getLoggedinUser,
+    saveUser
 
 }
 

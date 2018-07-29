@@ -192,9 +192,11 @@ export default {
     // width: 800px;
     justify-content: center;
   }
+
   .cards-container-home {
     width: 100%;
   }
+
   .card-home {
     position: relative;
     margin: rem(10px);
@@ -203,10 +205,6 @@ export default {
     cursor: pointer;
     .image-card {
         width: 100%;
-        // width: 100px;
-        // height: 100px;
-        // background-position: center;
-        // background-size: cover;
     }
     &:hover {
       transform: scale(0.95, 0.95);
