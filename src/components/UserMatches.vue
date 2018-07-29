@@ -1,6 +1,7 @@
 <template>
     <section>
-        <div>
+        <div class="flex column switchedGames">
+            <h3>Games I switched:</h3>
             <ul v-if="matches">
                 <li v-for="match in matches" :key="match._id" class="flex match-container">
                     <div class="flex match">
@@ -9,6 +10,8 @@
                         <p>{{match.userPassiveGame.name}}</p>
                         <!-- <img :src="match.passive.img"/> -->
                     </div>
+                    <p>vs.</p>
+                    <!--fab icon doesnt work !! -->
                     <i class="fa fa-arrows-h"></i>
                     <div class="flex match">
                         <h4>I recieved: </h4>
@@ -54,5 +57,10 @@ export default {
         margin: 10px;
         padding: 5px;
         border: 1px solid;
+    }
+    .switchedGames {
+        background-color: bisque;       /*temp color- change later*/
+        border: 1px solid;
+        margin: 20px;
     }
 </style>

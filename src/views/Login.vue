@@ -71,12 +71,11 @@ export default {
         },
         openSignupModal() {
             this.signupForm = true;
+            debugger
             this.loginForm = false;
         },
     },
-    computed: {
-        
-    },
+    
 }
 </script>
 

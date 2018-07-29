@@ -25,7 +25,15 @@ function createMatch(matchStarter){
 
 }
 
+function updateMatch(matchDetails){
+    console.log('&&&match service details:',matchDetails)
+    return axios.put(`${MATCH_URL}/${matchDetails.matchId}`, {match: matchDetails})
+            .then(res => res.data)
+            .catch(err => console.log('Problem talking to server', err))
+}
+
 export default {
     getMatch,
-    createMatch
+    createMatch,
+    updateMatch
 }

@@ -1,6 +1,7 @@
 <template>
     <section>
-        <div>
+        <div class="flex column switchedGames">
+            <h3>Games I ask:</h3>
             <ul v-if="requestes">
                 <li v-for="request in requestes" :key="request._id" class="flex match-container">
                     <div class="flex match">

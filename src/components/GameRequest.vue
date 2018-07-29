@@ -58,7 +58,7 @@ export default {
         .then(game => {
           this.ownerUserId = game.userId;
           const matchReq = {
-            userPasive: {
+            userPassive: {
               userId: `ObjectId("${this.ownerUserId}")`,
               gameId: `ObjectId("${this.$route.params.gameId}")`
             },
