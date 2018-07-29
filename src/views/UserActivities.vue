@@ -57,6 +57,8 @@ export default {
 }
 </script>
 
-<style>
+<style scoped lang="scss">
+  @import "~@/assets/scss/style.scss";
+
 
 </style>

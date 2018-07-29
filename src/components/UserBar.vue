@@ -23,14 +23,16 @@ import UtilService from "../services/UtilService.js";
 
 export default {
   created() {
-    this.$store
-      .dispatch({
-        type: "getMatch",
-        user: this.loggedinUser._id
-      })
-      .then(_ => {
-        this.setNotification();
-      });
+    if (this.loggedinUser) {
+      this.$store
+        .dispatch({
+          type: "getMatch",
+          user: this.loggedinUser._id
+        })
+        .then(_ => {
+          this.setNotification();
+        });
+    }
   },
   data() {
     return {
@@ -65,31 +67,30 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
 .btn {
   cursor: pointer;
 }
 .notification {
-    background-color: #f56c6c;
-    border-radius: 10px;
-    color: #fff;
-    display: inline-block;
-    font-size: 12px;
-    height: 18px;
-    line-height: 18px;
-    padding: 0 6px;
-    text-align: center;
-    white-space: nowrap;
-    border: 1px solid #fff;
+  background-color: #f56c6c;
+  border-radius: 10px;
+  color: #fff;
+  display: inline-block;
+  font-size: 12px;
+  height: 18px;
+  line-height: 18px;
+  padding: 0 6px;
+  text-align: center;
+  white-space: nowrap;
+  border: 1px solid #fff;
 }
 .no-notification {
   display: none;
 }
-p{
-        width: fit-content;
+p {
+  width: fit-content;
 }
-.user-bar{
-    display: flex;
-    align-items: center;
+.user-bar {
+  display: flex;
+  align-items: center;
 }
 </style>

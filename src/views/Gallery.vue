@@ -37,20 +37,6 @@ export default {
     }
   },
   methods: {
-    loadGames() {
-      this.$store
-        .dispatch({ type: "loadGames" })
-        .then(games => {})
-        .catch(err => {
-          console.log("err", err);
-        });
-    },
-    removeGame(gameId) {
-      console.log("remove item...", gameId);
-      this.$store.dispatch({ type: "removeGame", gameId }).then(() => {
-        console.log("removed from Gallery");
-      });
-    },
     checkIfDisplay() {
       console.log("this.loggedinUser", this.loggedinUser);
       if (!this.loggedinUser) {
@@ -66,7 +52,21 @@ export default {
         });
       } else this.$router.push("/game/edit");
     },
-
+    loadGames() {
+      this.$store
+        .dispatch({ type: "loadGames" })
+        .then(games => {})
+        .catch(err => {
+          console.log("err", err);
+        });
+    },
+    setNotification() {
+      console.log("setNotification");
+      if (this.getNotificationCount.length > 0) {
+        this.notificationCount = this.getNotificationCount.length;
+        this.notification = true;
+      }
+    },
     removeGame(gameId) {
       swal({
         title: "Are you sure you want to delete this game?",
@@ -94,25 +94,11 @@ export default {
 </script>
 
 <style scoped lang="scss">
-// @import "~@/assets/scss/style.scss";
-
-// .btn {
-//   cursor: pointer;
-// }
-// .notification {
-//   border-radius: 50%;
-//   color: white;
-//   background-color: red;
-// }
-// .no-notification {
-//   display: none;
-// }
 .swal-text {
   font-family: "Ubuntu";
   color: #0d72fa;
   font-size: 20px !important;
 }
-
 .swal-title {
   font-family: "Ubuntu";
   font-size: 20px;
