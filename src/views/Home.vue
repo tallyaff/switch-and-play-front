@@ -36,6 +36,18 @@
             </li>
         </ul> 
       </div>
+
+
+
+  <!-- <el-carousel :interval="5000" arrow="always">
+    <el-carousel-item v-for="item in 4" :key="item">
+      <h3>{{ item }}</h3>
+    </el-carousel-item>
+  </el-carousel> -->
+
+
+
+
       <div class="filter-type home-child-filter-container" >
         <router-link :to="'/game'">
           <h2 class="type-title-home">Child</h2>
@@ -63,7 +75,8 @@
 <script>
 import GameService from '@/services/GameService.js';
 import Gallery from '@/views/Gallery.vue'
-import GameFilter from '@/components/GameFilter.vue'
+import GameFilter from '@/components/GameFilter.vue';
+import { eventBus, EVENT_SET_FILTER } from '@/services/EventBusService.js';
 
 // import Gallery from '@/views/Gallery.vue'
 
@@ -86,6 +99,7 @@ export default {
           userId: ''
         },
         url: 'url("img/home-img-1.jpg")',
+        // url: 'url("img/home-img-3.png")',
     }
   },
   created() {
@@ -139,6 +153,7 @@ export default {
     },
     setFilter() {
       console.log('this.filterBy in home', this.filterBy);
+      eventBus.$emit(EVENT_SET_FILTER, this.filterBy);
       
       this.$store.dispatch({ type: "setFilter", filterBy: this.filterBy });
     }, 
