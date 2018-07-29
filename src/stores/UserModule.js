@@ -9,7 +9,11 @@ export default {
         setUser(state, payload ){
             state.user = payload.currUser
             console.log('user from mutation!!!',state.user);
-        }
+        },
+        saveUser(state, payload ){
+            state.user = payload.user
+            console.log('saveUser from mutation!!!',state.user);
+        },
     },
     getters: {
         loggedUser(state){
@@ -37,6 +41,14 @@ export default {
                    console.log('user from backend in front', currUser);
                    context.commit({type: 'setUser', currUser})
                })
+        },
+        savedUserProfile(context, { savedUserProfile }) {
+            console.log('savedUserProfile in action', savedUserProfile)
+            return UserService.saveUser(savedUserProfile)
+                .then((user) => {
+                    console.log('savedUserProfile in store', user);
+                    context.commit({ type: 'saveUser', user })
+                })
         },
 
         

@@ -15,7 +15,7 @@
                   <el-option value="console">Console</el-option>
                   <el-option value="doll">Doll</el-option>
                   <el-option value="lego">Lego</el-option>
-                  <el-option value="playmobile">Playmobile</el-option>
+                  <el-option value="playmobil">Playmobil</el-option>
                   <el-option value="wheels">Wheels</el-option>
                   <el-option value="puzzle">Puzzle</el-option>
               </el-select>
