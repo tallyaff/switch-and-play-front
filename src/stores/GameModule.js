@@ -165,23 +165,17 @@ export default {
                 })
         },
         gamesById(context, { games }) {
-            console.log(games);
             games =  Promise.all(
                 games.map(gameId => {
                     return GameService.getGameById(gameId)
                         .then(game => {
-                            console.log('ofir',game)
                             return game
                         })
                 })
             )
             .then(games =>{
-                console.log(games,'gamesssss')
                 context.commit({ type: 'loggedUserGames', games })
             })
-           
-            // console.log(games,'gamesssss')
-            // context.commit({ type: 'loggedUserGames', games })
         }
     }
 };

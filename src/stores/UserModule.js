@@ -22,12 +22,12 @@ export default {
         
     },
     actions: {
-        createUser(context, payload) {
-            console.log('new user from action***', payload);
-            UserService.createUser(payload.newUser)
-               .then(newUser => {
+        createUser(context, {newUser}) {
+            console.log('new user from action***', newUser);
+            UserService.createUser(newUser)
+               .then(currUser => {
                    console.log('new user from backend in front', newUser);
-                   context.commit({type: 'setUser', newUser})
+                   context.commit({type: 'setUser', currUser})
                })
         },
         getUser(context, payload) {

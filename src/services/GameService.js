@@ -73,8 +73,14 @@ function getGameById(gameId) {
         .catch(err => console.log('Problem talking to server', err))
 }
 
+
+
+
+
+
+
 function saveGame(game) {
-    console.log('upadte game in fron service', game)
+    // console.log('upadte game in fron service', game)
     if (game._id) {
         // update
         return axios.put(`${GAME_URL}/${game._id}`, game)
@@ -83,11 +89,11 @@ function saveGame(game) {
     
     } else {
         //add new
-        console.log('new toy in fron service', game)
+        // console.log('new toy in fron service', game)
         return axios.post(`${GAME_URL}`, game)
             .then(res => {
                 // console.log('add new in front after server', res.data)
-                console.log('add new in front - res', res)
+                // console.log('add new in front - res', res)
                 // console.log('add new in front - id', res.data.insertId)
                 return res.data
             })

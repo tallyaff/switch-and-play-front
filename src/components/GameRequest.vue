@@ -1,7 +1,7 @@
 <template>
     <div class="game-request">
         <h1>Create your request!</h1>   
-        {{user._id}}
+      {{user._id}}
         <el-form>
             <span>would like to switch the next games:</span>
             <br>
@@ -58,7 +58,7 @@ export default {
         .then(game => {
           this.ownerUserId = game.userId;
           const matchReq = {
-            userPasive: {
+            userPassive: {
               userId: `ObjectId("${this.ownerUserId}")`,
               gameId: `ObjectId("${this.$route.params.gameId}")`
             },

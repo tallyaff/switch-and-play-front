@@ -6,29 +6,20 @@ export default {
     state: {
         activities: [],
         user: null,
-        // matches: [],
-        // recieves: [],
-        // requestes: [],
-        
+        reqCount: 0,
     },
     mutations: {
         setMatch(state, payload) {
             console.log('activities**: ', payload.activities);
             state.activities = payload.activities
         },
-        // setRec(state, payload) {
-        //     console.log('activities&&: ', payload.activities);
-        //     state.matches = payload.activities
-        // },
-        // setReq(state, payload) {
-        //     console.log('activities^^: ', payload.activities);
-        //     state.matches = payload.activities
-        // },
         setCurrUser(state, payload) {
             console.log('user^^: ', payload.payload);
             state.user = payload.payload
         },
-
+        setUpdateMatch(state, payload) {
+            console.log('match^^: ', payload.payload);
+        }
     },
     getters: {
         getMatches(state){
@@ -36,6 +27,7 @@ export default {
             return state.activities.filter(activity => activity.isMatch)
         },
         getRecieves(state) {
+            console.log('recieves!!: ', state.activities);            
             return state.activities.filter(activity => activity.userPassiveGame && activity.isMatch === false)
         },
         getRequestes(state) {
@@ -61,6 +53,14 @@ export default {
                 //    context.commit({type: 'setReq', activityReq})
                    })
                    
+        },
+        updateMatch(context, payload) {
+            console.log('match from cmp***', payload.matchDetails);
+            context.commit({type: 'setUpdateMatch', payload: payload.matchDetails})
+            MatchService.updateMatch(payload.matchDetails)
+               .then(activities => {
+                   console.log('match from backend in front', activities);
+               })
         }
     }
 }
