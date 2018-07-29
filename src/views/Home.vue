@@ -23,12 +23,15 @@
           <router-link :to="`/game/${game._id}/`" target="_blank">
               <el-card class="card-home">
                   <div v-if="game.isNew" class="game-new-icon"><img src="img/new-icon.png"></div>
-                  <img :src="game.src" class="image-card">
-                  <div style="padding: 14px;">
-                  <span class="card-game-name">{{game.name}}</span>
-                  <div class="bottom clearfix">
-                    <div type="text" class="user-name-card-home">User Name</div>
-                    <time class="time">{{ game.addedAt | getDate }}</time>
+                  <div class="image-container flex align-center justify-center">
+                    <img :src="game.src" class="image-card">  
+                  </div>
+                  <!-- <div class="card-text-container" style="padding: 14px;"> -->
+                  <div class="card-text-container">
+                    <span class="card-game-name">{{game.name}}</span>
+                    <div class="username-time-container flex space-between align-center">
+                      <div type="text" class="user-name-card-home">User Name</div>
+                      <time class="time">{{ game.addedAt | getDate }}</time>
                   </div>
                   </div>
                 </el-card>
@@ -214,42 +217,58 @@ export default {
     position: relative;
     margin: rem(10px);
     width: rem(250px);
+    height: rem(350px);
     transition: all 0.5s;
     cursor: pointer;
-    .image-card {
-        width: 100%;
-        // width: 100px;
-        // height: 100px;
-        // background-position: center;
-        // background-size: cover;
-    }
-    &:hover {
-      transform: scale(0.95, 0.95);
-    }
-    .card-game-name {
-      text-transform: capitalize;
-      font-family: 'PaytoneOne';
-      font-size: rem(25px);
-      color: $main-color;
-      // text-shadow: 2px 1px $secondary-color;
-    }
-    .game-new-icon {
-      position: absolute;
-      top: -20px;
-      left: -20px;
-      // z-index: 5;
-    }
-    .user-name-card-home {
-      padding: 0;
-      float: right;
-      color: $secondary-color;
-      font-family: 'Ubuntu-regular';
-    }
-    .time {
-      font-size: 13px;
-      color: #999;
-      font-family: 'Ubuntu-regular';
-    }
+      .image-container {
+        height: rem(200px);
+      }
+      .image-card {
+          width: 100%;
+          // width: 100px;
+          // height: 100px;
+          // background-position: center;
+          // background-size: cover;
+      }
+      &:hover {
+        transform: scale(0.95, 0.95);
+      }
+      .card-text-container {
+        background-color: #dadada54;
+        width: rem(250px);
+        height: rem(100px);
+        padding: rem(20px);
+        position: absolute;
+        top: rem(248px);
+        left: rem(0px);
+      }
+      .username-time-container {
+        padding: rem(10px);
+      }
+      .card-game-name {
+        text-transform: capitalize;
+        font-family: 'PaytoneOne';
+        font-size: rem(20px);
+        color: $main-color;
+        // text-shadow: 2px 1px $secondary-color;
+      }
+      .game-new-icon {
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        // z-index: 5;
+      }
+      .user-name-card-home {
+        padding: 0;
+        float: right;
+        color: $secondary-color;
+        font-family: 'Ubuntu-regular';
+      }
+      .time {
+        font-size: 13px;
+        color: #999;
+        font-family: 'Ubuntu-regular';
+      }
   }
 
 
