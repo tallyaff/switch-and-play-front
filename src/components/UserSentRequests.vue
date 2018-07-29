@@ -1,7 +1,7 @@
 <template>
     <section>
         <div class="flex column match-container">
-            <h3>Games I ask:</h3>
+            <h3>Games I asked:</h3>
             <ul v-if="requestes" class="flex games-box">
                 <li v-for="request in requestes" :key="request._id">
                     <div class="flex column game-box">

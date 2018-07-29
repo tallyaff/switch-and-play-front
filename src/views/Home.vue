@@ -25,13 +25,13 @@
                   <div v-if="game.isNew" class="game-new-icon"><img src="img/new-icon.png"></div>
                   <img :src="game.src" class="image-card">
                   <div style="padding: 14px;">
-                  <span class="card-game-name">{{game.name}}</span>
-                  <div class="bottom clearfix">
-                    <div type="text" class="user-name-card-home">User Name</div>
-                    <time class="time">{{ game.addedAt | getDate }}</time>
+                    <span class="card-game-name">{{game.name}}</span>
+                    <div class="bottom clearfix">
+                     <div type="text" class="user-name-card-home">User Name</div>
+                     <time class="time">{{ game.addedAt | getDate }}</time>
+                     </div>
                   </div>
-                  </div>
-                </el-card>
+              </el-card>
           </router-link>
             </li>
         </ul> 
@@ -218,9 +218,9 @@ export default {
     }
     .game-new-icon {
       position: absolute;
-      top: -20px;
-      left: -20px;
-      // z-index: 5;
+      top: 0px;
+      left: 0px;
+      z-index: 5;
     }
     .user-name-card-home {
       padding: 0;
