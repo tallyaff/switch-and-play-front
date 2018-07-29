@@ -1,7 +1,7 @@
 <template>
     <div class="game-request">
         <h1>Create your request!</h1>   
-        {{user._id}}
+      {{user._id}}
         <el-form>
             <span>would like to switch the next games:</span>
             <br>

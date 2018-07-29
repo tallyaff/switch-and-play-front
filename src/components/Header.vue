@@ -31,6 +31,7 @@
         methods: {
             logout() {
                 UserService.logout()
+                this.$router.push('/home')
             }
         },
         components: {
