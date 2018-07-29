@@ -1,29 +1,30 @@
 <template>
-<section>
-    <h2> It is gallery comp</h2>
-        <p v-if="loggedinUser">
-            Hello: {{'loggedinUser'? loggedinUser.username: 'guest'}}
-        </p> -->
-        <router-link v-if="loggedinUser" :to="`/user/${loggedinUser._id}/`">
-            <button>my profile</button>
-        </router-link>
-       <router-link :to="'/game/edit/'">
-            <button  @click="checkIfLogin">Add Game</button>
-        </router-link> 
-        <game-list :games="gamesForDisplay" @remove="removeGame"></game-list>
-</section>
+    <section>
+        <div class="user-icons-container flex">
+            <p v-if="loggedinUser">
+                Hello: {{'loggedinUser'? loggedinUser.username: 'guest'}}
+            </p>
+            <button @click="checkIfDisplay" class="btn btn-add-game">Add Game</button>
+        </div>
+        <div class="filter-images-container-gallery flex">
+            <GameFilter></GameFilter>
+            <game-list :games="gamesForDisplay" @remove="removeGame"></game-list>
+        </div>
+    </section>
 </template>
 
 <script>
+import GameFilter from "@/components/GameFilter.vue";
 import GameList from "@/components/GameList.vue";
-import Header from "@/components/Header.vue";
 import swal from "sweetalert";
 
 export default {
   name: "Gallery",
   components: {
-    GameList
+    GameList,
+    GameFilter
   },
+
   created() {
     this.loadGames();
   },
@@ -44,7 +45,13 @@ export default {
           console.log("err", err);
         });
     },
-    checkIfLogin() {
+    removeGame(gameId) {
+      console.log("remove item...", gameId);
+      this.$store.dispatch({ type: "removeGame", gameId }).then(() => {
+        console.log("removed from Gallery");
+      });
+    },
+    checkIfDisplay() {
       console.log("this.loggedinUser", this.loggedinUser);
       if (!this.loggedinUser) {
         swal({
@@ -56,13 +63,10 @@ export default {
           } else {
             swal.close();
           }
-        })
-        .then()
-      } 
-      else {
-        this.$router.push("/game/edit");
-      }
+        });
+      } else this.$router.push("/game/edit");
     },
+
     removeGame(gameId) {
       swal({
         title: "Are you sure you want to delete this game?",
@@ -89,7 +93,20 @@ export default {
 };
 </script>
 
-<style>
+<style scoped lang="scss">
+// @import "~@/assets/scss/style.scss";
+
+// .btn {
+//   cursor: pointer;
+// }
+// .notification {
+//   border-radius: 50%;
+//   color: white;
+//   background-color: red;
+// }
+// .no-notification {
+//   display: none;
+// }
 .swal-text {
   font-family: "Ubuntu";
   color: #0d72fa;
@@ -101,4 +118,7 @@ export default {
   font-size: 20px;
 }
 </style>
+
+    
+
 
