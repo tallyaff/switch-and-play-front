@@ -1,21 +1,26 @@
 <template>
     <section>
         <showMatch v-if="isMatch" :game="choosenGame" :match="currRecieved"></showMatch>  
-        <div class="flex column switchedGames">
-            <h3>Games people ask from me:</h3>
+        <div class="flex column match-container">
+            <h3>Request From Me:</h3>
             <ul v-if="recieves">
-                <li v-for="recieve in recieves" :key="recieve._id" class="flex match-container">
-                    <div class="flex match">
-                        <h4>asked from me: </h4>
-                        <p>{{recieve.userPassiveGame.name}}</p>
-                        <!-- <img :src="match.passive.img"/> -->
-                    </div>
-                    <div class="flex column games-offer">
-                        <h4>games to choose from: </h4>
-                        <ul class="p5">
-                            <li v-for="game in recieve.userActiveGames" :key="game._id" class="p5">
-                                {{game.name}}
-                                <button @click="itsMatch(game._id, recieve._id)">choose me! </button>
+                <li v-for="recieve in recieves" :key="recieve._id" class="flex games-container">
+                    <!-- <div class="flex game-container"> -->
+                        <div class="flex column game-box mr50">
+                            <h5>{{recieve.userPassiveGame.name}}</h5>
+                            <img :src="recieve.userPassiveGame.src"/>
+                            <h6>from: {muki}</h6>
+                        </div>
+                    <!-- </div> -->
+                    <div >
+                        <ul class="flex games-box">
+                            <h4>choose one: </h4>
+                            <li v-for="game in recieve.userActiveGames" :key="game._id">
+                               <div class="flex column game-box">
+                                    <h5>{{game.name}}</h5>
+                                    <img :src="game.src"/>
+                                    <button @click="itsMatch(game._id, recieve._id)">choose me! </button>
+                                </div>
                             </li>
                         </ul>
                     </div>
@@ -57,16 +62,9 @@ export default {
 }
 </script>
 
-<style>
-    .games-offer{
-        border: 1px solid;
-        margin: 20px;
-        justify-content: space-around
-    }
-    li {
-        list-style: none;
-    }
-    .p5 {
-        padding: 5px;
+<style scoped lang="scss">
+  @import "~@/assets/scss/style.scss";
+    .mr50 {
+        margin-right: 50px;
     }
 </style>

@@ -1,5 +1,5 @@
 <template>
-<section>
+    <section>
 
     <!-- <router-link v-if="loggedinUser" :to="`/user/${loggedinUser._id}/`">
         <button>my profile</button>
@@ -137,9 +137,6 @@ export default {
 <style scoped lang="scss">
     @import "~@/assets/scss/style.scss";
 
-.btn {
-    cursor: pointer;
-}
 .notification {
     border-radius: 50%;
     color: white;

@@ -1,0 +1,43 @@
+/*----------  user activity  ----------*/
+
+.game-box {
+    width: 150px;
+    height: 150px;
+    border: 1px solid $border-color;  
+    box-shadow: 0px 2px 4px 0px #d9d8d8;
+    border-radius: 20px;
+    margin: rem(10px);
+    align-items: center;
+    justify-content: space-between;
+}
+
+.game-box>img {
+    max-height: 100px;
+    max-width: 100px;
+}
+
+.games-box {
+    align-items: center;
+}
+
+.game-container {
+    
+}
+
+.game-boxes {
+    align-items: center;
+}
+
+.games-container {
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.match-container {
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.match-container>h3 {
+    margin-bottom: 40px;
+}

@@ -5,6 +5,7 @@
 @import 'typography';
 @import 'vars';
 @import 'layout';
+@import 'match';
 
 
 
@@ -26,18 +27,22 @@ body {
   font-weight:200;
 }
 
-   
-  a {
-    color: currentColor;
-    text-decoration: none;
-    display: inline-block;
-  }
-  
-  ul,
-  fieldset {
-    padding: 0;
-    margin: 0;
-  }
+// ADD LATER. check if not ruined the design. 
+p, h1,h2, h3, h4, h5, h6, li, body{
+  margin: 0;
+}
+
+a {
+  color: currentColor;
+  text-decoration: none;
+  display: inline-block;
+}
+
+ul,
+fieldset {
+  padding: 0;
+  margin: 0;
+}
 .paper {
   background-size: 100% 36px;
   box-shadow:3px 3px 3px rgba(0,0,0,.2),0px 0px 6px rgba(0,0,0,.2);
