@@ -2,7 +2,7 @@
     <div class="user-bar">
         <div v-if="loggedinUser" class="user-icons-container flex">
             Hello {{'loggedinUser'? loggedinUser.username: 'guest'}}
-            <router-link v-if="loggedinUser" :to="`/user/${loggedinUser._id}/`">
+            <router-link v-if="loggedinUser" :to="`/user/${loggedinUser._id}/`" >
                 My profile
             </router-link>
             <router-link v-if="loggedinUser" :to="`/user/activity/${loggedinUser._id}/`">
@@ -10,10 +10,12 @@
                     {{notificationCount}}
                 </button>
             </router-link>
+            <button @click="onLogout">Logout</button>
         </div>
-        <p v-else>
-            Hello Guest
-        </p>
+        <div v-else>
+        <p class="helloMsg">Hello Guest</p>
+        <router-link  to="/login">Login</router-link>
+        </div>
     </div>
 </template>
 
@@ -52,7 +54,11 @@ export default {
         this.notificationCount = this.getNotificationCount.length;
         this.notification = true;
       }
-    }
+    },
+      onLogout() {
+      this.$emit("update:loggedinUser", null);
+      this.$emit("logout");
+    },
   },
   computed: {
     loggedinUser() {
@@ -92,5 +98,9 @@ p {
 .user-bar {
   display: flex;
   align-items: center;
+}
+.helloMsg{
+  font-size: 16px;
+  margin-top: 5px;
 }
 </style>
