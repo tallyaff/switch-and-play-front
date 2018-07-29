@@ -71,6 +71,12 @@ function getGameById(gameId) {
         .catch(err => console.log('Problem talking to server', err))
 }
 
+
+
+
+
+
+
 function saveGame(game) {
     // console.log('upadte game in fron service', game)
     if (game._id) {

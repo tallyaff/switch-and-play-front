@@ -34,17 +34,16 @@
                   <el-option value="used">Used</el-option>
               </el-select>
               </el-form-item>
-              <el-button type="primary">Save</el-button>
-              <el-button>Cancel</el-button>
+              <el-button type="primary" @click="saveGame">Save</el-button>
+              <el-button @click="$router.go(-1)">Cancel</el-button>
           </el-form>
         </div>
     </section>
 </template>
 
 <script>
-
-
 import GameService from "@/services/GameService.js";
+import swal from "sweetalert";
 
 export default {
   name: "editGame",
@@ -52,7 +51,7 @@ export default {
     return {
       currGame: null,
       gameCopy: null,
-      labelPosition: 'left'
+      labelPosition: "left"
     };
   },
   created() {
@@ -60,16 +59,16 @@ export default {
   },
   methods: {
     loadGame() {
-      //   console.log("this.$route.params in edit cmp", this.$route.params.gameId);
+      // console.log("this.$route.params in edit cmp", this.$route.params.gameId);
       if (this.$route.params.gameId) {
-        // console.log("has params!!");
+        console.log("has params!!");
         this.$store
           .dispatch({ type: "loadGame", gameId: this.$route.params.gameId })
           .then(game => {
             this.currGame = game;
-            // console.log("this.currGame in edit cmp", this.currGame);
+        //     // console.log("this.currGame in edit cmp", this.currGame);
             this.gameCopy = JSON.parse(JSON.stringify(this.currGame));
-            // console.log("this.gameCopy new in edit cmp", this.gameCopy);
+        //     // console.log("this.gameCopy new in edit cmp", this.gameCopy);
           });
       } else {
         console.log("has No params!!");
@@ -77,9 +76,16 @@ export default {
       }
     },
     saveGame() {
-        this.$store
+      this.$router.go(-1);
+      this.$store
         .dispatch({ type: "saveGame", savedGame: this.gameCopy })
         .then(game => {
+            swal("Game has been saved!",{
+            className: 'swal-text',
+            icon: "success",
+            timer: 1500,
+            button: false,
+          });
           console.log("savedGame from game APP");
         });
     }
@@ -88,13 +94,22 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
 // @import '~@/assets/scss/style.scss';
+// @import  'node_modules/sweetalert/src/sweetalert.scss';
 
-.edit-game{
-  border : 1px solid $main-color;
+.edit-game {
+  border: 1px solid $main-color;
   width: 55%;
   padding: 20px;
 }
 
 </style>
+
+<style>
+.swal-text{
+    font-family: "Ubuntu";
+    color: #0D72FA;
+    font-size: 30px;
+}
+</style>
+
