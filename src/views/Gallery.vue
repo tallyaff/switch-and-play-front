@@ -1,5 +1,18 @@
 <template>
 <section>
+
+    <p v-if="loggedinUser">
+        Hello: {{'loggedinUser'? loggedinUser.username: 'guest'}}
+    </p>
+    <router-link v-if="loggedinUser" :to="`/user/${loggedinUser._id}/`">
+        <button>my profile</button>
+    </router-link>
+    <router-link :to="'/game/edit/'">
+        <button class="btn btn-add-game">Add Game</button>
+    </router-link>
+    <div class="filter-images-container-gallery flex">
+        <GameFilter></GameFilter> 
+
     <h2> It is gallery comp</h2>
     <div class="user-icons-container flex">
         <p v-if="loggedinUser">
@@ -20,20 +33,28 @@
         <!-- <router-link :to="'/game/edit/'"> -->
             <button  @click="checkIfDisplay">Add Game</button>
         <!-- </router-link> -->
+
         <game-list :games="gamesForDisplay" @remove="removeGame"></game-list>
+    </div>
 </section>
 </template>
 
 <script>
+
+    import GameList from "@/components/GameList.vue";
+    import GameFilter from '@/components/GameFilter.vue'
+=======
 import GameList from "@/components/GameList.vue";
 import Header from "@/components/Header.vue";
 import swal from "sweetalert";
 
 
+
     export default {
         name: "Gallery",
         components: {
-            GameList
+            GameList,
+            GameFilter
         },
         data() {
             return {
@@ -172,5 +193,13 @@ export default {
   font-family: "Ubuntu";
   font-size: 20px;
 }
+</style>
+
+<style scoped lang="scss">
+    @import "~@/assets/scss/style.scss";
+    .filter-images-container-gallery {
+    
+    }
+    
 </style>
 

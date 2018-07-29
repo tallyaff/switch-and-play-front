@@ -1,4 +1,27 @@
-<template>
+  <ul v-if="allFilterTypes">
+                        <li v-for="oneType in allFilterTypes"> 
+                          <div>{{oneType}}</div>
+                        </li>
+                      </ul>
+
+                        // allFilterTypes: null,
+        // allFilterCategories: null,
+
+          created() {    
+    //   var self = this;
+    //   this.setFilter = debounce(() => {
+    //     console.log('setFilter in gameFilter cmp');
+        
+    //     self.$store.dispatch({ type: 'setFilter', filterBy: this.filterBy })
+    // }, 2000)
+      this.allFilterTypes = this.$store.getters.types;
+      console.log('allFilterTypes in home', this.allFilterTypes); 
+      this.allFilterCategories = this.$store.getters.categories;
+      console.log('allFilterCategories in home', this.allFilterCategories); 
+  },
+
+
+  <template>
   <div class="filter-gallery-container">
         <form @submit.prevent="setFilter" class="search-in-gallery">
             <el-input class="search-input" type="text" v-model="filterBy.name" placeholder="Search for games" autofocus></el-input>
@@ -70,8 +93,8 @@
 </template>
 
 <script>
-import debounce from 'lodash.debounce';
-import GameService from '@/services/GameService.js';
+import debounce from "lodash.debounce";
+import GameService from "@/services/GameService.js";
 
 export default {
   name: 'home',
@@ -89,7 +112,6 @@ export default {
       },
       allFilterTypes: null,
       allFilterCategories: null,
-    
     };
   },
   created() {
@@ -101,7 +123,7 @@ export default {
     // }, 2000)
 
     this.allFilterTypes = this.$store.getters.types;
-    console.log('allFilterTypes in home', this.allFilterTypes);
+    console.log("allFilterTypes in home", this.allFilterTypes);
     this.allFilterCategories = this.$store.getters.categories;
     console.log('allFilterCategories in home', this.allFilterCategories);
   },
@@ -121,20 +143,12 @@ export default {
       // console.log('setFilter in gameFilter cmp');
       // console.log('this.filterBy.allTypes', this.filterBy.allTypes);
       if (this.filterBy.allTypes) this.filterBy.type = this.$store.getters.types;
-      if (this.filterBy.type.length !== this.$store.getters.types.length) this.filterBy.allTypes = false;
-      console.log('this.filterBy.type', this.filterBy.type);
+      console.log("this.filterBy.type", this.filterBy.type);
       if (this.filterBy.allCategories) this.filterBy.category = this.$store.getters.categories;
-      if (this.filterBy.category.length !== this.$store.getters.categories.length) this.filterBy.allCategories = false;
-      console.log('this.filterBy.type', this.filterBy.category);
+      console.log("this.filterBy.type", this.filterBy.category);
       // if (this.filterBy.allCategories) this.filterBy.category = this.allFilterCategories;
 
-      this.$store.dispatch({ type: 'setFilter', filterBy: this.filterBy })
-        .then(games => {
-        //   eventBusService.$emit(SHOW_MSG, {
-        //     txt: `${Games.length} Games Loaded!`
-        //   });
-
-        })
+      this.$store.dispatch({ type: "setFilter", filterBy: this.filterBy });
     }, 2000)
   }
 };
