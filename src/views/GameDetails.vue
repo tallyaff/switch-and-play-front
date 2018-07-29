@@ -1,7 +1,7 @@
 
 <template>
 
-<section class="GameDetails" v-if="currGame">
+<!-- <section class="GameDetails" v-if="currGame">
     <h1>{{currGame.name}}</h1>
                 <ul class="game-details-container">
                 <li><img :src="currGame.src"></li>
@@ -13,8 +13,8 @@
             </ul>
     <game-request :game="currGame" v-if="requesting"></game-request>
     <el-button v-if="!requesting" @click="showRequest">I want this toy!</el-button>
-    </section>
-    </template>
+    </section> -->
+   
   <section class="GameDetails" v-if="currGame">
     <h1>{{currGame.name}}</h1>
       <ul class="game-details-container">
