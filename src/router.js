@@ -41,14 +41,14 @@ export default new Router({
       component: Gallery
     },
     {
-      path: '/game/:gameId?',
-      name: 'game-details',
-      component: GameDetails
-    },
-    {
       path: '/game/edit/:gameId?',
       name: 'edit',
       component: EditGame
+    },
+    {
+      path: '/game/:gameId?',
+      name: 'game-details',
+      component: GameDetails
     },
     {
       path: '/user/:userId',

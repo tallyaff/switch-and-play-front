@@ -67,7 +67,8 @@ export default {
     getUser,
     createUser,
     logout,
-    getLoggedinUser
+    getLoggedinUser,
+
 }
 
 

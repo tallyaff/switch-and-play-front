@@ -115,9 +115,6 @@ export default {
             .then(games =>{
                 context.commit({ type: 'loggedUserGames', games })
             })
-           
-            // console.log(games,'gamesssss')
-            // context.commit({ type: 'loggedUserGames', games })
         }
     }
 };
