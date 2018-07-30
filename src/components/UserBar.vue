@@ -96,7 +96,6 @@ p {
   width: fit-content;
 }
 .user-bar {
-  display: flex;
   align-items: center;
 }
 .helloMsg {

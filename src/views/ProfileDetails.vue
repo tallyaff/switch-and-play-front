@@ -1,17 +1,14 @@
 <template>
-    <section>
-        <p v-if="loggedinUser">
-            Hello: {{'loggedinUser'? loggedinUser.username: 'guest'}}
-        </p>
+    <section class="profile-details-page flex justify-center align-center column" v-if="loggedinUser">
         <router-link :to="'/game/edit/'">
-            <el-button v-if="loggedinUser" class="btn add-game-btn" type="primary" @click="checkIfDisplay">Add Game</el-button>
+            <el-button v-if="loggedinUser" class="btn add-game-btn" type="primary" @click="checkIfDisplay"><font-awesome-icon icon="plus" /> Game</el-button>
         </router-link>
         <router-link v-if="loggedinUser" :to="`/user/activity/${loggedinUser._id}`">
             <el-button class="btn activities-profile-btn" type="primary">My activities</el-button>
         </router-link>
         <div class="my-profile">
             <h2 class="headres-in-profile-details">My profile</h2>
-            <el-button v-if="loggedinUser" v-show="!isEdit" class="btn edit-profile-btn" type="primary" @click="editProfile">Edit</el-button>
+            <button v-if="loggedinUser" v-show="!isEdit" class="btn icon-btn edit-profile-btn" type="primary" @click="editProfile"><font-awesome-icon icon="pen" /></button>
             <div v-if="copiedUser">
             <el-form v-if="isEdit" class="edit-user-profile no-margin" :label-position="labelPosition" @submit.native.prevent="saveUserProfile">
               <el-form-item class="form-item" label="username">
@@ -27,11 +24,12 @@
                 <el-input class="form-input" v-model="copiedUser.city"/>
               </el-form-item>
               <el-button class="btn save-profile-btn" type="primary" @click="saveUserProfile">Save</el-button>
-              <el-button @click="$router.go(-1)">Cancel</el-button>
+              <!-- <el-button @click="$router.go(-1)">Cancel</el-button> -->
+              <el-button @click="unSaveUserProfile">Cancel</el-button>
           </el-form>
         </div>
         <h2 class="headres-in-profile-details">Your games:</h2>
-        <ul class="cards-in-profile-container flex" v-if="games">
+        <ul class="cards-in-profile-container flex align-center justify-center" v-if="games">
            <li class="game" v-for="game in games" :key="game._id">
                 <!-- <game-preview :game="game" :gameCheckbox="gameCheckbox" @check="updateGamesToSwitch"> -->
                 <el-card class="card-in-profile-details flex justify-center align-center pointer">
@@ -40,12 +38,13 @@
                     <div style="padding: 14px;">
                     <span class="card-game-name">{{game.name}}</span>
                     <div class="bottom clearfix">
-                        <li class="game-category-preview capitalize"><span>Category: </span> {{game.category}}</li>
+                        <li class="game-category capitalize"><span>Category: </span> {{game.category}}</li>
                         <time class="time">{{ game.addedAt | getDate }}</time>
                     </div>
                     </div>
-                        <button class="btn icon-btn btn-remove" @click="$emit('remove', game._id)"><i class="fa fa-trash"></i></button> 
-                        <router-link tag="button" :to="'/game/edit/'+game._id">Edit</router-link> 
+                        <button class="btn icon-btn btn-remove" @click="$emit('remove', game._id)"> <font-awesome-icon icon="trash" /></button> 
+                        <!-- <button class="btn icon-btn btn-remove" @click="$emit('remove', game._id)"><i class="fa fa-trash"></i></button>  -->
+                        <router-link class="icon-btn btn-edit" :to="'/game/edit/'+game._id"><font-awesome-icon icon="pen" /></router-link> 
                 </el-card>
             </li>
         </ul>
@@ -67,6 +66,7 @@ export default {
         return {
             labelPosition: 'left',
             isEdit: false,
+
         }
     },
     created() {
@@ -115,17 +115,24 @@ export default {
                 console.log('savedUserProfile from game APP');
                 });
         },
+        unSaveUserProfile() {
+            this.isEdit = !this.isEdit;
+        },
         editProfile() {
             console.log('this.loggedinUser in profileDetailes',this.loggedinUser)
             console.log('copiedUser', this.copiedUser);
             this.isEdit = !this.isEdit;
-        }
+        },
     }
 }
 </script>
 
 <style scoped lang="scss">
     // @import "~@/assets/scss/style.scss";
+
+    .profile-details-page { 
+        
+    }
 
     .btn {
         background-color: $main-color;
@@ -142,14 +149,15 @@ export default {
     }
 
     .cards-in-profile-container {
-        flex-wrap: nowrap;
-        width: 800px;
+        flex-wrap: wrap;
+        width: 1200px;
 
     }
 
     .headres-in-profile-details {
         font-size: rem(30px);
         font-family: 'Ubuntu';
+        margin-bottom: rem(20px);
     }
 
     .card-in-profile-details {
@@ -187,6 +195,52 @@ export default {
   
   .clearfix:after {
       clear: both
+  }
+
+  .icon-btn {
+      font-size: rem(25px);
+      
+      transition: all 0.3s;
+  }
+
+  .btn-remove, .edit-profile-btn {
+      border: 0;
+      background-color: transparent;
+  }
+
+  .btn-remove, .btn-edit {
+    color: $secondary-color;
+        &:hover {
+            color: $main-color;
+      }
+    }
+  
+
+  .edit-profile-btn {
+      color: $main-color;
+      &:hover {
+          color: $secondary-color;
+      }
+  }
+
+  .bottom {
+      color: grey;
+
+  }
+
+  .game-category {
+    font-family: 'Ubuntu-regular';
+    white-space: nowrap;
+    margin-bottom: rem(20px);
+    & span {
+        font-family: 'Lato-Bold';
+    }
+
+  }
+
+  .time {
+      font-family: 'Ubuntu-regular';
+
   }
 
 </style>

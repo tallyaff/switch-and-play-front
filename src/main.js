@@ -12,7 +12,30 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { faCoffee, faUser, faBell } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add(faCoffee,faUser,faBell)
+
+import { faInfo } from '@fortawesome/free-solid-svg-icons'
+import { faTrash } from '@fortawesome/free-solid-svg-icons'
+import { faPen } from '@fortawesome/free-solid-svg-icons'
+import { faPlus } from '@fortawesome/free-solid-svg-icons'
+
+
+Vue.component('font-awesome-icon', FontAwesomeIcon)
+
+library.add(faCoffee);
+library.add(faInfo);
+library.add(faTrash);
+library.add(faPen);
+library.add(faPlus);
+library.add(faUser);
+library.add(faBell);
+
+/* eslint-disable no-new */
+// new Vue({
+//   el: '#app',
+//   components: { App },
+//   template: '<App/>'
+// })
+
 
 Vue.use(require('vue-moment'));
 Vue.component('font-awesome-icon', FontAwesomeIcon)

@@ -22,46 +22,6 @@
                     <el-checkbox class="checkbox-filter" :label='oneCategory' :value="oneCategory" v-model="filterBy.type" @change="setFilter">{{oneCategory}}</el-checkbox>
                 </li>
               </ul>
-         
-             <!-- <label >
-              <input type="checkbox" name="feature" value="all-types" v-model="filterBy.allTypes" @change="setFilter"/>All types
-            </label>
-            <label >
-              <input type="checkbox" name="feature" value="baby" v-model="filterBy.type" @change="setFilter"/>Baby
-            </label>
-            <label >
-              <input type="checkbox" name="feature" value="child" v-model="filterBy.type" @change="setFilter"/>Child
-            </label>
-            <label >
-              <input type="checkbox" name="feature" value="teen" v-model="filterBy.type" @change="setFilter"/>Teen
-            </label> -->
-        <!-- </div>
-        <div>
-            <h3>Category</h3>
-            <label >
-              <input type="checkbox" name="feature" value="all-categories" v-model="filterBy.allCategories" @change="setFilter"/>All categories
-            </label>
-             <label >
-              <input type="checkbox" name="feature" value="console" v-model="filterBy.category" @change="setFilter"/>Console
-            </label>
-             <label >
-              <input type="checkbox" name="feature" value="doll" v-model="filterBy.category" @change="setFilter"/>Doll
-            </label>
-             <label >
-              <input type="checkbox" name="feature" value="board-game" v-model="filterBy.category" @change="setFilter"/>Board game
-            </label>
-             <label >
-              <input type="checkbox" name="feature" value="lego" v-model="filterBy.category" @change="setFilter"/>Lego
-            </label>
-             <label >
-              <input type="checkbox" name="feature" value="playmobil" v-model="filterBy.category" @change="setFilter"/>Playmobil
-            </label>
-             <label >
-              <input type="checkbox" name="feature" value="puzzle" v-model="filterBy.category" @change="setFilter"/>Puzzle
-            </label>
-             <label >
-              <input type="checkbox" name="feature" value="wheels" v-model="filterBy.category" @change="setFilter"/>Wheels
-            </label> -->
         </div>
         </div>
   </div>
@@ -98,16 +58,21 @@ export default {
 
     //     self.$store.dispatch({ type: 'setFilter', filterBy: this.filterBy })
     // }, 2000)
+    this.filterBy = this.$store.getters.setFilter;
+    console.log('creted game filter', this.filterBy);
+    
 
     this.allFilterTypes = this.$store.getters.types;
     console.log('allFilterTypes in home', this.allFilterTypes);
     this.allFilterCategories = this.$store.getters.categories;
     console.log('allFilterCategories in home', this.allFilterCategories);
+
+    this.filterBy = JSON.parse(JSON.stringify(this.$store.state.GameModule.filterBy))
         
-    eventBus.$on(EVENT_SET_FILTER, filterBy => {
-      this.filterBy = filterBy;
-      console.log('this.filterBy in filter cmp after eventBus', this.filterBy);
-    })
+    // eventBus.$on(EVENT_SET_FILTER, filterBy => {
+    //   this.filterBy = filterBy;
+    //   console.log('this.filterBy in filter cmp after eventBus', this.filterBy);
+    // })
         
   },
   computed: {
@@ -133,7 +98,8 @@ export default {
       console.log('this.filterBy.type', this.filterBy.category);
       // if (this.filterBy.allCategories) this.filterBy.category = this.allFilterCategories;
 
-      this.$store.dispatch({ type: 'setFilter', filterBy: this.filterBy })
+      var filterBy = JSON.parse(JSON.stringify(this.filterBy))
+      this.$store.dispatch({ type: 'setFilter', filterBy })
         .then(games => {
         //   eventBusService.$emit(SHOW_MSG, {
         //     txt: `${Games.length} Games Loaded!`
