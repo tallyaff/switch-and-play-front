@@ -9,6 +9,27 @@ import './assets/scss/style.scss'
 import axios from 'axios'
 import moment from 'moment'
 
+// far fa-trash-alt
+// far faTrashAlt
+
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faCoffee } from '@fortawesome/free-solid-svg-icons'
+import { faTrashAlt } from '@fortawesome/free-regular-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+library.add(faCoffee)
+library.add(faTrashAlt)
+
+Vue.component('font-awesome-icon', FontAwesomeIcon)
+
+
+/* eslint-disable no-new */
+// new Vue({
+//   el: '#app',
+//   components: { App },
+//   template: '<App/>'
+// })
+
 
 Vue.use(require('vue-moment'));
 

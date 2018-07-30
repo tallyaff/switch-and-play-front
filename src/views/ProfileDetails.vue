@@ -44,7 +44,10 @@
                         <time class="time">{{ game.addedAt | getDate }}</time>
                     </div>
                     </div>
-                        <button class="btn icon-btn btn-remove" @click="$emit('remove', game._id)"><i class="fa fa-trash"></i></button> 
+                   
+                        <button class="btn icon-btn btn-remove" @click="$emit('remove', game._id)"> <font-awesome-icon icon="coffee" /></button> 
+                        <button class="btn icon-btn btn-remove" @click="$emit('remove', game._id)"> <font-awesome-icon icon="trashAlt" /></button> 
+                        <!-- <button class="btn icon-btn btn-remove" @click="$emit('remove', game._id)"><i class="fa fa-trash"></i></button>  -->
                         <router-link tag="button" :to="'/game/edit/'+game._id">Edit</router-link> 
                 </el-card>
             </li>
@@ -67,6 +70,7 @@ export default {
         return {
             labelPosition: 'left',
             isEdit: false,
+
         }
     },
     created() {
@@ -150,6 +154,7 @@ export default {
     .headres-in-profile-details {
         font-size: rem(30px);
         font-family: 'Ubuntu';
+        margin-bottom: rem(20px);
     }
 
     .card-in-profile-details {

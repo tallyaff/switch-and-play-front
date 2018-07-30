@@ -98,16 +98,21 @@ export default {
 
     //     self.$store.dispatch({ type: 'setFilter', filterBy: this.filterBy })
     // }, 2000)
+    this.filterBy = this.$store.getters.setFilter;
+    console.log('creted game filter', this.filterBy);
+    
 
     this.allFilterTypes = this.$store.getters.types;
     console.log('allFilterTypes in home', this.allFilterTypes);
     this.allFilterCategories = this.$store.getters.categories;
     console.log('allFilterCategories in home', this.allFilterCategories);
+
+    this.filterBy = JSON.parse(JSON.stringify(this.$store.state.GameModule.filterBy))
         
-    eventBus.$on(EVENT_SET_FILTER, filterBy => {
-      this.filterBy = filterBy;
-      console.log('this.filterBy in filter cmp after eventBus', this.filterBy);
-    })
+    // eventBus.$on(EVENT_SET_FILTER, filterBy => {
+    //   this.filterBy = filterBy;
+    //   console.log('this.filterBy in filter cmp after eventBus', this.filterBy);
+    // })
         
   },
   computed: {
@@ -133,7 +138,8 @@ export default {
       console.log('this.filterBy.type', this.filterBy.category);
       // if (this.filterBy.allCategories) this.filterBy.category = this.allFilterCategories;
 
-      this.$store.dispatch({ type: 'setFilter', filterBy: this.filterBy })
+      var filterBy = JSON.parse(JSON.stringify(this.filterBy))
+      this.$store.dispatch({ type: 'setFilter', filterBy })
         .then(games => {
         //   eventBusService.$emit(SHOW_MSG, {
         //     txt: `${Games.length} Games Loaded!`

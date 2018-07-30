@@ -12,11 +12,14 @@ export default {
         game: null,  
         filterSearchHome: {},           
         filterBy: {
+            allByName: true,
             name: '',
+            allTypes: true,
             type: [],
+            allCategories: true,
             category: [],
-            userId: ''
-        },
+            userId: '',
+          },
         allFilterTypes: ['baby', 'child', 'teen'],
         allFilterCategories: ['console', 'doll', 'board-game', 'lego', 'playmobil', 'puzzle', 'wheels'],
     },
@@ -78,9 +81,13 @@ export default {
             // console.log('categories', state.allFilterCategories);
             return state.allFilterCategories
         },
-        gamesForDisplay(state) {
+        gamesByFilterServer(state) {
             // console.log('stateGames', state.games);
             return state.games
+        },
+        setFilter(state) {
+            // console.log('stateGames', state.games);
+            return state.filterBy;
         },
         gamesForBabyHomeDisplay(state) {
             return state.gamesBabyHome

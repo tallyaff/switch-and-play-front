@@ -14,7 +14,7 @@
     <div class="all-cards-home-container">
       <div class="filter-type home-filter-container home-filter-container-baby flex column align-center justify-center" >
         <!-- <router-link :to="'/game'" value="baby" v-model="filterBy.type" @click.native="setFilter"> -->
-        <router-link :to="'/game'" value="baby" v-model="filterBy.type" @click.native="setFilter">
+        <router-link :to="'/game'" @click.native="setFilter('baby')">
           <h2 class="type-title-home">Baby</h2>
         </router-link>
         <ul v-if="gamesForBabyHomeDisplay" class="cards-container-home align-center flex justify-center clean-list">
@@ -93,15 +93,15 @@ export default {
   data() {
     return {
         filterBy: {
-          allByName: true,
+          allByName: false,
           name: '',
-          allTypes: true,
+          allTypes: false,
           type: [],
-          allCategories: true,
+          allCategories: false,
           category: [],
           userId: ''
         },
-        url: 'url("img/home-img-1.jpg")',
+        url: 'url("img/shutterstock_261496907.jpg")',
         // url: 'url("img/home-img-3.png")',
     }
   },
@@ -142,10 +142,10 @@ export default {
 
         })
     },
-    setFilter() {
-      console.log('this.filterBy in home', this.filterBy);
-      eventBus.$emit(EVENT_SET_FILTER, this.filterBy);
-      
+    setFilter(type) {
+      console.log('this.filterBy in home', type);
+      // eventBus.$emit(EVENT_SET_FILTER, this.filterBy);
+      this.filterBy.type = [type]
       this.$store.dispatch({ type: "setFilter", filterBy: this.filterBy });
     }, 
   },
@@ -164,7 +164,8 @@ export default {
   }
   .search {
     margin-bottom: rem(20px);
-    
+    position: relative;
+    bottom: rem(-70px);
   }
     .search-input {
       width: 500px;
@@ -178,11 +179,13 @@ export default {
   .search-btn {
      height: 50px;
      font-size: rem(18px);
+     background-color: $main-color;
   }
 
   .type-title-home {
     font-size: rem(40px);
     font-family: 'Ubuntu';
+    margin: rem(20px) 0;
   }
 
   .all-cards-home-container {
@@ -194,13 +197,13 @@ export default {
     background-color:aliceblue;
   }
 
-  .home-filter-container {
-    // width: 800px;
+  .home-filter-container {    
     justify-content: center;
   }
 
   .cards-container-home {
     width: 100%;
+    flex-wrap: wrap;
   }
 
   .card-home {
