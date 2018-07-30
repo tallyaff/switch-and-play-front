@@ -21,7 +21,6 @@
                 <!-- v-if="user.isAdmin"  -->
                 <button v-if="loggedinUser === 'game.userId'" class="btn btn-remove" @click="$emit('remove', game._id)">Remove</button> 
                 <router-link v-if="loggedinUser === 'game.userId'" tag="button" :to="'/game/edit/'+game._id">Edit</router-link> 
-                <router-link v-if="loggedinUser === 'game.userId'" tag="button" :to="'/game/'+game._id">More details</router-link>
             </li>
         </ul>
 
