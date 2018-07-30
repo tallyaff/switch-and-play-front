@@ -12,7 +12,7 @@
                     <p>Added At: {{game.addedAt}}</p>
                 </div>
             </div>
-             <button @click="itsMatch(game._id, match._id)">choose me! </button>
+             <el-button @click="itsMatch(game._id, match._id)" type="primary">choose me! </el-button>
         </div>
     </section>
 </template>

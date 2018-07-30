@@ -15,7 +15,7 @@
                     </div>
                     <h3>⇆</h3>
                     <!--fab icon doesnt work !! -->
-                    <i class="fa fa-arrows-h"></i>
+                    <i class="fas fa-exchange-alt"></i>
                     <div class="flex column games-container">
                         <h4>I recieved: </h4>
                         <div class="flex column game-box">
