@@ -2,35 +2,43 @@
 <template>
   <div class="login-container">
       <div class="form-container flex">
-        <form @submit.prevent="login" v-if="loginForm" class="flex column">
-            <div class="form flex column">
+        <el-form  v-if="loginForm" class="flex column">
+            <el-form-item class="login-form flex column">
                 <h1>Log-In</h1>
-                <p>Enter user Name:</p>
-                <input v-model="user.username" type="text" class="input-user">
-                <p>Enter password:</p>
-                <input v-model="user.password" type="password" class="input-user">
-                <button type="submit" @click="$router.push('/game')" class="btn">
-                login
-                </button>
-            </div>
-            <button type="submit" @click="openSignupModal" class="btn">
-                sign up
-            </button>
-        </form>
-        <form @submit.prevent="signup" v-if="signupForm" class="form flex column">
+                <el-form-item class="flex insert-form">
+                  <p>Enter user Name:</p>
+                  <el-input v-model="user.username" type="text" class="el-input-user"/>
+                </el-form-item>
+                <el-form-item class="flex insert-form">
+                  <p>Enter password:</p>
+                  <el-input v-model="user.password" type="password" class="el-input-user"/>
+                </el-form-item>
+                <el-form-item>
+                  <el-button type="primary" @click="login" class="btn">
+                  login
+                  </el-button>
+                </el-form-item>
+            </el-form-item>
+            <el-button type="submit" @click="openSignupModal" class="btn-signup">
+                  sign up
+            </el-button>
+        </el-form>
+        <el-form  v-if="signupForm">
+          <el-form-item class="login-form flex column">
             <h4>sign up</h4>
             <p>Your Name:</p>
-            <input v-model="newUser.username" type="text" class="input-user">
+            <el-input v-model="newUser.username" type="text" class="el-input-user"/>
             <p>Choose Password:</p>
-             <input v-model="newUser.password" type="password" class="input-user">
-             <p>E-mail:</p>
-             <input v-model="newUser.email" type="email" class="input-user">
-             <p>City:</p>
-             <input v-model="newUser.city" type="text" class="input-user">
-            <button type="submit" @click="$router.push('/game')" class="btn">
+            <el-input v-model="newUser.password" type="password" class="el-input-user"/>
+            <p>E-mail:</p>
+            <el-input v-model="newUser.email" type="email" class="el-input-user"/>
+            <p>City:</p>
+            <el-input v-model="newUser.city" type="text" class="el-input-user"/>
+            <el-button type="submit" @click="signup" class="btn-signup">
             signup
-            </button>
-        </form>
+            </el-button>
+          </el-form-item>
+        </el-form>
     </div>
   </div>
 </template>
@@ -60,11 +68,19 @@ export default {
   },
   methods: {
     login() {
-      // console.log("login user##", this.user);
-      this.$store
-        .dispatch({
-          type: "getUser",
-          user: this.user
+      this.$router.push('/game')
+      console.log("login user##", this.user);
+      this.$store.dispatch ({
+            type: "getUser",
+            user: this.user
+        })
+        .then(user => {
+            console.log('user$$:', user);
+            this.$store.dispatch({
+            type: 'getMatch', 
+            user: user._id
+            })
+            debugger
         })
         .then(_ => {
             console.log(this.user.username,'res login function before emit eventbus')
@@ -74,6 +90,7 @@ export default {
     },
 
     signup() {
+      this.$router.push('/game')
       // console.log("signup user**", this.newUser);
       this.$store
         .dispatch({
@@ -95,19 +112,44 @@ export default {
 };
 </script>
 
-<style>
-.form {
-  border: 1px solid;
-  margin: 10px;
+<style scoped lang="scss">
+    @import "~@/assets/scss/style.scss";
+    
+.login-form {
+  border: 1px solid $border-color;  
+  box-shadow: 0px 2px 4px 0px #d9d8d8;
+  margin: auto;
   padding: 5px;
+  width: 305px;
+  align-items: center;
 }
-.flex {
-  display: flex;
+
+.form-container {
+  margin: 20px auto;
+  justify-content: center
 }
-.column {
-  flex-direction: column;
+.login-container {
+  // margin: auto;
+  // align-items: center;
 }
+.insert-form {
+  // justify-content: space-between;
+  // width: 80%;
+}
+
 .btn {
-  margin: 5px;
+  width: 100px;
 }
+.btn-signup {
+  background-color: #f1af37;
+  margin:  20px;
+}
+
+.btn-signup {
+  background-color: #f1af37;;
+  margin: 20px;
+  width: 100px;
+  margin: 20px auto;
+}
+
 </style>

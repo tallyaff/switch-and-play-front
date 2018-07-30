@@ -15,6 +15,11 @@ import NavBar from "@/components/NavBar.vue";
 import UserBar from "@/components/UserBar.vue";
 
 export default {
+  created() {
+    this.loggedinUser
+    console.log('this.loggedinUser:', this.loggedinUser);
+    
+  },
   computed: {
     loggedinUser() {
       return this.$store.getters.loggedUser;

@@ -1,18 +1,11 @@
 <template>
 <section>
-    <p v-if="loggedinUser">
-        Hello: {{'loggedinUser'? loggedinUser.username: 'guest'}}
-    </p>
-    <router-link v-if="loggedinUser" :to="`/user/${loggedinUser._id}/`">
-        <button>my profile</button>
-    </router-link>
-    <router-link :to="'/game/edit/'">
-        <button class="btn btn-add-game" @click="checkIfDisplay">Add Game</button>
-    </router-link>
+  <div class="user-icons-container flex">
     <div class="filter-images-container-gallery flex">
         <GameFilter></GameFilter> 
         <game-list :games="gamesForDisplay" @remove="removeGame"></game-list>
     </div>
+  </div>
 </section>
 </template>
 
@@ -31,10 +24,15 @@ export default {
   },
   created() {
     this.loadGames();
+    console.log('this.gamesForDisplay in gallery', this.gamesForDisplay);    
+    // this.gamesForDisplay;
   },
   computed: {
+    // gamesForDisplay() {
+    //   return this.$store.getters.gamesForDisplay;
+    // },
     gamesForDisplay() {
-      return this.$store.getters.gamesForDisplay;
+      return this.$store.getters.gamesByFilterServer;
     },
     loggedinUser() {
       return this.$store.getters.loggedUser;

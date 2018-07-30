@@ -1,14 +1,18 @@
 <template>
-    <div class="user-bar">
+    <div class="user-bar flex">
         <div v-if="loggedinUser" class="user-icons-container flex">
             Hello {{'loggedinUser'? loggedinUser.username: 'guest'}}
             <router-link v-if="loggedinUser" :to="`/user/${loggedinUser._id}/`" >
                 My profile
             </router-link>
             <router-link v-if="loggedinUser" :to="`/user/activity/${loggedinUser._id}/`">
-                <button :class="notification? 'btn notification':'btn no-notification'" :setNotofication="setNotification">
-                    {{notificationCount}}
-                </button>
+              <!-- <button :class="notification? 'btn notification':'btn no-notification'" :setNotification="setNotification"> -->
+              <button :class="notificationCount>0? 'btn notification':'btn no-notification'">
+                  {{notificationCount}}
+              </button>
+            </router-link>
+            <router-link v-if="loggedinUser" :to="`/user/${loggedinUser._id}/`">
+                  My profile
             </router-link>
             <button @click="onLogout">Logout</button>
         </div>
@@ -25,22 +29,8 @@ import UtilService from "../services/UtilService.js";
 
 export default {
   created() {
-    if (this.loggedinUser) {
-      this.$store
-        .dispatch({
-          type: "getMatch",
-          user: this.loggedinUser._id
-        })
-        .then(_ => {
-          this.setNotification();
-        });
-    }
-  },
-  data() {
-    return {
-      notification: false,
-      notificationCount: 0
-    };
+    console.log('notification1: ', this.notificationCount);
+    console.log('notification2: ', this.notification);
   },
   methods: {
     logout() {
@@ -48,28 +38,28 @@ export default {
       this.$store.commit({ type: "logoutUser" });
       this.$router.push("/");
     },
-    setNotification() {
-      console.log("setNotification");
-      if (this.getNotificationCount.length > 0) {
-        this.notificationCount = this.getNotificationCount.length;
-        this.notification = true;
-      }
-    },
-      onLogout() {
-      this.$emit("update:loggedinUser", null);
-      this.$emit("logout");
-    },
+  //   setNotification() {
+  //     console.log("setNotification");
+  //     if (this.getNotificationCount.length > 0) {
+  //       this.notificationCount = this.getNotificationCount.length;
+  //       this.notification = true;
+  //     }
+  //   },
+  //     onLogout() {
+  //     this.$emit("update:loggedinUser", null);
+  //     this.$emit("logout");
+  //   },
   },
   computed: {
     loggedinUser() {
       return this.$store.getters.loggedUser;
     },
-    getNotificationCount() {
-      return this.$store.getters.getRecieves;
+    notificationCount() {
+      return this.$store.getters.getRecieves.length;
     }
   },
   components: {}
-};
+}
 </script>
 
 <style scoped lang="scss">
@@ -96,7 +86,6 @@ p {
   width: fit-content;
 }
 .user-bar {
-  display: flex;
   align-items: center;
 }
 .helloMsg{
