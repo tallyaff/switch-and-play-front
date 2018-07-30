@@ -3,7 +3,6 @@
     <section class="show-match">
         <h1>it's a match</h1>
         <router-link :to="'/game'" type="button">back to gallery
-            <!-- <button>back to gallery</button> -->
         </router-link>
     </section>    
 </template>

@@ -32,9 +32,9 @@
                     <div class="username-time-container flex space-between align-center">
                       <div type="text" class="user-name-card-home">User Name</div>
                       <time class="time">{{ game.addedAt | getDate }}</time>
+                    </div>
                   </div>
-                  </div>
-                </el-card>
+              </el-card>
           </router-link>
             </li>
         </ul> 
@@ -113,15 +113,15 @@ export default {
   },
   computed: {
    gamesForBabyHomeDisplay(){
-      console.log('gamesForBabyHomeDisplay in home', this.$store.getters.gamesForBabyHomeDisplay);
+      // console.log('gamesForBabyHomeDisplay in home', this.$store.getters.gamesForBabyHomeDisplay);
       return this.$store.getters.gamesForBabyHomeDisplay
     },
    gamesForChildHomeDisplay(){
-      console.log('gamesForChildHomeDisplay in home', this.$store.getters.gamesForChildHomeDisplay);
+      // console.log('gamesForChildHomeDisplay in home', this.$store.getters.gamesForChildHomeDisplay);
       return this.$store.getters.gamesForChildHomeDisplay
     },
    gamesForTeenHomeDisplay(){
-      console.log('gamesForTeenHomeDisplay in home', this.$store.getters.gamesForTeenHomeDisplay);
+      // console.log('gamesForTeenHomeDisplay in home', this.$store.getters.gamesForTeenHomeDisplay);
       return this.$store.getters.gamesForTeenHomeDisplay
     },
   },
@@ -135,7 +135,7 @@ export default {
         });
     },
     setSearchHome() {
-      console.log('setSearchHome in cmp');      
+      // console.log('setSearchHome in cmp');      
       this.$store.dispatch({ type: 'setSearchHome', filterBy: this.filterBy })
           .then(games => {
             this.$router.push('/game');

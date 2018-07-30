@@ -7,7 +7,7 @@
         <li>{{currGame.desc}}</li>
         <li>{{currGame.type}}</li>
         <li>{{currGame.category}}</li>
-        <li>{{currGame.consition}}</li>
+        <li>{{currGame.condition}}</li>
         <li>{{currGame.addedAt}}</li>
       </ul>
       <game-request :game="currGame" v-if="requesting"></game-request>

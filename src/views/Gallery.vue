@@ -1,5 +1,6 @@
 <template>
 <section>
+  <div class="user-icons-container flex">
     <p v-if="loggedinUser">
         Hello: {{'loggedinUser'? loggedinUser.username: 'guest'}}
     </p>
