@@ -19,7 +19,7 @@
                                 <div class="flex column game-box">
                                     <h5>{{game.name}}</h5>
                                     <img :src="game.src"/>
-                                    <button @click="getMatch(game, recieve)">details </button>
+                                    <el-button @click="getMatch(game, recieve)" type="primary" class="details-btn">details </el-button>
                                 </div>
                             </li>
                         </ul>
@@ -77,5 +77,8 @@ export default {
     
     .games-box>h4 {
         margin-left: 40px;
+    }
+    .details-btn {
+        line-height: 0;
     }
 </style>

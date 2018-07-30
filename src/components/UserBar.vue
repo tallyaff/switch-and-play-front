@@ -4,7 +4,7 @@
             Hello {{'loggedinUser'? loggedinUser.username: 'guest'}}
             <router-link v-if="loggedinUser" :to="`/user/activity/${loggedinUser._id}/`">
               <!-- <button :class="notification? 'btn notification':'btn no-notification'" :setNotification="setNotification"> -->
-              <button :class="notification? 'btn notification':'btn no-notification'">
+              <button :class="notificationCount>0? 'btn notification':'btn no-notification'">
                   {{notificationCount}}
               </button>
             </router-link>
@@ -24,27 +24,27 @@ import UserService from "../services/UserService.js";
 import UtilService from "../services/UtilService.js";
 
 export default {
-  data() {
-    return {
-      notification: false,
-      notificationCount: 0
-    };
-  },
+  // data() {
+  //   // return {
+  //   //   notification: false,
+  //   //   notificationCount: 0
+  //   // };
+  // },
   created() {
     console.log('notification1: ', this.notificationCount);
     console.log('notification2: ', this.notification);
     console.log('%notification3: ', this.getNotificationCount.length);
-    this.setNotification()
-    // if (this.loggedinUser) {
-    //   this.$store
-    //     .dispatch({
-    //       type: "getMatch",
-    //       user: this.loggedinUser._id
-    //     })
-    //     .then(_ => {
-    //       this.setNotification();
-    //     });
-    // }
+    // this.setNotification()
+    if (this.loggedinUser) {
+      this.$store
+        .dispatch({
+          type: "getMatch",
+          user: this.loggedinUser._id
+        })
+        // .then(_ => {
+        //   this.setNotification();
+        // });
+    }
   },
   methods: {
     logout() {
@@ -64,8 +64,8 @@ export default {
     loggedinUser() {
       return this.$store.getters.loggedUser;
     },
-    getNotificationCount() {
-      return this.$store.getters.getRecieves;
+    notificationCount() {
+      return this.$store.getters.getRecieves.length;
     }
   },
   components: {}
