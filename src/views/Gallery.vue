@@ -7,14 +7,10 @@
     <router-link v-if="loggedinUser" :to="`/user/${loggedinUser._id}/`">
         <button>my profile</button>
     </router-link>
-    <router-link :to="'/game/edit/'">
-        <button class="btn btn-add-game" @click="checkIfDisplay">Add Game</button>
-    </router-link>
-  </div>
-  <div class="filter-images-container-gallery flex">
-    <GameFilter></GameFilter> 
-    <game-list :games="gamesForDisplay" @remove="removeGame"></game-list>
-  </div>
+    <div class="filter-images-container-gallery flex">
+        <GameFilter></GameFilter> 
+        <game-list :games="gamesForDisplay" @remove="removeGame"></game-list>
+    </div>
 </section>
 </template>
 
@@ -32,11 +28,16 @@ export default {
     Header
   },
   created() {
-    this.loadGames();
+    // this.loadGames();
+    console.log('this.gamesForDisplay in gallery', this.gamesForDisplay);    
+    // this.gamesForDisplay;
   },
   computed: {
+    // gamesForDisplay() {
+    //   return this.$store.getters.gamesForDisplay;
+    // },
     gamesForDisplay() {
-      return this.$store.getters.gamesForDisplay;
+      return this.$store.getters.gamesByFilterServer;
     },
     loggedinUser() {
       return this.$store.getters.loggedUser;
@@ -58,14 +59,14 @@ export default {
         });
       } else this.$router.push("/game/edit");
     },
-    loadGames() {
-      this.$store
-        .dispatch({ type: "loadGames" })
-        .then(games => {})
-        .catch(err => {
-          console.log("err", err);
-        });
-    },
+    // loadGames() {
+    //   this.$store
+    //     .dispatch({ type: "loadGames" })
+    //     .then(games => {})
+    //     .catch(err => {
+    //       console.log("err", err);
+    //     });
+    // },
     setNotification() {
       console.log("setNotification");
       if (this.getNotificationCount.length > 0) {
