@@ -1,13 +1,13 @@
 <template>
     <section>
         <div class="user-icons-container flex">
-            <p v-if="loggedinUser">
+            <!-- <p v-if="loggedinUser">
                 Hello: {{'loggedinUser'? loggedinUser.username: 'guest'}}
-            </p>
+            </p> -->
             <button @click="checkIfDisplay" class="btn btn-add-game">Add Game</button>
         </div>
         <div class="filter-images-container-gallery flex">
-            <GameFilter></GameFilter>
+            <!-- <GameFilter></GameFilter> -->
             <game-list :games="gamesForDisplay" @remove="removeGame"></game-list>
         </div>
     </section>

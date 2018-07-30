@@ -96,15 +96,15 @@ export default {
   },
   computed: {
    gamesForBabyHomeDisplay(){
-      console.log('gamesForBabyHomeDisplay in home', this.$store.getters.gamesForBabyHomeDisplay);
+      // console.log('gamesForBabyHomeDisplay in home', this.$store.getters.gamesForBabyHomeDisplay);
       return this.$store.getters.gamesForBabyHomeDisplay
     },
    gamesForChildHomeDisplay(){
-      console.log('gamesForChildHomeDisplay in home', this.$store.getters.gamesForChildHomeDisplay);
+      // console.log('gamesForChildHomeDisplay in home', this.$store.getters.gamesForChildHomeDisplay);
       return this.$store.getters.gamesForChildHomeDisplay
     },
    gamesForTeenHomeDisplay(){
-      console.log('gamesForTeenHomeDisplay in home', this.$store.getters.gamesForTeenHomeDisplay);
+      // console.log('gamesForTeenHomeDisplay in home', this.$store.getters.gamesForTeenHomeDisplay);
       return this.$store.getters.gamesForTeenHomeDisplay
     },
   },
@@ -118,7 +118,7 @@ export default {
         });
     },
     setSearchHome() {
-      console.log('setSearchHome in cmp');      
+      // console.log('setSearchHome in cmp');      
       this.$store.dispatch({ type: 'setSearchHome', filterBy: this.filterBy })
           .then(games => {
             this.$router.push('/game');
@@ -126,8 +126,7 @@ export default {
         })
     },
     setFilter() {
-      console.log('this.filterBy in home', this.filterBy);
-      
+      // console.log('this.filterBy in home', this.filterBy);
       this.$store.dispatch({ type: "setFilter", filterBy: this.filterBy });
     }, 
   },

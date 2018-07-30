@@ -1,15 +1,17 @@
 <template>
-    <div class="user-bar">
+    <div class="user-bar flex">
         <div v-if="loggedinUser" class="user-icons-container flex">
             Hello {{'loggedinUser'? loggedinUser.username: 'guest'}}
-            <router-link v-if="loggedinUser" :to="`/user/${loggedinUser._id}/`">
-                My profile
-            </router-link>
             <router-link v-if="loggedinUser" :to="`/user/activity/${loggedinUser._id}/`">
-                <button :class="notification? 'btn notification':'btn no-notification'" :setNotofication="setNotification">
-                    {{notificationCount}}
-                </button>
+              <!-- <button :class="notification? 'btn notification':'btn no-notification'" :setNotification="setNotification"> -->
+              <button :class="notification? 'btn notification':'btn no-notification'">
+                  {{notificationCount}}
+              </button>
             </router-link>
+            <router-link v-if="loggedinUser" :to="`/user/${loggedinUser._id}/`">
+                  My profile
+            </router-link>
+            
         </div>
         <p v-else>
             Hello Guest
@@ -22,23 +24,27 @@ import UserService from "../services/UserService.js";
 import UtilService from "../services/UtilService.js";
 
 export default {
-  created() {
-    if (this.loggedinUser) {
-      this.$store
-        .dispatch({
-          type: "getMatch",
-          user: this.loggedinUser._id
-        })
-        .then(_ => {
-          this.setNotification();
-        });
-    }
-  },
   data() {
     return {
       notification: false,
       notificationCount: 0
     };
+  },
+  created() {
+    console.log('notification1: ', this.notificationCount);
+    console.log('notification2: ', this.notification);
+    console.log('%notification3: ', this.getNotificationCount.length);
+    this.setNotification()
+    // if (this.loggedinUser) {
+    //   this.$store
+    //     .dispatch({
+    //       type: "getMatch",
+    //       user: this.loggedinUser._id
+    //     })
+    //     .then(_ => {
+    //       this.setNotification();
+    //     });
+    // }
   },
   methods: {
     logout() {
@@ -47,7 +53,7 @@ export default {
       this.$router.push("/");
     },
     setNotification() {
-      console.log("setNotification");
+      // console.log("setNotification");
       if (this.getNotificationCount.length > 0) {
         this.notificationCount = this.getNotificationCount.length;
         this.notification = true;
@@ -90,7 +96,6 @@ p {
   width: fit-content;
 }
 .user-bar {
-  display: flex;
   align-items: center;
 }
 </style>

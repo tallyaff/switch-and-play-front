@@ -61,11 +61,10 @@ export default {
   methods: {
     login() {
       // console.log("login user##", this.user);
-      this.$store
-        .dispatch({
-          type: "getUser",
-          user: this.user
-        })
+      this.$store.dispatch ({
+            type: "getUser",
+            user: this.user
+            })
         .then(_ => {
             console.log(this.user.username,'res login function before emit eventbus')
           eventBus.$emit(EVENT_LOGIN_USER, this.user.username);
