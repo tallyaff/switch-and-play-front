@@ -1,16 +1,11 @@
 <template>
 <section>
   <div class="user-icons-container flex">
-    <p v-if="loggedinUser">
-        Hello: {{'loggedinUser'? loggedinUser.username: 'guest'}}
-    </p>
-    <router-link v-if="loggedinUser" :to="`/user/${loggedinUser._id}/`">
-        <button>my profile</button>
-    </router-link>
     <div class="filter-images-container-gallery flex">
         <GameFilter></GameFilter> 
         <game-list :games="gamesForDisplay" @remove="removeGame"></game-list>
     </div>
+  </div>
 </section>
 </template>
 

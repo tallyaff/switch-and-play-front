@@ -9,19 +9,22 @@ import './assets/scss/style.scss'
 import axios from 'axios'
 import moment from 'moment'
 
-// far fa-trash-alt
-// far faTrashAlt
-
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faCoffee } from '@fortawesome/free-solid-svg-icons'
-import { faTrashAlt } from '@fortawesome/free-regular-svg-icons'
+import { faInfo } from '@fortawesome/free-solid-svg-icons'
+import { faTrash } from '@fortawesome/free-solid-svg-icons'
+import { faPen } from '@fortawesome/free-solid-svg-icons'
+import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add(faCoffee)
-library.add(faTrashAlt)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
+library.add(faCoffee);
+library.add(faInfo);
+library.add(faTrash);
+library.add(faPen);
+library.add(faPlus);
 
 /* eslint-disable no-new */
 // new Vue({

@@ -22,46 +22,6 @@
                     <el-checkbox class="checkbox-filter" :label='oneCategory' :value="oneCategory" v-model="filterBy.type" @change="setFilter">{{oneCategory}}</el-checkbox>
                 </li>
               </ul>
-         
-             <!-- <label >
-              <input type="checkbox" name="feature" value="all-types" v-model="filterBy.allTypes" @change="setFilter"/>All types
-            </label>
-            <label >
-              <input type="checkbox" name="feature" value="baby" v-model="filterBy.type" @change="setFilter"/>Baby
-            </label>
-            <label >
-              <input type="checkbox" name="feature" value="child" v-model="filterBy.type" @change="setFilter"/>Child
-            </label>
-            <label >
-              <input type="checkbox" name="feature" value="teen" v-model="filterBy.type" @change="setFilter"/>Teen
-            </label> -->
-        <!-- </div>
-        <div>
-            <h3>Category</h3>
-            <label >
-              <input type="checkbox" name="feature" value="all-categories" v-model="filterBy.allCategories" @change="setFilter"/>All categories
-            </label>
-             <label >
-              <input type="checkbox" name="feature" value="console" v-model="filterBy.category" @change="setFilter"/>Console
-            </label>
-             <label >
-              <input type="checkbox" name="feature" value="doll" v-model="filterBy.category" @change="setFilter"/>Doll
-            </label>
-             <label >
-              <input type="checkbox" name="feature" value="board-game" v-model="filterBy.category" @change="setFilter"/>Board game
-            </label>
-             <label >
-              <input type="checkbox" name="feature" value="lego" v-model="filterBy.category" @change="setFilter"/>Lego
-            </label>
-             <label >
-              <input type="checkbox" name="feature" value="playmobil" v-model="filterBy.category" @change="setFilter"/>Playmobil
-            </label>
-             <label >
-              <input type="checkbox" name="feature" value="puzzle" v-model="filterBy.category" @change="setFilter"/>Puzzle
-            </label>
-             <label >
-              <input type="checkbox" name="feature" value="wheels" v-model="filterBy.category" @change="setFilter"/>Wheels
-            </label> -->
         </div>
         </div>
   </div>
