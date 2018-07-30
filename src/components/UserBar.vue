@@ -24,27 +24,9 @@ import UserService from "../services/UserService.js";
 import UtilService from "../services/UtilService.js";
 
 export default {
-  // data() {
-  //   // return {
-  //   //   notification: false,
-  //   //   notificationCount: 0
-  //   // };
-  // },
   created() {
     console.log('notification1: ', this.notificationCount);
     console.log('notification2: ', this.notification);
-    // console.log('%notification3: ', this.getNotificationCount.length); 
-    // this.setNotification()
-    if (this.loggedinUser) {
-      this.$store
-        .dispatch({
-          type: "getMatch",
-          user: this.loggedinUser._id
-        })
-        // .then(_ => {
-        //   this.setNotification();
-        // });
-    }
   },
   methods: {
     logout() {
@@ -52,13 +34,6 @@ export default {
       this.$store.commit({ type: "logoutUser" });
       this.$router.push("/");
     },
-    setNotification() {
-      // console.log("setNotification");
-      if (this.getNotificationCount.length > 0) {
-        this.notificationCount = this.getNotificationCount.length;
-        this.notification = true;
-      }
-    }
   },
   computed: {
     loggedinUser() {
@@ -69,7 +44,7 @@ export default {
     }
   },
   components: {}
-};
+}
 </script>
 
 <style scoped lang="scss">

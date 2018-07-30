@@ -13,7 +13,7 @@
           <h2 class="type-title-home">Baby</h2>
         </router-link>
         <ul v-if="gamesForBabyHomeDisplay" class="cards-container-home align-center flex justify-center clean-list">
-            <li v-for="game in gamesForBabyHomeDisplay.slice(0,5)" :key="game._id"> 
+            <li v-for="game in gamesForBabyHomeDisplay.slice(0,3)" :key="game._id"> 
           <!-- <router-link :to="`/game`"> -->
           <router-link :to="`/game/${game._id}/`" target="_blank">
               <el-card class="card-home">
@@ -50,30 +50,78 @@
         <router-link :to="'/game'">
           <h2 class="type-title-home">Child</h2>
         </router-link>
-            <ul v-if="gamesForChildHomeDisplay">
+        <i class="fas fa-angle-left"></i>
+        <ul v-if="gamesForChildHomeDisplay" class="cards-container-home align-center flex justify-center clean-list">
+          <button class="arrow-btn">◀</button>
+          <li v-for="game in gamesForChildHomeDisplay.slice(0,3)" :key="game._id"> 
+              <!-- <router-link :to="`/game`"> -->
+            <router-link :to="`/game/${game._id}/`" target="_blank">
+            <el-card class="card-home">
+                <div v-if="game.isNew" class="game-new-icon"><img src="img/new-icon.png"></div>
+                <div class="image-container flex align-center justify-center">
+                  <img :src="game.src" class="image-card">  
+                </div>
+                <div class="card-text-container">
+                  <span class="card-game-name">{{game.name}}</span>
+                  <div :userId="game._id" class="username-time-container flex space-between align-center">
+                    <div type="text" class="user-name-card-home">User Name</div>
+                    <time class="time">{{ game.addedAt | getDate }}</time>
+                  </div>
+                </div>
+            </el-card>
+          </router-link>
+            </li>
+            <button class="arrow-btn">▶</button>
+        </ul> 
+        <i class="fas fa-angle-right"></i>
+            <!-- <ul v-if="gamesForChildHomeDisplay">
               <li v-for="game in gamesForChildHomeDisplay" :key="game._id"> 
                 <div>{{game.name}}</div>
               </li>
-            </ul>
+            </ul> -->
       </div>
       <div class="filter-type home-teen-filter-container" >
          <router-link :to="'/game'">
           <h2 class="type-title-home">Teen</h2>
         </router-link>
-            <ul v-if="gamesForTeenHomeDisplay">
-              <li v-for="game in gamesForTeenHomeDisplay" :key="game._id"> 
-                <div>{{game.name}}</div>
-              </li>
-            </ul>
+            <ul v-if="gamesForTeenHomeDisplay" class="cards-container-home align-center flex justify-center clean-list">
+            <li v-for="game in gamesForTeenHomeDisplay.slice(0,3)" :key="game._id"> 
+              <!-- <router-link :to="`/game`"> -->
+              <router-link :to="`/game/${game._id}/`" target="_blank">
+              <el-card class="card-home">
+                  <div v-if="game.isNew" class="game-new-icon"><img src="img/new-icon.png"></div>
+                  <div class="image-container flex align-center justify-center">
+                    <img :src="game.src" class="image-card">  
+                  </div>
+                  <!-- <div class="card-text-container" style="padding: 14px;"> -->
+                  <div class="card-text-container">
+                    <span class="card-game-name">{{game.name}}</span>
+                    <div class="username-time-container flex space-between align-center">
+                      <div type="text" class="user-name-card-home">User Name</div>
+                      <time class="time">{{ game.addedAt | getDate }}</time>
+                      <gameUser :userId="game.userId"></gameUser>
+                    </div>
+                  </div>
+              </el-card>
+          </router-link>
+            </li>
+        </ul> 
       </div>
     </div>
   </div>
+            <!-- <ul v-if="gamesForTeenHomeDisplay">
+              <li v-for="game in gamesForTeenHomeDisplay" :key="game._id"> 
+                <div>{{game.name}}</div>
+              </li>
+            </ul> -->
 </template>
 
 <script>
 import GameService from '@/services/GameService.js';
+import UserService from '@/services/UserService.js';
 import Gallery from '@/views/Gallery.vue'
 import GameFilter from '@/components/GameFilter.vue';
+import gameUser from '@/components/GameUser.vue';
 import { eventBus, EVENT_SET_FILTER } from '@/services/EventBusService.js';
 
 // import Gallery from '@/views/Gallery.vue'
@@ -82,6 +130,7 @@ export default {
   name: 'home',
   components: {
     GameFilter,
+    gameUser,
     // Gallery,
 
   },
@@ -143,6 +192,14 @@ export default {
       this.filterBy.type = [type]
       this.$store.dispatch({ type: "setFilter", filterBy: this.filterBy });
     }, 
+    getGameUser(userId) {
+      console.log('userId&&&', userId);
+      UserService.getUserById(userId)
+      .then(user => {
+        console.log('user from server&&&', user);
+        return user
+      })
+    }
   },
 };
 </script>
@@ -282,7 +339,11 @@ export default {
       clear: both
   }
 
- 
+ .arrow-btn {
+   background-color: inherit;
+   border: none;
+   font-size: 2em;
+ }
 
 
 </style>

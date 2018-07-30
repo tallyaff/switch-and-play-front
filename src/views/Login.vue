@@ -69,21 +69,24 @@ export default {
   methods: {
     login() {
       this.$router.push('/game')
-      // console.log("login user##", this.user);
+      console.log("login user##", this.user);
       this.$store.dispatch ({
             type: "getUser",
             user: this.user
+        })
+        .then(user => {
+            console.log('user$$:', user);
+            this.$store.dispatch({
+            type: 'getMatch', 
+            user: user._id
+            })
+            debugger
         })
         .then(_ => {
             console.log(this.user.username,'res login function before emit eventbus')
           eventBus.$emit(EVENT_LOGIN_USER, this.user.username);
         })
         .catch(err => console.log(err));
-      console.log('userId$$:', this.user._id);
-      this.$store.dispatch({
-            type: 'getMatch', 
-            user: this.user._id
-      })
     },
 
     signup() {

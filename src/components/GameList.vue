@@ -1,11 +1,6 @@
 <template>
   <div class="game-list flex ">
-  <!-- <div class="game-list masonry"> -->
-            <!-- <router-link v-if="user.isAdmin" tag="button" to="/toy/edit/">Add</router-link> -->
-            <!-- <ul class="game-cards-container" v-if="games"> -->
             <ul class="game-cards-container flex space-between" v-if="games">
-            <!-- <li v-if="currToys" v-for="(toy ,idx) in currToys" :key="toy._id">
-                {{idx}} -->
                 <li class="game clean-list" v-for="game in games" :key="game._id">
                 <!-- <li class="masonry" v-if="games" v-for="game in games" :key="game._id"> -->
                     <game-preview  :game="game"
@@ -13,7 +8,6 @@
                      >
                     
                      </game-preview>
-                    <!-- {{toy.name}} -->
 
                 </li>
             </ul>
