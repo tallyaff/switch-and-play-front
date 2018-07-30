@@ -5,7 +5,8 @@
             <!-- <button>Search</button> -->
             <el-button class="btn search-btn" type="primary">Search</el-button>
         </form>
-              <el-checkbox class="checkbox-filter" label="All" value="all" v-model="filterBy.allByName" @change="setFilter">All</el-checkbox>
+        <div class="checkbox-filter-container">
+        <el-checkbox class="checkbox-filter" label="All" value="all" v-model="filterBy.allByName" @change="setFilter">All</el-checkbox>
         <div>
             <h3>Type</h3>
                 <el-checkbox class="checkbox-filter" label="All types" value="all-types" v-model="filterBy.allTypes" @change="setFilter"></el-checkbox>
@@ -22,10 +23,6 @@
                 </li>
               </ul>
          
-
-
-
-
              <!-- <label >
               <input type="checkbox" name="feature" value="all-types" v-model="filterBy.allTypes" @change="setFilter"/>All types
             </label>
@@ -66,12 +63,14 @@
               <input type="checkbox" name="feature" value="wheels" v-model="filterBy.category" @change="setFilter"/>Wheels
             </label> -->
         </div>
+        </div>
   </div>
 </template>
 
 <script>
 import debounce from 'lodash.debounce';
 import GameService from '@/services/GameService.js';
+import { eventBus, EVENT_SET_FILTER } from '@/services/EventBusService.js';
 
 export default {
   name: 'home',
@@ -104,6 +103,12 @@ export default {
     console.log('allFilterTypes in home', this.allFilterTypes);
     this.allFilterCategories = this.$store.getters.categories;
     console.log('allFilterCategories in home', this.allFilterCategories);
+        
+    eventBus.$on(EVENT_SET_FILTER, filterBy => {
+      this.filterBy = filterBy;
+      console.log('this.filterBy in filter cmp after eventBus', this.filterBy);
+    })
+        
   },
   computed: {
     // allFilterTypes(){
@@ -145,6 +150,10 @@ export default {
 
   .filter-gallery-container {
     width: 250px;
+  }
+
+  .checkbox-filter-container {
+    // justify-content: flex-start;
   }
 
   .checkbox-filter {

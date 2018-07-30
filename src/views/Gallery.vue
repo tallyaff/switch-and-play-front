@@ -1,30 +1,36 @@
 <template>
-    <section>
-        <div class="user-icons-container flex">
-            <!-- <p v-if="loggedinUser">
-                Hello: {{'loggedinUser'? loggedinUser.username: 'guest'}}
-            </p> -->
-            <button @click="checkIfDisplay" class="btn btn-add-game">Add Game</button>
-        </div>
-        <div class="filter-images-container-gallery flex">
-            <!-- <GameFilter></GameFilter> -->
-            <game-list :games="gamesForDisplay" @remove="removeGame"></game-list>
-        </div>
-    </section>
+<section>
+  <div class="user-icons-container flex">
+    <p v-if="loggedinUser">
+        Hello: {{'loggedinUser'? loggedinUser.username: 'guest'}}
+    </p>
+    <router-link v-if="loggedinUser" :to="`/user/${loggedinUser._id}/`">
+        <button>my profile</button>
+    </router-link>
+    <router-link :to="'/game/edit/'">
+        <button class="btn btn-add-game" @click="checkIfDisplay">Add Game</button>
+    </router-link>
+  </div>
+  <div class="filter-images-container-gallery flex">
+    <GameFilter></GameFilter> 
+    <game-list :games="gamesForDisplay" @remove="removeGame"></game-list>
+  </div>
+</section>
 </template>
 
 <script>
-import GameFilter from "@/components/GameFilter.vue";
 import GameList from "@/components/GameList.vue";
+import GameFilter from "@/components/GameFilter.vue";
+import Header from "@/components/Header.vue";
 import swal from "sweetalert";
 
 export default {
   name: "Gallery",
   components: {
     GameList,
-    GameFilter
+    GameFilter,
+    Header
   },
-
   created() {
     this.loadGames();
   },
@@ -105,6 +111,11 @@ export default {
 }
 </style>
 
+<style scoped lang="scss">
+@import "~@/assets/scss/style.scss";
+.filter-images-container-gallery {
+}
+</style>
     
 
 
