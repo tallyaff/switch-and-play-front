@@ -28,11 +28,16 @@ export default {
 
   a {
     padding: 10px;
-    color: #2c3e50;
+    color: $secondary-color;
+    // color:	#362026;
+    transition: all 0.3s ease;
     position: relative;
     text-decoration: none;
     &.router-link-exact-active {
-      color: $secondary-color;
+      color: $main-color;
+    }
+    &:hover {
+      color: $main-color;
     }
   }
 }

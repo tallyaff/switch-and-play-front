@@ -7,9 +7,23 @@
 
 <script>
 import Header from "@/components/Header.vue";
+import UtilService from '@/services/UtilService.js'
+
 export default {
   components: {
     Header
+  },
+  data(){
+    return{
+      currUser : UtilService.load('loggedinUser') || null
+    }
+  },
+  created(){
+     this.$store
+        .commit({
+          type: "setUser",
+          currUser: this.currUser
+        })
   }
 };
 </script>

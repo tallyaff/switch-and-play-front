@@ -42,11 +42,14 @@ export default {
 
 <style scoped lang="scss">
 .header {
+  font-family: 'Ubuntu-regular';
   box-shadow: 0px 0.5px 4px 0px #d9d8d8;
   display: flex;
   justify-content: space-around;
+  font-size: 22px;
 }
 img{
       margin-top: 18px;
 }
+
 </style>
