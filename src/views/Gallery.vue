@@ -11,6 +11,7 @@
         <GameFilter></GameFilter> 
         <game-list :games="gamesForDisplay" @remove="removeGame"></game-list>
     </div>
+  </div>
 </section>
 </template>
 

@@ -33,7 +33,7 @@ export default {
   created() {
     console.log('notification1: ', this.notificationCount);
     console.log('notification2: ', this.notification);
-    console.log('%notification3: ', this.getNotificationCount.length);
+    // console.log('%notification3: ', this.getNotificationCount.length); 
     // this.setNotification()
     if (this.loggedinUser) {
       this.$store
