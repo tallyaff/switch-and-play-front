@@ -63,9 +63,10 @@
                 </div>
                 <div class="card-text-container">
                   <span class="card-game-name">{{game.name}}</span>
-                  <div :userId="game._id" class="username-time-container flex space-between align-center">
+                  <div class="username-time-container flex space-between align-center">
                     <div type="text" class="user-name-card-home">User Name</div>
                     <time class="time">{{ game.addedAt | getDate }}</time>
+                    <gameUser :userId="game.userId"></gameUser>
                   </div>
                 </div>
             </el-card>
@@ -99,7 +100,7 @@
                     <div class="username-time-container flex space-between align-center">
                       <div type="text" class="user-name-card-home">User Name</div>
                       <time class="time">{{ game.addedAt | getDate }}</time>
-                      <gameUser :userId="game.userId"></gameUser>
+                      
                     </div>
                   </div>
               </el-card>
@@ -192,14 +193,6 @@ export default {
       this.filterBy.type = [type]
       this.$store.dispatch({ type: "setFilter", filterBy: this.filterBy });
     }, 
-    getGameUser(userId) {
-      console.log('userId&&&', userId);
-      UserService.getUserById(userId)
-      .then(user => {
-        console.log('user from server&&&', user);
-        return user
-      })
-    }
   },
 };
 </script>
