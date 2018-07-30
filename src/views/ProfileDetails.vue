@@ -1,14 +1,12 @@
 <template>
     <section class="profile-details-page flex justify-center align-center column" v-if="loggedinUser">
         <router-link :to="'/game/edit/'">
-            <el-button v-if="loggedinUser" class="btn add-game-btn" type="primary" @click="checkIfDisplay"><font-awesome-icon icon="plus" /> Game</el-button>
-        </router-link>
-        <router-link v-if="loggedinUser" :to="`/user/activity/${loggedinUser._id}`">
-            <el-button class="btn activities-profile-btn" type="primary">My activities</el-button>
         </router-link>
         <div class="my-profile">
-            <h2 class="headres-in-profile-details">My profile</h2>
-            <button v-if="loggedinUser" v-show="!isEdit" class="btn icon-btn edit-profile-btn" type="primary" @click="editProfile"><font-awesome-icon icon="pen" /></button>
+            <div class="profile-edit-container flex justify-center">
+                <h2 class="headres-in-profile-details my-profile-header">My profile</h2>
+                <button v-if="loggedinUser" v-show="!isEdit" class="btn icon-btn edit-profile-btn" type="primary" @click="editProfile"><font-awesome-icon icon="pen" /></button>
+            </div>
             <div v-if="copiedUser">
             <el-form v-if="isEdit" class="edit-user-profile no-margin" :label-position="labelPosition" @submit.native.prevent="saveUserProfile">
               <el-form-item class="form-item" label="username">
@@ -28,9 +26,12 @@
               <el-button @click="unSaveUserProfile">Cancel</el-button>
           </el-form>
         </div>
-        <h2 class="headres-in-profile-details">Your games:</h2>
-        <ul class="cards-in-profile-container flex align-center justify-center" v-if="games">
-           <li class="game" v-for="game in games" :key="game._id">
+        <div class="my-games-header-container flex column">
+            <h2 class="headres-in-profile-details header-your-games">Your games:</h2>
+            <el-button v-if="loggedinUser" class="btn add-game-btn" type="primary" @click="checkIfDisplay"><font-awesome-icon icon="plus" />&nbsp;&nbsp;Game</el-button>
+        </div>
+            <ul class="cards-in-profile-container flex align-center justify-center" v-if="games">
+            <li class="game" v-for="game in games" :key="game._id">
                 <!-- <game-preview :game="game" :gameCheckbox="gameCheckbox" @check="updateGamesToSwitch"> -->
                 <el-card class="card-in-profile-details flex justify-center align-center pointer">
                     <!-- <game-preview :game="game"></game-preview> -->
@@ -42,12 +43,14 @@
                         <time class="time">{{ game.addedAt | getDate }}</time>
                     </div>
                     </div>
+                    <div class="edit-remove-btns-container">
                         <button class="btn icon-btn btn-remove" @click="$emit('remove', game._id)"> <font-awesome-icon icon="trash" /></button> 
                         <!-- <button class="btn icon-btn btn-remove" @click="$emit('remove', game._id)"><i class="fa fa-trash"></i></button>  -->
                         <router-link class="icon-btn btn-edit" :to="'/game/edit/'+game._id"><font-awesome-icon icon="pen" /></router-link> 
+                    </div>
                 </el-card>
-            </li>
-        </ul>
+                </li>
+            </ul>
         </div>
     </section>
 </template>
@@ -138,6 +141,14 @@ export default {
         background-color: $main-color;
     }
 
+    .profile-edit-container, .header-your-games {
+        margin-bottom: rem(20px);
+    }
+
+    .my-profile-header {
+        padding: rem(20px);
+    }
+
     .edit-user-profile {
         border: 1px solid $main-color;
         width: rem(500px);
@@ -148,16 +159,21 @@ export default {
         text-transform: capitalize;
     }
 
+    .add-game-btn {
+        align-self: flex-start;
+        position: relative;
+        left: rem(60px);
+    }
+
     .cards-in-profile-container {
         flex-wrap: wrap;
         width: 1200px;
-
     }
 
     .headres-in-profile-details {
         font-size: rem(30px);
         font-family: 'Ubuntu';
-        margin-bottom: rem(20px);
+        // margin-bottom: rem(20px);
     }
 
     .card-in-profile-details {
