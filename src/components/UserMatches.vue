@@ -39,10 +39,10 @@ export default {
         console.log('matches:&&', this.matches);
     },
     computed: {
-        showGame(){
-            // console.log('show:@@', this.matches);
-            return this.$store.getters.gameForDisplay
-        }
+        // showGame(){
+        //     // console.log('show:@@', this.matches);
+        //     return this.$store.getters.gameForDisplay
+        // }
     }
 }
 </script>

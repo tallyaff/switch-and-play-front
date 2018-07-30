@@ -6,6 +6,8 @@
 </template>
 
 <script>
+import UserService from '@/services/UserService.js';
+
 export default {
     name: "GameUser",
     props: ["userId"],
@@ -17,10 +19,10 @@ export default {
     created() {
         this.getGameUser
         console.log('user??!!', this.user);
-        
     },
-    methods: {
-        getGameUser(userId) {
+    computed: {
+        getGameUser() {
+            var userId = this.userId
             console.log('userId&&&', userId);
             UserService.getUserById(userId)
             .then(user => {
