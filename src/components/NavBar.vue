@@ -30,33 +30,17 @@ export default {
 
   a {
     padding: 10px;
-    color: #2c3e50;
+    color: $secondary-color;
+    // color:	#362026;
+    transition: all 0.3s ease;
     position: relative;
     text-decoration: none;
     &.router-link-exact-active {
-      color: $secondary-color;
+      color: $main-color;
+    }
+    &:hover {
+      color: $main-color;
     }
   }
 }
-  //  .nav a:before {
-  //     content:'';
-  //     position: absolute;
-  //     width: 100%;
-  //     height: 2px;
-  //     bottom: 0;
-  //     left: 0;
-  //   //   background-color: #000;
-  //     visibility: hidden;
-  //     -webkit-transform: scaleX(0);
-  //     transform: scaleX(0);
-  //     -webkit-transition: all 0.3s ease-in-out 0s;
-  //     transition: all 0.3s ease-in-out 0s;
-  //   }
-  //  .nav a:hover:before {
-  //     visibility: visible;
-  //     -webkit-transform: scaleX(1);
-  //     transform: scaleX(1);
-  //   }
-  
-
 </style>

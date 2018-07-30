@@ -8,9 +8,14 @@ import './registerServiceWorker'
 import './assets/scss/style.scss'
 import axios from 'axios'
 import moment from 'moment'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faCoffee, faUser, faBell } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
+library.add(faCoffee,faUser,faBell)
 
 Vue.use(require('vue-moment'));
+Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 Vue.filter('getDate', (timestamp) => {  
   return moment(timestamp).fromNow();

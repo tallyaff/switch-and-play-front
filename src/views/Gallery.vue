@@ -1,11 +1,5 @@
 <template>
 <section>
-    <p v-if="loggedinUser">
-        Hello: {{'loggedinUser'? loggedinUser.username: 'guest'}}
-    </p>
-    <router-link v-if="loggedinUser" :to="`/user/${loggedinUser._id}/`">
-        <button>my profile</button>
-    </router-link>
     <router-link :to="'/game/edit/'">
         <button class="btn btn-add-game" @click="checkIfDisplay">Add Game</button>
     </router-link>

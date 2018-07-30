@@ -1,20 +1,23 @@
 <template>
     <div class="user-bar">
-        <div v-if="loggedinUser" class="user-icons-container flex">
-            Hello {{'loggedinUser'? loggedinUser.username: 'guest'}}
-            <router-link v-if="loggedinUser" :to="`/user/${loggedinUser._id}/`" >
-                My profile
+        <div v-if="loggedinUser" class="user-bar-container flex space-evenly">
+            <p class="userMsg">Hello {{'loggedinUser'? loggedinUser.username: 'guest'}}</p>
+            <div class="user-icon-container">
+            <router-link v-if="loggedinUser" :to="`/user/${loggedinUser._id}/`">
+                <font-awesome-icon icon="user" />
             </router-link>
             <router-link v-if="loggedinUser" :to="`/user/activity/${loggedinUser._id}/`">
-                <button :class="notification? 'btn notification':'btn no-notification'" :setNotofication="setNotification">
-                    {{notificationCount}}
-                </button>
+                <!-- :class="notificationCount > 0? 'btn notification':'btn no-notification'" :setNotofication="setNotification" -->
+                <el-badge :value="notificationCount">
+                    <font-awesome-icon icon="bell" />
+                </el-badge>
             </router-link>
-            <button @click="onLogout">Logout</button>
+            <button class="btn-logout" @click="onLogout">Logout</button>
+        </div>
         </div>
         <div v-else>
-        <p class="helloMsg">Hello Guest</p>
-        <router-link  to="/login">Login</router-link>
+            <p class="helloMsg">Hello Guest</p>
+            <router-link to="/login">Login</router-link>
         </div>
     </div>
 </template>
@@ -26,20 +29,18 @@ import UtilService from "../services/UtilService.js";
 export default {
   created() {
     if (this.loggedinUser) {
-      this.$store
-        .dispatch({
-          type: "getMatch",
-          user: this.loggedinUser._id
-        })
-        .then(_ => {
-          this.setNotification();
-        });
+      this.$store.dispatch({
+        type: "getMatch",
+        user: this.loggedinUser._id
+      });
+      // .then(_ => {
+      //   this.setNotification();
+      // });
     }
   },
   data() {
     return {
-      notification: false,
-      notificationCount: 0
+      // notification: false,
     };
   },
   methods: {
@@ -48,27 +49,26 @@ export default {
       this.$store.commit({ type: "logoutUser" });
       this.$router.push("/");
     },
-    setNotification() {
-      console.log("setNotification");
-      if (this.getNotificationCount.length > 0) {
-        this.notificationCount = this.getNotificationCount.length;
-        this.notification = true;
-      }
-    },
-      onLogout() {
+    // setNotification() {
+    //   console.log("setNotification");
+    //   if (this.getNotificationCount.length > 0) {
+    //     this.notificationCount = this.getNotificationCount.length;
+    //     this.notification = true;
+    //   }
+    // },
+    onLogout() {
       this.$emit("update:loggedinUser", null);
       this.$emit("logout");
-    },
+    }
   },
   computed: {
     loggedinUser() {
       return this.$store.getters.loggedUser;
     },
-    getNotificationCount() {
-      return this.$store.getters.getRecieves;
+    notificationCount() {
+      return this.$store.getters.getRecieves.length;
     }
-  },
-  components: {}
+  }
 };
 </script>
 
@@ -99,8 +99,40 @@ p {
   display: flex;
   align-items: center;
 }
-.helloMsg{
+.helloMsg {
+  color: #f56c6c;
   font-size: 16px;
   margin-top: 5px;
+}
+.btn-logout {
+  color: $secondary-color;
+  cursor: pointer;
+  font-size: 16px;
+  border: none;
+  background-color: transparent;
+    &:hover {
+    color: $main-color;
+  }
+}
+.userMsg {
+  color: #f56c6c;
+  font-size: 16px;
+  position: absolute;
+  margin-top: -30px;
+}
+a {
+  &:hover {
+    color: $main-color;
+  }
+}
+.user-icon-container{
+  color: $secondary-color;
+    display: flex;
+    width: 150px;
+    justify-content: space-around;
+
+    a{
+       transition: all 0.3s ease;
+    }
 }
 </style>
