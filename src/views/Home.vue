@@ -1,11 +1,11 @@
 <template>
   <div class="home">
-    <div class="home-bg-img flex justify-center align-center" :style="{backgroundImage: url, backgroundSize: 'cover', backgroundPosition: 'center', backgroundrepeat: 'no-repeat'}">
-      <form @submit.prevent="setSearchHome" class="search">
-          <input class="search-input" type="text" v-model="filterBy.name" placeholder="Search for games">
-          <el-button class="btn search-btn" type="primary">Search</el-button>
-      </form>
-    </div>
+      <div class="home-bg-img flex justify-center align-center" :style="{backgroundImage: url, backgroundSize: 'cover', backgroundPosition: 'center', backgroundrepeat: 'no-repeat'}">
+        <form @submit.prevent="setSearchHome" class="search">
+            <input class="search-input" type="text" v-model="filterBy.name" placeholder="Search for games">
+            <el-button class="btn search-btn" type="primary">Search</el-button>
+        </form>
+      </div>
     <div class="all-cards-home-container">
       <div class="filter-type home-filter-container home-filter-container-baby flex column align-center justify-center" >
         <!-- <router-link :to="'/game'" value="baby" v-model="filterBy.type" @click.native="setFilter"> -->
@@ -13,7 +13,7 @@
           <h2 class="type-title-home">Baby</h2>
         </router-link>
         <ul v-if="gamesForBabyHomeDisplay" class="cards-container-home align-center flex justify-center clean-list">
-            <li v-for="game in gamesForBabyHomeDisplay.slice(0,5)" :key="game._id"> 
+            <li v-for="game in gamesForBabyHomeDisplay.slice(0,3)" :key="game._id"> 
           <!-- <router-link :to="`/game`"> -->
           <router-link :to="`/game/${game._id}/`" target="_blank">
               <el-card class="card-home">
@@ -37,20 +37,14 @@
 
 
 
-  <!-- <el-carousel :interval="5000" arrow="always">
-    <el-carousel-item v-for="item in 4" :key="item">
-      <h3>{{ item }}</h3>
-    </el-carousel-item>
-  </el-carousel> -->
+                  <!-- <el-carousel :interval="5000" arrow="always">
+                    <el-carousel-item v-for="item in 4" :key="item">
+                      <h3>{{ item }}</h3>
+                    </el-carousel-item>
+                  </el-carousel> -->
 
 
-
-
-      <div class="filter-type home-child-filter-container" >
-        <router-link :to="'/game'">
-          <h2 class="type-title-home">Child</h2>
-        </router-link>
-            <div class="filter-type home-child-filter-container" >
+          <div class="filter-type home-child-filter-container" >
             <router-link :to="'/game'">
               <h2 class="type-title-home">Child</h2>
             </router-link>
@@ -95,7 +89,6 @@
       </div>
 
     </div>
-  </div>
 </template>
 
 <script>
