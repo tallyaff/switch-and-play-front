@@ -173,6 +173,7 @@ export default {
         });
     },
     setSearchHome() {
+      this.allByName = true;
       // console.log('setSearchHome in cmp');      
       this.$store.dispatch({ type: 'setSearchHome', filterBy: this.filterBy })
           .then(games => {
@@ -186,6 +187,13 @@ export default {
       this.filterBy.type = [type]
       this.$store.dispatch({ type: "setFilter", filterBy: this.filterBy });
     }, 
+    // setFilter(criteria = {type: [], name: ''}) {
+    //   console.log('this.filterBy in home', type);
+    //   // eventBus.$emit(EVENT_SET_FILTER, this.filterBy);
+    //   if(criteria.name) this.filterBy.name = criteria.name;
+    //   if(criteria.type) this.filterBy.type = criteria.type;
+    //   this.$store.dispatch({ type: "setFilter", filterBy: this.filterBy });
+    // }, 
   },
 };
 </script>
