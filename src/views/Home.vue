@@ -24,10 +24,14 @@
                   </div>
                   <!-- <div class="card-text-container" style="padding: 14px;"> -->
                   <div class="card-text-container flex justify-center align-center column">
-                    <span class="card-game-name">{{game.name}}</span>
-                    <div class="username-time-container flex space-between align-center space-between">
-                      <div type="text" class="user-name-card-home">User Name</div>
-                      <time class="time">{{ game.addedAt | getDate }}</time>
+                      <span class="card-game-name">{{game.name}}</span>
+                    <div class="username-time-container flex space-between align-center">
+                      <div class="username-time-container flex space-between align-center space-between">
+                        <div type="text" class="user-name-card-home">
+                          <gameUser :userId="game.userId"></gameUser>
+                        </div>
+                      </div>
+                          <time class="time">{{ game.addedAt | getDate }}</time>
                     </div>
                   </div>
               </el-card>
@@ -102,12 +106,12 @@
 
 
     </div>
-  </div>
             <!-- <ul v-if="gamesForTeenHomeDisplay">
               <li v-for="game in gamesForTeenHomeDisplay" :key="game._id"> 
                 <div>{{game.name}}</div>
               </li>
             </ul> -->
+  </div>
 </template>
 
 <script>
@@ -124,7 +128,7 @@ export default {
   name: 'home',
   components: {
     GameFilter,
-    GameUser,
+    GameUser
     // Gallery,
 
   },
@@ -289,6 +293,7 @@ export default {
         font-family: 'PaytoneOne';
         font-size: rem(20px);
         color: $main-color;
+        padding: 0;
         // text-shadow: 2px 1px $secondary-color;
       }
       .game-new-icon {
@@ -303,6 +308,11 @@ export default {
         float: right;
         color: $secondary-color;
         font-family: 'Ubuntu-regular';
+        position: relative;
+        // top: -40px;
+        // left: -40px;
+        // align-self: flex-end;
+        // align-items: center;
       }
       .time {
         font-size: rem(14px);
