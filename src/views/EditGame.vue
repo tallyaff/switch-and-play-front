@@ -66,9 +66,9 @@ export default {
           .dispatch({ type: "loadGame", gameId: this.$route.params.gameId })
           .then(game => {
             this.currGame = game;
-            //     // console.log("this.currGame in edit cmp", this.currGame);
+            // console.log("this.currGame in edit cmp", this.currGame);
             this.gameCopy = JSON.parse(JSON.stringify(this.currGame));
-            //     // console.log("this.gameCopy new in edit cmp", this.gameCopy);
+            // console.log("this.gameCopy new in edit cmp", this.gameCopy);
           });
       } else {
         console.log("has No params!!");
