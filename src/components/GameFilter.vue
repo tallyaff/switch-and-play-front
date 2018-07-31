@@ -80,7 +80,7 @@ export default {
     setFilter: debounce(function() {
       var filterBy = JSON.parse(JSON.stringify(this.filterBy));
       this.$store.dispatch({ type: "setFilter", filterBy }).then(games => {});
-    }, 2000),
+    }, 500),
     toggleAllTypes() {
       this.filterBy.allTypes = !this.filterBy.allTypes;
       if (this.filterBy.allTypes) this.filterBy.type = [];
