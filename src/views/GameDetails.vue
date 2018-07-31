@@ -24,7 +24,7 @@
                 <!-- <img src="@/assets/img/details/baby.png"> -->
                 <div class="detail-item" label="Category">{{currGame.category}}</div>
                 <div class="detail-item" label="Condition">{{currGame.condition}}</div>
-                <div class="detail-item" label="added At">{{currGame.addedAt}}</div>
+                <div class="detail-item" label="added At">{{ currGame.addedAt | getDate }}</div>
                 </div>
                 
             </div>
