@@ -1,11 +1,11 @@
 <template>
   <div class="home">
-      <div class="home-bg-img flex justify-center align-center" :style="{backgroundImage: url, backgroundSize: 'cover', backgroundPosition: 'center', backgroundrepeat: 'no-repeat'}">
-        <form @submit.prevent="setSearchHome" class="search">
-            <input class="search-input" type="text" v-model="filterBy.name" placeholder="Search for games">
-            <el-button class="btn search-btn" type="primary">Search</el-button>
-        </form>
-      </div>
+    <div class="home-bg-img flex justify-center align-center" :style="{backgroundImage: url, backgroundSize: 'cover', backgroundPosition: 'center', backgroundrepeat: 'no-repeat'}">
+      <form @submit.prevent="setSearchHome" class="search">
+          <input class="search-input" type="text" v-model="filterBy.name" placeholder="Search for games">
+          <el-button class="btn search-btn" type="primary">Search</el-button>
+      </form>
+    </div>
     <div class="all-cards-home-container">
       <div class="filter-type home-filter-container home-filter-container-baby flex column align-center justify-center" >
         <!-- <router-link :to="'/game'" value="baby" v-model="filterBy.type" @click.native="setFilter"> -->
@@ -14,11 +14,7 @@
         </router-link>
         <font-awesome-icon icon="trashAlt" />
         <ul v-if="gamesForBabyHomeDisplay" class="cards-container-home align-center flex justify-center clean-list">
-<<<<<<< HEAD
-            <li v-for="game in gamesForBabyHomeDisplay.slice(0,3)" :key="game._id"> 
-=======
             <li v-for="game in gamesForBabyHomeDisplay.slice(0, 5)" :key="game._id"> 
->>>>>>> master
           <!-- <router-link :to="`/game`"> -->
           <router-link :to="`/game/${game._id}/`" target="_blank">
               <el-card class="card-home">
@@ -29,12 +25,6 @@
                   <!-- <div class="card-text-container" style="padding: 14px;"> -->
                   <div class="card-text-container flex justify-center align-center column">
                     <span class="card-game-name">{{game.name}}</span>
-<<<<<<< HEAD
-                    <div class="username-time-container flex space-between align-center">
-                      <div type="text" class="user-name-card-home">
-                        <gameUser :userId="game.userId"></gameUser>
-                      </div>
-=======
                     <div class="username-time-container flex space-between align-center space-between">
                       <div type="text" class="user-name-card-home">User Name</div>
                       <time class="time">{{ game.addedAt | getDate }}</time>
@@ -91,7 +81,6 @@
                     <span class="card-game-name">{{game.name}}</span>
                     <div class="username-time-container flex space-between align-center space-between">
                       <div type="text" class="user-name-card-home">User Name</div>
->>>>>>> master
                       <time class="time">{{ game.addedAt | getDate }}</time>
                     </div>
                   </div>
@@ -103,62 +92,15 @@
 
 
 
-                  <!-- <el-carousel :interval="5000" arrow="always">
-                    <el-carousel-item v-for="item in 4" :key="item">
-                      <h3>{{ item }}</h3>
-                    </el-carousel-item>
-                  </el-carousel> -->
+  <!-- <el-carousel :interval="5000" arrow="always">
+    <el-carousel-item v-for="item in 4" :key="item">
+      <h3>{{ item }}</h3>
+    </el-carousel-item>
+  </el-carousel> -->
 
 
-          <div class="filter-type home-child-filter-container" >
-            <router-link :to="'/game'">
-              <h2 class="type-title-home">Child</h2>
-            </router-link>
-            <i class="fas fa-angle-left"></i>
-            <ul v-if="gamesForChildHomeDisplay" class="cards-container-home align-center flex justify-center clean-list">
-              <button class="arrow-btn">◀</button>
-              <li v-for="game in gamesForChildHomeDisplay.slice(0,3)" :key="game._id"> 
-                  <!-- <router-link :to="`/game`"> -->
-                <router-link :to="`/game/${game._id}/`" target="_blank">
-                  <el-card class="card-home">
-                    <div v-if="game.isNew" class="game-new-icon"><img src="img/new-icon.png"></div>
-                    <div class="image-container flex align-center justify-center">
-                      <img :src="game.src" class="image-card">  
-                    </div>
-                    <div class="card-text-container">
-                      <span class="card-game-name">{{game.name}}</span>
-                      <div class="username-time-container flex space-between align-center">
-                        <div type="text" class="user-name-card-home">
-                          <gameUser :userId="game.userId"></gameUser>
-                        </div>
-                        <time class="time">{{ game.addedAt | getDate }}</time>
-                        
-                      </div>
-                    </div>
-                  </el-card>
-                </router-link>
-                </li>
-                <button class="arrow-btn">▶</button>
-                <i class="fas fa-angle-right"></i>
-            </ul> 
-         </div>
-      </div>
 
 
-<<<<<<< HEAD
-      <div class="filter-type home-teen-filter-container" >
-         <router-link :to="'/game'">
-          <h2 class="type-title-home">Teen</h2>
-        </router-link>
-            <ul v-if="gamesForTeenHomeDisplay">
-              <li v-for="game in gamesForTeenHomeDisplay" :key="game._id"> 
-                <div>{{game.name}}</div>
-              </li>
-            </ul>
-      </div>
-
-    </div>
-=======
     </div>
   </div>
             <!-- <ul v-if="gamesForTeenHomeDisplay">
@@ -166,7 +108,6 @@
                 <div>{{game.name}}</div>
               </li>
             </ul> -->
->>>>>>> master
 </template>
 
 <script>
@@ -174,11 +115,7 @@ import GameService from '@/services/GameService.js';
 import UserService from '@/services/UserService.js';
 import Gallery from '@/views/Gallery.vue'
 import GameFilter from '@/components/GameFilter.vue';
-<<<<<<< HEAD
 import GameUser from '@/components/GameUser.vue';
-=======
-import gameUser from '@/components/GameUser.vue';
->>>>>>> master
 import { eventBus, EVENT_SET_FILTER } from '@/services/EventBusService.js';
 
 // import Gallery from '@/views/Gallery.vue'
@@ -187,11 +124,7 @@ export default {
   name: 'home',
   components: {
     GameFilter,
-<<<<<<< HEAD
-    GameUser
-=======
-    gameUser,
->>>>>>> master
+    GameUser,
     // Gallery,
 
   },
@@ -290,7 +223,7 @@ export default {
   .type-title-home {
     font-size: rem(40px);
     font-family: 'Ubuntu';
-    margin: rem(20px) 0;
+    margin: rem(20px), 0, rem(10px), 0;
   }
 
   .all-cards-home-container {
