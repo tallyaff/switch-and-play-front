@@ -1,21 +1,24 @@
 <template>
-    <div class="user-bar flex">
-        <div v-if="loggedinUser" class="user-icons-container flex">
-            Hello {{'loggedinUser'? loggedinUser.username: 'guest'}}
-            <router-link v-if="loggedinUser" :to="`/user/activity/${loggedinUser._id}/`">
-              <!-- <button :class="notification? 'btn notification':'btn no-notification'" :setNotification="setNotification"> -->
-              <button :class="notificationCount>0? 'btn notification':'btn no-notification'">
-                  {{notificationCount}}
-              </button>
-            </router-link>
+    <div class="user-bar">
+        <div v-if="loggedinUser" class="user-bar-container flex space-evenly">
+            <p class="userMsg">Hello {{'loggedinUser'? loggedinUser.username: 'guest'}}</p>
+            <div class="user-icon-container">
             <router-link v-if="loggedinUser" :to="`/user/${loggedinUser._id}/`">
-                  My profile
+                <font-awesome-icon icon="user" />
             </router-link>
-            
+            <router-link v-if="loggedinUser" :to="`/user/activity/${loggedinUser._id}/`">
+                <!-- :class="notificationCount > 0? 'btn notification':'btn no-notification'" :setNotofication="setNotification" -->
+                <el-badge :value="notificationCount">
+                    <font-awesome-icon icon="bell" />
+                </el-badge>
+            </router-link>
+            <button class="btn-logout" @click="onLogout">Logout</button>
         </div>
-        <p v-else>
-            Hello Guest
-        </p>
+        </div>
+        <div v-else>
+            <p class="helloMsg">Hello Guest</p>
+            <router-link to="/login">Login</router-link>
+        </div>
     </div>
 </template>
 
@@ -24,27 +27,21 @@ import UserService from "../services/UserService.js";
 import UtilService from "../services/UtilService.js";
 
 export default {
-  // data() {
-  //   // return {
-  //   //   notification: false,
-  //   //   notificationCount: 0
-  //   // };
-  // },
   created() {
-    console.log('notification1: ', this.notificationCount);
-    console.log('notification2: ', this.notification);
-    // console.log('%notification3: ', this.getNotificationCount.length); 
-    // this.setNotification()
     if (this.loggedinUser) {
-      this.$store
-        .dispatch({
-          type: "getMatch",
-          user: this.loggedinUser._id
-        })
-        // .then(_ => {
-        //   this.setNotification();
-        // });
+      this.$store.dispatch({
+        type: "getMatch",
+        user: this.loggedinUser._id
+      });
+      // .then(_ => {
+      //   this.setNotification();
+      // });
     }
+  },
+  data() {
+    return {
+      // notification: false,
+    };
   },
   methods: {
     logout() {
@@ -52,12 +49,16 @@ export default {
       this.$store.commit({ type: "logoutUser" });
       this.$router.push("/");
     },
-    setNotification() {
-      // console.log("setNotification");
-      if (this.getNotificationCount.length > 0) {
-        this.notificationCount = this.getNotificationCount.length;
-        this.notification = true;
-      }
+    // setNotification() {
+    //   console.log("setNotification");
+    //   if (this.getNotificationCount.length > 0) {
+    //     this.notificationCount = this.getNotificationCount.length;
+    //     this.notification = true;
+    //   }
+    // },
+    onLogout() {
+      this.$emit("update:loggedinUser", null);
+      this.$emit("logout");
     }
   },
   computed: {
@@ -67,8 +68,7 @@ export default {
     notificationCount() {
       return this.$store.getters.getRecieves.length;
     }
-  },
-  components: {}
+  }
 };
 </script>
 
@@ -97,5 +97,41 @@ p {
 }
 .user-bar {
   align-items: center;
+}
+.helloMsg {
+  color: #f56c6c;
+  font-size: 16px;
+  margin-top: 5px;
+}
+.btn-logout {
+  color: $secondary-color;
+  cursor: pointer;
+  font-size: 16px;
+  border: none;
+  background-color: transparent;
+    &:hover {
+    color: $main-color;
+  }
+}
+.userMsg {
+  color: #f56c6c;
+  font-size: 16px;
+  position: absolute;
+  margin-top: -30px;
+}
+a {
+  &:hover {
+    color: $main-color;
+  }
+}
+.user-icon-container{
+  color: $secondary-color;
+    display: flex;
+    width: 150px;
+    justify-content: space-around;
+
+    a{
+       transition: all 0.3s ease;
+    }
 }
 </style>

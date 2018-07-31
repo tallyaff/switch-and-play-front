@@ -12,8 +12,13 @@
         <router-link :to="'/game'" @click.native="setFilter('baby')">
           <h2 class="type-title-home">Baby</h2>
         </router-link>
+        <font-awesome-icon icon="trashAlt" />
         <ul v-if="gamesForBabyHomeDisplay" class="cards-container-home align-center flex justify-center clean-list">
+<<<<<<< HEAD
             <li v-for="game in gamesForBabyHomeDisplay.slice(0,3)" :key="game._id"> 
+=======
+            <li v-for="game in gamesForBabyHomeDisplay.slice(0, 5)" :key="game._id"> 
+>>>>>>> master
           <!-- <router-link :to="`/game`"> -->
           <router-link :to="`/game/${game._id}/`" target="_blank">
               <el-card class="card-home">
@@ -22,12 +27,71 @@
                     <img :src="game.src" class="image-card">  
                   </div>
                   <!-- <div class="card-text-container" style="padding: 14px;"> -->
-                  <div class="card-text-container">
+                  <div class="card-text-container flex justify-center align-center column">
                     <span class="card-game-name">{{game.name}}</span>
+<<<<<<< HEAD
                     <div class="username-time-container flex space-between align-center">
                       <div type="text" class="user-name-card-home">
                         <gameUser :userId="game.userId"></gameUser>
                       </div>
+=======
+                    <div class="username-time-container flex space-between align-center space-between">
+                      <div type="text" class="user-name-card-home">User Name</div>
+                      <time class="time">{{ game.addedAt | getDate }}</time>
+                    </div>
+                  </div>
+              </el-card>
+          </router-link>
+            </li>
+        </ul> 
+      </div>
+      <div class="filter-type home-filter-container home-filter-container-child flex column align-center justify-center" >
+        <!-- <router-link :to="'/game'" value="child" v-model="filterBy.type" @click.native="setFilter"> -->
+        <router-link :to="'/game'" @click.native="setFilter('child')">
+          <h2 class="type-title-home">Child</h2>
+        </router-link>
+        <ul v-if="gamesForChildHomeDisplay" class="cards-container-home align-center flex justify-center clean-list">
+            <li v-for="game in gamesForChildHomeDisplay.slice(0, 5)" :key="game._id"> 
+          <!-- <router-link :to="`/game`"> -->
+          <router-link :to="`/game/${game._id}/`" target="_blank">
+              <el-card class="card-home">
+                  <div v-if="game.isNew" class="game-new-icon"><img src="img/new-icon.png"></div>
+                  <div class="image-container flex align-center justify-center">
+                    <img :src="game.src" class="image-card">  
+                  </div>
+                  <!-- <div class="card-text-container" style="padding: 14px;"> -->
+                  <div class="card-text-container flex justify-center align-center column">
+                    <span class="card-game-name">{{game.name}}</span>
+                    <div class="username-time-container flex space-between align-center space-between">
+                      <div type="text" class="user-name-card-home">User Name</div>
+                      <time class="time">{{ game.addedAt | getDate }}</time>
+                    </div>
+                  </div>
+              </el-card>
+          </router-link>
+            </li>
+        </ul> 
+      </div>
+      <div class="filter-type home-filter-container home-filter-container-teen flex column align-center justify-center" >
+        <!-- <router-link :to="'/game'" value="teen" v-model="filterBy.type" @click.native="setFilter"> -->
+        <router-link :to="'/game'" @click.native="setFilter('teen')">
+          <h2 class="type-title-home">Teen</h2>
+        </router-link>
+        <ul v-if="gamesForTeenHomeDisplay" class="cards-container-home align-center flex justify-center clean-list">
+            <li v-for="game in gamesForTeenHomeDisplay.slice(0, 5)" :key="game._id"> 
+          <!-- <router-link :to="`/game`"> -->
+          <router-link :to="`/game/${game._id}/`" target="_blank">
+              <el-card class="card-home">
+                  <div v-if="game.isNew" class="game-new-icon"><img src="img/new-icon.png"></div>
+                  <div class="image-container flex align-center justify-center">
+                    <img :src="game.src" class="image-card">  
+                  </div>
+                  <!-- <div class="card-text-container" style="padding: 14px;"> -->
+                  <div class="card-text-container flex justify-center align-center column">
+                    <span class="card-game-name">{{game.name}}</span>
+                    <div class="username-time-container flex space-between align-center space-between">
+                      <div type="text" class="user-name-card-home">User Name</div>
+>>>>>>> master
                       <time class="time">{{ game.addedAt | getDate }}</time>
                     </div>
                   </div>
@@ -81,6 +145,7 @@
       </div>
 
 
+<<<<<<< HEAD
       <div class="filter-type home-teen-filter-container" >
          <router-link :to="'/game'">
           <h2 class="type-title-home">Teen</h2>
@@ -93,13 +158,27 @@
       </div>
 
     </div>
+=======
+    </div>
+  </div>
+            <!-- <ul v-if="gamesForTeenHomeDisplay">
+              <li v-for="game in gamesForTeenHomeDisplay" :key="game._id"> 
+                <div>{{game.name}}</div>
+              </li>
+            </ul> -->
+>>>>>>> master
 </template>
 
 <script>
 import GameService from '@/services/GameService.js';
+import UserService from '@/services/UserService.js';
 import Gallery from '@/views/Gallery.vue'
 import GameFilter from '@/components/GameFilter.vue';
+<<<<<<< HEAD
 import GameUser from '@/components/GameUser.vue';
+=======
+import gameUser from '@/components/GameUser.vue';
+>>>>>>> master
 import { eventBus, EVENT_SET_FILTER } from '@/services/EventBusService.js';
 
 // import Gallery from '@/views/Gallery.vue'
@@ -108,7 +187,11 @@ export default {
   name: 'home',
   components: {
     GameFilter,
+<<<<<<< HEAD
     GameUser
+=======
+    gameUser,
+>>>>>>> master
     // Gallery,
 
   },
@@ -214,13 +297,13 @@ export default {
       // width: 1200px;
   }
 
-  .home-filter-container-baby {
-    height: 600px;
+  .home-filter-container-baby, .home-filter-container-teen  {
     background-color:aliceblue;
   }
 
   .home-filter-container {    
     justify-content: center;
+    height: 600px;
   }
 
   .cards-container-home {
@@ -251,8 +334,8 @@ export default {
       .card-text-container {
         background-color: #dadada54;
         width: rem(250px);
-        height: rem(100px);
-        padding: rem(20px);
+        height: rem(120px);
+        padding: rem(10px);
         position: absolute;
         top: rem(248px);
         left: rem(0px);
@@ -274,13 +357,14 @@ export default {
         // z-index: 5;
       }
       .user-name-card-home {
-        padding: 0;
+        padding: 0 rem(15px);
+        font-size: rem(14px);
         float: right;
         color: $secondary-color;
         font-family: 'Ubuntu-regular';
       }
       .time {
-        font-size: 13px;
+        font-size: rem(14px);
         color: #999;
         font-family: 'Ubuntu-regular';
       }
@@ -309,7 +393,11 @@ export default {
       clear: both
   }
 
- 
+ .arrow-btn {
+   background-color: inherit;
+   border: none;
+   font-size: 2em;
+ }
 
 
 </style>

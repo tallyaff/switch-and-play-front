@@ -8,20 +8,26 @@ import './registerServiceWorker'
 import './assets/scss/style.scss'
 import axios from 'axios'
 import moment from 'moment'
-
-// far fa-trash-alt
-// far faTrashAlt
-
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faCoffee } from '@fortawesome/free-solid-svg-icons'
-import { faTrashAlt } from '@fortawesome/free-regular-svg-icons'
+import { faCoffee, faUser, faBell } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add(faCoffee)
-library.add(faTrashAlt)
+
+import { faInfo } from '@fortawesome/free-solid-svg-icons'
+import { faTrash } from '@fortawesome/free-solid-svg-icons'
+import { faPen } from '@fortawesome/free-solid-svg-icons'
+import { faPlus } from '@fortawesome/free-solid-svg-icons'
+
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
+library.add(faCoffee);
+library.add(faInfo);
+library.add(faTrash);
+library.add(faPen);
+library.add(faPlus);
+library.add(faUser);
+library.add(faBell);
 
 /* eslint-disable no-new */
 // new Vue({
@@ -32,6 +38,7 @@ Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 
 Vue.use(require('vue-moment'));
+Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 Vue.filter('getDate', (timestamp) => {  
   return moment(timestamp).fromNow();

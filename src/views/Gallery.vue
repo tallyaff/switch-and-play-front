@@ -1,12 +1,6 @@
 <template>
 <section>
   <div class="user-icons-container flex">
-    <p v-if="loggedinUser">
-        Hello: {{'loggedinUser'? loggedinUser.username: 'guest'}}
-    </p>
-    <router-link v-if="loggedinUser" :to="`/user/${loggedinUser._id}/`">
-        <button>my profile</button>
-    </router-link>
     <div class="filter-images-container-gallery flex">
         <GameFilter></GameFilter> 
         <game-list :games="gamesForDisplay" @remove="removeGame"></game-list>
@@ -29,7 +23,7 @@ export default {
     Header
   },
   created() {
-    // this.loadGames();
+    this.loadGames();
     console.log('this.gamesForDisplay in gallery', this.gamesForDisplay);    
     // this.gamesForDisplay;
   },
@@ -60,14 +54,14 @@ export default {
         });
       } else this.$router.push("/game/edit");
     },
-    // loadGames() {
-    //   this.$store
-    //     .dispatch({ type: "loadGames" })
-    //     .then(games => {})
-    //     .catch(err => {
-    //       console.log("err", err);
-    //     });
-    // },
+    loadGames() {
+      this.$store
+        .dispatch({ type: "loadGames" })
+        .then(games => {})
+        .catch(err => {
+          console.log("err", err);
+        });
+    },
     setNotification() {
       console.log("setNotification");
       if (this.getNotificationCount.length > 0) {

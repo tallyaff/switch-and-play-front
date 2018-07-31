@@ -34,7 +34,7 @@
                   <el-option value="used">Used</el-option>
               </el-select>
               </el-form-item>
-              <el-button type="primary" @click="saveGame">Save</el-button>
+              <el-button class="btn-save" type="primary" @click="saveGame">Save</el-button>
               <el-button @click="$router.go(-1)">Cancel</el-button>
           </el-form>
         </div>
@@ -66,9 +66,9 @@ export default {
           .dispatch({ type: "loadGame", gameId: this.$route.params.gameId })
           .then(game => {
             this.currGame = game;
-        //     // console.log("this.currGame in edit cmp", this.currGame);
+            //     // console.log("this.currGame in edit cmp", this.currGame);
             this.gameCopy = JSON.parse(JSON.stringify(this.currGame));
-        //     // console.log("this.gameCopy new in edit cmp", this.gameCopy);
+            //     // console.log("this.gameCopy new in edit cmp", this.gameCopy);
           });
       } else {
         console.log("has No params!!");
@@ -80,11 +80,11 @@ export default {
       this.$store
         .dispatch({ type: "saveGame", savedGame: this.gameCopy })
         .then(game => {
-            swal("Game has been saved!",{
-            className: 'swal-text',
+          swal("Game has been saved!", {
+            className: "swal-text",
             icon: "success",
             timer: 1500,
-            button: false,
+            button: false
           });
           console.log("savedGame from game APP");
         });
@@ -96,20 +96,21 @@ export default {
 <style scoped lang="scss">
 // @import '~@/assets/scss/style.scss';
 // @import  'node_modules/sweetalert/src/sweetalert.scss';
-
+.btn-save{
+    background-color: $main-color;
+}
 .edit-game {
   border: 1px solid $main-color;
   width: 55%;
   padding: 20px;
 }
-
 </style>
 
 <style>
-.swal-text{
-    font-family: "Ubuntu";
-    color: #0D72FA;
-    font-size: 30px;
+.swal-text {
+  font-family: "Ubuntu";
+  color: #0d72fa;
+  font-size: 30px;
 }
 </style>
 

@@ -1,7 +1,6 @@
 <template>
     <div class="game-request">
         <h1>Create your request!</h1>   
-      {{user._id}}
         <el-form>
             <span>would like to switch the next games:</span>
             <br>
@@ -89,6 +88,9 @@ export default {
     @import "~@/assets/scss/style.scss";
     .checkbox-game-request {
       color: $main-color;
+    }
+    h1{
+      margin-bottom: 40px;
     }
     
 </style>

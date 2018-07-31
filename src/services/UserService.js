@@ -68,6 +68,19 @@ function _setLoggedinUser(user) {
     eventBus.$emit(EVENT_LOGIN_USER, user);
 }
 
+<<<<<<< HEAD
+=======
+function getUserById(userId) {
+    console.log('getUserById in game service front', userId);
+    return axios.get(`${URL}`, userId)
+        .then(res => {
+            console.log('getUserById from server', res.data)
+            return res.data
+        })
+        .catch(err => console.log('Problem talking to server', err))
+}
+
+>>>>>>> master
 
 export default {
     getUser,
@@ -75,6 +88,11 @@ export default {
     logout,
     getLoggedinUser,
     saveUser,
+<<<<<<< HEAD
+=======
+    getUserById
+
+>>>>>>> master
 }
 
 
