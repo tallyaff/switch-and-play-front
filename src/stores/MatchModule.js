@@ -37,7 +37,7 @@ export default {
     },
     actions: {
         getMatch(context, payload) {
-            // console.log('user from action***', payload.user);
+            console.log('user from action***', payload.user);
             context.commit({type: 'setCurrUser', payload: payload.user})
             MatchService.getMatch(payload.user)
                .then(activities => {

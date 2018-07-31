@@ -32,7 +32,7 @@ export default {
   data() {
     return {
       textareaReq: "",
-      gameCheckbox: true,
+      // gameCheckbox: true,
       gamesToSwitch: [],
       ownerUserId: null
     };
