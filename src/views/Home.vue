@@ -5,24 +5,22 @@
           <input class="search-input" type="text" v-model="filterBy.name" placeholder="Search for games">
           <el-button class="btn search-btn" type="primary">Search</el-button>
       </form>
+      <h1 class="header-bg-image">Do you want to switch some games?</h1>
     </div>
     <div class="all-cards-home-container">
       <div class="filter-type home-filter-container home-filter-container-baby flex column align-center justify-center" >
-        <!-- <router-link :to="'/game'" value="baby" v-model="filterBy.type" @click.native="setFilter"> -->
         <router-link :to="'/game'" @click.native="setFilter('baby')">
-          <h2 class="type-title-home">Baby</h2>
+          <h2 class="type-title-home">Most popular baby games</h2>
         </router-link>
         <font-awesome-icon icon="trashAlt" />
         <ul v-if="gamesForBabyHomeDisplay" class="cards-container-home align-center flex justify-center clean-list">
-            <li v-for="game in gamesForBabyHomeDisplay.slice(0, 5)" :key="game._id"> 
-          <!-- <router-link :to="`/game`"> -->
-          <router-link :to="`/game/${game._id}/`" target="_blank">
+            <li v-for="game in gamesForBabyHomeDisplay.slice(2, 6)" :key="game._id"> 
+          <router-link :to="`/game/${game._id}/`">
               <el-card class="card-home">
                   <div v-if="game.isNew" class="game-new-icon"><img src="img/new-icon.png"></div>
                   <div class="image-container flex align-center justify-center">
                     <img :src="game.src" class="image-card">  
                   </div>
-                  <!-- <div class="card-text-container" style="padding: 14px;"> -->
                   <div class="card-text-container flex justify-center align-center column">
                       <span class="card-game-name">{{game.name}}</span>
                     <div class="username-time-container flex space-between align-center">
@@ -37,23 +35,23 @@
               </el-card>
           </router-link>
             </li>
-        </ul> 
+        </ul>
+        <router-link :to="'/game'" @click.native="setFilter('baby')">
+          <h2 class="link-to-gallery">See more...</h2>
+        </router-link> 
       </div>
       <div class="filter-type home-filter-container home-filter-container-child flex column align-center justify-center" >
-        <!-- <router-link :to="'/game'" value="child" v-model="filterBy.type" @click.native="setFilter"> -->
         <router-link :to="'/game'" @click.native="setFilter('child')">
-          <h2 class="type-title-home">Child</h2>
+          <h2 class="type-title-home">Most popular child games</h2>
         </router-link>
         <ul v-if="gamesForChildHomeDisplay" class="cards-container-home align-center flex justify-center clean-list">
-            <li v-for="game in gamesForChildHomeDisplay.slice(0, 5)" :key="game._id"> 
-          <!-- <router-link :to="`/game`"> -->
-          <router-link :to="`/game/${game._id}/`" target="_blank">
+            <li v-for="game in gamesForChildHomeDisplay.slice(2, 6)" :key="game._id"> 
+          <router-link :to="`/game/${game._id}/`">
               <el-card class="card-home">
                   <div v-if="game.isNew" class="game-new-icon"><img src="img/new-icon.png"></div>
                   <div class="image-container flex align-center justify-center">
                     <img :src="game.src" class="image-card">  
                   </div>
-                  <!-- <div class="card-text-container" style="padding: 14px;"> -->
                   <div class="card-text-container flex justify-center align-center column">
                     <span class="card-game-name">{{game.name}}</span>
                     <div class="username-time-container flex space-between align-center space-between">
@@ -64,23 +62,23 @@
               </el-card>
           </router-link>
             </li>
-        </ul> 
+        </ul>
+        <router-link :to="'/game'" @click.native="setFilter('child')">
+          <h2 class="link-to-gallery">See more...</h2>
+        </router-link>  
       </div>
       <div class="filter-type home-filter-container home-filter-container-teen flex column align-center justify-center" >
-        <!-- <router-link :to="'/game'" value="teen" v-model="filterBy.type" @click.native="setFilter"> -->
         <router-link :to="'/game'" @click.native="setFilter('teen')">
-          <h2 class="type-title-home">Teen</h2>
+          <h2 class="type-title-home">Most popular teen games</h2>
         </router-link>
         <ul v-if="gamesForTeenHomeDisplay" class="cards-container-home align-center flex justify-center clean-list">
-            <li v-for="game in gamesForTeenHomeDisplay.slice(0, 5)" :key="game._id"> 
-          <!-- <router-link :to="`/game`"> -->
-          <router-link :to="`/game/${game._id}/`" target="_blank">
+            <li v-for="game in gamesForTeenHomeDisplay.slice(2, 6)" :key="game._id"> 
+          <router-link :to="`/game/${game._id}/`">
               <el-card class="card-home">
                   <div v-if="game.isNew" class="game-new-icon"><img src="img/new-icon.png"></div>
                   <div class="image-container flex align-center justify-center">
                     <img :src="game.src" class="image-card">  
                   </div>
-                  <!-- <div class="card-text-container" style="padding: 14px;"> -->
                   <div class="card-text-container flex justify-center align-center column">
                     <span class="card-game-name">{{game.name}}</span>
                     <div class="username-time-container flex space-between align-center space-between">
@@ -91,26 +89,12 @@
               </el-card>
           </router-link>
             </li>
-        </ul> 
+        </ul>
+        <router-link :to="'/game'" @click.native="setFilter('teen')">
+          <h2 class="link-to-gallery">See more...</h2>
+        </router-link> 
       </div>
-
-
-
-  <!-- <el-carousel :interval="5000" arrow="always">
-    <el-carousel-item v-for="item in 4" :key="item">
-      <h3>{{ item }}</h3>
-    </el-carousel-item>
-  </el-carousel> -->
-
-
-
-
     </div>
-            <!-- <ul v-if="gamesForTeenHomeDisplay">
-              <li v-for="game in gamesForTeenHomeDisplay" :key="game._id"> 
-                <div>{{game.name}}</div>
-              </li>
-            </ul> -->
   </div>
 </template>
 
@@ -205,150 +189,166 @@ export default {
 <style scoped lang="scss">
   @import '~@/assets/scss/style.scss';
     .filter-type {
-      
+        
 
-  }
+    }
 
-  .home-bg-img {
-    height: 500px;
-  }
-  .search {
-    margin-bottom: rem(20px);
-    position: relative;
-    bottom: rem(-70px);
-  }
-    .search-input {
-      width: 500px;
+    .home-bg-img {
+      height: 400px;
+      position: relative;
+    }
+
+    .header-bg-image {
+      position: absolute;
+      top: 300px;
+      width: 100%;
+      color: white;
+      font-size: rem(60px);
+      font-family: 'Ubuntu-regular';
+    }
+
+    .search {
+      margin-bottom: rem(20px);
+      position: relative;
+      bottom: rem(-70px);
+    }
+      .search-input {
+        width: 500px;
+        height: 50px;
+        border-radius: 4px;
+        border: 1px solid $border-color;
+        padding: rem(10px);
+        font-size: rem(18px);
+    }
+
+    .search-btn {
       height: 50px;
-      border-radius: 4px;
-      border: 1px solid $border-color;
-      padding: rem(10px);
       font-size: rem(18px);
-  }
+      background-color: $main-color;
+    }
 
-  .search-btn {
-     height: 50px;
-     font-size: rem(18px);
-     background-color: $main-color;
-  }
+    .type-title-home {
+      align-self: flex-start;
+      font-size: rem(40px);
+      font-family: 'Ubuntu';
+      margin-top: rem(30px);
+      margin-bottom: rem(10px);
+    }
 
-  .type-title-home {
-    font-size: rem(40px);
-    font-family: 'Ubuntu';
-    margin: rem(20px), 0, rem(10px), 0;
-  }
+    .all-cards-home-container {
+        // width: 1200px;
+    }
 
-  .all-cards-home-container {
-      // width: 1200px;
-  }
+    .home-filter-container-baby, .home-filter-container-teen  {
+      background-color:aliceblue;
+    }
 
-  .home-filter-container-baby, .home-filter-container-teen  {
-    background-color:aliceblue;
-  }
+    .home-filter-container {    
+      padding-bottom: rem(20px);
+    }
 
-  .home-filter-container {    
-    justify-content: center;
-    height: 600px;
-  }
+    .cards-container-home {
+      width: 100%;
+      flex-wrap: wrap;
+    }
 
-  .cards-container-home {
-    width: 100%;
-    flex-wrap: wrap;
-  }
-
-  .card-home {
-    position: relative;
-    margin: rem(10px);
-    width: rem(250px);
-    height: rem(350px);
-    transition: all 0.5s;
-    cursor: pointer;
-      .image-container {
-        height: rem(200px);
-      }
-      .image-card {
+    .card-home {
+      position: relative;
+      margin: rem(10px);
+      width: rem(250px);
+      height: rem(350px);
+      transition: all 0.5s;
+      cursor: pointer;
+        .image-container {
+          height: rem(200px);
+        }
+        .image-card {
+            width: 100%;
+            // width: 100px;
+            // height: 100px;
+            // background-position: center;
+            // background-size: cover;
+        }
+        &:hover {
+          transform: scale(0.95, 0.95);
+        }
+        .card-text-container {
+          background-color: #dadada54;
           width: 100%;
-          // width: 100px;
-          // height: 100px;
-          // background-position: center;
-          // background-size: cover;
-      }
-      &:hover {
-        transform: scale(0.95, 0.95);
-      }
-      .card-text-container {
-        background-color: #dadada54;
-        width: rem(250px);
-        height: rem(120px);
-        padding: rem(10px);
-        position: absolute;
-        top: rem(248px);
-        left: rem(0px);
-      }
-      .username-time-container {
-        padding: rem(10px);
-      }
-      .card-game-name {
-        text-transform: capitalize;
-        font-family: 'PaytoneOne';
-        font-size: rem(20px);
-        color: $main-color;
-        padding: 0;
-        // text-shadow: 2px 1px $secondary-color;
-      }
-      .game-new-icon {
-        position: absolute;
-        top: -2px;
-        left: -2px;
-        // z-index: 5;
-      }
-      .user-name-card-home {
-        padding: 0 rem(15px);
-        font-size: rem(14px);
-        float: right;
-        color: $secondary-color;
-        font-family: 'Ubuntu-regular';
-        position: relative;
-        // top: -40px;
-        // left: -40px;
-        // align-self: flex-end;
-        // align-items: center;
-      }
-      .time {
-        font-size: rem(14px);
-        color: #999;
-        font-family: 'Ubuntu-regular';
-      }
+          height: rem(120px);
+          padding: rem(10px);
+          position: absolute;
+          top: rem(248px);
+          left: rem(0px);
+        }
+        .username-time-container {
+          padding: rem(10px);
+        }
+        .card-game-name {
+          text-transform: capitalize;
+          font-family: 'PaytoneOne';
+          font-size: rem(20px);
+          color: $main-color;
+          padding: 0;
+          // text-shadow: 2px 1px $secondary-color;
+        }
+        .game-new-icon {
+          position: absolute;
+          top: -2px;
+          left: -2px;
+        }
+        .user-name-card-home {
+          padding: 0 rem(15px);
+          font-size: rem(14px);
+          float: right;
+          color: $secondary-color;
+          font-family: 'Ubuntu-regular';
+          position: relative;
+          // top: -40px;
+          // left: -40px;
+          // align-self: flex-end;
+          // align-items: center;
+        }
+        .time {
+          font-size: rem(14px);
+          color: #999;
+          font-family: 'Ubuntu-regular';
+        }
+    }
+
+
+    .type-title-home {
+      align-self: left;
+    }
+
+
+    
+    .bottom {
+      margin-top: 13px;
+      line-height: 12px;
+    }
+
+
+    .clearfix:before,
+    .clearfix:after {
+        display: table;
+        content: "";
+    }
+    
+    .clearfix:after {
+        clear: both
+    }
+
+  .arrow-btn {
+    background-color: inherit;
+    border: none;
+    font-size: 2em;
   }
 
-
-  .type-title-home {
-    align-self: left;
+  .link-to-gallery {
+    font-size: rem(20px);
+    font-family: 'Ubuntu';
   }
-
-
-  
-  .bottom {
-    margin-top: 13px;
-    line-height: 12px;
-  }
-
-
-  .clearfix:before,
-  .clearfix:after {
-      display: table;
-      content: "";
-  }
-  
-  .clearfix:after {
-      clear: both
-  }
-
- .arrow-btn {
-   background-color: inherit;
-   border: none;
-   font-size: 2em;
- }
 
 
 </style>
