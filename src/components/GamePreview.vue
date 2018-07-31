@@ -20,7 +20,7 @@
             <!-- <li class="game-addedAt-preview"><span>Added at: </span> {{1532359863 | getDate }}</li> -->
             <!-- TODO: user location & name -->
             <li v-if="game.isNew" class="game-new-icon"><img src="img/new-icon.png"></li>
-            <li class="game-location-preview capitalize"><span>Location: </span> </li>
+            <li class="game-location-preview capitalize" v-if="!location"><span>Location: </span> </li>
             <li class="game-user-name-preview capitalize"><span>by </span> </li>
             <li>
                 <!-- v-if="user.isAdmin"  -->
@@ -36,7 +36,7 @@
 <script>
 export default {
   name: "GamePreview",
-  props: ["game", "gameCheckbox"],
+  props: ["game", "gameCheckbox","location"],
   data() {
     return {
       checked: true

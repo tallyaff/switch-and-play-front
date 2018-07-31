@@ -1,5 +1,8 @@
 <template>
-    <section class="GameDetails" v-if="currGame">
+    <section class="GameDetails" v-if="currGame && currUser">
+      <router-link class="btn-back" :to="'/game'">Back to gallery</router-link>
+      <br>
+      <br>
       <div class="game-details-all" v-if="!requesting">
         <span class="game-name">{{currGame.name}}</span>
         <br>
@@ -16,6 +19,7 @@
                 <div class="detail-item" >Categoty:</div>
                 <div class="detail-item" >Condition:</div>
                 <div class="detail-item" >Added at:</div>
+                <div class="detail-item" >City:</div>
                 </div>
             <div class="text-container flex column">
                 <div class="detail-item" label="Type">{{currGame.type}}
@@ -25,6 +29,7 @@
                 <div class="detail-item" label="Category">{{currGame.category}}</div>
                 <div class="detail-item" label="Condition">{{currGame.condition}}</div>
                 <div class="detail-item" label="added At">{{currGame.addedAt}}</div>
+                <div class="detail-item" label="added At">{{currUser.city}}</div>
                 </div>
                 
             </div>
@@ -35,30 +40,44 @@
 </template>
 <script>
 import GameRequest from "@/components/GameRequest.vue";
+import GameService from "@/services/GameService.js";
 export default {
   name: "GameDetails",
   data() {
     return {
       currGame: null,
-      requesting: null
+      requesting: null,
+      currUser: null,
     };
   },
   created() {
     this.loadGame();
+
   },
   computed: {
     loggedinUser() {
       return this.$store.getters.loggedUser;
     }
   },
+  
   methods: {
     loadGame() {
       this.$store
         .dispatch({ type: "loadGame", gameId: this.$route.params.gameId })
         .then(game => {
           this.currGame = game;
+          this.getUser()
           // eventBusService.$emit(SHOW_MSG, {txt: `Todo was removed`})
         });
+    },
+    getUser(){
+
+      console.log('getUserById. id is:', this.currGame.userId);
+      GameService.getUserById(this.currGame.userId)
+      .then(user =>{
+        console.log('userrrrrrrrrrrrrr by gameid is', user)
+        this.currUser = user
+      })
     },
     checkIfLogin() {
       console.log("this.loggedinUser", this.loggedinUser);
@@ -105,11 +124,11 @@ img {
   font-family: 'PaytoneOne';
   margin-top: 20px;
   color: $main-color;
-  font-size: 16px;
+  font-size: 24px;
 }
 .GameDetails {
   font-family: "Ubuntu-regular";
-  font-size: 14px;
+  font-size: 18px;
   justify-content: space-between;
   align-items: baseline;
   margin-top: 50px;
@@ -132,14 +151,14 @@ img {
 .text-container {
   align-items: baseline;
   font-weight: 200;
-  font-size: 14px;
+  font-size: 18px;
   padding: 0;
 }
 .text-container-title{
   margin-top: 25px;
   align-items: baseline;
   font-weight: 200;
-  font-size: 14px;
+  font-size: 18px;
   padding: 0;
   font-weight: bold;
  
@@ -152,5 +171,9 @@ img {
   list-style: none;
   border: solid white;
 
+}
+.btn-back{
+  float: left;
+  margin-left: 40px;
 }
 </style>

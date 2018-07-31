@@ -5,7 +5,7 @@
             <span>would like to switch the next games:</span>
             <br>
             <li class="game" v-for="game in games" :key="game._id">
-                <game-preview :game="game" :gameCheckbox="gameCheckbox" @check="updateGamesToSwitch">
+                <game-preview :game="game" :location="true" :gameCheckbox="true" @check="updateGamesToSwitch">
                 </game-preview>
                 <li/>
                 <el-checkbox class="checkbox-game-request" label="i will pick it up from your place"></el-checkbox>
@@ -33,7 +33,7 @@ export default {
   data() {
     return {
       textareaReq: "",
-      gameCheckbox: true,
+      // gameCheckbox: true,
       gamesToSwitch: [],
       ownerUserId: null
     };
@@ -44,7 +44,7 @@ export default {
   methods: {
     updateGamesToSwitch(data) {
       if (data.checked) {
-        this.gamesToSwitch.push(`ObjectId("${data.gameId}")`);
+        this.gamesToSwitch.push(data.gameId);
       } else {
         const gameIdx = this.gamesToSwitch.findIndex(
           game => game._id === data.gameId
@@ -59,11 +59,12 @@ export default {
           this.ownerUserId = game.userId;
           const matchReq = {
             userPassive: {
-              userId: `ObjectId("${this.ownerUserId}")`,
-              gameId: `ObjectId("${this.$route.params.gameId}")`
+              userId: this.ownerUserId,
+              gameId: this.$route.params.gameId
             },
             userActive: {
-              userId: `ObjectId("${this.user._id}")`,
+              userId: this.user._id,
+              games: this.gamesToSwitch,
             },
             isMatch: false
           };
@@ -79,6 +80,11 @@ export default {
     games() {
       console.log(this.$store.getters.getUserGames);
       return this.$store.getters.getUserGames || [];
+    }
+  },
+  watch: {
+    games(games) {
+      this.gamesToSwitch = games.map(game => game._id);
     }
   }
 };

@@ -1,7 +1,6 @@
 <template>
 <section
   <div class="user-icons-container flex">
-    <h1>dfkjdskfjskfdskf</h1>
     <div class="filter-images-container-gallery flex">
         <GameFilter></GameFilter> 
         <game-list :games="gamesForDisplay" @remove="removeGame"></game-list>
