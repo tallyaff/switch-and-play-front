@@ -12,6 +12,7 @@
         <router-link :to="'/game'" @click.native="setFilter('baby')">
           <h2 class="type-title-home">Baby</h2>
         </router-link>
+        <font-awesome-icon icon="trashAlt" />
         <ul v-if="gamesForBabyHomeDisplay" class="cards-container-home align-center flex justify-center clean-list">
             <li v-for="game in gamesForBabyHomeDisplay.slice(0, 5)" :key="game._id"> 
           <!-- <router-link :to="`/game`"> -->
