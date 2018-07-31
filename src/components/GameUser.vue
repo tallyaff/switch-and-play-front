@@ -1,34 +1,31 @@
 <template>
-    <section>
-        <!-- <p>{{userId}}</p> -->
-        <p>{{user._id}}</p>
+    <section v-if="getGameUser">
+        <p>{{user.username}}</p>
     </section>
 </template>
 
 <script>
-import UserService from '@/services/UserService.js';
+import GameService from '@/services/GameService.js';
 
 export default {
     name: "GameUser",
     props: ["userId"],
     data() {
         return {
-            user: ''
+            user: null
         }
     },
     created() {
-        this.getGameUser
-        console.log('user??!!', this.user);
+        this.getGameUser()
+        // debugger
     },
-    computed: {
+    methods: {
         getGameUser() {
-            var userId = this.userId
-            console.log('userId&&&', userId);
-            UserService.getUserById(userId)
-            .then(user => {
-                console.log('user from server&&&', user);
-                this.user = user
-            })
+            return GameService.getUserById(this.userId)
+                .then(user => {
+                    console.log('user from server&&&', user);
+                    this.user = user
+                })
         }
     }
 }

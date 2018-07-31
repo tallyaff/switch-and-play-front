@@ -69,15 +69,12 @@ function _setLoggedinUser(user) {
 }
 
 
-
-
 export default {
     getUser,
     createUser,
     logout,
     getLoggedinUser,
-    saveUser
-
+    saveUser,
 }
 
 

@@ -25,7 +25,9 @@
                   <div class="card-text-container">
                     <span class="card-game-name">{{game.name}}</span>
                     <div class="username-time-container flex space-between align-center">
-                      <div type="text" class="user-name-card-home">User Name</div>
+                      <div type="text" class="user-name-card-home">
+                        <gameUser :userId="game.userId"></gameUser>
+                      </div>
                       <time class="time">{{ game.addedAt | getDate }}</time>
                     </div>
                   </div>
@@ -62,9 +64,11 @@
                     <div class="card-text-container">
                       <span class="card-game-name">{{game.name}}</span>
                       <div class="username-time-container flex space-between align-center">
-                        <div type="text" class="user-name-card-home">User Name</div>
+                        <div type="text" class="user-name-card-home">
+                          <gameUser :userId="game.userId"></gameUser>
+                        </div>
                         <time class="time">{{ game.addedAt | getDate }}</time>
-                        <gameUser :userId="game.userId"></gameUser>
+                        
                       </div>
                     </div>
                   </el-card>

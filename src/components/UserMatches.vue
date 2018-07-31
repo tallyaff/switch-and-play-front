@@ -14,7 +14,7 @@
                         </div>
                     </div>
                     <h3>⇆</h3>
-                    <!--fab icon doesnt work !! -->
+                    <!-- fab icon doesnt work !! -->
                     <i class="fas fa-arrows-h"></i>
                     <div class="flex column games-container">
                         <h4>I recieved: </h4>
