@@ -3,8 +3,13 @@
         <ul class="game-preview-container flex column align-center clean-list space-between" v-if="game">
             <!-- :src="game.src"  -->
             <!-- {{game._id}} -->
-            <el-checkbox checked @change=" $emit('check', {gameId :game._id, checked:checked})
-            " v-model="checked" v-if="gameCheckbox" label="offer this game"></el-checkbox>
+            <el-checkbox  
+              @change=" $emit('check', {gameId :game._id, checked:checked})" 
+              v-model="checked" 
+              v-if="gameCheckbox" 
+              label="offer this game">
+            </el-checkbox>
+
             <li class="game-name-preview">{{game.name}}</li>
             <div class="image-container" :style="{backgroundImage: url, backgroundSize: 'cover', backgroundPosition: 'center', backgroundrepeat: 'no-repeat'}">
             </div>
@@ -31,12 +36,16 @@
 <script>
 export default {
   name: "GamePreview",
-  props: ["game","gameCheckbox"],
-  data(){
-    return{
-     checked : false
-    }
+  props: ["game", "gameCheckbox"],
+  data() {
+    return {
+      checked: true
+    };
   },
+  // created() {
+  //   this.onLoadCheckbox();
+  //   this.$emit('check', {gameId :this.game._id, checked:this.checked})
+  // },
 
   methods: {
 
@@ -48,7 +57,7 @@ export default {
     loggedinUser() {
       // console.log(this.$store.getters.loggedUser);
       return this.$store.getters.loggedUser || {};
-    },
+    }
     // checked(){
     //   $emit('check', game._id,this.checked)
     // }
@@ -56,50 +65,51 @@ export default {
     //   // console.log('user!!!!!!!!!!!!!!!!!!', this.$store.getters.setLoginUser);
     //   return this.$store.getters.setLoginUser;
     // },
- 
   }
 };
 </script>
 
 
 <style scoped lang="scss">
-    @import "../assets/scss/style.scss";
-    .game-name-preview {
-      font-size: rem(30px);
-      font-family: "Ubuntu";
-      padding: rem(20px);
-      color: $main-color;
-      text-transform: capitalize;
-    }
+@import "../assets/scss/style.scss";
+.game-name-preview {
+  font-size: rem(30px);
+  font-family: "Ubuntu";
+  padding: rem(20px);
+  color: $main-color;
+  text-transform: capitalize;
+}
 
-    .image-container {
-      width: 300px;
-      height: 250px;
-    }
-    img {
-      width: 100%;
-      cursor: pointer;
-      transition: all 0.5s;
-    }
+.image-container {
+  width: 300px;
+  height: 250px;
+}
+img {
+  width: 100%;
+  cursor: pointer;
+  transition: all 0.5s;
+}
 
-    img:hover {
-      // background-color: #d9d8d82b;
-      // background-color: #f7b2532b;
+img:hover {
+  // background-color: #d9d8d82b;
+  // background-color: #f7b2532b;
+}
+
+.game-category-preview,
+.game-condition-preview,
+.game-addedAt-preview,
+.game-location-preview,
+.game-user-name-preview {
+  padding: rem(5px);
+  color: $main-color;
+  font-family: "Lato-Bold";
+  span {
+    color: black;
   }
-    
-    .game-category-preview, .game-condition-preview, .game-addedAt-preview, .game-location-preview, .game-user-name-preview {
-        padding: rem(5px);
-        color: $main-color; 
-        font-family: 'Lato-Bold';
-        span {
-          color: black;
-        }
-    }
+}
 
-    .game-user-name-preview span {
-      text-transform: capitalize;
-      color: $secondary-color;
-
-    }
-  
+.game-user-name-preview span {
+  text-transform: capitalize;
+  color: $secondary-color;
+}
 </style>

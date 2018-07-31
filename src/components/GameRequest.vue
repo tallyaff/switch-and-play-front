@@ -27,7 +27,8 @@ import MatchService from "../services/MatchService.js";
 export default {
   name: "GameRequest",
   created() {
-    this.$store.dispatch({ type: "gamesById", games: this.user.games });
+    this.$store.dispatch({ type: "gamesById", games: this.user.games })
+    
   },
   data() {
     return {
@@ -63,7 +64,6 @@ export default {
             },
             userActive: {
               userId: `ObjectId("${this.user._id}")`,
-              games: this.gamesToSwitch
             },
             isMatch: false
           };
