@@ -13,15 +13,15 @@
             <li class="game-name-preview">{{game.name}}</li>
             <div class="image-container" :style="{backgroundImage: url, backgroundSize: 'cover', backgroundPosition: 'center', backgroundrepeat: 'no-repeat'}">
             </div>
-            <li class="game-category-preview"><span>Category: </span> {{game.category}}</li>
-            <li class="game-condition-preview"><span>Condition: </span>{{game.condition}}</li>
+            <li class="game-category-preview capitalize"><span>Category: </span> {{game.category}}</li>
+            <li class="game-condition-preview capitalize"><span>Condition: </span>{{game.condition}}</li>
             <!-- <li class="game-addedAt-preview"><span>Added at: </span> {{game.addedAt}}</li> -->
-            <li class="game-addedAt-preview"><span>Added at: </span> {{game.addedAt | getDate }}</li>
+            <li class="game-addedAt-preview capitalize"><span>Added at: </span> {{game.addedAt | getDate }}</li>
             <!-- <li class="game-addedAt-preview"><span>Added at: </span> {{1532359863 | getDate }}</li> -->
             <!-- TODO: user location & name -->
             <li v-if="game.isNew" class="game-new-icon"><img src="img/new-icon.png"></li>
-            <li class="game-location-preview"><span>Location: </span> </li>
-            <li class="game-user-name-preview"><span>by </span> </li>
+            <li class="game-location-preview capitalize"><span>Location: </span> </li>
+            <li class="game-user-name-preview capitalize"><span>by </span> </li>
             <li>
                 <!-- v-if="user.isAdmin"  -->
                 <button v-if="loggedinUser === 'game.userId'" class="btn btn-remove" @click="$emit('remove', game._id)">Remove</button> 

@@ -24,10 +24,14 @@
                   </div>
                   <!-- <div class="card-text-container" style="padding: 14px;"> -->
                   <div class="card-text-container flex justify-center align-center column">
-                    <span class="card-game-name">{{game.name}}</span>
-                    <div class="username-time-container flex space-between align-center space-between">
-                      <div type="text" class="user-name-card-home">User Name</div>
-                      <time class="time">{{ game.addedAt | getDate }}</time>
+                      <span class="card-game-name">{{game.name}}</span>
+                    <div class="username-time-container flex space-between align-center">
+                      <div class="username-time-container flex space-between align-center space-between">
+                        <div type="text" class="user-name-card-home">
+                          <gameUser :userId="game.userId"></gameUser>
+                        </div>
+                      </div>
+                          <time class="time">{{ game.addedAt | getDate }}</time>
                     </div>
                   </div>
               </el-card>
@@ -102,12 +106,12 @@
 
 
     </div>
-  </div>
             <!-- <ul v-if="gamesForTeenHomeDisplay">
               <li v-for="game in gamesForTeenHomeDisplay" :key="game._id"> 
                 <div>{{game.name}}</div>
               </li>
             </ul> -->
+  </div>
 </template>
 
 <script>
@@ -115,7 +119,7 @@ import GameService from '@/services/GameService.js';
 import UserService from '@/services/UserService.js';
 import Gallery from '@/views/Gallery.vue'
 import GameFilter from '@/components/GameFilter.vue';
-import gameUser from '@/components/GameUser.vue';
+import GameUser from '@/components/GameUser.vue';
 import { eventBus, EVENT_SET_FILTER } from '@/services/EventBusService.js';
 
 // import Gallery from '@/views/Gallery.vue'
@@ -124,7 +128,7 @@ export default {
   name: 'home',
   components: {
     GameFilter,
-    gameUser,
+    GameUser
     // Gallery,
 
   },
@@ -173,6 +177,7 @@ export default {
         });
     },
     setSearchHome() {
+      this.allByName = true;
       // console.log('setSearchHome in cmp');      
       this.$store.dispatch({ type: 'setSearchHome', filterBy: this.filterBy })
           .then(games => {
@@ -186,6 +191,13 @@ export default {
       this.filterBy.type = [type]
       this.$store.dispatch({ type: "setFilter", filterBy: this.filterBy });
     }, 
+    // setFilter(criteria = {type: [], name: ''}) {
+    //   console.log('this.filterBy in home', type);
+    //   // eventBus.$emit(EVENT_SET_FILTER, this.filterBy);
+    //   if(criteria.name) this.filterBy.name = criteria.name;
+    //   if(criteria.type) this.filterBy.type = criteria.type;
+    //   this.$store.dispatch({ type: "setFilter", filterBy: this.filterBy });
+    // }, 
   },
 };
 </script>
@@ -223,7 +235,7 @@ export default {
   .type-title-home {
     font-size: rem(40px);
     font-family: 'Ubuntu';
-    margin: rem(20px) 0;
+    margin: rem(20px), 0, rem(10px), 0;
   }
 
   .all-cards-home-container {
@@ -281,6 +293,7 @@ export default {
         font-family: 'PaytoneOne';
         font-size: rem(20px);
         color: $main-color;
+        padding: 0;
         // text-shadow: 2px 1px $secondary-color;
       }
       .game-new-icon {
@@ -295,6 +308,11 @@ export default {
         float: right;
         color: $secondary-color;
         font-family: 'Ubuntu-regular';
+        position: relative;
+        // top: -40px;
+        // left: -40px;
+        // align-self: flex-end;
+        // align-items: center;
       }
       .time {
         font-size: rem(14px);

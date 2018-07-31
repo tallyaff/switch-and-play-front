@@ -23,7 +23,7 @@ export default {
     Header
   },
   created() {
-    this.loadGames();
+    // this.$store.loadGames();
     console.log('this.gamesForDisplay in gallery', this.gamesForDisplay);    
     // this.gamesForDisplay;
   },
@@ -54,14 +54,14 @@ export default {
         });
       } else this.$router.push("/game/edit");
     },
-    loadGames() {
-      this.$store
-        .dispatch({ type: "loadGames" })
-        .then(games => {})
-        .catch(err => {
-          console.log("err", err);
-        });
-    },
+    // loadGames() {
+    //   this.$store
+    //     .dispatch({ type: "loadGames" })
+    //     .then(games => {})
+    //     .catch(err => {
+    //       console.log("err", err);
+    //     });
+    // },
     setNotification() {
       console.log("setNotification");
       if (this.getNotificationCount.length > 0) {
@@ -110,6 +110,7 @@ export default {
 <style scoped lang="scss">
 @import "~@/assets/scss/style.scss";
 .filter-images-container-gallery {
+  margin-top: rem(30px);
 }
 </style>
     

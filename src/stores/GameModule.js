@@ -167,7 +167,7 @@ export default {
                 })
         },
         setSearchHome(context, { filterBy }){
-            context.commit({ type: 'setSearchHome', filterBy })
+            context.commit({ type: 'setFilter', filterBy })
             // console.log('setSearchHome in store: filterBy', filterBy)
             return GameService.query(filterBy)
                 .then((games) => {

@@ -15,6 +15,7 @@
                     </div>
                     <h3>⇆</h3>
                     <!--fab icon doesnt work !! -->
+                    <!-- <i class="fas fa-exchange-alt"></i> -->
                     <i class="fas fa-exchange-alt"></i>
                     <div class="flex column games-container">
                         <h4>I recieved: </h4>
@@ -39,10 +40,10 @@ export default {
         console.log('matches:&&', this.matches);
     },
     computed: {
-        showGame(){
-            // console.log('show:@@', this.matches);
-            return this.$store.getters.gameForDisplay
-        }
+        // showGame(){
+        //     // console.log('show:@@', this.matches);
+        //     return this.$store.getters.gameForDisplay
+        // }
     }
 }
 </script>
