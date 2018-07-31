@@ -1,6 +1,6 @@
 <template>
   <!-- <div class="game-preview" > -->
-        <ul class="game-preview-container flex column align-center clean-list space-between" v-if="game">
+         <ul class="game-preview-container pointer flex column align-center clean-list space-between" v-if="game">
             <!-- :src="game.src"  -->
             <!-- {{game._id}} -->
             <el-checkbox  
@@ -10,7 +10,7 @@
               label="offer this game">
             </el-checkbox>
 
-        <ul class="game-preview-container pointer flex column align-center clean-list space-between" v-if="game">
+        <!-- <ul class="game-preview-container pointer flex column align-center clean-list space-between" v-if="game"> -->
             <!-- <el-checkbox checked @change=" $emit('check', {gameId :game._id, checked:checked})
             " v-model="checked" v-if="gameCheckbox" label="offer this game"></el-checkbox>
             <li class="game-name-preview">{{game.name}}</li>
@@ -134,7 +134,7 @@ img:hover {
   text-transform: capitalize;
   color: $secondary-color;
 }
-    }
+    
 
   .game-new-icon {
       position: absolute;
