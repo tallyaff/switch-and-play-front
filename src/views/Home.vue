@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <!-- <h1>test</h1> -->
       <div class="home-bg-img flex justify-center align-center" :style="{backgroundImage: url, backgroundSize: 'cover', backgroundPosition: 'center', backgroundrepeat: 'no-repeat'}">
         <form @submit.prevent="setSearchHome" class="search">
             <input class="search-input" type="text" v-model="filterBy.name" placeholder="Search for games">
@@ -14,11 +15,7 @@
         </router-link>
         <font-awesome-icon icon="trashAlt" />
         <ul v-if="gamesForBabyHomeDisplay" class="cards-container-home align-center flex justify-center clean-list">
-<<<<<<< HEAD
-            <li v-for="game in gamesForBabyHomeDisplay.slice(0,3)" :key="game._id"> 
-=======
             <li v-for="game in gamesForBabyHomeDisplay.slice(0, 5)" :key="game._id"> 
->>>>>>> master
           <!-- <router-link :to="`/game`"> -->
           <router-link :to="`/game/${game._id}/`" target="_blank">
               <el-card class="card-home">
@@ -28,16 +25,14 @@
                   </div>
                   <!-- <div class="card-text-container" style="padding: 14px;"> -->
                   <div class="card-text-container flex justify-center align-center column">
-                    <span class="card-game-name">{{game.name}}</span>
-<<<<<<< HEAD
+                      <span class="card-game-name">{{game.name}}</span>
                     <div class="username-time-container flex space-between align-center">
-                      <div type="text" class="user-name-card-home">
-                        <gameUser :userId="game.userId"></gameUser>
+                      <div class="username-time-container flex space-between align-center space-between">
+                        <div type="text" class="user-name-card-home">
+                          <gameUser :userId="game.userId"></gameUser>
+                        </div>
                       </div>
-=======
-                    <div class="username-time-container flex space-between align-center space-between">
-                      <div type="text" class="user-name-card-home">User Name</div>
-                      <time class="time">{{ game.addedAt | getDate }}</time>
+                          <time class="time">{{ game.addedAt | getDate }}</time>
                     </div>
                   </div>
               </el-card>
@@ -91,7 +86,6 @@
                     <span class="card-game-name">{{game.name}}</span>
                     <div class="username-time-container flex space-between align-center space-between">
                       <div type="text" class="user-name-card-home">User Name</div>
->>>>>>> master
                       <time class="time">{{ game.addedAt | getDate }}</time>
                     </div>
                   </div>
@@ -145,28 +139,12 @@
       </div>
 
 
-<<<<<<< HEAD
-      <div class="filter-type home-teen-filter-container" >
-         <router-link :to="'/game'">
-          <h2 class="type-title-home">Teen</h2>
-        </router-link>
-            <ul v-if="gamesForTeenHomeDisplay">
-              <li v-for="game in gamesForTeenHomeDisplay" :key="game._id"> 
-                <div>{{game.name}}</div>
-              </li>
-            </ul>
-      </div>
-
     </div>
-=======
-    </div>
-  </div>
             <!-- <ul v-if="gamesForTeenHomeDisplay">
               <li v-for="game in gamesForTeenHomeDisplay" :key="game._id"> 
                 <div>{{game.name}}</div>
               </li>
             </ul> -->
->>>>>>> master
 </template>
 
 <script>
@@ -174,11 +152,7 @@ import GameService from '@/services/GameService.js';
 import UserService from '@/services/UserService.js';
 import Gallery from '@/views/Gallery.vue'
 import GameFilter from '@/components/GameFilter.vue';
-<<<<<<< HEAD
 import GameUser from '@/components/GameUser.vue';
-=======
-import gameUser from '@/components/GameUser.vue';
->>>>>>> master
 import { eventBus, EVENT_SET_FILTER } from '@/services/EventBusService.js';
 
 // import Gallery from '@/views/Gallery.vue'
@@ -187,11 +161,7 @@ export default {
   name: 'home',
   components: {
     GameFilter,
-<<<<<<< HEAD
     GameUser
-=======
-    gameUser,
->>>>>>> master
     // Gallery,
 
   },
@@ -348,6 +318,7 @@ export default {
         font-family: 'PaytoneOne';
         font-size: rem(20px);
         color: $main-color;
+        padding: 0;
         // text-shadow: 2px 1px $secondary-color;
       }
       .game-new-icon {
@@ -362,6 +333,11 @@ export default {
         float: right;
         color: $secondary-color;
         font-family: 'Ubuntu-regular';
+        position: relative;
+        // top: -40px;
+        // left: -40px;
+        // align-self: flex-end;
+        // align-items: center;
       }
       .time {
         font-size: rem(14px);

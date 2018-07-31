@@ -28,7 +28,7 @@
               <el-button @click="unSaveUserProfile">Cancel</el-button>
           </el-form>
         </div>
-        <h2 class="headres-in-profile-details">Your games:</h2>
+        <h2 class="headres-in-profile-details">My games:</h2>
         <ul class="cards-in-profile-container flex align-center justify-center" v-if="games">
            <li class="game" v-for="game in games" :key="game._id">
                 <!-- <game-preview :game="game" :gameCheckbox="gameCheckbox" @check="updateGamesToSwitch"> -->
