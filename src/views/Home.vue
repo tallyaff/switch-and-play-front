@@ -1,12 +1,11 @@
 <template>
   <div class="home">
-    <!-- <h1>test</h1> -->
-      <div class="home-bg-img flex justify-center align-center" :style="{backgroundImage: url, backgroundSize: 'cover', backgroundPosition: 'center', backgroundrepeat: 'no-repeat'}">
-        <form @submit.prevent="setSearchHome" class="search">
-            <input class="search-input" type="text" v-model="filterBy.name" placeholder="Search for games">
-            <el-button class="btn search-btn" type="primary">Search</el-button>
-        </form>
-      </div>
+    <div class="home-bg-img flex justify-center align-center" :style="{backgroundImage: url, backgroundSize: 'cover', backgroundPosition: 'center', backgroundrepeat: 'no-repeat'}">
+      <form @submit.prevent="setSearchHome" class="search">
+          <input class="search-input" type="text" v-model="filterBy.name" placeholder="Search for games">
+          <el-button class="btn search-btn" type="primary">Search</el-button>
+      </form>
+    </div>
     <div class="all-cards-home-container">
       <div class="filter-type home-filter-container home-filter-container-baby flex column align-center justify-center" >
         <!-- <router-link :to="'/game'" value="baby" v-model="filterBy.type" @click.native="setFilter"> -->
@@ -97,46 +96,13 @@
 
 
 
-                  <!-- <el-carousel :interval="5000" arrow="always">
-                    <el-carousel-item v-for="item in 4" :key="item">
-                      <h3>{{ item }}</h3>
-                    </el-carousel-item>
-                  </el-carousel> -->
+  <!-- <el-carousel :interval="5000" arrow="always">
+    <el-carousel-item v-for="item in 4" :key="item">
+      <h3>{{ item }}</h3>
+    </el-carousel-item>
+  </el-carousel> -->
 
 
-          <div class="filter-type home-child-filter-container" >
-            <router-link :to="'/game'">
-              <h2 class="type-title-home">Child</h2>
-            </router-link>
-            <i class="fas fa-angle-left"></i>
-            <ul v-if="gamesForChildHomeDisplay" class="cards-container-home align-center flex justify-center clean-list">
-              <button class="arrow-btn">◀</button>
-              <li v-for="game in gamesForChildHomeDisplay.slice(0,3)" :key="game._id"> 
-                  <!-- <router-link :to="`/game`"> -->
-                <router-link :to="`/game/${game._id}/`" target="_blank">
-                  <el-card class="card-home">
-                    <div v-if="game.isNew" class="game-new-icon"><img src="img/new-icon.png"></div>
-                    <div class="image-container flex align-center justify-center">
-                      <img :src="game.src" class="image-card">  
-                    </div>
-                    <div class="card-text-container">
-                      <span class="card-game-name">{{game.name}}</span>
-                      <div class="username-time-container flex space-between align-center">
-                        <div type="text" class="user-name-card-home">
-                          <gameUser :userId="game.userId"></gameUser>
-                        </div>
-                        <time class="time">{{ game.addedAt | getDate }}</time>
-                        
-                      </div>
-                    </div>
-                  </el-card>
-                </router-link>
-                </li>
-                <button class="arrow-btn">▶</button>
-                <i class="fas fa-angle-right"></i>
-            </ul> 
-         </div>
-      </div>
 
 
     </div>
@@ -210,6 +176,7 @@ export default {
         });
     },
     setSearchHome() {
+      this.allByName = true;
       // console.log('setSearchHome in cmp');      
       this.$store.dispatch({ type: 'setSearchHome', filterBy: this.filterBy })
           .then(games => {
@@ -223,6 +190,13 @@ export default {
       this.filterBy.type = [type]
       this.$store.dispatch({ type: "setFilter", filterBy: this.filterBy });
     }, 
+    // setFilter(criteria = {type: [], name: ''}) {
+    //   console.log('this.filterBy in home', type);
+    //   // eventBus.$emit(EVENT_SET_FILTER, this.filterBy);
+    //   if(criteria.name) this.filterBy.name = criteria.name;
+    //   if(criteria.type) this.filterBy.type = criteria.type;
+    //   this.$store.dispatch({ type: "setFilter", filterBy: this.filterBy });
+    // }, 
   },
 };
 </script>
@@ -260,7 +234,7 @@ export default {
   .type-title-home {
     font-size: rem(40px);
     font-family: 'Ubuntu';
-    margin: rem(20px) 0;
+    margin: rem(20px), 0, rem(10px), 0;
   }
 
   .all-cards-home-container {

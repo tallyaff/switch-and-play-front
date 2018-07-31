@@ -15,17 +15,17 @@
                 </el-form-item>
                 <el-form-item>
                   <el-button type="primary" @click="login" class="btn">
-                  login
+                  Login
                   </el-button>
                 </el-form-item>
             </el-form-item>
             <el-button type="submit" @click="openSignupModal" class="btn-signup">
-                  sign up
+                  Sign up
             </el-button>
         </el-form>
         <el-form  v-if="signupForm">
           <el-form-item class="login-form flex column">
-            <h4>sign up</h4>
+            <h4>Sign up</h4>
             <p>Your Name:</p>
             <el-input v-model="newUser.username" type="text" class="el-input-user"/>
             <p>Choose Password:</p>
@@ -35,7 +35,7 @@
             <p>City:</p>
             <el-input v-model="newUser.city" type="text" class="el-input-user"/>
             <el-button type="submit" @click="signup" class="btn-signup">
-            signup
+            Signup
             </el-button>
           </el-form-item>
         </el-form>

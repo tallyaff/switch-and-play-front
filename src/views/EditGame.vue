@@ -1,6 +1,6 @@
 <template>
     <section>
-    <h3>Edit your game!</h3>
+    <h3 class="edit-title" >Edit your game!</h3>
         <div class="edit-game no-margin" v-if="gameCopy">
           <el-form class="no-margin" :label-position="labelPosition" @submit.native.prevent="saveGame"  style="width: 40%">
               <el-form-item label="Name">
@@ -10,28 +10,28 @@
               <el-input type="textarea" v-model="gameCopy.desc"/>
               </el-form-item>
               <el-form-item label="Category">
-              <el-select v-model="gameCopy.category">
-                  <el-option value="board-game">Board-game</el-option>
-                  <el-option value="console">Console</el-option>
-                  <el-option value="doll">Doll</el-option>
-                  <el-option value="lego">Lego</el-option>
-                  <el-option value="playmobil">Playmobil</el-option>
-                  <el-option value="wheels">Wheels</el-option>
-                  <el-option value="puzzle">Puzzle</el-option>
+              <el-select class="select" v-model="gameCopy.category">
+                  <el-option class="option" value="board-game">Board-game</el-option>
+                  <el-option class="option" value="console">Console</el-option>
+                  <el-option class="option" value="doll">Doll</el-option>
+                  <el-option class="option" value="lego">Lego</el-option>
+                  <el-option class="option" value="playmobil">Playmobil</el-option>
+                  <el-option class="option" value="wheels">Wheels</el-option>
+                  <el-option class="option" value="puzzle">Puzzle</el-option>
               </el-select>
               </el-form-item>
-<el-form-item label="Type">
-              <el-select v-model="gameCopy.type">
-                  <el-option value="baby">Baby</el-option>
-                  <el-option value="child">Child</el-option>
-                  <el-option value="teen">Teen</el-option>
+          <el-form-item label="Type">
+              <el-select class="select" v-model="gameCopy.type">
+                  <el-option class="option" value="baby">Baby</el-option>
+                  <el-option class="option" value="child">Child</el-option>
+                  <el-option class="option" value="teen">Teen</el-option>
               </el-select>
               </el-form-item>
-<el-form-item label="Condition">
-              <el-select v-model="gameCopy.condition">
-                  <el-option value="brand-new">Brand new</el-option>
-                  <el-option value="new">New</el-option>
-                  <el-option value="used">Used</el-option>
+          <el-form-item label="Condition">
+              <el-select class="select" v-model="gameCopy.condition">
+                  <el-option class="option" value="brand-new">Brand new</el-option>
+                  <el-option class="option" value="new">New</el-option>
+                  <el-option class="option" value="used">Used</el-option>
               </el-select>
               </el-form-item>
               <el-button class="btn-save" type="primary" @click="saveGame">Save</el-button>
@@ -66,9 +66,9 @@ export default {
           .dispatch({ type: "loadGame", gameId: this.$route.params.gameId })
           .then(game => {
             this.currGame = game;
-            //     // console.log("this.currGame in edit cmp", this.currGame);
+            // console.log("this.currGame in edit cmp", this.currGame);
             this.gameCopy = JSON.parse(JSON.stringify(this.currGame));
-            //     // console.log("this.gameCopy new in edit cmp", this.gameCopy);
+            // console.log("this.gameCopy new in edit cmp", this.gameCopy);
           });
       } else {
         console.log("has No params!!");
@@ -96,21 +96,29 @@ export default {
 <style scoped lang="scss">
 // @import '~@/assets/scss/style.scss';
 // @import  'node_modules/sweetalert/src/sweetalert.scss';
-.btn-save{
-    background-color: $main-color;
-}
-.edit-game {
-  border: 1px solid $main-color;
-  width: 55%;
-  padding: 20px;
-}
+  .btn-save{
+      background-color: $main-color;
+  }
+
+  .edit-title {
+    font-family: 'Lato-regular';
+    margin: rem(20px), 0;
+  }
+  .edit-game {
+    border: 1px solid $main-color;
+    width: 55%;
+    padding: 20px;
+  }
+  .select.option {
+    font-family: 'Lato-regular';
+  }
 </style>
 
 <style>
-.swal-text {
-  font-family: "Ubuntu";
-  color: #0d72fa;
-  font-size: 30px;
-}
+  .swal-text {
+    font-family: "Ubuntu";
+    color: #0d72fa;
+    font-size: 30px;
+  }
 </style>
 
