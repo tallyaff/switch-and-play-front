@@ -8,7 +8,7 @@
                 <button v-if="loggedinUser" v-show="!isEdit" class="btn icon-btn edit-profile-btn" type="primary" @click="editProfile"><font-awesome-icon icon="pen" /></button>
             </div>
             <div v-if="copiedUser">
-            <el-form v-if="isEdit" class="edit-user-profile no-margin" :label-position="labelPosition" @submit.native.prevent="saveUserProfile">
+            <el-form v-show="isEdit" v-if="isEdit" class="edit-user-profile no-margin" :label-position="labelPosition" @submit.native.prevent="saveUserProfile">
               <el-form-item class="form-item" label="username">
                 <el-input v-model="copiedUser.username"/>
               </el-form-item>
@@ -106,7 +106,7 @@ export default {
             } else this.$router.push('/game/edit');
         },
         saveUserProfile() {
-            this.$router.go(-1);
+            // this.$router.go(-1);
             this.$store.dispatch({ type: 'savedUserProfile', savedUserProfile: this.copiedUser })
                 .then(game => {
                     swal('Your details have been saved!',{
@@ -117,6 +117,8 @@ export default {
                 });
                 console.log('savedUserProfile from game APP');
                 });
+            this.isEdit = !this.isEdit;
+
         },
         unSaveUserProfile() {
             this.isEdit = !this.isEdit;
@@ -257,6 +259,14 @@ export default {
   .time {
       font-family: 'Ubuntu-regular';
 
+  }
+
+  .edit-remove-btns-container {
+    //   justify-content: flex-end;
+  }
+
+  .swal-text {
+      font-size: 50px;
   }
 
 </style>

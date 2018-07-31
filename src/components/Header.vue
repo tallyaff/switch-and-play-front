@@ -46,7 +46,6 @@ export default {
   box-shadow: 0px 0.5px 4px 0px #d9d8d8;
   display: flex;
   justify-content: space-around;
-  margin-bottom: rem(40px);
   font-size: 22px;
 }
 img{

@@ -6,7 +6,7 @@
             <el-button class="btn search-btn" type="primary">Search</el-button>
         </form>
         <div class="checkbox-filter-container capitalize">
-        <el-checkbox class="checkbox-filter" label="All" value="all" v-model="filterBy.allByName" @change="setFilter">All</el-checkbox>
+        <el-checkbox v-show='false' class="checkbox-filter" label="All" value="all" v-model="filterBy.allByName" @change="setFilter"></el-checkbox>
         <div>
             <h3>Type</h3>
                 <!-- <el-checkbox class="checkbox-filter" label="All types" value="all-types" v-model="filterBy.allTypes" @change="setFilter"></el-checkbox>
@@ -83,13 +83,11 @@ export default {
     }, 2000),
     toggleAllTypes() {
       this.filterBy.allTypes = !this.filterBy.allTypes;
-      this.filterBy.allByName = !this.filterBy.allByName;
       if (this.filterBy.allTypes) this.filterBy.type = [];
       this.setFilter();
     },
     toggleAllCategories() {
       this.filterBy.allCategories = !this.filterBy.allCategories;
-      this.filterBy.allByName = !this.filterBy.allByName;
       if (this.filterBy.allCategories) this.filterBy.category = [];
       this.setFilter();
     },
@@ -100,9 +98,6 @@ export default {
     },
     ['filterBy.category']() {
       if (this.filterBy.category.length > 0) this.filterBy.allCategories = false;
-    },
-    ['filterBy.allByName']() {
-      if (this.filterBy.allTypes && this.filterBy.allCategories) this.filterBy.allByName = true;
     },
   }
 };
