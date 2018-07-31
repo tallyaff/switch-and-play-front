@@ -1,6 +1,7 @@
 <template>
-    <section v-if="getGameUser">
+    <section v-if="getGameUser" class="user-game-container flex">
         <p>{{user.username}}</p>
+        <img :src="user.src"/>
     </section>
 </template>
 
@@ -32,5 +33,10 @@ export default {
 </script>
 
 <style>
-
+    .user-game-container>img {
+        width: 50px;
+        height: 50px;
+        border: 2px solid white;
+        border-radius: 50%;
+    }
 </style>
