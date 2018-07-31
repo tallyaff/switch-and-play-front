@@ -1,5 +1,5 @@
 <template>
-    <div class="header">
+    <div class="header flex">
         <div class="img container">
             <img src="img/logo.png">
         </div>

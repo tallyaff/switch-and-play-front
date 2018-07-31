@@ -1,21 +1,23 @@
 <template>
     <div class="user-bar">
         <div v-if="loggedinUser" class="user-bar-container flex space-evenly">
-            <p class="userMsg">Hello {{'loggedinUser'? loggedinUser.username: 'guest'}}</p>
+            <!-- <p class="userMsg">Hello {{'loggedinUser'? loggedinUser.username: 'guest'}}</p> -->
             <div class="user-icon-container">
             <router-link v-if="loggedinUser" :to="`/user/${loggedinUser._id}/`">
                 <font-awesome-icon icon="user" />
             </router-link>
-            <router-link v-if="loggedinUser" :to="`/user/activity/${loggedinUser._id}/`"
-                :class="notificationCount > 0? 'btn notification':'btn no-notification'">
-                <el-badge :value="notificationCount">
-                    <font-awesome-icon icon="bell" />
-                </el-badge>
+            <router-link v-if="loggedinUser" :to="`/user/activity/${loggedinUser._id}/`" class="flex not-container">
+                <div :class="matchCount > 0 ? 'btn notification':'btn no-notification'">{{matchCount}}</div>
+                <font-awesome-icon icon="bell" class="bell"/>
+                <div :class="recieveCount > 0 ? 'btn notification':'btn no-notification'">{{recieveCount}}</div>
+                <!-- <el-badge :value="recieveCount">
+                    <font-awesome-icon icon="bell" class="bell"/>
+                </el-badge> -->
             </router-link>
             <button class="btn-logout" @click="onLogout">Logout</button>
         </div>
         </div>
-        <div v-else>
+        <div v-else class="hello-login flex">
             <p class="helloMsg">Hello Guest</p>
             <router-link to="/login">Login</router-link>
         </div>
@@ -65,9 +67,12 @@ export default {
     loggedinUser() {
       return this.$store.getters.loggedUser;
     },
-    notificationCount() {
+    recieveCount() {
       return this.$store.getters.getRecieves.length;
-    }
+    },
+    matchCount() {
+      return this.$store.getters.getMatches.length;
+    },
   }
 };
 </script>
@@ -80,7 +85,7 @@ export default {
   background-color: #f56c6c;
   border-radius: 10px;
   color: #fff;
-  display: inline-block;
+  display: absolute;
   font-size: 12px;
   height: 18px;
   line-height: 18px;
@@ -97,11 +102,13 @@ p {
 }
 .user-bar {
   align-items: center;
+  padding: 40px;
 }
 .helloMsg {
   color: #f56c6c;
   font-size: 16px;
   margin-top: 5px;
+  margin-right: 10px;
 }
 .btn-logout {
   color: $secondary-color;
@@ -134,4 +141,8 @@ a {
        transition: all 0.3s ease;
     }
 }
+
+.not-container {
+  display: relative;
+}    
 </style>

@@ -1,6 +1,6 @@
 <template>
     <section>
-        <div>
+        <div class="activity-container flex">
             <div>
                 <UserRecievedRequests :recieves="recieves">
                 </UserRecievedRequests>
@@ -30,9 +30,14 @@ export default {
         UserRecievedRequests,
         UserSentRequests
     },
+    // data(){
+    //     return {
+    //        matchez: this.matches
+    //     }
+    // },
     created() {
-        console.log('userId: ', this.$route.params.userId);
-        console.log('recieves^^^^: ', this.recieves);
+        // console.log('userId: ', this.$route.params.userId);
+        // console.log('recieves^^^^: ', this.recieves);
         this.$store.dispatch({type: 'getMatch', 
             user: this.$route.params.userId
             })
@@ -45,6 +50,7 @@ export default {
             return this.$store.getters.getMatches;
         },
         recieves() {
+            console.log('this.$store.getters.getRecieves', this.$store.getters.getRecieves);
             return this.$store.getters.getRecieves;
         },
         requestes() {
