@@ -26,8 +26,8 @@
               <el-button @click="unSaveUserProfile">Cancel</el-button>
           </el-form>
         </div>
+        <h2 class="headres-in-profile-details">My games:</h2>
         <div class="my-games-header-container flex column">
-            <h2 class="headres-in-profile-details header-your-games">Your games:</h2>
             <el-button v-if="loggedinUser" class="btn add-game-btn" type="primary" @click="checkIfDisplay"><font-awesome-icon icon="plus" />&nbsp;&nbsp;Game</el-button>
         </div>
             <ul class="cards-in-profile-container flex align-center justify-center" v-if="games">

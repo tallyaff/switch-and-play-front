@@ -1,7 +1,7 @@
 <template>
-    <section v-if="getGameUser" class="user-game-container flex">
-        <p>{{user.username}}</p>
+    <section v-if="user" class="user-game-container flex column">
         <img :src="user.src"/>
+        <p class="nameUser">{{user.username}}</p>
     </section>
 </template>
 
@@ -33,10 +33,24 @@ export default {
 </script>
 
 <style>
+    .user-game-container {
+        position: absolute;
+        top: -100px;
+        left: -75px;
+    }
     .user-game-container>img {
         width: 50px;
         height: 50px;
+        padding: 2px;
         border: 2px solid white;
         border-radius: 50%;
+        position: relative;
+        /* left: 0px;
+        bottom: 1px;  */
+    }
+    .nameUser {
+        /* position: relative; */
+        /* bottom: 50px;
+        left: -84px; */
     }
 </style>

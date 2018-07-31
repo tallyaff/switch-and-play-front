@@ -6,8 +6,8 @@
             <router-link v-if="loggedinUser" :to="`/user/${loggedinUser._id}/`">
                 <font-awesome-icon icon="user" />
             </router-link>
-            <router-link v-if="loggedinUser" :to="`/user/activity/${loggedinUser._id}/`">
-                <!-- :class="notificationCount > 0? 'btn notification':'btn no-notification'" :setNotofication="setNotification" -->
+            <router-link v-if="loggedinUser" :to="`/user/activity/${loggedinUser._id}/`"
+                :class="notificationCount > 0? 'btn notification':'btn no-notification'">
                 <el-badge :value="notificationCount">
                     <font-awesome-icon icon="bell" />
                 </el-badge>
