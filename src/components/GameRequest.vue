@@ -59,9 +59,16 @@ export default {
       }
     },
     sendRequest() {
+      
       this.$store
         .dispatch({ type: "loadGame", gameId: this.$route.params.gameId })
         .then(game => {
+            swal("Whoo Hoo! Your request has been sent!", {
+            className: "swal-text",
+            icon: "success",
+            // timer: 2000,
+            button: false
+          })
           this.ownerUserId = game.userId;
           const matchReq = {
             userPassive: {
@@ -76,7 +83,10 @@ export default {
             isMatch: false
           };
           MatchService.createMatch(matchReq);
-        });
+        })
+        .catch(err =>{
+          console.log('error send a request',err)
+        })
     }
   },
   computed: {
@@ -135,9 +145,16 @@ export default {
     .btn-request{
       margin-top: 60px;
       margin-bottom: 20px;
+      background-color: #f56c6c;
+      color: white
       
     } 
     .req-container{
       align-items: center;
-    }   
+    } 
+    .swal-text {
+     font-family: sans-serif;
+     color: #0d72fa;
+     font-size: 30px;
+  }
 </style>
