@@ -27,8 +27,11 @@
           </el-form>
         </div>
         <h2 class="headres-in-profile-details">My games:</h2>
-        <div class="my-games-header-container flex column">
+        <div class="my-games-header-container flex">
             <el-button v-if="loggedinUser" class="btn add-game-btn" type="primary" @click="checkIfDisplay"><font-awesome-icon icon="plus" />&nbsp;&nbsp;Game</el-button>
+           <router-link :to="`/user/activity/recieve/${loggedinUser._id}`">
+                <el-button v-if="loggedinUser" class="btn add-game-btn" type="primary" @click="checkIfDisplay">My activity</el-button>
+           </router-link>
         </div>
             <ul class="cards-in-profile-container flex align-center justify-center" v-if="games">
             <li class="game" v-for="game in games" :key="game._id">

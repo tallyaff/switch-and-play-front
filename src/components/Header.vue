@@ -1,10 +1,12 @@
 <template>
-    <div class="header flex">
+    <div class="header">
+       <router-link to="/">
         <div class="img container">
           <router-link :to="`/`" class="pointer">
             <img src="img/logo.png">
           </router-link>
         </div>
+        </router-link>
         <nav-bar :loggedinUser.sync="loggedinUser"></nav-bar>
         <user-bar :loggedinUser="loggedinUser" @logout="logout"></user-bar>
     </div>

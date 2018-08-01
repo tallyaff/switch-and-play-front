@@ -104,7 +104,11 @@ export default {
         gameForDisplay(state) {
             // console.log('stateGame', state.game);
             return state.game
+        },
+        gamesLoading(state) {
+            return state.gamesLoading
         }
+        
     },
     actions: {
         loadGames(context) {
@@ -172,16 +176,18 @@ export default {
                 })
         },
         gamesById(context, { games }) {
-            games =  Promise.all(
+            context.commit({ type: 'setGamesLoading', isLoading: true })
+            Promise.all(
                 games.map(gameId => {
                     return GameService.getGameById(gameId)
-                        .then(game => {
-                            return game
-                        })
                 })
             )
             .then(games =>{
                 context.commit({ type: 'loggedUserGames', games })
+                context.commit({ type: 'setGamesLoading', isLoading: false })
+            })
+            .catch(err =>{
+                context.commit({ type: 'setGamesLoading', isLoading: false })
             })
         }
     }

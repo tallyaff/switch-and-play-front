@@ -1,17 +1,23 @@
 <template>
     <section>
         <div class="activity-container">
+
+
+
+<!-- THIS CMP CAN BE DELETED -->
+
+
             <div>
-                <UserRecievedRequests :recieves="recieves">
-                </UserRecievedRequests>
+                <!-- <UserRecievedRequests :recieves="recieves">
+                </UserRecievedRequests> -->
             </div>
             <div>
-                <UserSentRequests :requestes="requestes">
-                </UserSentRequests>
+                <!-- <UserSentRequests :requestes="requestes">
+                </UserSentRequests> -->
             </div>
             <div>
-                <UserMatches :matches="matches">
-                </UserMatches>
+                <!-- <UserMatches >
+                </UserMatches> -->
             </div>
         </div>
     </section>
@@ -19,16 +25,16 @@
 
 <script>
 // import {LOAD_USER} from '@/store/UserModule.js'
-import UserMatches from '@/components/UserMatches.vue'
-import UserRecievedRequests from '@/components/UserRecievedRequests.vue'
-import UserSentRequests from '@/components/UserSentRequests.vue'
+// import UserMatches from '@/components/UserMatches.vue'
+// import UserRecievedRequests from '@/components/UserRecievedRequests.vue'
+// import UserSentRequests from '@/components/UserSentRequests.vue'
 
 export default {
     name: "userActivity",
     components: {
-        UserMatches,
-        UserRecievedRequests,
-        UserSentRequests
+        // UserMatches,
+        // UserRecievedRequests,
+        // UserSentRequests
     },
     // data(){
     //     return {
@@ -38,7 +44,7 @@ export default {
     created() {
         // console.log('userId: ', this.$route.params.userId);
         // console.log('recieves^^^^: ', this.recieves);
-        console.log('matches^^^^: ', this.matches);
+        // console.log('matches^^^^: ', this.matches);
         this.$store.dispatch({type: 'getMatch', 
             user: this.$route.params.userId
             })
@@ -47,10 +53,10 @@ export default {
         loggedinUser(){
             return this.$store.getters.loggedUser
         },
-        matches() {
-            // console.log('this.$store.getters.getMatches', this.$store.getters.getMatches);
-            return this.$store.getters.getMatches;
-        },
+        // matches() {
+        //     // console.log('this.$store.getters.getMatches', this.$store.getters.getMatches);
+        //     return this.$store.getters.getMatches;
+        // },
         recieves() {
             // console.log('this.$store.getters.getRecieves', this.$store.getters.getRecieves);
             // debugger

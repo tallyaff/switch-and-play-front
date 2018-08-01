@@ -7,14 +7,18 @@
                 <!-- <font-awesome-icon icon="user" /> -->
                 <img :src="loggedinUser.src" class="user-img"/>
             </router-link>
-            <router-link v-if="loggedinUser" :to="`/user/activity/${loggedinUser._id}/`" class="flex not-container">
+            <div class="bell-container flex">
+              <router-link v-if="loggedinUser" :to="`/user/activity/match/${loggedinUser._id}/`" class="flex not-container">
                 <div v-if="matchCount" :class="matchCount.length > 0 ? 'btn notification':'btn no-notification'">{{matchCount.length}}</div>
-                <font-awesome-icon icon="bell" class="bell"/>
+              </router-link>
+              <font-awesome-icon icon="bell" class="bell"/>
+              <router-link v-if="loggedinUser" :to="`/user/activity/recieve/${loggedinUser._id}/`" class="flex not-container">
                 <div v-if="recieveCount" :class="recieveCount.length > 0 ? 'btn notification':'btn no-notification'">{{recieveCount.length}}</div>
+              </router-link>
+            </div>
                 <!-- <el-badge :value="recieveCount">
                     <font-awesome-icon icon="bell" class="bell"/>
                 </el-badge> -->
-            </router-link>
             <button class="btn-logout" @click="onLogout">Logout</button>
         </div>
         </div>
@@ -31,7 +35,7 @@ import UtilService from "../services/UtilService.js";
 
 export default {
   created() {
-    console.log('loggedinUser', this.loggedinUser);
+    // console.log('loggedinUser', this.loggedinUser);
     
     if (this.loggedinUser) {
       this.$store.dispatch({
