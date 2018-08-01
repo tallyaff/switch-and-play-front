@@ -12,6 +12,8 @@
             <li class="game-addedAt-preview capitalize"><span>Added at: </span> {{game.addedAt | getDate }}</li>
             <li class="game-addedAt-preview"><span>Added at: </span> {{1532359863 | getDate }}</li>
             <!-- TODO: user location & name -->
+            <li v-if="game.isNew" class="game-new-icon"><img src="img/new-icon.png"></li>
+            <li class="game-location-preview capitalize" v-if="!location"><span>Location: </span> </li>
             <li class="game-location-preview capitalize"><span>Location: </span> </li>
             <li class="game-user-name-preview capitalize"><span>by </span> </li>
             <li>
@@ -40,12 +42,16 @@
 <script>
 export default {
   name: "GamePreview",
-  props: ["game","gameCheckbox"],
-  data(){
-    return{
-     checked : false
-    }
+  props: ["game", "gameCheckbox","location"],
+  data() {
+    return {
+      checked: true
+    };
   },
+  // created() {
+  //   this.onLoadCheckbox();
+  //   this.$emit('check', {gameId :this.game._id, checked:this.checked})
+  // },
 
   methods: {
 
@@ -57,7 +63,7 @@ export default {
     loggedinUser() {
       // console.log(this.$store.getters.loggedUser);
       return this.$store.getters.loggedUser || {};
-    },
+    }
     // checked(){
     //   $emit('check', game._id,this.checked)
     // }
@@ -65,7 +71,6 @@ export default {
     //   // console.log('user!!!!!!!!!!!!!!!!!!', this.$store.getters.setLoginUser);
     //   return this.$store.getters.setLoginUser;
     // },
- 
   }
 };
 </script>
@@ -99,25 +104,29 @@ export default {
       transition: all 0.5s;
     }
 
-    img:hover {
-      // background-color: #d9d8d82b;
-      // background-color: #f7b2532b;
+img:hover {
+  // background-color: #d9d8d82b;
+  // background-color: #f7b2532b;
+}
+
+.game-category-preview,
+.game-condition-preview,
+.game-addedAt-preview,
+.game-location-preview,
+.game-user-name-preview {
+  padding: rem(5px);
+  color: $main-color;
+  font-family: "Lato-Bold";
+  span {
+    color: black;
   }
+}
+
+.game-user-name-preview span {
+  text-transform: capitalize;
+  color: $secondary-color;
+}
     
-    .game-category-preview, .game-condition-preview, .game-addedAt-preview, .game-location-preview, .game-user-name-preview {
-        padding: rem(5px);
-        color: $main-color; 
-        font-family: 'Lato-Bold';
-        span {
-          color: black;
-        }
-    }
-
-    .game-user-name-preview span {
-      text-transform: capitalize;
-      color: $secondary-color;
-
-    }
 
   .game-new-icon {
       position: absolute;

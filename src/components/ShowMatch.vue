@@ -1,26 +1,32 @@
 
 <template>
-    <section class="show-match">
+    <section class="show-match flex column align-center space-between">
         <router-link :to="'/game'" type="button">back to gallery</router-link>
-        <h1>Congrats we have a match!!!</h1>
-        <div v-if="gameActive" class="your-choose-container">
-            <h2>You choose this amazing <span class="game-name">{{gameActive.name}}</span></h2>
-            <img :src="gameActive.src"/>
+        <h1 class="congrats margin-bottom">Congrats we have a match!!!</h1>
+        <div class="images-container margin-bottom flex align-center space-between">
+            <div v-if="gameActive" class="your-choose-container margin-bottom flex column align-center">
+                <h2 class="margin-bottom">You chose this amazing</h2>
+                <h2 class="game-name margin-bottom capitalize">{{gameActive.name}}</h2>
+                <img :src="gameActive.src"/>
+            </div>
+            <div v-if="gamePassive" class="game-match-container">
+                <h2 class="margin-bottom">You swapped it with your awesome</h2>
+                <h2 class="game-name capitalize margin-bottom">{{gamePassive.name}}</h2>
+                <img :src="gamePassive.src"/>
+            </div>
         </div>
-        <div v-if="gamePassive" class="game-match-container">
-            <h2>You swapped it with your awesome <span class="game-name">{{gamePassive.name}}</span></h2>
-            <img :src="gamePassive.src"/>
-        </div>
+        <el-button type="primary">Schedule swap</el-button>
         <div v-if="userActive" class="meet-form">
-            <h3><span class="username">{{userActive.username}}</span> leaves in {{userActive.city}}</h3>
-            <el-form @submit.prevent="sendMeetForm" class="search-in-gallery">
-                <!-- <el-input class="search-input" type="text" v-model="filterBy.name" placeholder="Search for games" autofocus></el-input> -->
-                <h3>Send <span class="username">{{userActive.username}}</span> email:</h3>
-                <el-input class="email-input" type="text" :value="userActive.email" v-model="formDetails.email"></el-input>
-                <el-input class="subject-input" type="text" v-model="formDetails.subject"></el-input>
-                <!-- <el-input type="textarea" v-model="gameCopy.desc"/> -->
-                <el-input type="textarea" :value="userActive.email" v-model="formDetails.text" autofocus />
-                <el-button class="btn send-btn" type="primary">Send</el-button>
+            <h3 class="margin-bottom"><span class="username capitalize">{{userActive.username}}</span> leaves in {{userActive.city}}</h3>
+            <el-form  @submit.prevent="sendMeetForm" class="form-meeting">
+                <h3 class="margin-bottom">Send <span class="username capitalize">{{userActive.username}}</span> email:</h3>
+                <el-input v-if="formDetails.email" class="form-input email-input margin-bottom" type="text" v-model="formDetails.email"></el-input>
+                <h3 class="margin-bottom">Subject</h3>
+                <el-input class="form-input subject-input" type="text" v-model="formDetails.subject" autofocus></el-input>
+                <h3 class="margin-bottom">Message</h3>
+                <el-input class="form-input form-textarea" type="textarea" v-model="formDetails.text"></el-input>
+                <el-button class="btn send-btn" type="primary" @click="sendMeetForm">Send</el-button>
+                <el-button class="btn cancel-btn" type="info">Cancel</el-button>
             </el-form>
         </div>
     </section>    
@@ -40,8 +46,8 @@ export default {
       gamePassive: null,
       formDetails: {
         email: null,
-        subject: null,
-        text: null
+        subject: `Hi let's meet to swap the games`,
+        text: `Please type yours message`
       }
     };
   },
@@ -91,6 +97,8 @@ export default {
       UserService.getUserById(this.userActiveId).then(user => {
         console.log("this.userActive in show match:", user);
         this.userActive = user;
+        this.formDetails.email = this.userActive.email;
+
       });
     },
     getGamePassive() {
@@ -102,9 +110,7 @@ export default {
       });
     },
     sendMeetForm() {
-    //    window.location = open(`https://mail.google.com/mail/?view=cm&fs=1&to=${this.userActive.email}&su=${this.userActive.subject}&body=${this.userActive.text}`, "_blank");
-       window.location = open(`https://mail.google.com/mail/?view=cm&fs=1&to=liron.steinberger@gmail.com&su=${this.userActive.subject}&body=${this.userActive.text}`, "_blank");
-    //    window.location = open(`https://mail.google.com/mail/?view=cm&fs=1&to=liron.steinberger@gmail.com&su=${SUBJECT}&body=${BODY}`, "_blank");
+       window.location = open(`https://mail.google.com/mail/?view=cm&fs=1&to=${this.formDetails.email}&su=${this.formDetails.subject}&body=${this.formDetails.text}`, "_blank");
        // reset feilds
        this.userActive.email = '';
        this.userActive.subject = '';
@@ -117,13 +123,54 @@ export default {
 <style scoped lang="scss">
 @import "~@/assets/scss/style.scss";
     .show-match {
+        // width: rem(1200px);
         border: 1px solid;
         background-color: rgb(228, 231, 230); /*temp color- change later*/
     }
 
-    .your-choose-container .game-name {
+    .margin-bottom {
+        margin-bottom: rem(20px);
+    }
+
+    .congrats {
+        font-family: 'Ubuntu-regular';
+        font-size: rem(60px);
+        color: $secondary-color;
+        text-shadow: 2px 2px $main-color;
+    }
+
+    .images-container {
+        width: rem(680px);
+    }
+
+    .images-container img {
+        width: 100%;
+    }
+
+    .your-choose-container, .game-match-container {
+        padding: rem(20px);
+        width: 50%;
+    }
+
+    .your-choose-container h2, .game-match-container h2 {
+      font-size: rem(20px);
+    }
+
+    .image-container {
+        width: rem(200px);
+    }
+
+    .your-choose-container .game-name, .game-match-container .game-name {
         font-family: 'PaytoneOne';
         color: $main-color;
-        font-size: rem(20px);
+        
+    }
+
+    .form-meeting .form-input {
+        width: rem(500px);
+    }
+
+    .form-textarea {
+        line-height: rem(300px);
     }
 </style>

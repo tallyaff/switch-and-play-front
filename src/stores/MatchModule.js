@@ -6,7 +6,7 @@ import Service from '../services/MatchService.js'
 export default {
     state: {
         activities: [],
-        user: null,
+        userId: null,
         reqCount: 0,
     },
     mutations: {
@@ -14,54 +14,59 @@ export default {
             console.log('activities**: ', payload.activities);
             state.activities = payload.activities
         },
-        setCurrUser(state, payload) {
+        setCurrUserId(state, payload) {
             console.log('user^^: ', payload.payload);
-            state.user = payload.payload
+            state.userId = payload.payload
         },
-        setUpdateMatch(state, payload) {
-            console.log('match^^: ', payload.payload);
-        },
-        setUserActive(state, payload) {
-            console.log('setUserActive^^: ', payload.payload);
-            state.userActive = payload.payload;
-        },
+        // setUpdateMatch(state, payload) {
+        //     console.log('match^^: ', payload.payload);
+        // },
+        // setUserActive(state, payload) {
+        //     console.log('setUserActive^^: ', payload.payload);
+        //     state.userActive = payload.payload;
+        // },
     },
     getters: {
         getMatches(state){
-            console.log('recieves!!&&&&: ', state.activities)
-            return state.activities.filter(activity => activity.isMatch)
+            // console.log('!!matches!!&&&&: ', state.activities[1].isMatch)
+            if (state.activities) {
+                return state.activities.filter(activity => activity.isMatch)
+            }
         },
         getRecieves(state) {
             // debugger;
-            console.log('recieves!!: ', state.activities);            
-            return state.activities.filter(activity => activity.userPassiveGame && activity.isMatch === false)
+            if (state.activities) {
+                // console.log('recieves!!: ', state.activities, 'userId:', state.userId, 'passive:', state.activities[0].userPassive.userId);            
+                const activityFilter = state.activities.filter(activity => {
+                    return activity.userPassive.userId === state.userId && !activity.isMatch;
+                    })
+                    console.log('***recieve', activityFilter);
+                return activityFilter;
+            }
         },
         getRequestes(state) {
-            return state.activities.filter(activity => activity.userActiveGames && activity.isMatch === false)
+            // console.log('request!!: ', state.activities, 'userId:', state.userId);           
+            if (state.activities) {    
+                let activityFilter = state.activities.filter(activity => {
+                    return (activity.userActive.userId === state.userId && !activity.isMatch)
+                    })
+                    console.log('***request', activityFilter);
+                    return activityFilter;                    
+            }
         },
     },
     actions: {
         getMatch(context, payload) {
             console.log('user from action***', payload.user);
-            context.commit({type: 'setCurrUser', payload: payload.user})
+            context.commit({type: 'setCurrUserId', payload: payload.user})
             MatchService.getMatch(payload.user)
                .then(activities => {
                    console.log('match from backend in front', activities);
-                //    debugger
-                //    let activityMatch = activities.filter(activity => activity.isMatch)
-                //    console.log('activity:$$$', activityMatch);
-                   
-                //    GameService.getGameById()
                    context.commit({type: 'setMatch', activities})
-                //    let activityRec = activities.filter(activity => activity.isMatch);
-                //    context.commit({type: 'setRec', activityRec})
-                //    let activityReq = activities.filter(activity => activity.isMatch)
-                //    context.commit({type: 'setReq', activityReq})
                    })
-                   
         },
         updateMatch(context, payload) {
-            console.log('match from cmp***', payload.matchDetails);
+            // console.log('match from cmp***', payload.matchDetails);
             context.commit({type: 'setUpdateMatch', payload: payload.matchDetails})
             MatchService.updateMatch(payload.matchDetails)
                .then(activities => {
