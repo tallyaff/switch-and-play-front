@@ -60,12 +60,12 @@ export default {
     };
   },
   created() {
-    console.log("creted game filter", this.filterBy);
+    // console.log("creted game filter", this.filterBy);
 
     this.allFilterTypes = this.$store.getters.types;
-    console.log("allFilterTypes in home", this.allFilterTypes);
+    // console.log("allFilterTypes in home", this.allFilterTypes);
     this.allFilterCategories = this.$store.getters.categories;
-    console.log("allFilterCategories in home", this.allFilterCategories);
+    // console.log("allFilterCategories in home", this.allFilterCategories);
 
     this.filterBy = JSON.parse(
       JSON.stringify(this.$store.state.GameModule.filterBy)

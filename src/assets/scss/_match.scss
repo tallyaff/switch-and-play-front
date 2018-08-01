@@ -8,7 +8,7 @@
     border-radius: 20px;
     margin: rem(10px);
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .game-box>img {
@@ -36,9 +36,15 @@
 .match-container {
     align-items: center;
     margin: 40px 20px;
-    background-color: beige;   /*temp color change later*/
+    // background-color: beige;   /*temp color change later*/
 }
 
 .match-container>h3 {
     margin-bottom: 40px;
+    
+}
+
+.activity-container {
+    justify-content: space-between;
+    // border: 1px solid;
 }

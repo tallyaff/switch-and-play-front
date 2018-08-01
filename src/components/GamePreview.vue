@@ -1,8 +1,6 @@
 <template>
   <!-- <div class="game-preview" > -->
          <ul class="game-preview-container pointer flex column align-center clean-list space-between" v-if="game">
-            <!-- :src="game.src"  -->
-            <!-- {{game._id}} -->
             <el-checkbox  
               @change=" $emit('check', {gameId :game._id, checked:checked})" 
               v-model="checked" 
@@ -10,8 +8,8 @@
               label="offer this game">
             </el-checkbox>
 
-        <!-- <ul class="game-preview-container pointer flex column align-center clean-list space-between" v-if="game"> -->
-            <!-- <el-checkbox checked @change=" $emit('check', {gameId :game._id, checked:checked})
+        <ul class="game-preview-container pointer flex column align-center clean-list space-between" v-if="game">
+            <el-checkbox checked @change=" $emit('check', {gameId :game._id, checked:checked})
             " v-model="checked" v-if="gameCheckbox" label="offer this game"></el-checkbox>
             <li class="game-name-preview">{{game.name}}</li>
             <li v-if="game.isNew" class="game-new-icon"><img src="img/new-icon.png"></li>
@@ -24,7 +22,7 @@
             <!-- TODO: user location & name -->
             <li v-if="game.isNew" class="game-new-icon"><img src="img/new-icon.png"></li>
             <li class="game-location-preview capitalize" v-if="!location"><span>Location: </span> </li>
-            <!-- <li class="game-location-preview capitalize"><span>Location: </span> </li>
+            <li class="game-location-preview capitalize"><span>Location: </span> </li>
             <li class="game-user-name-preview capitalize"><span>by </span> </li>
             <li>
 
