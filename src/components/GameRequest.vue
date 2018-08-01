@@ -4,9 +4,8 @@
         <el-form>
             <span class="title-games">I would like to switch the next games:</span>
             <br>
-            <div class="games-container flex">
-            <li class="game" v-for="game in games" :key="game._id" >
-                <game-preview :game="game" :location="true" :gameCheckbox="true" @check="updateGamesToSwitch">
+            <li class="game" v-for="game in games" :key="game._id">
+                <game-preview :game="game" :gameCheckbox="true" @check="updateGamesToSwitch">
                 </game-preview>
                 <li/>
            </div>
@@ -72,12 +71,12 @@ export default {
           this.ownerUserId = game.userId;
           const matchReq = {
             userPassive: {
-              userId: this.ownerUserId,
+              userId:this.ownerUserId,
               gameId: this.$route.params.gameId
             },
             userActive: {
               userId: this.user._id,
-              games: this.gamesToSwitch,
+              games: this.gamesToSwitch
             },
             textareaReq: this.textareaReq,
             isMatch: false

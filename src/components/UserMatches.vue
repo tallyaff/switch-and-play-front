@@ -7,22 +7,23 @@
                     <div class="flex column games-container">
                         <h4>I gave: </h4>
                         <div class="flex column game-box">
-                            <!-- <p>{{showGame}}</p> -->
-                            <p>{{match.userPassiveGame.name}}</p>
-                            <img :src="match.userPassiveGame.src"/>
-                            <h6>to: {shuki}</h6>
+                            <p>{{match.userPassiveGame.name}}</p> 
+                           <img :src="match.userPassiveGame.src"/>
+                           <div type="text" class="user-details-container">
+                                <GameUser :userId="match.userPassive.userId" class="user-details flex"></GameUser>
+                            </div>
                         </div>
                     </div>
                     <h3>⇆</h3>
-                    <!--fab icon doesnt work !! -->
-                    <!-- <i class="fas fa-exchange-alt"></i> -->
                     <i class="fas fa-exchange-alt"></i>
                     <div class="flex column games-container">
                         <h4>I recieved: </h4>
                         <div class="flex column game-box">
                             <p>{{match.userActiveGames[0].name}}</p>
-                            <img :src="match.userActiveGames[0].src"/>
-                            <h6>from: {puki}</h6>
+                            <img :src="match.userActiveGames[0].src"/> 
+                            <div type="text" class="user-details-container">
+                                <GameUser :userId="match.userActive.userId" class="user-details flex"></GameUser>
+                            </div>
                         </div>
                     </div>
                 </li>
@@ -32,18 +33,18 @@
 </template>
 
 <script>
-import GameService from '../services/GameService.js'
+import GameService from '../services/GameService.js';
+import GameUser from '@/components/GameUser.vue';
+
 export default {
     name: 'userMatch',
     props: ["matches"],
+    components: {GameUser},
     created() {
-        console.log('matches:&&', this.matches);
+        // console.log('@@matches:&&', this.matches);
     },
     computed: {
-        // showGame(){
-        //     // console.log('show:@@', this.matches);
-        //     return this.$store.getters.gameForDisplay
-        // }
+      
     }
 }
 </script>

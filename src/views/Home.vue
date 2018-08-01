@@ -26,7 +26,7 @@
                     <div class="username-time-container flex space-between align-center">
                       <div class="username-time-container flex space-between align-center space-between">
                         <div type="text" class="user-name-card-home">
-                          <gameUser :userId="game.userId"></gameUser>
+                          <gameUser :userId="game.userId" class="user-game-container flex column"></gameUser>
                         </div>
                       </div>
                           <time class="time">{{ game.addedAt | getDate }}</time>
