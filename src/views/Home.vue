@@ -36,7 +36,7 @@
           </router-link>
             </li>
         </ul>
-        <router-link :to="'/game'" @click.native="setFilter('baby')">
+        <router-link class="link-to-gallery" :to="'/game'" @click.native="setFilter('baby')">
           <h2 class="link-to-gallery">See more...</h2>
         </router-link> 
       </div>
@@ -63,7 +63,7 @@
           </router-link>
             </li>
         </ul>
-        <router-link :to="'/game'" @click.native="setFilter('child')">
+        <router-link class="link-to-gallery" :to="'/game'" @click.native="setFilter('child')">
           <h2 class="link-to-gallery">See more...</h2>
         </router-link>  
       </div>
@@ -90,7 +90,7 @@
           </router-link>
             </li>
         </ul>
-        <router-link :to="'/game'" @click.native="setFilter('teen')">
+        <router-link class="link-to-gallery" :to="'/game'" @click.native="setFilter('teen')">
           <h2 class="link-to-gallery">See more...</h2>
         </router-link> 
       </div>
@@ -205,6 +205,7 @@ export default {
       color: white;
       font-size: rem(60px);
       font-family: 'Ubuntu-regular';
+      text-shadow: 3px 1px black;
     }
 
     .search {
@@ -321,8 +322,6 @@ export default {
       align-self: left;
     }
 
-
-    
     .bottom {
       margin-top: 13px;
       line-height: 12px;
@@ -348,6 +347,12 @@ export default {
   .link-to-gallery {
     font-size: rem(20px);
     font-family: 'Ubuntu';
+    transition: all 0.5s;
+    align-self: flex-end;
+    &:hover {
+      color: $secondary-color;
+      transform: scale(0.95, 0.95);
+    }
   }
 
 
