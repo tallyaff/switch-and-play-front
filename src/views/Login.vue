@@ -129,8 +129,8 @@ export default {
   justify-content: center
 }
 .login-container {
-  // margin: auto;
-  // align-items: center;
+  margin-top: 60px;
+ 
 }
 .insert-form {
   // justify-content: space-between;
@@ -139,10 +139,13 @@ export default {
 
 .btn {
   width: 100px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 .btn-signup {
   background-color: #f1af37;
   margin:  20px;
+  color: white;
 }
 
 .btn-signup {
@@ -150,6 +153,10 @@ export default {
   margin: 20px;
   width: 100px;
   margin: 20px auto;
+  margin-top: 50px;
+}
+.el-form-item__content{
+      margin: 10px 50px;
 }
 
 </style>

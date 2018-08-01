@@ -1,8 +1,10 @@
 <template>
     <div class="header">
+       <router-link to="/">
         <div class="img container">
             <img src="img/logo.png">
         </div>
+        </router-link>
         <nav-bar :loggedinUser.sync="loggedinUser"></nav-bar>
         <user-bar :loggedinUser="loggedinUser" @logout="logout"></user-bar>
     </div>
