@@ -70,7 +70,7 @@ function _setLoggedinUser(user) {
 
 function getUserById(userId) {
     console.log('getUserById in game service front', userId);
-    return axios.get(`${URL}`, userId)
+    return axios.get(`${URL}/${userId}`)
         .then(res => {
             console.log('getUserById from server', res.data)
             return res.data

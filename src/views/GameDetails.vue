@@ -31,10 +31,13 @@
              <el-button class="btn-want-toy" v-if="!requesting" @click="checkIfLogin">I want this toy!</el-button>
              </div>
             <game-request :game="currGame" v-if="requesting"></game-request>
+        <show-match></show-match>
     </section>
+
 </template>
 <script>
 import GameRequest from "@/components/GameRequest.vue";
+import ShowMatch from "@/components/ShowMatch.vue";
 export default {
   name: "GameDetails",
   data() {
@@ -80,7 +83,8 @@ export default {
     // }
   },
   components: {
-    GameRequest
+    GameRequest,
+    ShowMatch
   }
 };
 </script>
