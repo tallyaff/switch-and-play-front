@@ -26,6 +26,7 @@ export default {
         userGames(state){
             if (state.user) return state.user.games
         },
+
         
     },
     actions: {
