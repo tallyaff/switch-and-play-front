@@ -80,7 +80,7 @@ export default {
             type: 'getMatch', 
             user: user._id
             })
-            debugger
+            // debugger
         })
         .then(_ => {
             console.log(this.user.username,'res login function before emit eventbus')

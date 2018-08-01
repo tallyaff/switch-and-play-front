@@ -19,14 +19,14 @@
             </div>
             <li class="game-category-preview capitalize"><span>Category: </span> {{game.category}}</li>
             <li class="game-condition-preview capitalize"><span>Condition: </span>{{game.condition}}</li>
-            <li class="game-addedAt-preview capitalize"><span>Added at: </span> {{game.addedAt | getDate }}</li> -->
-            <!-- <li class="game-addedAt-preview"><span>Added at: </span> {{1532359863 | getDate }}</li> -->
+            <li class="game-addedAt-preview capitalize"><span>Added at: </span> {{game.addedAt | getDate }}</li>
+            <li class="game-addedAt-preview"><span>Added at: </span> {{1532359863 | getDate }}</li>
             <!-- TODO: user location & name -->
             <li v-if="game.isNew" class="game-new-icon"><img src="img/new-icon.png"></li>
             <li class="game-location-preview capitalize" v-if="!location"><span>Location: </span> </li>
             <!-- <li class="game-location-preview capitalize"><span>Location: </span> </li>
             <li class="game-user-name-preview capitalize"><span>by </span> </li>
-            <li> -->
+            <li>
 
       
               <div v-if="game.isNew" class="game-new-icon"><img src="img/new-icon.png"></div>
@@ -42,7 +42,7 @@
               </div>
                 <!-- <button v-if="loggedinUser === 'game.userId'" class="btn btn-remove" @click="$emit('remove', game._id)">Remove</button> 
                 <router-link v-if="loggedinUser === 'game.userId'" tag="button" :to="'/game/edit/'+game._id">Edit</router-link>  -->
-            <!-- </li> -->
+            </li>
         </ul>
 
         

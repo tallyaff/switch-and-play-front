@@ -1,11 +1,12 @@
 <template>
   <div class="game-list flex ">
         <ul class="game-cards-container flex space-between" v-if="games">
-            <el-card class="game clean-list" v-for="game in games" :key="game._id">
+          <el-card class="game clean-list" v-for="game in games" :key="game._id">
+            <router-link class="btn btn-more-details" :to="'/game/'+game._id">
             <!-- <el-c class="masonry" v-if="games" v-for="game in games" :key="game._id"> -->
                 <game-preview  :game="game" @remove="$emit('remove', game._id)"></game-preview>
-                <router-link class="btn btn-more-details" :to="'/game/'+game._id"><font-awesome-icon icon="info" /></router-link>
-            </el-card>
+            </router-link>
+          </el-card>
         </ul>
   </div>
 </template>
