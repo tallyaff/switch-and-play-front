@@ -36,7 +36,7 @@
              <el-button class="btn-want-toy" v-if="!requesting" @click="checkIfLogin">I want this game!</el-button>
              </div>
             <game-request :game="currGame" v-if="requesting"></game-request>
-        <show-match></show-match>
+        <!-- <show-match></show-match> -->
     </section>
 
 </template>
@@ -44,6 +44,7 @@
 import GameRequest from "@/components/GameRequest.vue";
 import ShowMatch from "@/components/ShowMatch.vue";
 import GameService from "@/services/GameService.js";
+
 export default {
   name: "GameDetails",
   data() {
@@ -108,7 +109,6 @@ export default {
 }
 img {
   width: 100%;
-  height: 100%;
 }
 .details-img{
   height: 40px;

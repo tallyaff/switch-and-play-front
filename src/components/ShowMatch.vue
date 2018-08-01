@@ -52,31 +52,31 @@ export default {
     };
   },
   created() {
-    this.match = {
-      _id: "5b60bd23ea5c0347c8e2d120",
-      userPassive: {
-        userId: "5b5867f85d5aba03c1ce2e83",
-        gameId: "5b596cf23af932a16bcd90a0"
-      },
-      userActive: {
-        userId: "5b589ba35d5aba03c1d35692",
-        games: ["5b596cf23af932a16bcd90ac"]
-      },
-      isMatch: false
-    };
-    this.game = {
-      _id: "5b596cf23af932a16bcd90ac",
-      name: "green tractor",
-      src: "img/gameImg/wheels/tractor.jpg",
-      type: "baby",
-      category: "wheels",
-      desc: "nice green tractor for babys!",
-      userId: "5b589ba35d5aba03c1d35692",
-      condition: "Brand new",
-      isAvailble: true,
-      isNew: false,
-      addedAt: 1533016520092
-    };
+    // this.match = {
+    //   _id: "5b60bd23ea5c0347c8e2d120",
+    //   userPassive: {
+    //     userId: "5b5867f85d5aba03c1ce2e83",
+    //     gameId: "5b596cf23af932a16bcd90a0"
+    //   },
+    //   userActive: {
+    //     userId: "5b589ba35d5aba03c1d35692",
+    //     games: ["5b596cf23af932a16bcd90ac"]
+    //   },
+    //   isMatch: false
+    // };
+    // this.game = {
+    //   _id: "5b596cf23af932a16bcd90ac",
+    //   name: "green tractor",
+    //   src: "img/gameImg/wheels/tractor.jpg",
+    //   type: "baby",
+    //   category: "wheels",
+    //   desc: "nice green tractor for babys!",
+    //   userId: "5b589ba35d5aba03c1d35692",
+    //   condition: "Brand new",
+    //   isAvailble: true,
+    //   isNew: false,
+    //   addedAt: 1533016520092
+    // };
     // console.log('game from match##:', this.game);
     // console.log('match from match##:', this.match);
     this.gameActive = this.game;
