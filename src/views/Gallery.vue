@@ -1,5 +1,5 @@
 <template>
-<section
+<section>
   <div class="user-icons-container flex">
     <div class="filter-images-container-gallery flex">
         <GameFilter></GameFilter> 

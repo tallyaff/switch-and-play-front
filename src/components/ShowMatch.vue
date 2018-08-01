@@ -3,7 +3,7 @@
     <section class="show-match">
         <h1>it's a match</h1>
         <router-link :to="'/game'">
-        <font-awesome-icon icon="arrow-circle-left"/></router-link>
+        <font-awesome-icon icon="arrow-circle-left"/>
         </router-link>
     </section>    
 </template>
