@@ -116,7 +116,7 @@ export default {
 
 <style>
   .swal-text {
-    font-family: "Ubuntu";
+    font-family: sans-serif;
     color: #0d72fa;
     font-size: 30px;
   }
