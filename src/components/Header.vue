@@ -1,7 +1,9 @@
 <template>
     <div class="header flex">
         <div class="img container">
+          <router-link :to="`/`" class="pointer">
             <img src="img/logo.png">
+          </router-link>
         </div>
         <nav-bar :loggedinUser.sync="loggedinUser"></nav-bar>
         <user-bar :loggedinUser="loggedinUser" @logout="logout"></user-bar>
@@ -41,6 +43,8 @@ export default {
 
 
 <style scoped lang="scss">
+@import '~@/assets/scss/style.scss';
+  
 .header {
   font-family: 'Ubuntu-regular';
   box-shadow: 0px 0.5px 4px 0px #d9d8d8;

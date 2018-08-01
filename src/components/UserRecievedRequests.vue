@@ -5,21 +5,22 @@
             <h3>Request From Me:</h3>
             <ul v-if="recieves">
                 <li v-for="recieve in recieves" :key="recieve._id" class="flex games-container">
-                    <!-- <div class="flex game-container"> -->
-                        <div class="flex column game-box mr50">
-                            <h5>{{recieve.userPassiveGame.name}}</h5>
-                            <img :src="recieve.userPassiveGame.src"/>
-                            <div type="text" class="user-details-container">
-                                <GameUser :userId="recieve.userActive.userId" class="user-details flex"></GameUser>
-                            </div>
+                    <div class="flex column game-box mr50">
+                        <p>{{recieve._id}}</p>
+                        <h5>{{recieve.userPassiveGame.name}}</h5>
+                        <p>{{recieve.userPassiveGame._id}}</p>
+                        <img :src="recieve.userPassiveGame.src"/>
+                        <div type="text" class="user-details-container">
+                            <GameUser :userId="recieve.userActive.userId" class="user-details flex"></GameUser>
                         </div>
-                    <!-- </div> --> 
+                    </div>
                     <div >
                         <ul class="flex games-box">
                             <h4>choose one: </h4>
                             <li v-for="game in recieve.userActiveGames" :key="game._id">
                                 <div class="flex column game-box">
                                     <h5>{{game.name}}</h5>
+                                    <p>{{game._id}}</p>
                                     <img :src="game.src"/>
                                     <el-button @click="getMatch(game, recieve)" type="primary" class="details-btn">details </el-button>
                                 </div>
@@ -54,7 +55,7 @@ export default {
         }
     },
     created() {
-        console.log('recieves!!!', recieves);
+        // console.log('recieves!!!', recieves);
         
     },
     methods: {

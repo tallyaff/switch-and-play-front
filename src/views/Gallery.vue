@@ -24,7 +24,7 @@ export default {
   },
   created() {
     // this.$store.loadGames();
-    console.log('this.gamesForDisplay in gallery', this.gamesForDisplay);    
+    // console.log('this.gamesForDisplay in gallery', this.gamesForDisplay);    
     // this.gamesForDisplay;
   },
   computed: {
@@ -40,7 +40,7 @@ export default {
   },
   methods: {
     checkIfDisplay() {
-      console.log("this.loggedinUser", this.loggedinUser);
+      // console.log("this.loggedinUser", this.loggedinUser);
       if (!this.loggedinUser) {
         swal({
           title: "Please login to add your game",
@@ -62,13 +62,13 @@ export default {
     //       console.log("err", err);
     //     });
     // },
-    setNotification() {
-      console.log("setNotification");
-      if (this.getNotificationCount.length > 0) {
-        this.notificationCount = this.getNotificationCount.length;
-        this.notification = true;
-      }
-    },
+    // setNotification() {
+    //   // console.log("setNotification");
+    //   if (this.getNotificationCount.length > 0) {
+    //     this.notificationCount = this.getNotificationCount.length;
+    //     this.notification = true;
+    //   }
+    // },
     removeGame(gameId) {
       swal({
         title: "Are you sure you want to delete this game?",

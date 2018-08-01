@@ -5,8 +5,8 @@
             <ul v-if="requestes" class="flex games-box">
                 <li v-for="request in requestes" :key="request._id">
                     <div class="flex column game-box">
-                        <!-- <h5>{{request.userActiveGames[0].name}}</h5> -->
-                        <!-- <img :src="request.userActiveGames[0].src"/> -->
+                        <h5>{{request.userPassiveGame.name}}</h5>
+                        <img :src="request.userPassiveGame.src"/>
                         <div type="text" class="user-details-container">
                             <!-- <GameUser :userId="request.userActive.userId" class="user-details flex"></GameUser> -->
                         </div>
@@ -25,7 +25,7 @@ export default {
     props: ["requestes"],
     component: {GameUser},
     created() {
-        // console.log('%%requestes:&&', this.requestes);
+        console.log('%%requestes:&&', this.requestes);
     },
 }
 </script>

@@ -4,12 +4,13 @@
             <!-- <p class="userMsg">Hello {{'loggedinUser'? loggedinUser.username: 'guest'}}</p> -->
             <div class="user-icon-container">
             <router-link v-if="loggedinUser" :to="`/user/${loggedinUser._id}/`">
-                <font-awesome-icon icon="user" />
+                <!-- <font-awesome-icon icon="user" /> -->
+                <img :src="loggedinUser.src" class="user-img"/>
             </router-link>
             <router-link v-if="loggedinUser" :to="`/user/activity/${loggedinUser._id}/`" class="flex not-container">
-                <div :class="matchCount > 0 ? 'btn notification':'btn no-notification'">{{matchCount}}</div>
+                <div v-if="matchCount" :class="matchCount.length > 0 ? 'btn notification':'btn no-notification'">{{matchCount.length}}</div>
                 <font-awesome-icon icon="bell" class="bell"/>
-                <div :class="recieveCount > 0 ? 'btn notification':'btn no-notification'">{{recieveCount}}</div>
+                <div v-if="recieveCount" :class="recieveCount.length > 0 ? 'btn notification':'btn no-notification'">{{recieveCount.length}}</div>
                 <!-- <el-badge :value="recieveCount">
                     <font-awesome-icon icon="bell" class="bell"/>
                 </el-badge> -->
@@ -30,6 +31,8 @@ import UtilService from "../services/UtilService.js";
 
 export default {
   created() {
+    console.log('loggedinUser', this.loggedinUser);
+    
     if (this.loggedinUser) {
       this.$store.dispatch({
         type: "getMatch",
@@ -68,16 +71,18 @@ export default {
       return this.$store.getters.loggedUser;
     },
     recieveCount() {
-      return this.$store.getters.getRecieves.length;
+      return this.$store.getters.getRecieves;
     },
     matchCount() {
-      return this.$store.getters.getMatches.length;
+      return this.$store.getters.getMatches;
     },
   }
 };
 </script>
 
 <style scoped lang="scss">
+ @import '~@/assets/scss/style.scss';
+ 
 .btn {
   cursor: pointer;
 }

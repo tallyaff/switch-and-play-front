@@ -1,6 +1,6 @@
 <template>
-    <section v-if="user" class="img-user">
-        <img :src="user.src"/>
+    <section v-if="user">
+        <img :src="user.src" class="user-img"/>
         <h6 class="nameUser">{{user.username}}</h6>
     </section>
 </template>
@@ -24,7 +24,7 @@ export default {
         getGameUser() {
             return GameService.getUserById(this.userId)
                 .then(user => {
-                    console.log('user from server&&&', user);
+                    // console.log('user from server&&&', user);
                     this.user = user
                 })
         }
