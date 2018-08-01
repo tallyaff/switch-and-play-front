@@ -1,13 +1,5 @@
 <template>
   <!-- <div class="game-preview" > -->
-         <ul class="game-preview-container pointer flex column align-center clean-list space-between" v-if="game">
-            <el-checkbox  
-              @change=" $emit('check', {gameId :game._id, checked:checked})" 
-              v-model="checked" 
-              v-if="gameCheckbox" 
-              label="offer this game">
-            </el-checkbox>
-
         <ul class="game-preview-container pointer flex column align-center clean-list space-between" v-if="game">
             <el-checkbox checked @change=" $emit('check', {gameId :game._id, checked:checked})
             " v-model="checked" v-if="gameCheckbox" label="offer this game"></el-checkbox>

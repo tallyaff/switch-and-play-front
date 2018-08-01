@@ -4,6 +4,7 @@
         <el-form>
             <span class="title-games">I would like to switch the next games:</span>
             <br>
+            <div>
             <li class="game" v-for="game in games" :key="game._id">
                 <game-preview :game="game" :gameCheckbox="true" @check="updateGamesToSwitch">
                 </game-preview>
