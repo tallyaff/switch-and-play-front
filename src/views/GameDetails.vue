@@ -1,6 +1,6 @@
 <template>
     <section class="GameDetails" v-if="currGame && currUser">
-      <router-link class="btn-back" :to="'/game'">Back to gallery<font-awesome-icon icon="faAngleLeft" /></router-link>
+      <router-link class="btn-back" :to="'/game'"><font-awesome-icon icon="arrow-circle-left"/>Go to gallery</router-link>
       <br>
       <br>
       <div class="game-details-all" v-if="!requesting">
@@ -20,7 +20,7 @@
                 <div class="detail-item" >Owner:</div>
                 <div class="detail-item" >City:</div>
                 </div>
-            <div class="text-container flex column">
+            <div class="text-container flex column capitalize">
                 <div class="detail-item" label="Type">{{currGame.type}}
                 <!-- <img class="details-img" :src="`img/details/${currGame.type}.png`"> -->
                 </div>
@@ -189,9 +189,7 @@ img {
 .swal-button-container{
   font-family: sans-serif;
 }
-.swal-button{
-  background-color: #F6AB2B !important;
-  color: white;
-}
-
+.swal-button--confirm{
+      background-color: #F6AB2B;
+ }  
 </style>

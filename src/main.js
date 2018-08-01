@@ -9,7 +9,7 @@ import './assets/scss/style.scss'
 import axios from 'axios'
 import moment from 'moment'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faCoffee, faUser, faBell } from '@fortawesome/free-solid-svg-icons'
+import { faCoffee, faUser, faBell,faArrowCircleLeft  } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 
@@ -29,8 +29,10 @@ library.add(faPen);
 library.add(faPlus);
 library.add(faUser);
 library.add(faBell);
+library.add(faArrowCircleLeft);
 library.add(faAngleLeft);
 library.add(faEnvelope);
+
 
 /* eslint-disable no-new */
 // new Vue({
