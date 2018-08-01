@@ -18,7 +18,7 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { faPen } from '@fortawesome/free-solid-svg-icons'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { faAngleLeft } from '@fortawesome/free-solid-svg-icons'
-
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
@@ -30,6 +30,9 @@ library.add(faPlus);
 library.add(faUser);
 library.add(faBell);
 library.add(faArrowCircleLeft);
+library.add(faAngleLeft);
+library.add(faEnvelope);
+
 
 /* eslint-disable no-new */
 // new Vue({

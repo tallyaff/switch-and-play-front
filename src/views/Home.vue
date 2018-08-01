@@ -1,19 +1,28 @@
 <template>
-  <div class="home">
+  <section class="home">
     <div class="home-bg-img flex justify-center align-center" :style="{backgroundImage: url, backgroundSize: 'cover', backgroundPosition: 'center', backgroundrepeat: 'no-repeat'}">
       <form @submit.prevent="setSearchHome" class="search">
           <input class="search-input" type="text" v-model="filterBy.name" placeholder="Search for games">
           <el-button class="btn search-btn" type="primary">Search</el-button>
       </form>
-      <h1 class="header-bg-image">Do you want to switch some games?</h1>
+      <h1 class="header-bg-image">Do you want to swap some games?</h1>
     </div>
-    <div class="all-cards-home-container">
+
+
+
+
+
+
+    <!-- <div class="all-cards-home-container"> -->
+
+    <div class="baby-cards-container space-between">
+      <div class="baby-cards flex container  ">
       <div class="filter-type home-filter-container home-filter-container-baby flex column align-center justify-center" >
         <router-link :to="'/game'" @click.native="setFilter('baby')">
           <h2 class="type-title-home">Most popular baby games</h2>
         </router-link>
         <font-awesome-icon icon="trashAlt" />
-        <ul v-if="gamesForBabyHomeDisplay" class="cards-container-home align-center flex justify-center clean-list">
+        <ul v-if="gamesForBabyHomeDisplay" class="cards-container-home  flex  clean-list">
             <li v-for="game in gamesForBabyHomeDisplay.slice(2, 6)" :key="game._id"> 
           <router-link :to="`/game/${game._id}/`">
               <el-card class="card-home">
@@ -40,6 +49,9 @@
           <h2 class="link-to-gallery">See more...</h2>
         </router-link> 
       </div>
+</div>
+
+
       <div class="filter-type home-filter-container home-filter-container-child flex column align-center justify-center" >
         <router-link :to="'/game'" @click.native="setFilter('child')">
           <h2 class="type-title-home">Most popular child games</h2>
@@ -66,7 +78,10 @@
         <router-link class="link-to-gallery" :to="'/game'" @click.native="setFilter('child')">
           <h2 class="link-to-gallery">See more...</h2>
         </router-link>  
-      </div>
+        </div>
+
+
+
       <div class="filter-type home-filter-container home-filter-container-teen flex column align-center justify-center" >
         <router-link :to="'/game'" @click.native="setFilter('teen')">
           <h2 class="type-title-home">Most popular teen games</h2>
@@ -95,7 +110,7 @@
         </router-link> 
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -353,6 +368,15 @@ export default {
       color: $secondary-color;
       transform: scale(0.95, 0.95);
     }
+    // h2{
+    //   margin-right: 85px;
+    // }
+  }
+  .search-btn{
+    margin-left: 10px;
+  }
+  .card-home{
+    margin: 0;
   }
 
 
