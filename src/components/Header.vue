@@ -1,5 +1,5 @@
 <template>
-    <div class="header">
+    <div class="header flex">
        <router-link to="/">
         <div class="img container">
           <router-link :to="`/`" class="pointer">

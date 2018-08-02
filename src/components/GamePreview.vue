@@ -1,9 +1,24 @@
 <template>
   <!-- <div class="game-preview" > -->
+<<<<<<< HEAD
         <ul class="game-preview-container pointer flex column align-center clean-list space-between" v-if="game">
             <el-checkbox checked @change=" $emit('check', {gameId :game._id, checked:checked})
             " v-model="checked" v-if="gameCheckbox" label="offer this game"></el-checkbox>
              <li class="game-name-preview">{{game.name}}</li>
+=======
+         <ul class="game-preview-container pointer flex column align-center clean-list space-between" v-if="game">
+            <el-checkbox  
+              @change=" $emit('check', {gameId :game._id, checked:checked})" 
+              v-model="checked" 
+              v-if="gameCheckbox" 
+              label="offer this game">
+            </el-checkbox>
+
+        <ul class="game-preview-container pointer flex column align-center clean-list space-between" v-if="game">
+            <el-checkbox checked @change=" $emit('check', {gameId :game._id, checked:checked})
+            " v-model="checked" v-if="gameCheckbox" label="offer this game"></el-checkbox>
+            <li class="game-name-preview">{{game.name}}</li>
+>>>>>>> 05f26646dda2c7a9d9339853b67b7eba0af0464f
             <li v-if="game.isNew" class="game-new-icon"><img src="img/new-icon.png"></li>
             <div class="image-container" :style="{backgroundImage: url, backgroundSize: 'cover', backgroundPosition: 'center', backgroundrepeat: 'no-repeat'}">
             </div>

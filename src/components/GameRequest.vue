@@ -5,10 +5,12 @@
             <span class="title-games">I would like to switch the next games:</span>
             <br>
             <div>
-              <li class="game" v-for="game in games" :key="game._id">
-                  <game-preview :game="game" :gameCheckbox="true" @check="updateGamesToSwitch">
-                  </game-preview>
-              <li/>
+              <ul>
+                <li class="game" v-for="game in games" :key="game._id">
+                    <game-preview :game="game" :gameCheckbox="true" @check="updateGamesToSwitch">
+                    </game-preview>
+                <li/>
+              </ul>
            </div>
                 <!-- <el-checkbox class="checkbox-game-request" label="i will pick it up from your place"></el-checkbox>
                 <el-checkbox class="checkbox-game-request" label="you will pick it up from my place"></el-checkbox>
