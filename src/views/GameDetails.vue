@@ -3,7 +3,7 @@
       <div class="game-details-all" v-if="!requesting">
         <h2 class="game-name">{{currGame.name}}</h2>
         <h3 class="game-description" label="Description">{{currGame.desc}}</h3>
-        <div class="game-details-container flex content-center" v-if="!requesting">
+        <div class="game-details-container flex content-center align-center" v-if="!requesting">
             <div class="img-container">        
                     <img :src="currGame.src">     
             </div>
