@@ -1,35 +1,31 @@
 <template>
     <!-- <div class="game-preview" > -->
     <ul class="game-preview-container pointer flex column align-center clean-list space-between" v-if="game">
-
-        <el-checkbox checked @change=" $emit('check', {gameId :game._id, checked:checked})
-              " v-model="checked" v-if="gameCheckbox" label="offer this game"></el-checkbox>
-
         <li class="game-name-preview">{{game.name}}</li>
         <li v-if="game.isNew" class="game-new-icon">
-            <img src="img/new-icon.png">
+            <img v-if="!newIcon" src="img/new-icon.png">
         </li>
         <div class="image-container" :style="{backgroundImage: url, backgroundSize: 'cover', backgroundPosition: 'center', backgroundrepeat: 'no-repeat'}">
         </div>
+        <div class="image-container flex align-center justify-center">
+            <img :src="game.src" class="image-card">
+        </div>
         <li class="game-category-preview capitalize">
             <span>Category: </span> {{game.category}}</li>
-        <li class="game-condition-preview capitalize">
+        <li class="game-condition-preview capitalize" v-if="!condition">
             <span>Condition: </span>{{game.condition}}</li>
         <li class="game-addedAt-preview capitalize">
             <span>Added at: </span> {{game.addedAt | getDate }}</li>
-        <li class="game-addedAt-preview">
-            <span>Added at: </span> {{1532359863 | getDate }}</li>
         <!-- TODO: user location & name -->
         <li class="game-location-preview capitalize" v-if="!location">
             <span>Location: </span>
         </li>
-        <li class="game-user-name-preview capitalize">
+        <li class="game-user-name-preview capitalize" v-if="!username">
             <span>by </span>
         </li>
+        <el-checkbox class="offer-game" checked @change=" $emit('check', {gameId :game._id, checked:checked})
+              " v-model="checked" v-if="gameCheckbox" label="Offer this game"></el-checkbox>
         <li>
-            <div class="image-container flex align-center justify-center">
-                <img :src="game.src" class="image-card">
-            </div>
             <!-- <button v-if="loggedinUser === 'game.userId'" class="btn btn-remove" @click="$emit('remove', game._id)">Remove</button> 
                   <router-link v-if="loggedinUser === 'game.userId'" tag="button" :to="'/game/edit/'+game._id">Edit</router-link>  -->
         </li>
@@ -50,7 +46,7 @@
 <script>
 export default {
   name: "GamePreview",
-  props: ["game", "gameCheckbox", "location"],
+  props: ["game", "gameCheckbox", "condition", "location", "username", "newIcon"],
   data() {
     return {
       checked: true
@@ -90,6 +86,10 @@ export default {
   &:hover {
     transform: scale(0.95, 0.95);
   }
+}
+
+.offer-game {
+  color: $secondary-color;
 }
 
 .game-name-preview {

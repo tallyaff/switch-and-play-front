@@ -1,25 +1,25 @@
-<template>
-    <div class="game-request">
-        <h1>Its time to Create your request!</h1>   
-        <el-form>
-            <span class="title-games">I would like to switch the next games:</span>
-            <br>
-            <div>
-            <li class="game" v-for="game in games" :key="game._id">
-                <game-preview :game="game" :gameCheckbox="true" @check="updateGamesToSwitch"></game-preview>
-                <li/>
+<template class="game-request-container">
+    <div class="game-request flex column align-center justify-center">
+        <h1 class="title-game-request">Its time to Create your request!</h1>   
+        <h2 class="title-games">I would like to swap the next games:</h2>
+        <el-form class="request-container flex column">
+          <div class="games-container flex">
+            <div class="game" v-for="game in games" :key="game._id">
+                <game-preview :game="game" :newIcon="true" :condition="true" :location="true" :username="true" :gameCheckbox="true" @check="updateGamesToSwitch"></game-preview>
            </div>
+          </div>
                 <!-- <el-checkbox class="checkbox-game-request" label="i will pick it up from your place"></el-checkbox>
                 <el-checkbox class="checkbox-game-request" label="you will pick it up from my place"></el-checkbox>
                 <el-checkbox class="checkbox-game-request" label="lets talk about it"></el-checkbox> -->
-                <div class="title-txt-area">Add some words:</div>
-                <br>
-                <div class="req-container flex column">
+            <div class="text-btn-container flex column">
+              <h2 class="title-txt-area">Add some words:</h2>
+              <div class="req-container flex column">
                 <el-input class="textarea" type="textarea" :autosize="{ minRows: 2, maxRows: 4}"
-                 placeholder="Enter some words to your request" v-model="textareaReq">
+                placeholder="Enter some words to your request" v-model="textareaReq">
                 </el-input>
-                </div>
-                <el-button class="btn-request" @click="sendRequest">Send your request!</el-button>
+              </div>
+              <el-button class="btn-request" @click="sendRequest">Send your request!</el-button>
+            </div>
         </el-form>
     </div>
 </template>
@@ -108,42 +108,72 @@ export default {
 
 <style scoped lang="scss">
     @import "~@/assets/scss/style.scss";
+
+    .game-request {
+      max-width: rem(1200px);
+    }
+
     .checkbox-game-request {
       color: $main-color;
     }
-    h1{
-      margin-bottom: 80px;
-      color: #f56c6c;
+
+    .title-game-request, .title-games,.title-txt-area {
+      font-family: 'Ubuntu-regular';
     }
+
+    .title-game-request{
+      font-size: rem(40px);
+      margin-bottom: rem(40px);
+      margin-top: rem(40px);
+      color: $third-color;
+    }
+
     .btn-back{
       font-size: 10px;
     &:hover {
       color: $main-color;
+      }
     }
-    }
-    .title-games,.title-txt-area{
-    text-align: left;
-    float: left;
-    margin-left: 40px;
-    color: $main-color;
-    }
-    .games-container{
-    margin-top: 40px;
-    margin-left: 40px;
-    flex-wrap: wrap;
 
+    .title-games {
+      text-align: center;
     }
-    li{
+
+    .title-games,.title-txt-area {
+      // text-align: left;
+      color: $main-color;
+    }
+    .games-container {
+      margin-top: 40px;
+      // flex-wrap: wrap;
+      min-width: 80vw;
+      max-width: rem(1200px);
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+
+    .game {
+      border: 1px solid $border-color;
+      padding: rem(20px);
+      margin: rem(10px);
+      transition: all 0.5s;
+        &:hover {
+          transform: scale(0.95, 0.95);
+        }
+    }
+
+    li {
     padding: 20px;
     }
-    .textarea{
-      width: 60%;
-      margin-left: 60px;
+    .textarea {
+      width: 40%;
       margin-top: 20px;
     }
-    .btn-request{
-      margin-top: 60px;
-      margin-bottom: 20px;
+    .btn-request {
+      width: 160px;
+      height: 50px;
+      align-self: center;
+      margin: 20px 0;
       background-color: #f56c6c;
       color: white
       
@@ -155,5 +185,7 @@ export default {
      font-family: sans-serif;
      color: #0d72fa;
      font-size: 30px;
+
+        //  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   }
 </style>
