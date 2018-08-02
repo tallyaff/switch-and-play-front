@@ -7,7 +7,7 @@ export default {
         activities: [],
         userId: null,
         reqCount: 0,
-        newMatch: {}
+        // newMatch: {}
     },
     mutations: {
         setMatch(state, payload) {
@@ -18,10 +18,10 @@ export default {
             // console.log('user^^: ', payload.payload);
             state.userId = payload.payload
         },
-        setUpdateMatch(state, payload) {
-            console.log('match^^: ', payload.payload);
-            state.newMatch = payload.payload
-        },
+        // setUpdateMatch(state, payload) {
+        //     console.log('match^^: ', payload.payload);
+        //     state.newMatch = payload.payload
+        // },
         // setUserActive(state, payload) {
         //     console.log('setUserActive^^: ', payload.payload);
         //     state.userActive = payload.payload;
@@ -65,7 +65,7 @@ export default {
             // console.log('match from cmp***', payload.matchDetails);
             MatchService.updateMatch(payload.matchDetails)
             .then(activities => {
-                   context.commit({type: 'setUpdateMatch', payload: payload.matchDetails})
+                //    context.commit({type: 'setUpdateMatch', payload: payload.matchDetails})
                    console.log('match from backend in front', activities);
                })
         },
