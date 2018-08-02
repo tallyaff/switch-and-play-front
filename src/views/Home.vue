@@ -77,11 +77,11 @@
                                             <img :src="game.src" class="image-card">
                                         </div>
                                         <div class="card-text-container flex justify-center align-center column">
-                                            <span class="card-game-name">{{game.name}}</span>
-                                            <div class="username-time-container flex space-between align-center space-between">
                                                 <div type="text" class="user-name-card-home">
                                                   <gameUser :userId="game.userId" class="user-game-container flex column"></gameUser>
                                                 </div>
+                                            <span class="card-game-name">{{game.name}}</span>
+                                            <div class="username-time-container flex space-between align-center space-between">
                                                 <time class="time">{{ game.addedAt | getDate }}</time>
                                             </div>
                                         </div>
@@ -113,11 +113,11 @@
                                             <img :src="game.src" class="image-card">
                                         </div>
                                         <div class="card-text-container flex justify-center align-center column">
+                                              <div type="text" class="user-name-card-home">
+                                                 <gameUser :userId="game.userId" class="user-game-container flex column"></gameUser>
+                                              </div>
                                             <span class="card-game-name">{{game.name}}</span>
                                             <div class="username-time-container flex space-between align-center space-between">
-                                                <div type="text" class="user-name-card-home">
-                                                  <gameUser :userId="game.userId" class="user-game-container flex column"></gameUser>
-                                                </div>
                                                 <time class="time">{{ game.addedAt | getDate }}</time>
                                             </div>
                                         </div>
