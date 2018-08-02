@@ -1,7 +1,7 @@
 <template>
     <section class="Game-details flex justify-center align-center" v-if="currGame && currUser">
       <div class="game-details-all" v-if="!requesting">
-        <h2 class="game-name">{{currGame.name}}</h2>
+        <h2 class="game-name capitalize">{{currGame.name}}</h2>
         <h3 class="game-description" label="Description">{{currGame.desc}}</h3>
         <div class="game-details-container flex content-center align-center" v-if="!requesting">
             <div class="img-container">        
@@ -31,7 +31,7 @@
              <el-button class="btn-want-game" v-if="!requesting" @click="checkIfLogin">I want this game!</el-button>
              </div>
             <game-request :game="currGame" v-if="requesting"></game-request>
-        <show-match></show-match>
+        <!-- <show-match></show-match> -->
     </section>
 
 </template>
@@ -122,7 +122,7 @@ img {
   width: 40px;
 }
 .game-details-container {
-  margin-top: 50px;
+  margin: 50px 0;
 }
 .game-name {
   font-family: 'PaytoneOne';

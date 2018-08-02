@@ -1,6 +1,8 @@
 <template>
     <section class="home">
-        <div class="home-bg-img flex justify-center align-center" :style="{backgroundImage: url, backgroundSize: 'cover', backgroundPosition: 'center', backgroundrepeat: 'no-repeat'}">
+        <div class="home-bg-img flex justify-center align-center" 
+        :style="{backgroundImage: url, backgroundSize: 'cover', backgroundPosition: 'center', 
+         backgroundrepeat: 'no-repeat'}">
             <form @submit.prevent="setSearchHome" class="search">
                 <input class="search-input" type="text" v-model="filterBy.name" placeholder="Search for games">
                 <el-button class="btn search-btn" type="primary">Search</el-button>
@@ -9,8 +11,11 @@
         </div>
         <!-- <div class="all-cards-home-container"> -->
 
-        <div class="baby-cards-container space-between">
-            <div class="baby-cards flex container  ">
+        <div class="baby-cards-container space-between"  >
+            <!-- <div v-if="gamesLoading">
+            <h1>loading</h1>
+           </div> -->
+            <div class="baby-cards flex container " >
                 <div class="filter-type home-filter-container home-filter-container-baby flex column align-center justify-center">
                     <router-link :to="'/game'" @click.native="setFilter('baby')">
                         <h2 class="type-title-home">Most popular baby games</h2>
@@ -53,7 +58,10 @@
             </div>
 
             <div class="child-cards-container space-between">
-                <div class="child-cards flex container">
+                             <!-- <div v-if="gamesLoading">
+                             <h1>loading</h1>
+                             </div> -->
+                <div  class="child-cards flex container">
                     <div class="filter-type home-filter-container home-filter-container-child flex column align-center justify-center">
                         <router-link :to="'/game'" @click.native="setFilter('child')">
                             <h2 class="type-title-home">Most popular child games</h2>
@@ -69,11 +77,11 @@
                                             <img :src="game.src" class="image-card">
                                         </div>
                                         <div class="card-text-container flex justify-center align-center column">
-                                            <span class="card-game-name">{{game.name}}</span>
-                                            <div class="username-time-container flex space-between align-center space-between">
                                                 <div type="text" class="user-name-card-home">
                                                   <gameUser :userId="game.userId" class="user-game-container flex column"></gameUser>
                                                 </div>
+                                            <span class="card-game-name">{{game.name}}</span>
+                                            <div class="username-time-container flex space-between align-center space-between">
                                                 <time class="time">{{ game.addedAt | getDate }}</time>
                                             </div>
                                         </div>
@@ -105,11 +113,11 @@
                                             <img :src="game.src" class="image-card">
                                         </div>
                                         <div class="card-text-container flex justify-center align-center column">
+                                              <div type="text" class="user-name-card-home">
+                                                 <gameUser :userId="game.userId" class="user-game-container flex column"></gameUser>
+                                              </div>
                                             <span class="card-game-name">{{game.name}}</span>
                                             <div class="username-time-container flex space-between align-center space-between">
-                                                <div type="text" class="user-name-card-home">
-                                                  <gameUser :userId="game.userId" class="user-game-container flex column"></gameUser>
-                                                </div>
                                                 <time class="time">{{ game.addedAt | getDate }}</time>
                                             </div>
                                         </div>
@@ -159,10 +167,10 @@ export default {
     };
   },
   created() {
-    // this.loadGamesForHomepage();
+    this.loadGamesForHomepage();
   },
   mounted() {
-    this.loadGamesForHomepage();
+    // this.loadGamesForHomepage();
   },
   computed: {
     gamesForBabyHomeDisplay() {
@@ -176,6 +184,9 @@ export default {
     gamesForTeenHomeDisplay() {
       // console.log('gamesForTeenHomeDisplay in home', this.$store.getters.gamesForTeenHomeDisplay);
       return this.$store.getters.gamesForTeenHomeDisplay;
+    },
+    gamesLoading() {
+      return this.$store.getters.gamesLoading;
     }
   },
   methods: {
@@ -285,19 +296,18 @@ export default {
 .card-home {
   position: relative;
   margin: rem(10px);
-  width: rem(250px);
-  height: rem(350px);
+  width: rem(200px);
+  height: rem(280px);
   transition: all 0.5s;
   cursor: pointer;
   .image-container {
-    height: rem(200px);
+    height: rem(150px);
   }
   .image-card {
     width: 100%;
-    // width: 100px;
-    // height: 100px;
-    // background-position: center;
-    // background-size: cover;
+
+    // height: 100%;
+    // width: auto;
   }
   &:hover {
     transform: scale(0.95, 0.95);
@@ -308,7 +318,7 @@ export default {
     height: rem(120px);
     padding: rem(10px);
     position: absolute;
-    top: rem(248px);
+    top: rem(180px);
     left: rem(0px);
   }
   .username-time-container {
@@ -321,8 +331,8 @@ export default {
     color: $main-color;
     padding: 0;
     // text-shadow: 2px 1px $secondary-color;
-  }.game-new-icon 
-  .game-new-icon {
+  }
+  .game-new-icon .game-new-icon {
     position: absolute;
     top: -2px;
     left: -2px;

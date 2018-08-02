@@ -1,6 +1,6 @@
 <template>
-    <section>
-        <div class="flex column game-box-container">
+    <section class="flex justify-center">
+        <div v-if="!isMatch" class="flex align-center justify-center column game-box-container">
             <h3>{{game.name}}</h3>
             <div class="flex game-box-details">  
                 <img :src="game.src"/>
@@ -12,10 +12,10 @@
                     <p>Added At: {{game.addedAt | getDate }}</p>
                 </div>
             </div>
-             <el-button @click="itsMatch(game._id, match._id)" type="primary">choose me! 
-                <ShowMatch :game="choosenGame" :match="trueMatch" v-if="isMatch"></ShowMatch>
-             </el-button>
+            <el-button @click="itsMatch(game._id, match._id)" type="primary">choose me! 
+            </el-button>
         </div>
+        <ShowMatch :match="match" :game="game" v-if="isMatch"></ShowMatch>
     </section>
 </template>
 
@@ -43,8 +43,8 @@ export default {
         }
     },
     methods: {
-        itsMatch(gameId, recieveId) {
-            this.choosenGame = gameId;
+        itsMatch(game, recieveId) {
+            this.choosenGame = game;
             this.currRecieved = recieveId;
             // const match = {gameId: this.choosenGame, match: this.recieve}
             const match = {gameId: this.choosenGame, matchId: this.currRecieved}

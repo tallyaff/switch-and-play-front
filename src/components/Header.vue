@@ -54,6 +54,7 @@ export default {
   display: flex;
   justify-content: space-around;
   font-size: 22px;
+  height: 90px;
 }
 img{
       margin-top: 18px;
