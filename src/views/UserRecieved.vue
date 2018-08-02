@@ -67,12 +67,14 @@ export default {
         this.$store.dispatch({type: 'getMatch', 
             user: this.$route.params.userId
             });
-        // console.log('recieveddddd', this.matches);
+        console.log('recieveddddd', this.matches);
         // this.getActiveUser();
         // console.log('get userrrrr', this.user);
     },
     computed: {
         recieves() {
+            console.log('****', this.$store.getters.getRecieves);
+            
             return this.$store.getters.getRecieves;
         },
         loggedinUser() {

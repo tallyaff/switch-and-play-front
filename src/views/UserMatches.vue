@@ -14,7 +14,6 @@
             </div>
             <ul v-if="matches" class="games-box-container flex">
                 <li v-for="match in matches" :key="match._id" class="flex games-box">
-                    {{match}}
                     <div class="flex column games-container">
                         <h4>I gave: </h4>
                         <div class="flex column game-box">

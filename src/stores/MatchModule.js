@@ -30,11 +30,11 @@ export default {
     getters: {
         getMatches(state){
             if (state.activities) {
-                console.log('stateactivity:', state.activities);
                 return state.activities.filter(activity => activity.isMatch)
             }
         },
         getRecieves(state) {
+            console.log('stateactivity:', state.activities);
             if (state.activities) {
                 return state.activities.filter(activity => {
                     return activity.userPassive.userId === state.userId && !activity.isMatch;
