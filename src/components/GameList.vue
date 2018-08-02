@@ -38,7 +38,8 @@ export default {
   }
 
   .game-cards-container {
-    flex-wrap: wrap;    
+    flex-wrap: wrap;  
+    padding-right: 20px;  
   }
 
   .game {

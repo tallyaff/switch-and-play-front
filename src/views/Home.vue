@@ -15,7 +15,7 @@
             <!-- <div v-if="gamesLoading">
             <h1>loading</h1>
            </div> -->
-            <div class="baby-cards flex container " >
+            <div class="baby-cards flex container justify-center" >
                 <div class="filter-type home-filter-container home-filter-container-baby flex column align-center justify-center">
                     <router-link :to="'/game'" @click.native="setFilter('baby')">
                         <h2 class="type-title-home">Most popular baby games</h2>
@@ -61,7 +61,7 @@
                              <!-- <div v-if="gamesLoading">
                              <h1>loading</h1>
                              </div> -->
-                <div  class="child-cards flex container">
+                <div  class="child-cards flex container justify-center">
                     <div class="filter-type home-filter-container home-filter-container-child flex column align-center justify-center">
                         <router-link :to="'/game'" @click.native="setFilter('child')">
                             <h2 class="type-title-home">Most popular child games</h2>
@@ -96,7 +96,7 @@
                 </div>
             </div>
 
-            <div class="teen-cards-container space-between">
+            <div class="teen-cards-container space-between justify-center">
                 <div class="teen-cards flex container">
                     <div class="filter-type home-filter-container home-filter-container-teen flex column align-center justify-center">
                         <router-link :to="'/game'" @click.native="setFilter('teen')">

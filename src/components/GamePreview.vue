@@ -10,18 +10,19 @@
         <div class="image-container flex align-center justify-center">
             <img :src="game.src" class="image-card">
         </div>
+        <div class="card-text-container">
         <li class="game-category-preview capitalize">
-            <span>Category: </span> {{game.category}}</li>
+            <span>Category:</span>{{game.category}}</li>
         <li class="game-condition-preview capitalize" v-if="!condition">
-            <span>Condition: </span>{{game.condition}}</li>
+            <span>Condition:</span>{{game.condition}}</li>
         <li class="game-addedAt-preview capitalize">
-            <span>Added at: </span> {{game.addedAt | getDate }}</li>
+            <span>Added at:</span>{{game.addedAt | getDate }}</li>
         <!-- TODO: user location & name -->
         <li class="game-location-preview capitalize" v-if="!location">
             <span>Location: </span>
         </li>
         <li class="game-user-name-preview capitalize" v-if="!username">
-            <span>by </span>
+            <!-- <span>by </span>{{username}} -->
         </li>
         <el-checkbox class="offer-game" checked @change=" $emit('check', {gameId :game._id, checked:checked})
               " v-model="checked" v-if="gameCheckbox" label="Offer this game"></el-checkbox>
@@ -29,6 +30,7 @@
             <!-- <button v-if="loggedinUser === 'game.userId'" class="btn btn-remove" @click="$emit('remove', game._id)">Remove</button> 
                   <router-link v-if="loggedinUser === 'game.userId'" tag="button" :to="'/game/edit/'+game._id">Edit</router-link>  -->
         </li>
+        </div>
     </ul>
 
 
@@ -93,16 +95,16 @@ export default {
 }
 
 .game-name-preview {
-  font-size: rem(30px);
+  font-size: rem(20px);
   font-family: "Ubuntu";
-  padding: rem(20px);
+  padding: rem(12px);
   color: $main-color;
   text-transform: capitalize;
 }
 
 .image-container {
   // width: 300px;
-  // height: 250px;
+  //  height: 100px;
 }
 img {
   width: 100%;
@@ -134,10 +136,14 @@ img:hover {
 
 .game-new-icon {
   position: absolute;
-  top: -2px;
-  left: -2px;
+  top: -29px;
+  left: -24px;
 }
 ul{
  position: relative;
+}
+.card-text-container{
+      text-align: left;
+      font-size: 14px;
 }
 </style>
