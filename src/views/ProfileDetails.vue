@@ -5,7 +5,9 @@
         <div class="my-profile" v-if="loggedinUser">
             <div class="profile-edit-container flex">
                 <!-- <h2 class="headres-in-profile-details my-profile-header">My profile</h2> -->
-                <img :src="loggedinUser.src" class="user-img profile-img-page"/>
+                <div class="image-container" :style="{backgroundImage: url, backgroundSize: 'cover', backgroundPosition: 'center', backgroundrepeat: 'no-repeat'}">
+                    <img :src="loggedinUser.src" class="user-img profile-img-page"/>    
+                </div>
                 <div class="user-details-container flex column">
                     <p>{{loggedinUser.username}}</p>
                     <p>{{loggedinUser.city}}</p>
@@ -79,6 +81,7 @@ export default {
         return {
             labelPosition: 'left',
             isEdit: false,
+            url: `url("${this.loggedinUser.src}")`,
 
         }
     },
@@ -149,9 +152,14 @@ export default {
         // justify-content: center;    
         margin: 30px 100px;
     }
-    .profile-img-page {
+
+    .image-container {
         width: 200px;
         height: 200px;
+    }
+    .profile-img-page {
+        width: 100%;
+        height: 100%;
     }
     .user-details-container {
         // justify-content: space-around;
