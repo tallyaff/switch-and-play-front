@@ -233,37 +233,29 @@ export default {
     margin-top: 13px;
     line-height: 12px;
   }
-
-
   .clearfix:before,
   .clearfix:after {
       display: table;
       content: "";
   }
-  
   .clearfix:after {
       clear: both
   }
-
   .icon-btn {
       font-size: rem(25px);
       
       transition: all 0.3s;
   }
-
   .btn-remove, .edit-profile-btn {
       border: 0;
       background-color: transparent;
   }
-
   .btn-remove, .btn-edit {
     color: $secondary-color;
         &:hover {
             color: $main-color;
       }
     }
-  
-
   .edit-profile-btn {
       color: $main-color;
       &:hover {
@@ -271,12 +263,9 @@ export default {
       }
       align-self: flex-start;
   }
-
   .bottom {
       color: grey;
-
   }
-
   .game-category {
     font-family: 'Ubuntu-regular';
     white-space: nowrap;
@@ -284,21 +273,19 @@ export default {
     & span {
         font-family: 'Lato-Bold';
     }
-
   }
-
   .time {
       font-family: 'Ubuntu-regular';
-
   }
-
   .edit-remove-btns-container {
     //   justify-content: flex-end;
   }
 
   .swal-text {
-      font-size: 50px;
+    font-size: 50px;
+    font-family: sans-serif;
   }
+
 
 </style>
 

@@ -58,13 +58,13 @@ export default {
       // bactransition: all 0.5s;kground-color:  #f7b2532b;
   }
 
-  .btn-more-details {
-    color: $main-color;
-    font-size: rem(20px);
-    transition: all 0.3s;
+  // .btn-more-details {
+  //   color: $main-color;
+  //   font-size: rem(20px);
+  //   transition: all 0.3s;
 
-    &:hover {
-      color: $secondary-color;
-    }
-  }
+  //   &:hover {
+  //     color: $secondary-color;
+  //   }
+  // }
 </style>

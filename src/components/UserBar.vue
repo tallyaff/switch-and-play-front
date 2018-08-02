@@ -1,26 +1,29 @@
 <template>
-    <div class="user-bar">
+    <div class="user-bar flex">
         <div v-if="loggedinUser" class="user-bar-container flex space-evenly">
             <!-- <p class="userMsg">Hello {{'loggedinUser'? loggedinUser.username: 'guest'}}</p> -->
-            <div class="user-icon-container">
-            <router-link v-if="loggedinUser" :to="`/user/${loggedinUser._id}/`">
-                <!-- <font-awesome-icon icon="user" /> -->
-                <img :src="loggedinUser.src" class="user-img"/>
-            </router-link>
-            <div class="bell-container flex">
-              <router-link v-if="loggedinUser" :to="`/user/activity/match/${loggedinUser._id}/`" class="flex not-container">
-                <div v-if="matchCount" :class="matchCount.length > 0 ? 'btn notification':'btn no-notification'">{{matchCount.length}}</div>
-              </router-link>
-              <font-awesome-icon icon="bell" class="bell"/>
-              <router-link v-if="loggedinUser" :to="`/user/activity/recieve/${loggedinUser._id}/`" class="flex not-container">
-                <div v-if="recieveCount" :class="recieveCount.length > 0 ? 'btn notification':'btn no-notification'">{{recieveCount.length}}</div>
-              </router-link>
+            <div class="user-icon-container flex">
+                <router-link v-if="loggedinUser" :to="`/user/${loggedinUser._id}/`">
+                    <img :src="loggedinUser.src" class="user-img" />
+                </router-link>
+                <router-link v-if="loggedinUser" :to="`/user/activity/match/${loggedinUser._id}/`" class="flex not-container">
+                    <el-badge :value="recieveCount.length" v-if="recieveCount.length > 0">
+                        <font-awesome-icon icon="envelope" class="envelop" />
+                    </el-badge>
+                    <div v-else>
+                        <font-awesome-icon icon="envelope" class="envelop" />
+                    </div>
+                </router-link>
+                <router-link v-if="loggedinUser" :to="`/user/activity/recieve/${loggedinUser._id}/`" class="flex not-container">    
+                    <el-badge :value="matchCount.length" v-if="matchCount.length > 0">
+                        <font-awesome-icon icon="bell" class="bell" />
+                    </el-badge>
+                    <div v-else>
+                        <font-awesome-icon icon="bell" class="bell" />
+                    </div>
+                </router-link>
+                <button class="btn-logout" @click="onLogout">Logout</button>
             </div>
-                <!-- <el-badge :value="recieveCount">
-                    <font-awesome-icon icon="bell" class="bell"/>
-                </el-badge> -->
-            <button class="btn-logout" @click="onLogout">Logout</button>
-        </div>
         </div>
         <div v-else class="hello-login flex">
             <p class="helloMsg">Hello Guest</p>
@@ -28,7 +31,12 @@
         </div>
     </div>
 </template>
-
+                <!-- <div v-if="matchCount" :class="matchCount.length > 0 ? 'btn notification':'btn no-notification'">{{matchCount.length}}</div>
+                <font-awesome-icon icon="bell" class="bell"/>
+                <div v-if="recieveCount" :class="recieveCount.length > 0 ? 'btn notification':'btn no-notification'">{{recieveCount.length}}</div> -->
+                <!-- <el-badge :value="recieveCount">
+                    <font-awesome-icon icon="bell" class="bell"/>
+                </el-badge> -->
 <script>
 import UserService from "../services/UserService.js";
 import UtilService from "../services/UtilService.js";
@@ -79,14 +87,14 @@ export default {
     },
     matchCount() {
       return this.$store.getters.getMatches;
-    },
+    }
   }
 };
 </script>
 
 <style scoped lang="scss">
- @import '~@/assets/scss/style.scss';
- 
+@import "~@/assets/scss/style.scss";
+
 .btn {
   cursor: pointer;
 }
@@ -111,7 +119,6 @@ p {
 }
 .user-bar {
   align-items: center;
-  padding: 40px;
 }
 .helloMsg {
   color: #f56c6c;
@@ -125,7 +132,7 @@ p {
   font-size: 16px;
   border: none;
   background-color: transparent;
-    &:hover {
+  &:hover {
     color: $main-color;
   }
 }
@@ -140,18 +147,25 @@ a {
     color: $main-color;
   }
 }
-.user-icon-container{
+.user-icon-container {
   color: $secondary-color;
-    display: flex;
-    width: 150px;
-    justify-content: space-around;
+  display: flex;
+  width: 190px;
+  justify-content: space-around;
 
-    a{
-       transition: all 0.3s ease;
-    }
+  a {
+    transition: all 0.3s ease;
+  }
 }
-
 .not-container {
   display: relative;
-}    
+  align-items: center;
+}
+img{
+    transition: all 0.3s ease;
+    &:hover {
+    border-color: $main-color;
+  }
+}
+
 </style>

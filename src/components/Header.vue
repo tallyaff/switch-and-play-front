@@ -1,5 +1,6 @@
 <template>
-    <div class="header flex">
+  <section class="header-container space-between">
+    <div class="header flex container">
        <router-link to="/">
         <div class="img container">
           <router-link :to="`/`" class="pointer">
@@ -10,6 +11,7 @@
         <nav-bar :loggedinUser.sync="loggedinUser"></nav-bar>
         <user-bar :loggedinUser="loggedinUser" @logout="logout"></user-bar>
     </div>
+  </section>
 </template>
 
 <script>
@@ -49,7 +51,6 @@ export default {
   
 .header {
   font-family: 'Ubuntu-regular';
-  box-shadow: 0px 0.5px 4px 0px #d9d8d8;
   display: flex;
   justify-content: space-around;
   font-size: 22px;
@@ -57,5 +58,9 @@ export default {
 img{
       margin-top: 18px;
 }
+.header-container{
+  box-shadow: 0px 0.5px 4px 0px #d9d8d8;
+}
+
 
 </style>
