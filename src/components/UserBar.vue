@@ -1,11 +1,12 @@
 <template>
     <div class="user-bar flex">
         <div v-if="loggedinUser" class="user-bar-container flex space-evenly">
+            <!-- <p class="userMsg">Hello {{'loggedinUser'? loggedinUser.username: 'guest'}}</p> -->
             <div class="user-icon-container flex">
                 <router-link v-if="loggedinUser" :to="`/user/${loggedinUser._id}/`">
                     <img :src="loggedinUser.src" class="user-img" />
                 </router-link>
-                <router-link v-if="loggedinUser" :to="`/user/activity/${loggedinUser._id}/`" class="flex not-container">
+                <router-link v-if="loggedinUser" :to="`/user/activity/match/${loggedinUser._id}/`" class="flex not-container">
                     <el-badge :value="recieveCount.length" v-if="recieveCount.length > 0">
                         <font-awesome-icon icon="envelope" class="envelop" />
                     </el-badge>
@@ -13,7 +14,7 @@
                         <font-awesome-icon icon="envelope" class="envelop" />
                     </div>
                 </router-link>
-                <router-link v-if="loggedinUser" :to="`/user/activity/${loggedinUser._id}/`" class="flex not-container">    
+                <router-link v-if="loggedinUser" :to="`/user/activity/recieve/${loggedinUser._id}/`" class="flex not-container">    
                     <el-badge :value="matchCount.length" v-if="matchCount.length > 0">
                         <font-awesome-icon icon="bell" class="bell" />
                     </el-badge>
@@ -42,8 +43,8 @@ import UtilService from "../services/UtilService.js";
 
 export default {
   created() {
-    console.log("loggedinUser", this.loggedinUser);
-
+    // console.log('loggedinUser', this.loggedinUser);
+    
     if (this.loggedinUser) {
       this.$store.dispatch({
         type: "getMatch",
