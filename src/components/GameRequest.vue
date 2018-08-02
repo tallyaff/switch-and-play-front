@@ -156,6 +156,7 @@ export default {
       border: 1px solid $border-color;
       padding: rem(20px);
       margin: rem(10px);
+      height: 450px;
       transition: all 0.5s;
         &:hover {
           transform: scale(0.95, 0.95);
@@ -164,6 +165,7 @@ export default {
 
     li {
     padding: 20px;
+    margin: auto;
     }
     .textarea {
       width: 40%;

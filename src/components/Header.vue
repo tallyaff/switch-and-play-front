@@ -53,6 +53,7 @@ export default {
   font-family: 'Ubuntu-regular';
   display: flex;
   font-size: 22px;
+  height: 90px;
 }
 img{
       margin-top: 18px;

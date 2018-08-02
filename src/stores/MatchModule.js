@@ -30,6 +30,7 @@ export default {
     getters: {
         getMatches(state){
             if (state.activities) {
+                console.log('stateactivity:', state.activities);
                 return state.activities.filter(activity => activity.isMatch)
             }
         },
@@ -57,7 +58,7 @@ export default {
             context.commit({type: 'setCurrUserId', payload: payload.user})
             MatchService.getMatch(payload.user)
                .then(activities => {
-                //    console.log('match from backend in front', activities);
+                   console.log('match from backend in front', activities);
                    context.commit({type: 'setMatch', activities})
                    })
         },
