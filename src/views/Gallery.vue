@@ -1,5 +1,9 @@
 <template>
 <section>
+  <!-- <div v-if="gamesLoading">
+    <h1>lalalalalala</h1>
+    <img src="img/new-icon.png">
+  </div> -->
   <div class="user-icons-container flex">
     <div class="filter-images-container-gallery flex">
         <GameFilter></GameFilter> 
@@ -23,6 +27,7 @@ export default {
     Header
   },
   created() {
+
     // this.$store.loadGames();
     // console.log('this.gamesForDisplay in gallery', this.gamesForDisplay);    
     // this.gamesForDisplay;
@@ -36,6 +41,9 @@ export default {
     },
     loggedinUser() {
       return this.$store.getters.loggedUser;
+    },
+    gamesLoading(){
+      return this.$store.getters.gamesLoading;
     }
   },
   methods: {

@@ -123,14 +123,14 @@ export default {
                 })
         },
         loadGamesForHomepage(context) {
+            context.commit({ type: 'setGamesLoading', isLoading: true })
             return GameService.query()
-            // context.commit({ type: 'setGamesLoading', isLoading: true })
                 .then(games => {
                     context.commit({ type: 'loadGamesForHomepage', games })
                     return games;
                 })
                 .finally(() => {
-                    // context.commit({ type: 'setGamesLoading', isLoading: false })
+                    context.commit({ type: 'setGamesLoading', isLoading: false });
                 })
         },
 
