@@ -2,10 +2,22 @@
     <section class="profile-details-page flex justify-center align-center column" v-if="loggedinUser">
         <router-link :to="'/game/edit/'">
         </router-link>
-        <div class="my-profile">
-            <div class="profile-edit-container flex justify-center">
-                <h2 class="headres-in-profile-details my-profile-header">My profile</h2>
+        <div class="my-profile" v-if="loggedinUser">
+            <div class="profile-edit-container flex">
+                <!-- <h2 class="headres-in-profile-details my-profile-header">My profile</h2> -->
+                <img :src="loggedinUser.src" class="user-img profile-img-page"/>
+                <div class="user-details-container flex column">
+                    <p>{{loggedinUser.username}}</p>
+                    <p>{{loggedinUser.city}}</p>
+                    <p>{{loggedinUser.email}}</p>
+                </div>
                 <button v-if="loggedinUser" v-show="!isEdit" class="btn icon-btn edit-profile-btn" type="primary" @click="editProfile"><font-awesome-icon icon="pen" /></button>
+                <div class="my-games-header-container flex">
+                    <el-button v-if="loggedinUser" class="btn add-game-btn" type="primary" @click="checkIfDisplay"><font-awesome-icon icon="plus" />&nbsp;&nbsp;Game</el-button>
+                    <router-link :to="`/user/activity/recieve/${loggedinUser._id}`">
+                            <el-button v-if="loggedinUser" class="btn add-game-btn" type="primary" @click="checkIfDisplay">My activity</el-button>
+                    </router-link>
+                </div>
             </div>
             <div v-if="copiedUser">
             <el-form v-show="isEdit" v-if="isEdit" class="edit-user-profile no-margin" :label-position="labelPosition" @submit.native.prevent="saveUserProfile">
@@ -27,9 +39,7 @@
           </el-form>
         </div>
         <h2 class="headres-in-profile-details">My games:</h2>
-        <div class="my-games-header-container flex column">
-            <el-button v-if="loggedinUser" class="btn add-game-btn" type="primary" @click="checkIfDisplay"><font-awesome-icon icon="plus" />&nbsp;&nbsp;Game</el-button>
-        </div>
+        
             <ul class="cards-in-profile-container flex align-center justify-center" v-if="games">
             <li class="game" v-for="game in games" :key="game._id">
                 <!-- <game-preview :game="game" :gameCheckbox="gameCheckbox" @check="updateGamesToSwitch"> -->
@@ -74,7 +84,7 @@ export default {
     },
     created() {
         this.$store.dispatch({ type: "gamesById", games: this.loggedinUser.games });
-        console.log('this.loggedinUser.games', this.loggedinUser.games);
+        // console.log('this.loggedinUser.games', this.loggedinUser.games);
         
     },
     computed: {
@@ -85,13 +95,13 @@ export default {
             return JSON.parse(JSON.stringify(this.loggedinUser));
         },
         games() {
-            console.log(this.$store.getters.getUserGames);
+            // console.log(this.$store.getters.getUserGames);
             return this.$store.getters.getUserGames || [];
         },
     },
     methods: {
         checkIfDisplay() {
-            console.log('this.loggedinUser',this.loggedinUser)
+            // console.log('this.loggedinUser',this.loggedinUser)
             if (!this.loggedinUser) {
                 swal({
                 title: 'Please login to add your game',
@@ -115,7 +125,7 @@ export default {
                     timer: 1500,
                     button: false,
                 });
-                console.log('savedUserProfile from game APP');
+                // console.log('savedUserProfile from game APP');
                 });
             this.isEdit = !this.isEdit;
 
@@ -124,7 +134,7 @@ export default {
             this.isEdit = !this.isEdit;
         },
         editProfile() {
-            console.log('this.loggedinUser in profileDetailes',this.loggedinUser)
+            // console.log('this.loggedinUser in profileDetailes',this.loggedinUser)
             console.log('copiedUser', this.copiedUser);
             this.isEdit = !this.isEdit;
         },
@@ -135,15 +145,35 @@ export default {
 <style scoped lang="scss">
     // @import "~@/assets/scss/style.scss";
 
-    .profile-details-page { 
-        
+    .profile-edit-container { 
+        // justify-content: center;    
+        margin: 30px 100px;
+    }
+    .profile-img-page {
+        width: 200px;
+        height: 200px;
+    }
+    .user-details-container {
+        // justify-content: space-around;
+        margin-top: 15px;
+    }
+    .user-details-container p {
+        margin: 5px;
+        font-size: 1.5em;
+        text-align: left;
+    }
+    .user-details-container p:first-child {
+        font-weight: bold;
     }
 
+    .my-games-header-container button{
+        margin: 0 5px;
+    }
     .btn {
         background-color: $main-color;
     }
 
-    .profile-edit-container, .header-your-games {
+    .header-your-games {
         margin-bottom: rem(20px);
     }
 
@@ -231,6 +261,7 @@ export default {
       &:hover {
           color: $secondary-color;
       }
+      align-self: flex-start;
   }
   .bottom {
       color: grey;

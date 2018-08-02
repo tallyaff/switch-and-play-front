@@ -1,8 +1,18 @@
 <template>
     <section>
         <div class="flex column match-container">
-            <h3>Games I switched:</h3>
-            <ul v-if="matches">
+            <div class="activity-header flex">
+                <h3>Games I swapped:</h3>
+                <div class="router-container-activity flex">
+                    <router-link :to="`/user/activity/request/${loggedinUser._id}`" class="flex not-container">
+                        <el-button type="primary" class="activity-btn">My Requests</el-button>
+                    </router-link>
+                    <router-link :to="`/user/activity/recieve/${loggedinUser._id}`" class="flex not-container">
+                        <el-button type="primary" class="activity-btn">Requests From Me</el-button>
+                    </router-link>
+                </div>
+            </div>
+            <ul v-if="matches" class="games-box-container flex">
                 <li v-for="match in matches" :key="match._id" class="flex games-box">
                     <div class="flex column games-container">
                         <h4>I gave: </h4>
@@ -38,13 +48,21 @@ import GameUser from '@/components/GameUser.vue';
 
 export default {
     name: 'userMatch',
-    props: ["matches"],
+    // props: ["matches"],
     components: {GameUser},
     created() {
-        // console.log('@@matches:&&', this.matches);
+        this.$store.dispatch({type: 'getMatch', 
+            user: this.$route.params.userId
+            });
+        // console.log('matchhhhhh', this.matches);
     },
     computed: {
-      
+        matches() {
+            return this.$store.getters.getMatches;
+        },
+        loggedinUser() {
+             return this.$store.getters.loggedUser;
+        },
     }
 }
 </script>

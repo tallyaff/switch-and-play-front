@@ -9,6 +9,10 @@ import EditGame from './views/EditGame.vue'
 import GameDetails from './views/GameDetails.vue'
 import UserProfile from './views/ProfileDetails.vue'
 import UserActivity from './views/UserActivities.vue'
+import UserMatch from './views/UserMatches.vue'
+import UserRequest from './views/UserRequests.vue'
+import UserRecieve from './views/UserRecieved.vue'
+
 
 
 Vue.use(Router)
@@ -19,6 +23,11 @@ export default new Router({
       path: '/',
       name: 'home',
       component: Home
+    },
+    {
+      path: '/gallery',
+      name: 'gallery',
+      component: Gallery
     },
     {
       path: '/login',
@@ -59,6 +68,21 @@ export default new Router({
       path: '/user/activity/:userId',
       name: 'activity',
       component: UserActivity
+    },
+    {
+      path: '/user/activity/match/:userId',
+      name: 'match',
+      component: UserMatch
+    },
+    {
+      path: '/user/activity/request/:userId',
+      name: 'request',
+      component: UserRequest
+    },
+    {
+      path: '/user/activity/recieve/:userId',
+      name: 'recieve',
+      component: UserRecieve
     },
 
   ]
