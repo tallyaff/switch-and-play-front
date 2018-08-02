@@ -5,6 +5,7 @@
         <div class="my-profile" v-if="loggedinUser">
             <div class="profile-edit-container flex">
                 <!-- <h2 class="headres-in-profile-details my-profile-header">My profile</h2> -->
+                <!-- background image -->
                 <div class="image-container" :style="{backgroundImage: `url(${loggedinUser.src})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundrepeat: 'no-repeat'}">
                     <!-- <img :src="loggedinUser.src" class="user-img profile-img-page"/>     -->
                 </div>
