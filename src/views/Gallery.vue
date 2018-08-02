@@ -122,7 +122,7 @@ export default {
 <style scoped lang="scss">
 @import "~@/assets/scss/style.scss";
 .filter-images-container-gallery {
-  margin-top: rem(30px);
+  margin-top: rem(100px);
 }
 </style>
     

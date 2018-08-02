@@ -111,12 +111,14 @@ export default {
 
 }
 
-// .checkbox-filter-container {
-//   justify-content: flex-start;
-// }
+.checkbox-filter-container {
+  text-align: left;
+  padding-left: 20px;
+}
 
 .checkbox-filter {
   color: $secondary-color;
+  padding: 5px;
 
 
 }
@@ -133,8 +135,13 @@ export default {
 
 .search-in-gallery {
   position: absolute;
-  top: 50px;
+  top: 120px;
   margin: rem(20px);
+  left: 143px;
+}
+h3{
+    text-align: center;
+    margin-bottom: 10px;
 }
 
 </style>
