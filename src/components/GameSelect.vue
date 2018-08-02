@@ -12,15 +12,22 @@
                     <p>Added At: {{game.addedAt}}</p>
                 </div>
             </div>
-             <el-button @click="itsMatch(game._id, match._id)" type="primary">choose me! </el-button>
+             <el-button @click="itsMatch(game._id, match._id)" type="primary">choose me! 
+                <ShowMatch></ShowMatch>
+             </el-button>
         </div>
     </section>
 </template>
 
 <script>
+import ShowMatch from "@/components/ShowMatch.vue";
+
 export default {
     name: 'GameSelect',
     props: ['match', 'game'],
+    components: {
+        ShowMatch
+    },
     created() {
         console.log('!!match: ', this.match)
         console.log('!!game: ', this.game)

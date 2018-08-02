@@ -1,5 +1,5 @@
 <template>
-  <div class="game-list flex ">
+  <div class="game-list flex">
         <ul class="game-cards-container flex space-between" v-if="games">
           <el-card class="game clean-list" v-for="game in games" :key="game._id">
             <router-link class="btn btn-more-details" :to="'/game/'+game._id">
@@ -50,6 +50,7 @@ export default {
       transition: all 0.5s;
       
   }
+
 
    .game:hover {
       transform: scale(0.95, 0.95);
