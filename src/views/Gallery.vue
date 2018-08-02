@@ -3,7 +3,7 @@
   <div class="user-icons-container flex">
     <div class="filter-images-container-gallery flex">
         <GameFilter></GameFilter> 
-        <game-list :games="gamesForDisplay" @remove="removeGame"></game-list>
+        <game-list class="game-list container" :games="gamesForDisplay" @remove="removeGame"></game-list>
     </div>
   </div>
 </section>
@@ -105,6 +105,10 @@ export default {
   font-family: "Ubuntu";
   font-size: 20px;
 }
+.game-list{
+  padding: 0 20px;
+}
+
 </style>
 
 <style scoped lang="scss">
