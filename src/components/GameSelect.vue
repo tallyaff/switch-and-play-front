@@ -9,11 +9,11 @@
                     <p>Type: {{game.type}}</p>
                     <p>Category: {{game.category}}</p>
                     <p>condition: {{game.condition}}</p>
-                    <p>Added At: {{game.addedAt}}</p>
+                    <p>Added At: {{game.addedAt | getDate }}</p>
                 </div>
             </div>
              <el-button @click="itsMatch(game._id, match._id)" type="primary">choose me! 
-                <ShowMatch></ShowMatch>
+                <ShowMatch :game="choosenGame" :match="trueMatch" v-if="isMatch"></ShowMatch>
              </el-button>
         </div>
     </section>
@@ -51,7 +51,7 @@ export default {
             this.isMatch = true;
             console.log('game id', this.choosenGame);
             console.log('match id', this.currRecieved);
-            console.log('match:!!', match);
+            console.log('###match:!!', match);
             this.$store.dispatch({ type: "updateMatch", matchDetails: match })
         },
     }

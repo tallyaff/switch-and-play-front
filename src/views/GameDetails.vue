@@ -31,7 +31,7 @@
              <el-button class="btn-want-game" v-if="!requesting" @click="checkIfLogin">I want this game!</el-button>
              </div>
             <game-request :game="currGame" v-if="requesting"></game-request>
-        <!-- <show-match></show-match> -->
+        <show-match></show-match>
     </section>
 
 </template>

@@ -1,30 +1,35 @@
 
 <template>
     <section class="show-match flex column align-center space-between">
-        <router-link :to="'/game'" type="button">back to gallery</router-link>
-        <h1 class="congrats margin-bottom">Congrats we have a match!!!</h1>
+        <h1 class="text congrats">Congrats we have a match!!!</h1>
         <div class="images-container margin-bottom flex align-center space-between">
             <div v-if="gameActive" class="your-choose-container margin-bottom flex column align-center">
-                <h2 class="margin-bottom">You chose this amazing</h2>
+                <h2 class="text margin-bottom">You chose this amazing</h2>
                 <h2 class="game-name margin-bottom capitalize">{{gameActive.name}}</h2>
                 <img :src="gameActive.src"/>
             </div>
             <div v-if="gamePassive" class="game-match-container">
-                <h2 class="margin-bottom">You swapped it with your awesome</h2>
-                <h2 class="game-name capitalize margin-bottom">{{gamePassive.name}}</h2>
-                <img :src="gamePassive.src"/>
+                <h2 class="text margin-bottom">You swapped it with your awesome</h2>
+                <h2 class="game-name capitalize margin-bottom">{{match.userPassiveGame.name}}</h2>
+                <!-- <img :src="gamePassive.src"/> -->
             </div>
         </div>
-        <el-button type="primary">Schedule swap</el-button>
+        <el-button class="btn-schedule" type="primary">Schedule swap</el-button>
         <div v-if="userActive" class="meet-form">
-            <h3 class="margin-bottom"><span class="username capitalize">{{userActive.username}}</span> leaves in {{userActive.city}}</h3>
+            <h3 class="text margin-bottom"><span class="username capitalize">{{userActive.username}}</span> leaves in {{userActive.city}}</h3>
             <el-form  @submit.prevent="sendMeetForm" class="form-meeting">
-                <h3 class="margin-bottom">Send <span class="username capitalize">{{userActive.username}}</span> email:</h3>
-                <el-input v-if="formDetails.email" class="form-input email-input margin-bottom" type="text" v-model="formDetails.email"></el-input>
-                <h3 class="margin-bottom">Subject</h3>
-                <el-input class="form-input subject-input" type="text" v-model="formDetails.subject" autofocus></el-input>
-                <h3 class="margin-bottom">Message</h3>
-                <el-input class="form-input form-textarea" type="textarea" v-model="formDetails.text"></el-input>
+                <div class="form-input-title flex align-center space-between margin-bottom">
+                    <h3 class="small-text">Send <span class="username capitalize">{{userActive.username}}</span> email:</h3>
+                    <el-input v-if="formDetails.email" class="form-input email-input margin-bottom" type="text" v-model="formDetails.email"></el-input>
+                </div>
+                 <div class="form-input-title flex align-center space-between margin-bottom">
+                    <h3 class="small-text">Subject:</h3>
+                    <el-input class="form-input subject-input" type="text" v-model="formDetails.subject" autofocus></el-input>   
+                </div>
+                 <div class="form-input-title flex align-center space-between margin-bottom">
+                    <h3 class="small-text">Message:</h3>
+                    <el-input class="form-input form-textarea" type="textarea" v-model="formDetails.text"></el-input>                    
+                </div>
                 <el-button class="btn send-btn" type="primary" @click="sendMeetForm">Send</el-button>
                 <el-button class="btn cancel-btn" type="info">Cancel</el-button>
             </el-form>
@@ -38,7 +43,7 @@ import UserService from "@/services/UserService.js";
 
 export default {
   name: "showMatch",
-  props: ["match", "game"],
+  props: ["trueMatchh", "game"],
   data() {
     return {
       gameActive: null,
@@ -52,31 +57,33 @@ export default {
     };
   },
   created() {
-    // this.match = {
-    //   _id: "5b60bd23ea5c0347c8e2d120",
-    //   userPassive: {
-    //     userId: "5b5867f85d5aba03c1ce2e83",
-    //     gameId: "5b596cf23af932a16bcd90a0"
-    //   },
-    //   userActive: {
-    //     userId: "5b589ba35d5aba03c1d35692",
-    //     games: ["5b596cf23af932a16bcd90ac"]
-    //   },
-    //   isMatch: false
-    // };
-    // this.game = {
-    //   _id: "5b596cf23af932a16bcd90ac",
-    //   name: "green tractor",
-    //   src: "img/gameImg/wheels/tractor.jpg",
-    //   type: "baby",
-    //   category: "wheels",
-    //   desc: "nice green tractor for babys!",
-    //   userId: "5b589ba35d5aba03c1d35692",
-    //   condition: "Brand new",
-    //   isAvailble: true,
-    //   isNew: false,
-    //   addedAt: 1533016520092
-    // };
+      console.log('####', this.match);
+      
+    this.match = {
+      _id: "5b60bd23ea5c0347c8e2d120",
+      userPassive: {
+        userId: "5b5867f85d5aba03c1ce2e83",
+        gameId: "5b596cf23af932a16bcd90a0"
+      },
+      userActive: {
+        userId: "5b589ba35d5aba03c1d35692",
+        games: ["5b596cf23af932a16bcd90ac"]
+      },
+      isMatch: false
+    };
+    this.game = {
+      _id: "5b596cf23af932a16bcd90ac",
+      name: "green tractor",
+      src: "img/gameImg/wheels/tractor.jpg",
+      type: "baby",
+      category: "wheels",
+      desc: "nice green tractor for babys!",
+      userId: "5b589ba35d5aba03c1d35692",
+      condition: "Brand new",
+      isAvailble: true,
+      isNew: false,
+      addedAt: 1533016520092
+    };
     // console.log('game from match##:', this.game);
     // console.log('match from match##:', this.match);
     this.gameActive = this.game;
@@ -124,12 +131,23 @@ export default {
 @import "~@/assets/scss/style.scss";
     .show-match {
         // width: rem(1200px);
-        border: 1px solid;
-        background-color: rgb(228, 231, 230); /*temp color- change later*/
+        // border: 1px solid;
+    }
+
+    .text, .small-text {
+        font-family: 'Ubuntu-regular';
+    }
+
+    .small-text {
+        font-size: rem(15px);
     }
 
     .margin-bottom {
-        margin-bottom: rem(20px);
+        margin-bottom: rem(10px);
+    }
+
+    .btn-schedule {
+        margin-bottom: rem(40px);
     }
 
     .congrats {
@@ -137,6 +155,7 @@ export default {
         font-size: rem(60px);
         color: $secondary-color;
         text-shadow: 2px 2px $main-color;
+        margin: rem(20px);
     }
 
     .images-container {
@@ -166,11 +185,21 @@ export default {
         
     }
 
-    .form-meeting .form-input {
+    .form-input-title {
         width: rem(500px);
     }
 
+    .form-meeting .form-input {
+        width: 80%;
+    }
+
+
     .form-textarea {
         line-height: rem(300px);
+    }
+
+    .cancel-btn {
+        background-color: $border-color;
+        border: 0;
     }
 </style>
