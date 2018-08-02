@@ -3,8 +3,6 @@
    
     <ul class="game-preview-container pointer flex column align-center clean-list space-between" v-if="game">
 <!-- talyy and liron -->
-   <h1>ksdkdkdkdkdkdkdkdkdkdkd</h1>
-    <h1>ksdkdkdkdkdkdkdkdkdkdkd</h1>
         <el-checkbox checked @change=" $emit('check', {gameId :game._id, checked:checked})
               " v-model="checked" v-if="gameCheckbox" label="offer this game"></el-checkbox>
 
