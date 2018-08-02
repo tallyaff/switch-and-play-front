@@ -5,6 +5,7 @@
             <!-- <button>Search</button> -->
             <el-button class="btn search-btn" type="primary">Search</el-button>
         </form>
+
         <div class="checkbox-filter-container capitalize">
         <el-checkbox v-show='false' class="checkbox-filter" label="All" value="all" v-model="filterBy.allByName" @change="setFilter"></el-checkbox>
         <div>
@@ -17,8 +18,8 @@
                 </ul> -->
             <el-checkbox class="checkbox-filter" label="All types" :value="filterBy.allTypes" @change="toggleAllTypes"></el-checkbox>
               <el-checkbox-group v-model="filterBy.type" v-if="allFilterTypes" @change="setFilter">
-                <ul>
-                  <li v-for="oneType in allFilterTypes" :key="oneType">
+                <ul class="checkbox flex column">
+                  <li class="checkbox" v-for="oneType in allFilterTypes" :key="oneType">
                     <el-checkbox class="checkbox-filter" :label="oneType"></el-checkbox>
                   </li>
                 </ul>
@@ -26,7 +27,7 @@
             <h3>Category</h3>
               <el-checkbox class="checkbox-filter" label="All categories" :value="filterBy.allCategories" @change="toggleAllCategories"></el-checkbox>
               <el-checkbox-group class="checkbox-filter" v-model="filterBy.category" v-if="allFilterCategories" @change="setFilter">
-                <ul>
+                <ul class="checkbox flex column">
                   <li v-for="oneCategory in allFilterCategories" :key="oneCategory">
                     <el-checkbox class="checkbox-filter" :label="oneCategory"></el-checkbox>
                   </li>
@@ -107,15 +108,16 @@ export default {
 @import "~@/assets/scss/style.scss";
 
 .filter-gallery-container {
-  width: 250px;
+
 }
 
-.checkbox-filter-container {
-  // justify-content: flex-start;
-}
+// .checkbox-filter-container {
+//   justify-content: flex-start;
+// }
 
 .checkbox-filter {
   color: $secondary-color;
+
 
 }
 
@@ -131,7 +133,8 @@ export default {
 
 .search-in-gallery {
   position: absolute;
-  top: 15%;
+  top: 50px;
   margin: rem(20px);
 }
+
 </style>
