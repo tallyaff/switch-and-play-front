@@ -1,13 +1,8 @@
 <template>
-    <section class="GameDetails" v-if="currGame && currUser">
-      <router-link class="btn-back" :to="'/game'"><font-awesome-icon icon="arrow-circle-left"/>Go to gallery</router-link>
-      <br>
-      <br>
+    <section class="Game-details flex justify-center align-center" v-if="currGame && currUser">
       <div class="game-details-all" v-if="!requesting">
-        <span class="game-name">{{currGame.name}}</span>
-        <br>
-        <br>
-        <span label="Description">{{currGame.desc}}</span>
+        <h2 class="game-name">{{currGame.name}}</h2>
+        <h3 class="game-description" label="Description">{{currGame.desc}}</h3>
         <div class="game-details-container flex content-center" v-if="!requesting">
             <div class="img-container">        
                     <img :src="currGame.src">     
@@ -33,14 +28,18 @@
                 </div>
                 
             </div>
-             <el-button class="btn-want-toy" v-if="!requesting" @click="checkIfLogin">I want this game!</el-button>
+             <el-button class="btn-want-game" v-if="!requesting" @click="checkIfLogin">I want this game!</el-button>
              </div>
             <game-request :game="currGame" v-if="requesting"></game-request>
+        <!-- <show-match></show-match> -->
     </section>
+
 </template>
 <script>
 import GameRequest from "@/components/GameRequest.vue";
+import ShowMatch from "@/components/ShowMatch.vue";
 import GameService from "@/services/GameService.js";
+
 export default {
   name: "GameDetails",
   data() {
@@ -48,10 +47,22 @@ export default {
       currGame: null,
       requesting: null,
       currUser: null,
-    };
+      filterBy: {
+        allByName: true,
+        name: "",
+        allTypes: true,
+        type: [],
+        allCategories: true,
+        category: [],
+        userId: ""
+      },
+    }
   },
   created() {
+    var filterBy = JSON.parse(JSON.stringify(this.filterBy));
+    this.$store.commit({ type: "setFilter", filterBy })
     this.loadGame();
+
 
   },
   computed: {
@@ -92,7 +103,8 @@ export default {
     }
   },
   components: {
-    GameRequest
+    GameRequest,
+    ShowMatch
   }
 };
 </script>
@@ -104,7 +116,6 @@ export default {
 }
 img {
   width: 100%;
-  height: 100%;
 }
 .details-img{
   height: 40px;
@@ -115,10 +126,15 @@ img {
 }
 .game-name {
   font-family: 'PaytoneOne';
-  margin-top: 20px;
+  margin: 20px 0;
   color: $main-color;
   font-size: 24px;
 }
+
+.game-description {
+  font-size: rem(18px);
+}
+
 .GameDetails {
   font-family: "Ubuntu-regular";
   font-size: 18px;
@@ -126,7 +142,7 @@ img {
   align-items: baseline;
   margin-top: 40px;
 }
-.el-button.btn-want-toy {
+.el-button.btn-want-game {
   background-color: $secondary-color;
   background-color: #f56c6c;
   text-transform: capitalize;
