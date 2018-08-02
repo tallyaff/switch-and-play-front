@@ -31,15 +31,12 @@ export default {
     created() {
         console.log('!!match: ', this.match)
         console.log('!!game: ', this.game)
-        //  debugger
-    },
+},
     data() {
         return {
             choosenGame: '',
             currRecieved: '',
             isMatch: false,
-            // game: this.game,
-            // match: this.match
         }
     },
     methods: {
