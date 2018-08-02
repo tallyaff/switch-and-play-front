@@ -63,8 +63,11 @@ export default {
         games: []
       },
       signupForm: false,
-      loginForm: true
+      loginForm: true,
     };
+  },
+  components: {
+    gamePreview
   },
   methods: {
     login() {
