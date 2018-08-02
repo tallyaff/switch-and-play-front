@@ -38,7 +38,7 @@ import UserService from "@/services/UserService.js";
 
 export default {
   name: "showMatch",
-  props: ["match", "game"],
+  props: ["game"],
   data() {
     return {
       gameActive: null,

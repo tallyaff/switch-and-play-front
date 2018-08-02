@@ -63,9 +63,9 @@ export default {
         },
         updateMatch(context, payload) {
             // console.log('match from cmp***', payload.matchDetails);
-            MatchService.updateMatch(payload.matchDetails)
-            .then(activities => {
-                //    context.commit({type: 'setUpdateMatch', payload: payload.matchDetails})
+            //    context.commit({type: 'setUpdateMatch', payload: payload.matchDetails})
+                MatchService.updateMatch(payload.matchDetails)
+                .then(activities => {
                    console.log('match from backend in front', activities);
                })
         },

@@ -13,7 +13,7 @@
                 </div>
             </div>
              <el-button @click="itsMatch(game._id, match._id)" type="primary">choose me! 
-                <ShowMatch :match="match" :game="game" v-if="isMatch"></ShowMatch>
+                <ShowMatch :game="game" v-if="isMatch"></ShowMatch>
              </el-button>
         </div>
     </section>
@@ -24,7 +24,7 @@ import ShowMatch from "@/components/ShowMatch.vue";
 
 export default {
     name: 'GameSelect',
-    props: ['match', 'game'],
+    props: ['match','game'],
     components: {
         ShowMatch
     },
@@ -43,17 +43,18 @@ export default {
         }
     },
     methods: {
-        itsMatch(game, recieveId) {
-            this.choosenGame = game;
-            this
+        itsMatch(gameId, recieveId) {
+            this.choosenGame = gameId;
+            // this
             this.currRecieved = recieveId;
             // const match = {gameId: this.choosenGame, match: this.recieve}
-            const match = {gameId: this.choosenGame._id, matchId: this.currRecieved}
+            const newMatch = {gameId: this.choosenGame, matchId: this.currRecieved}
             this.isMatch = true;
             console.log('game id', this.choosenGame);
             console.log('match id', this.currRecieved);
             console.log('match:!!', match);
-            this.$store.dispatch({ type: "updateMatch", matchDetails: match })
+            console.log('match:!!', newMatch);
+            this.$store.dispatch({ type: "updateMatch", matchDetails: newMatch })
         },
     }
 }
