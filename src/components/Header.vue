@@ -1,8 +1,8 @@
 <template>
-  <section class="header-container space-between">
-    <div class="header flex container">
+  <section class="header-container ">
+    <div class="header flex container space-between">
        <router-link to="/">
-        <div class="img container">
+        <div class="img ">
           <router-link :to="`/`" class="pointer">
             <img src="img/logo.png">
           </router-link>
@@ -52,7 +52,6 @@ export default {
 .header {
   font-family: 'Ubuntu-regular';
   display: flex;
-  justify-content: space-around;
   font-size: 22px;
 }
 img{
