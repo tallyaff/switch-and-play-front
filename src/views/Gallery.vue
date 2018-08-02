@@ -1,10 +1,10 @@
 <template>
 <section>
-  <div v-if="gamesLoading">
+  <!-- <div v-if="gamesLoading">
     <h1>lalalalalala</h1>
     <img src="img/new-icon.png">
-  </div>
-  <div v-else class="user-icons-container flex">
+  </div> -->
+  <div class="user-icons-container flex">
     <div class="filter-images-container-gallery flex">
         <GameFilter></GameFilter> 
         <game-list class="game-list container" :games="gamesForDisplay" @remove="removeGame"></game-list>

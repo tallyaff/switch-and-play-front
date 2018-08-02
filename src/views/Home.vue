@@ -12,10 +12,10 @@
         <!-- <div class="all-cards-home-container"> -->
 
         <div class="baby-cards-container space-between"  >
-            <div v-if="gamesLoading">
+            <!-- <div v-if="gamesLoading">
             <h1>loading</h1>
-           </div>
-            <div v-else class="baby-cards flex container " >
+           </div> -->
+            <div class="baby-cards flex container " >
                 <div class="filter-type home-filter-container home-filter-container-baby flex column align-center justify-center">
                     <router-link :to="'/game'" @click.native="setFilter('baby')">
                         <h2 class="type-title-home">Most popular baby games</h2>
@@ -58,10 +58,10 @@
             </div>
 
             <div class="child-cards-container space-between">
-                             <div v-if="gamesLoading">
+                             <!-- <div v-if="gamesLoading">
                              <h1>loading</h1>
-                             </div>
-                <div v-else class="child-cards flex container">
+                             </div> -->
+                <div  class="child-cards flex container">
                     <div class="filter-type home-filter-container home-filter-container-child flex column align-center justify-center">
                         <router-link :to="'/game'" @click.native="setFilter('child')">
                             <h2 class="type-title-home">Most popular child games</h2>
@@ -97,13 +97,12 @@
             </div>
 
             <div class="teen-cards-container space-between">
-                <h1>loading</h1>
                 <div class="teen-cards flex container">
                     <div class="filter-type home-filter-container home-filter-container-teen flex column align-center justify-center">
                         <router-link :to="'/game'" @click.native="setFilter('teen')">
                             <h2 class="type-title-home">Most popular teen games</h2>
                         </router-link>
-                        <ul v-if="gamesForTeenHomeDisplay && !gamesLoading" class="cards-container-home flex clean-list">
+                        <ul v-if="gamesForTeenHomeDisplay" class="cards-container-home flex clean-list">
                             <li v-for="game in gamesForTeenHomeDisplay.slice(2, 6)" :key="game._id">
                                 <router-link :to="`/game/${game._id}/`">
                                     <el-card class="card-home">
