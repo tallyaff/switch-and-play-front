@@ -1,4 +1,5 @@
 import MatchService from '../services/MatchService.js'
+import Service from '../services/MatchService.js'
 // import GameService from '../services/GameService.js';
 // export const LOAD_USER = 'User/actions/loadUser'
 
@@ -19,7 +20,11 @@ export default {
         },
         // setUpdateMatch(state, payload) {
         //     console.log('match^^: ', payload.payload);
-        // }
+        // },
+        // setUserActive(state, payload) {
+        //     console.log('setUserActive^^: ', payload.payload);
+        //     state.userActive = payload.payload;
+        // },
     },
     getters: {
         getMatches(state){
@@ -60,7 +65,7 @@ export default {
                .then(activities => {
                    console.log('match from backend in front', activities);
                })
-        }
+        },
     }
 }
 
