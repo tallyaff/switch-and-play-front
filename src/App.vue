@@ -2,6 +2,7 @@
     <div id="app">
         <Header></Header>
         <router-view/>
+        <footer class="footer"> @ Created by Liron, Tally &amp; Adi</footer>
     </div>
 </template>
 
@@ -38,5 +39,14 @@ export default {
   text-align: center;
   color: #2c3e50;
 }
+
+.footer {
+  color: #0D72FA;
+  background-color: #dadada54;
+  font-family: 'PaytoneOne';
+  font-size: 1.25rem;
+  padding: 10px;
+}
+
 
 </style>

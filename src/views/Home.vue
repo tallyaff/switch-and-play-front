@@ -38,7 +38,7 @@
                           <gameUser :userId="game.userId" class="user-game-container flex column"></gameUser>
                         </div>
                       </div>
-                          <time class="time">{{ game.addedAt | getDate }}</time>
+                      <time class="time">{{ game.addedAt | getDate }}</time>
                     </div>
                   </div>
               </el-card>
@@ -67,7 +67,9 @@
                   <div class="card-text-container flex justify-center align-center column">
                     <span class="card-game-name">{{game.name}}</span>
                     <div class="username-time-container flex space-between align-center space-between">
-                      <div type="text" class="user-name-card-home">User Name</div>
+                      <div type="text" class="user-name-card-home">
+                        <gameUser :userId="game.userId" class="user-game-container flex column"></gameUser>
+                      </div>
                       <time class="time">{{ game.addedAt | getDate }}</time>
                     </div>
                   </div>
@@ -97,7 +99,9 @@
                   <div class="card-text-container flex justify-center align-center column">
                     <span class="card-game-name">{{game.name}}</span>
                     <div class="username-time-container flex space-between align-center space-between">
-                      <div type="text" class="user-name-card-home">User Name</div>
+                      <div type="text" class="user-name-card-home">
+                        <gameUser :userId="game.userId" class="user-game-container flex column"></gameUser>
+                      </div>
                       <time class="time">{{ game.addedAt | getDate }}</time>
                     </div>
                   </div>
