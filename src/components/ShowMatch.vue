@@ -6,13 +6,13 @@
         <div class="images-container margin-bottom flex align-center space-between">
             <div v-if="gameActive" class="your-choose-container margin-bottom flex column align-center">
                 <h2 class="margin-bottom">You chose this amazing</h2>
-                <h2 class="game-name margin-bottom capitalize">{{gameActive.name}}</h2>
-                <img :src="gameActive.src"/>
+                <h2 class="game-name margin-bottom capitalize">{{game.name}}</h2>
+                <img :src="game.src"/>
             </div>
             <div v-if="gamePassive" class="game-match-container">
                 <h2 class="margin-bottom">You swapped it with your awesome</h2>
-                <h2 class="game-name capitalize margin-bottom">{{gamePassive.name}}</h2>
-                <img :src="gamePassive.src"/>
+                <!-- <h2 class="game-name capitalize margin-bottom">{{newMatch.userPassiveGame.name}}</h2> -->
+                <!-- <img :src="gamePassive.src"/> -->
             </div>
         </div>
         <el-button type="primary">Schedule swap</el-button>
@@ -38,7 +38,7 @@ import UserService from "@/services/UserService.js";
 
 export default {
   name: "showMatch",
-  props: ["match", "game"],
+  props: ["game"],
   data() {
     return {
       gameActive: null,
