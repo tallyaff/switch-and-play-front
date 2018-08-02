@@ -5,9 +5,12 @@
             <span class="title-games">I would like to switch the next games:</span>
             <br>
             <div>
-            <li class="game" v-for="game in games" :key="game._id">
-                <game-preview :game="game" :gameCheckbox="true" @check="updateGamesToSwitch"></game-preview>
+              <ul>
+                <li class="game" v-for="game in games" :key="game._id">
+                    <game-preview :game="game" :gameCheckbox="true" :location="true" @check="updateGamesToSwitch">
+                    </game-preview>
                 <li/>
+              </ul>
            </div>
                 <!-- <el-checkbox class="checkbox-game-request" label="i will pick it up from your place"></el-checkbox>
                 <el-checkbox class="checkbox-game-request" label="you will pick it up from my place"></el-checkbox>
@@ -15,9 +18,9 @@
                 <div class="title-txt-area">Add some words:</div>
                 <br>
                 <div class="req-container flex column">
-                <el-input class="textarea" type="textarea" :autosize="{ minRows: 2, maxRows: 4}"
-                 placeholder="Enter some words to your request" v-model="textareaReq">
-                </el-input>
+                  <el-input class="textarea" type="textarea" :autosize="{ minRows: 2, maxRows: 4}"
+                  placeholder="Enter some words to your request" v-model="textareaReq">
+                  </el-input>
                 </div>
                 <el-button class="btn-request" @click="sendRequest">Send your request!</el-button>
         </el-form>
@@ -100,8 +103,8 @@ export default {
   },
   watch: {
     games(games) {
-      this.gamesToSwitch = games.map(game => game._id);
-    }
+      this.gamesToSwitch = games.map(game => game._id)
+      }
   }
 };
 </script>

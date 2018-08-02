@@ -5,7 +5,7 @@
     height: 150px;
     border: 1px solid $border-color;  
     box-shadow: 0px 2px 4px 0px #d9d8d8;
-    border-radius: 20px;
+    border-radius: 2px;
     margin: rem(10px);
     align-items: center;
     justify-content: space-around;
@@ -18,10 +18,16 @@
 
 .games-box {
     align-items: center;
+    margin: 20px;
+    border: 1px solid $border-color;  
+    box-shadow: 0px 2px 4px 0px #d9d8d8;
+    border-radius: 2px;
+    padding: 5px;
+    flex-wrap: wrap;
 }
 
-.game-container {
-    
+.games-box-container {
+    flex-wrap: wrap;
 }
 
 .game-boxes {
@@ -29,8 +35,8 @@
 }
 
 .games-container {
-    // justify-content: space-between;
     margin-bottom: 30px;
+    align-items: center;
 }
 
 .match-container {
@@ -47,4 +53,20 @@
 .activity-container {
     justify-content: space-between;
     // border: 1px solid;
+}
+
+.activity-header {
+    margin: 10px;
+    align-items: center;
+    justify-content: space-between;
+}
+.activity-header>h3 {
+    margin-right: 30px;
+}
+.router-container-activity {
+    justify-content: space-between;
+}
+
+.activity-btn {
+    margin: 10px;
 }
