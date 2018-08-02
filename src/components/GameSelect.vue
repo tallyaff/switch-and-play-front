@@ -13,7 +13,7 @@
                 </div>
             </div>
              <el-button @click="itsMatch(game._id, match._id)" type="primary">choose me! 
-                <ShowMatch></ShowMatch>
+                <ShowMatch :match="match" :game="game" v-if="isMatch"></ShowMatch>
              </el-button>
         </div>
     </section>
@@ -43,11 +43,12 @@ export default {
         }
     },
     methods: {
-        itsMatch(gameId, recieveId) {
-            this.choosenGame = gameId;
+        itsMatch(game, recieveId) {
+            this.choosenGame = game;
+            this
             this.currRecieved = recieveId;
             // const match = {gameId: this.choosenGame, match: this.recieve}
-            const match = {gameId: this.choosenGame, matchId: this.currRecieved}
+            const match = {gameId: this.choosenGame._id, matchId: this.currRecieved}
             this.isMatch = true;
             console.log('game id', this.choosenGame);
             console.log('match id', this.currRecieved);

@@ -1,5 +1,4 @@
 import MatchService from '../services/MatchService.js'
-import Service from '../services/MatchService.js'
 // import GameService from '../services/GameService.js';
 // export const LOAD_USER = 'User/actions/loadUser'
 
@@ -8,6 +7,7 @@ export default {
         activities: [],
         userId: null,
         reqCount: 0,
+        // newMatch: {}
     },
     mutations: {
         setMatch(state, payload) {
@@ -20,6 +20,7 @@ export default {
         },
         // setUpdateMatch(state, payload) {
         //     console.log('match^^: ', payload.payload);
+        //     state.newMatch = payload.payload
         // },
         // setUserActive(state, payload) {
         //     console.log('setUserActive^^: ', payload.payload);
@@ -37,7 +38,6 @@ export default {
                 return state.activities.filter(activity => {
                     return activity.userPassive.userId === state.userId && !activity.isMatch;
                     })
-                
             }
         },
         getRequestes(state) {
@@ -47,6 +47,9 @@ export default {
                 })
             }
         },
+        getNewMatch(state) {
+            return state.newMatch;
+        }
     },
     actions: {
         getMatch(context, payload) {
@@ -60,9 +63,9 @@ export default {
         },
         updateMatch(context, payload) {
             // console.log('match from cmp***', payload.matchDetails);
-            context.commit({type: 'setUpdateMatch', payload: payload.matchDetails})
             MatchService.updateMatch(payload.matchDetails)
-               .then(activities => {
+            .then(activities => {
+                //    context.commit({type: 'setUpdateMatch', payload: payload.matchDetails})
                    console.log('match from backend in front', activities);
                })
         },
