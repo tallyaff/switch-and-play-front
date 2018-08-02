@@ -1,5 +1,5 @@
 <template>
-    <!-- <div class="game-preview" > -->
+  <!-- <div class="game-preview" > -->
     <ul class="game-preview-container pointer flex column align-center clean-list space-between" v-if="game">
         <li class="game-name-preview">{{game.name}}</li>
         <li v-if="game.isNew" class="game-new-icon">
@@ -136,5 +136,8 @@ img:hover {
   position: absolute;
   top: -2px;
   left: -2px;
+}
+ul{
+ position: relative;
 }
 </style>

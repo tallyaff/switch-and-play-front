@@ -100,8 +100,8 @@ export default {
   },
   watch: {
     games(games) {
-      this.gamesToSwitch = games.map(game => game._id);
-    }
+      this.gamesToSwitch = games.map(game => game._id)
+      }
   }
 };
 </script>
