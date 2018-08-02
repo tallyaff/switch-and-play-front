@@ -8,11 +8,11 @@
                 <h2 class="game-name margin-bottom capitalize">{{game.name}}</h2>
                 <img :src="game.src"/>
             </div>
-            <div v-if="gamePassive" class="game-match-container">
+            <!-- <div v-if="gamePassive" class="game-match-container"> -->
                 <!-- <h2 class="margin-bottom">You swapped it with your awesome</h2> -->
                 <!-- <h2 class="game-name capitalize margin-bottom">{{newMatch.userPassiveGame.name}}</h2> -->
                 <!-- <img :src="gamePassive.src"/> -->
-            </div>
+            <!-- </div> -->
         </div>
         <el-button @click="schedule" class="btn-schedule" type="primary">Schedule swap</el-button>
         <div v-if="userActive && isSchedule" class="meet-form">
@@ -166,12 +166,12 @@ export default {
 
     .your-choose-container {
         border: 1px solid $border-color;
-        //to delete when we have the other game
-        align-self: center;
     }
 
     .images-container {
         width: rem(680px);
+        //to delete when we have the other game
+        justify-content: center;
     }
 
     .images-container img {

@@ -14,7 +14,6 @@
             </div>
             <ul v-if="matches" class="games-box-container flex">
                 <li v-for="match in matches" :key="match._id" class="flex games-box">
-                    {{match}}
                     <div class="flex column games-container">
                         <h4>I gave: </h4>
                         <div class="flex column game-box">
@@ -31,7 +30,7 @@
                         <h4>I recieved: </h4>
                         <div class="flex column game-box">
                             <p>{{match.userActiveGames[0].name}}</p>
-                            <!-- <img :src="match.userActiveGames[0].src"/>  -->
+                            <img :src="match.userActiveGames[0].src"/> 
                             <div type="text" class="user-details-container">
                                 <GameUser :userId="match.userActive.userId" class="user-details flex"></GameUser>
                             </div>

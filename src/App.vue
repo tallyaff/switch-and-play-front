@@ -2,7 +2,7 @@
     <div id="app">
         <Header></Header>
         <router-view/>
-        <footer class="footer"> @ Created by Liron, Tally &amp; Adi</footer>
+        <!-- <footer class="footer"> @ Created by Liron, Tally &amp; Adi</footer> -->
     </div>
 </template>
 
@@ -46,6 +46,9 @@ export default {
   font-family: 'PaytoneOne';
   font-size: 1.25rem;
   padding: 10px;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
 }
 
 </style>
