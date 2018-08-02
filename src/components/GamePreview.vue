@@ -83,6 +83,7 @@ export default {
 <style scoped lang="scss">
 @import "../assets/scss/style.scss";
 .game-preview-container {
+  height: 100%;
   width: 200px;
   transition: all 0.5s;
   &:hover {
@@ -92,6 +93,9 @@ export default {
 
 .offer-game {
   color: $secondary-color;
+}
+.game-preview{
+  height: 100%;
 }
 
 .game-name-preview {
@@ -145,5 +149,6 @@ ul{
 .card-text-container{
       text-align: left;
       font-size: 14px;
+      height: 30%;
 }
 </style>

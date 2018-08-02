@@ -49,6 +49,7 @@ export default {
       // border-radius: 20px;
       // margin: rem(10px);
       transition: all 0.5s;
+      // height: 100%;
       
   }
 

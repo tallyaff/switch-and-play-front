@@ -58,7 +58,7 @@ export default {
       }
     },
     sendRequest() {
-      
+      this.$router.push("/");
       this.$store
         .dispatch({ type: "loadGame", gameId: this.$route.params.gameId })
         .then(game => {
