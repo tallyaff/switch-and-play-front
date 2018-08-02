@@ -20,7 +20,7 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { faAngleLeft } from '@fortawesome/free-solid-svg-icons'
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
 
-Vue.component('font-awesome-icon', FontAwesomeIcon)
+Vue.component('font-awesome-icon', FontAwesomeIcon);
 
 library.add(faCoffee);
 library.add(faInfo);
@@ -68,3 +68,4 @@ new Vue({
     }
   }
 }).$mount('#app')
+
