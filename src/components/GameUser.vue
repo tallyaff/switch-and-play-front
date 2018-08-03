@@ -1,6 +1,7 @@
 <template>
     <section v-if="user">
-        <img :src="user.src" class="user-img"/>
+        <div class="user-img" :style="{backgroundImage: `url(${user.src})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundrepeat: 'no-repeat'}">
+        </div>
         <h6 class="nameUser">{{user.username}}</h6>
     </section>
 </template>

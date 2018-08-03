@@ -45,7 +45,6 @@
 </template>
 
 <script>
-import GamePreview from '@/components/GamePreview.vue'
 import { eventBus, EVENT_LOGIN_USER } from "../services/EventBusService.js";
 
 export default {
@@ -65,7 +64,7 @@ export default {
         games: []
       },
       signupForm: false,
-      loginForm: true
+      loginForm: true,
     };
   },
   methods: {
@@ -109,9 +108,6 @@ export default {
       this.signupForm = true;
       this.loginForm = false;
     }
-  },
-  components:{
-    GamePreview,
   },
   computed: {}
 };
