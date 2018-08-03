@@ -1,4 +1,5 @@
 <template class="game-request-container">
+<!-- test for see if master updated with SAP-27 -->
     <div class="game-request flex column align-center justify-center">
         <h1 class="title-game-request">It's time to create your request!</h1>   
         <h2 class="title-games">Choose optional games for swapping</h2>
