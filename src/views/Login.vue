@@ -40,10 +40,12 @@
           </el-form-item>
         </el-form>
     </div>
+
   </div>
 </template>
 
 <script>
+import GamePreview from '@/components/GamePreview.vue'
 import { eventBus, EVENT_LOGIN_USER } from "../services/EventBusService.js";
 
 export default {
@@ -110,6 +112,9 @@ export default {
       this.signupForm = true;
       this.loginForm = false;
     }
+  },
+  components:{
+    GamePreview,
   },
   computed: {}
 };

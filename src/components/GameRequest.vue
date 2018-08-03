@@ -106,83 +106,89 @@ export default {
 <style scoped lang="scss">
     @import "~@/assets/scss/style.scss";
 
-    .game-request {
-      max-width: rem(1200px);
-    }
+  .game-request {
+     max-width: rem(1200px);
+   }
 
-    .checkbox-game-request {
-      color: $main-color;
-    }
+   .checkbox-game-request {
+     color: $main-color;
+   }
 
-    .title-game-request, .title-games,.title-txt-area {
-      font-family: 'Ubuntu-regular';
-    }
+   .title-game-request, .title-games,.title-txt-area {
+     font-family: 'Ubuntu-regular';
+   }
 
-    .title-game-request{
-      font-size: rem(40px);
-      margin-bottom: rem(40px);
-      margin-top: rem(40px);
-      color: $third-color;
-    }
+   .title-game-request{
+     font-size: rem(40px);
+     margin-bottom: rem(20px);
+     margin-top: rem(60px);
+     // color: $main-color;
+   }
 
-    .btn-back{
-      font-size: 10px;
-    &:hover {
-      color: $main-color;
-      }
-    }
+   .btn-back{
+     font-size: 10px;
+   &:hover {
+     color: $main-color;
+     }
+   }
 
-    .title-games {
-      text-align: center;
-    }
+   .title-games {
+     text-align: center;
+   }
 
-    .title-games,.title-txt-area {
-      color: $main-color;
-    }
-    .games-container {
-      margin-top: 40px;
-      min-width: 80vw;
-      max-width: rem(1200px);
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    }
+   .title-games,.title-txt-area {
+     color: $secondary-color;
+   }
+   .games-container {
+     margin-top: 20px;
+     min-width: 70vw;
+     max-width: rem(1200px);
+     display: grid;
+     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+   }
 
-    .game {
-      border: 1px solid $border-color;
-      padding: rem(20px);
-      margin: rem(10px);
-      height: 450px;
-      transition: all 0.5s;
-        &:hover {
-          transform: scale(0.95, 0.95);
-        }
-    }
+   .choose-checkbox {
+     background-color: red;
+   }
 
-    li {
-    padding: 20px;
-    margin: auto;
-    }
-    .textarea {
-      width: 40%;
-      margin-top: 20px;
-    }
-    .btn-request {
-      width: 160px;
-      height: 50px;
-      align-self: center;
-      margin: 20px 0;
-      background-color: #f56c6c;
-      color: white
-      
-    } 
-    .req-container{
-      align-items: center;
-    } 
-    .swal-text {
-     font-family: sans-serif;
-     color: #0d72fa;
-     font-size: 30px;
+   .game {
+     border: 1px solid $border-color;
+     // padding: rem(20px);
+     margin: rem(10px);
+     width: 250px;
+     height: 250px;
+     transition: all 0.5s;
+       &:hover {
+         transform: scale(0.95, 0.95);
+       }
+   }
 
-        //  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  }
+   li {
+   padding: 20px;
+   margin: auto;
+   }
+   .textarea {
+     width: 40%;
+     margin-top: 20px;
+   }
+   .btn-request {
+     width: 220px;
+     height: 50px;
+     align-self: center;
+     margin: 20px 0;
+     background-color: $main-color;
+     font-size: 20px;
+     color: white
+     
+   }
+   .req-container{
+     align-items: center;
+   }
+   .swal-text {
+    font-family: sans-serif;
+    color: #0d72fa;
+    font-size: 30px;
+
+       //  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+ }
 </style>
