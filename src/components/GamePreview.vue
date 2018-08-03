@@ -1,5 +1,6 @@
 <template>
   <div class="game-preview">
+<!-- liron test if master updated -->
     <ul :class="{gallery: isGallery}" class="game-preview-container pointer flex column align-center clean-list space-between" v-if="game">
         <li>
           <el-checkbox class="offer-game" checked @change=" $emit('check', {gameId :game._id, checked:checked})
