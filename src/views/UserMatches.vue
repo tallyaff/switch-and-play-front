@@ -54,10 +54,11 @@ export default {
         this.$store.dispatch({type: 'getMatch', 
             user: this.$route.params.userId
             });
-        // console.log('matchhhhhh', this.matches);
+        console.log('matchhhhhh', this.matches);
     },
     computed: {
         matches() {
+            console.log('matchesssss, ', this.$store.getters.getMatches);
             return this.$store.getters.getMatches;
         },
         loggedinUser() {

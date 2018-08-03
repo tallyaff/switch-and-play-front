@@ -1,6 +1,6 @@
 <template>
-    <section>
-        <div class="flex column game-box-container">
+    <section class="flex justify-center">
+        <div v-if="!isMatch" class="flex align-center justify-center column game-box-container">
             <h3>{{game.name}}</h3>
             <div class="flex game-box-details">  
                 <img :src="game.src"/>
@@ -9,13 +9,13 @@
                     <p>Type: {{game.type}}</p>
                     <p>Category: {{game.category}}</p>
                     <p>condition: {{game.condition}}</p>
-                    <p>Added At: {{game.addedAt}}</p>
+                    <p>Added At: {{game.addedAt | getDate }}</p>
                 </div>
             </div>
-             <el-button @click="itsMatch(game._id, match._id)" type="primary">choose me! 
-                <ShowMatch :match="match" :game="game" v-if="isMatch"></ShowMatch>
-             </el-button>
+            <el-button @click="itsMatch(game._id, match._id)" type="primary">choose me! 
+            </el-button>
         </div>
+        <ShowMatch :match="match" :game="game" v-if="isMatch"></ShowMatch>
     </section>
 </template>
 
@@ -31,28 +31,24 @@ export default {
     created() {
         console.log('!!match: ', this.match)
         console.log('!!game: ', this.game)
-        //  debugger
-    },
+},
     data() {
         return {
             choosenGame: '',
             currRecieved: '',
             isMatch: false,
-            // game: this.game,
-            // match: this.match
         }
     },
     methods: {
         itsMatch(game, recieveId) {
             this.choosenGame = game;
-            this
             this.currRecieved = recieveId;
             // const match = {gameId: this.choosenGame, match: this.recieve}
-            const match = {gameId: this.choosenGame._id, matchId: this.currRecieved}
+            const match = {gameId: this.choosenGame, matchId: this.currRecieved}
             this.isMatch = true;
             console.log('game id', this.choosenGame);
             console.log('match id', this.currRecieved);
-            console.log('match:!!', match);
+            console.log('###match:!!', match);
             this.$store.dispatch({ type: "updateMatch", matchDetails: match })
         },
     }

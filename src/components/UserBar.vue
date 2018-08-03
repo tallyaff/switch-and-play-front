@@ -7,7 +7,7 @@
                     <img :src="loggedinUser.src" class="user-img" />
                 </router-link>
                 <router-link v-if="loggedinUser" :to="`/user/activity/match/${loggedinUser._id}/`" class="flex not-container">
-                    <el-badge :value="recieveCount.length" v-if="recieveCount.length > 0">
+                    <el-badge :value="matchCount.length" v-if="matchCount.length > 0">
                         <font-awesome-icon icon="envelope" class="envelop" />
                     </el-badge>
                     <div v-else>
@@ -15,7 +15,7 @@
                     </div>
                 </router-link>
                 <router-link v-if="loggedinUser" :to="`/user/activity/recieve/${loggedinUser._id}/`" class="flex not-container">    
-                    <el-badge :value="matchCount.length" v-if="matchCount.length > 0">
+                    <el-badge :value="recieveCount.length" v-if="recieveCount.length > 0">
                         <font-awesome-icon icon="bell" class="bell" />
                     </el-badge>
                     <div v-else>
@@ -26,17 +26,12 @@
             </div>
         </div>
         <div v-else class="hello-login flex">
-            <p class="helloMsg">Hello Guest</p>
-            <router-link to="/login">Login</router-link>
+            <!-- <p class="helloMsg">Hello Guest</p> -->
+            <router-link class="login-link" to="/login">Login</router-link>
         </div>
     </div>
 </template>
-                <!-- <div v-if="matchCount" :class="matchCount.length > 0 ? 'btn notification':'btn no-notification'">{{matchCount.length}}</div>
-                <font-awesome-icon icon="bell" class="bell"/>
-                <div v-if="recieveCount" :class="recieveCount.length > 0 ? 'btn notification':'btn no-notification'">{{recieveCount.length}}</div> -->
-                <!-- <el-badge :value="recieveCount">
-                    <font-awesome-icon icon="bell" class="bell"/>
-                </el-badge> -->
+               
 <script>
 import UserService from "../services/UserService.js";
 import UtilService from "../services/UtilService.js";
@@ -66,13 +61,7 @@ export default {
       this.$store.commit({ type: "logoutUser" });
       this.$router.push("/");
     },
-    // setNotification() {
-    //   console.log("setNotification");
-    //   if (this.getNotificationCount.length > 0) {
-    //     this.notificationCount = this.getNotificationCount.length;
-    //     this.notification = true;
-    //   }
-    // },
+  
     onLogout() {
       this.$emit("update:loggedinUser", null);
       this.$emit("logout");
@@ -135,6 +124,9 @@ p {
   &:hover {
     color: $main-color;
   }
+}
+.login-link {
+  color: $secondary-color;
 }
 .userMsg {
   color: #f56c6c;

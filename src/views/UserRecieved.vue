@@ -60,16 +60,12 @@ export default {
             currRecieved: '',
             openDetails: false,
             isMatch: true,
-            // user: null
         }
     },
     created() {
         this.$store.dispatch({type: 'getMatch', 
             user: this.$route.params.userId
             });
-        // console.log('recieveddddd', this.matches);
-        // this.getActiveUser();
-        // console.log('get userrrrr', this.user);
     },
     computed: {
         recieves() {
@@ -83,17 +79,8 @@ export default {
         getMatch(game, recieve) {
             this.openDetails = true;
             this.choosenGame = game;
-            this.currRecieved = recieve;
-            // console.log('%%', this.choosenGame, this.currRecieved);
-           
+            this.currRecieved = recieve;           
         },
-        // getActiveUser(userId) {
-        //     return GameService.getUserById(userId)
-        //         .then(user => {
-        //             // console.log('user from server&&&', user);
-        //             this.user = user
-        //         })
-        // }
     }
 }
 </script>
@@ -102,7 +89,6 @@ export default {
   @import "~@/assets/scss/style.scss";
     
     .games-box>h4 {
-        // margin-left: 40px;
     }
     .details-btn {
         line-height: 0;
