@@ -11,21 +11,12 @@ export default {
     },
     mutations: {
         setMatch(state, payload) {
-            // console.log('activities**: ', payload.activities);
             state.activities = payload.activities
         },
         setCurrUserId(state, payload) {
-            // console.log('user^^: ', payload.payload);
             state.userId = payload.payload
         },
-        // setUpdateMatch(state, payload) {
-        //     console.log('match^^: ', payload.payload);
-        //     state.newMatch = payload.payload
-        // },
-        // setUserActive(state, payload) {
-        //     console.log('setUserActive^^: ', payload.payload);
-        //     state.userActive = payload.payload;
-        // },
+        
     },
     getters: {
         getMatches(state){
@@ -54,7 +45,6 @@ export default {
     },
     actions: {
         getMatch(context, payload) {
-            // console.log('user from action***', payload.user);
             context.commit({type: 'setCurrUserId', payload: payload.user})
             MatchService.getMatch(payload.user)
                .then(activities => {
@@ -63,10 +53,8 @@ export default {
                    })
         },
         updateMatch(context, payload) {
-            // console.log('match from cmp***', payload.matchDetails);
-            //    context.commit({type: 'setUpdateMatch', payload: payload.matchDetails})
-                MatchService.updateMatch(payload.matchDetails)
-                .then(activities => {
+            MatchService.updateMatch(payload.matchDetails)
+            .then(activities => {
                    console.log('match from backend in front', activities);
                })
         },

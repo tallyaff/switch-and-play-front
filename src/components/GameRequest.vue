@@ -8,9 +8,6 @@
                 <game-preview :game="game" :newIcon="true" :condition="true" :location="true" :username="true" :gameCheckbox="true" @check="updateGamesToSwitch"></game-preview>
            </div>
           </div>
-                <!-- <el-checkbox class="checkbox-game-request" label="i will pick it up from your place"></el-checkbox>
-                <el-checkbox class="checkbox-game-request" label="you will pick it up from my place"></el-checkbox>
-                <el-checkbox class="checkbox-game-request" label="lets talk about it"></el-checkbox> -->
             <div class="text-btn-container flex column">
               <h2 class="title-txt-area">Add some words:</h2>
               <div class="req-container flex column">
@@ -58,7 +55,7 @@ export default {
       }
     },
     sendRequest() {
-      
+      this.$router.push('/');
       this.$store
         .dispatch({ type: "loadGame", gameId: this.$route.params.gameId })
         .then(game => {
@@ -140,12 +137,10 @@ export default {
     }
 
     .title-games,.title-txt-area {
-      // text-align: left;
       color: $main-color;
     }
     .games-container {
       margin-top: 40px;
-      // flex-wrap: wrap;
       min-width: 80vw;
       max-width: rem(1200px);
       display: grid;
