@@ -84,39 +84,58 @@ export default {
 .game-preview {
   height: 100%;
 }
+
 .game-preview-container {
-  height: 100%;
-  width: 200px;
+  // width: 200px; // i shut it for gamerequest
+  position: relative;
   transition: all 0.5s;
   height: 100%;
   &:hover {
     transform: scale(0.95, 0.95);
   }
 }
-.offer-game {
-  color: $secondary-color;
+
+.el-checkbox.offer-game {
+  // background-color: $secondary-color;
+  // border-color: $secondary-color;
+  padding: 15px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: scale(1.5);
+  // width: 15px;
+  // height: 15px;
 }
-.game-preview{
-  height: 100%;
-}
+
+// .isChecked {
+//   border: 3px solid $main-color;
+// }
+
 .game-name-preview {
   font-size: rem(16px);
   font-family: "Ubuntu";
-  padding: rem(12px);
+  // padding: rem(12px); // i shut it for gamerequest
   color: $main-color;
   text-transform: capitalize;
-}
+  padding: 10px; //was added for game reqest
+ }
+
 .image-container {
   // width: 300px;
-    height: 50%;}
-img {
-  width: 100%;
-  transition: all 0.5s;
+  //  height: 150px; // i shut it for gamerequest
 }
+img {
+  width: 50%; //todo in if class!!!
+  height: auto;
+  transition: all 0.5s;
+  margin: 5px; //was added to game request
+}
+
 img:hover {
   // background-color: #d9d8d82b;
   // background-color: #f7b2532b;
 }
+
 .game-category-preview,
 .game-condition-preview,
 .game-addedAt-preview,
@@ -129,10 +148,12 @@ img:hover {
     color: black;
   }
 }
+
 .game-user-name-preview span {
   text-transform: capitalize;
   color: $secondary-color;
 }
+
 .game-new-icon {
   position: absolute;
   top: -29px;
@@ -141,14 +162,16 @@ img:hover {
 ul{
  position: relative;
 }
-.card-text-container{
+.card-text-container{ // was before
     text-align: left;
     font-size: 14px;
-    height: 30%;
-    width: 100%;
-    background-color: lightgray;
 }
-.el-card body{
-  padding: 8px;
+
+.card-text-container{ //for gamerequest
+  background-color: $card-text-color;
+  width: 100%;
+  height: 27%;
+  /* margin: 20px; */
+  padding: 5px;
 }
 </style>
