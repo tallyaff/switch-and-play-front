@@ -1,6 +1,10 @@
 <template>
-  <div class="game-preview" >
-    <ul class="game-preview-container pointer flex column align-center clean-list space-between" v-if="game">
+  <div class="game-preview">
+    <ul :class="{gallery: isGallery}" class="game-preview-container pointer flex column align-center clean-list space-between" v-if="game">
+        <li>
+          <el-checkbox class="offer-game" checked @change=" $emit('check', {gameId :game._id, checked:checked})
+                " v-model="checked" v-if="gameCheckbox"></el-checkbox>
+        </li>
         <li class="game-name-preview">{{game.name}}</li>
         <li v-if="game.isNew" class="game-new-icon">
             <img v-if="!newIcon" src="img/new-icon.png">
@@ -11,7 +15,7 @@
         <div class="image-container flex align-center justify-center">
             <img :src="game.src" class="image-card">
         </div>
-        <div class="card-text-container">
+        <div class="card-text-container" :class="isGallery">
           <li class="game-category-preview capitalize">
               <span>Category:</span>{{game.category}}</li>
           <li class="game-condition-preview capitalize" v-if="!condition">
@@ -25,8 +29,6 @@
           <li class="game-user-name-preview capitalize" v-if="!username">
               <!-- <span>by </span>{{username}} -->
           </li>
-          <el-checkbox class="offer-game" checked @change=" $emit('check', {gameId :game._id, checked:checked})
-                " v-model="checked" v-if="gameCheckbox" label="Offer this game"></el-checkbox>
           <li>
               <!-- <button v-if="loggedinUser === 'game.userId'" class="btn btn-remove" @click="$emit('remove', game._id)">Remove</button> 
                     <router-link v-if="loggedinUser === 'game.userId'" tag="button" :to="'/game/edit/'+game._id">Edit</router-link>  -->
@@ -55,10 +57,11 @@ import GameUser from "@/components/GameUser.vue";
 export default {
   name: "GamePreview",
   components: {GameUser},
-  props: ["game", "gameCheckbox", "condition", "location", "username", "newIcon"],
+  props: ["game", "gameCheckbox", "condition", "location", "username", "newIcon", "isGallery"],
   data() {
     return {
-      checked: true
+      checked: true,
+      isGallery: false,
     };
   },
   // created() {
@@ -90,12 +93,22 @@ export default {
 <style scoped lang="scss">
 @import "../assets/scss/style.scss";
 
+.gallery.game-preview-container {
+    width: 200px;
+}
+
+.gallery.card-text-container {
+    text-align: left;
+    font-size: 14px;
+}
+
 .game-preview {
  height: 100%;
 }
 
 .game-preview-container {
- // width: 200px; // i shut it for gamerequest
+ // width: 200px; // i shut it for gamerequest ****
+ 
  position: relative;
  transition: all 0.5s;
  height: 100%;
@@ -105,7 +118,7 @@ export default {
 }
 
 .el-checkbox.offer-game {
- // background-color: $secondary-color;
+//  background-color: $secondary-color;
  // border-color: $secondary-color;
  padding: 15px;
  position: absolute;
@@ -123,18 +136,17 @@ export default {
 .game-name-preview {
  font-size: rem(16px);
  font-family: "Ubuntu";
- // padding: rem(12px); // i shut it for gamerequest
  color: $main-color;
  text-transform: capitalize;
- padding: 10px; //was added for game reqest
+ padding: 10px;
 }
 
 .image-container {
  // width: 300px;
- //  height: 150px; // i shut it for gamerequest
+ //  height: 150px; // i shut it for gamerequest - i think we dont need
 }
 img {
- width: 50%; //todo in if class!!!
+ width: 50%; //todo in if class!!! - i think we dont need
  height: auto;
  transition: all 0.5s;
  margin: 5px; //was added to game request
@@ -171,12 +183,12 @@ img:hover {
 ul{
 position: relative;
 }
-.card-text-container{ // was before
+.card-text-container { // was before
    text-align: left;
    font-size: 14px;
 }
 
-.card-text-container{ //for gamerequest
+.card-text-container { //for gamerequest
  background-color: $card-text-color;
  width: 100%;
  height: 27%;

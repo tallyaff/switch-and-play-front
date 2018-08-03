@@ -1,7 +1,7 @@
 <template class="game-request-container">
     <div class="game-request flex column align-center justify-center">
-        <h1 class="title-game-request">Its time to Create your request!</h1>   
-        <h2 class="title-games">I would like to swap the next games:</h2>
+        <h1 class="title-game-request">It's time to create your request!</h1>   
+        <h2 class="title-games">Choose optional games for swapping</h2>
         <el-form class="request-container flex column">
           <div class="games-container flex">
             <div class="game" v-for="game in games" :key="game._id">
@@ -149,6 +149,10 @@ export default {
 
    .choose-checkbox {
      background-color: red;
+   }
+
+   .btn-request {
+     font-family: "Ubuntu-regular";
    }
 
    .game {
