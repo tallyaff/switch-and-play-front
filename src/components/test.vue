@@ -1,183 +1,192 @@
-  <ul v-if="allFilterTypes">
-                        <li v-for="oneType in allFilterTypes"> 
-                          <div>{{oneType}}</div>
-                        </li>
-                      </ul>
-
-                        // allFilterTypes: null,
-        // allFilterCategories: null,
-
-          created() {    
-    //   var self = this;
-    //   this.setFilter = debounce(() => {
-    //     console.log('setFilter in gameFilter cmp');
-        
-    //     self.$store.dispatch({ type: 'setFilter', filterBy: this.filterBy })
-    // }, 2000)
-      this.allFilterTypes = this.$store.getters.types;
-      console.log('allFilterTypes in home', this.allFilterTypes); 
-      this.allFilterCategories = this.$store.getters.categories;
-      console.log('allFilterCategories in home', this.allFilterCategories); 
-  },
-
-
-  <template>
-  <div class="filter-gallery-container">
-        <form @submit.prevent="setFilter" class="search-in-gallery">
-            <el-input class="search-input" type="text" v-model="filterBy.name" placeholder="Search for games" autofocus></el-input>
-            <!-- <button>Search</button> -->
-            <el-button class="btn search-btn" type="primary">Search</el-button>
-        </form>
-              <el-checkbox class="checkbox-filter" label="All" value="all" v-model="filterBy.allByName" @change="setFilter">All</el-checkbox>
-        <div>
-            <h3>Type</h3>
-                <el-checkbox class="checkbox-filter" label="All types" value="all-types" v-model="filterBy.allTypes" @change="setFilter"></el-checkbox>
-                <ul v-if="allFilterTypes">
-                  <li v-for="oneType in allFilterTypes" :key="oneType._id"> 
-                      <el-checkbox class="checkbox-filter" :label='oneType' :value="oneType" v-model="filterBy.type" @change="setFilter"></el-checkbox>
-                  </li>
-                </ul>
-            <h3>Category</h3>
-              <el-checkbox class="checkbox-filter" label="All categories" value="all-categories" v-model="filterBy.allCategories" @change="setFilter"></el-checkbox>
-              <ul v-if="allFilterCategories">
-                <li v-for="oneCategory in allFilterCategories" :key="oneCategory"> 
-                    <el-checkbox class="checkbox-filter" :label='oneCategory' :value="oneCategory" v-model="filterBy.type" @change="setFilter">{{oneCategory}}</el-checkbox>
-                </li>
-              </ul>
-         
-
-
-
-
-             <!-- <label >
-              <input type="checkbox" name="feature" value="all-types" v-model="filterBy.allTypes" @change="setFilter"/>All types
-            </label>
-            <label >
-              <input type="checkbox" name="feature" value="baby" v-model="filterBy.type" @change="setFilter"/>Baby
-            </label>
-            <label >
-              <input type="checkbox" name="feature" value="child" v-model="filterBy.type" @change="setFilter"/>Child
-            </label>
-            <label >
-              <input type="checkbox" name="feature" value="teen" v-model="filterBy.type" @change="setFilter"/>Teen
-            </label> -->
-        <!-- </div>
-        <div>
-            <h3>Category</h3>
-            <label >
-              <input type="checkbox" name="feature" value="all-categories" v-model="filterBy.allCategories" @change="setFilter"/>All categories
-            </label>
-             <label >
-              <input type="checkbox" name="feature" value="console" v-model="filterBy.category" @change="setFilter"/>Console
-            </label>
-             <label >
-              <input type="checkbox" name="feature" value="doll" v-model="filterBy.category" @change="setFilter"/>Doll
-            </label>
-             <label >
-              <input type="checkbox" name="feature" value="board-game" v-model="filterBy.category" @change="setFilter"/>Board game
-            </label>
-             <label >
-              <input type="checkbox" name="feature" value="lego" v-model="filterBy.category" @change="setFilter"/>Lego
-            </label>
-             <label >
-              <input type="checkbox" name="feature" value="playmobil" v-model="filterBy.category" @change="setFilter"/>Playmobil
-            </label>
-             <label >
-              <input type="checkbox" name="feature" value="puzzle" v-model="filterBy.category" @change="setFilter"/>Puzzle
-            </label>
-             <label >
-              <input type="checkbox" name="feature" value="wheels" v-model="filterBy.category" @change="setFilter"/>Wheels
-            </label> -->
+<template>
+  <div class="game-preview">
+    <ul class="game-preview-container pointer flex column align-center clean-list space-between" v-if="game">
+        <el-checkbox class="offer-game" checked @change="$emit('check', {gameId :game._id, checked:checked})"
+                      v-model="checked" v-if="gameCheckbox"></el-checkbox>
+        <li class="game-name-preview">{{game.name}}</li>
+        <li v-if="game.isNew" class="game-new-icon">
+            <img v-if="!newIcon" src="img/new-icon.png"/>
+        </li>
+        <li class="image-container" :style="{backgroundImage: url, backgroundSize: 'cover', backgroundPosition: 'center', backgroundrepeat: 'no-repeat'}">
+        </li>
+        <li class="image-container flex align-center justify-center">
+            <img :src="game.src" class="image-card"/>
+        </li>
+        <div class="card-text-container">
+          <li class="game-category-preview capitalize">
+              <span>Category:</span>{{game.category}}</li>
+          <li class="game-condition-preview capitalize" v-if="!condition">
+              <span>Condition:</span>{{game.condition}}</li>
+          <li class="game-addedAt-preview capitalize">
+              <span>Added at:</span>{{game.addedAt | getDate }}</li>
+          <!-- TODO: user location & name -->
+          <li class="game-location-preview capitalize" v-if="!location">
+              <!-- <span>Location: </span> -->
+          </li>
+          <li class="game-user-name-preview capitalize" v-if="!username">
+              <!-- <span>by </span>{{username}} -->
+          </li>
+          <!-- <el-checkbox class="offer-game" checked @change=" $emit('check', {gameId :game._id, checked:checked})
+                " v-model="checked" v-if="gameCheckbox" label="Offer this game"></el-checkbox> -->
+          <li>
+              <!-- <button v-if="loggedinUser === 'game.userId'" class="btn btn-remove" @click="$emit('remove', game._id)">Remove</button> 
+                    <router-link v-if="loggedinUser === 'game.userId'" tag="button" :to="'/game/edit/'+game._id">Edit</router-link>  -->
+          </li>
+          <!-- <div type="text" class="user-name-card-home">
+              <gameUser :userId="game.userId" class="user-game-container flex column"></gameUser>
+          </div> -->
         </div>
-  </div>
+
+    </ul>
+
+
+            <!-- <div class="card-text-container flex justify-center align-center column">
+                <span class="card-game-name">{{game.name}}</span>
+                <div class="username-time-container flex space-between align-center space-between">
+                    <div type="text" class="user-name-card-home">User Name</div>
+                    <time class="time">{{ game.addedAt | getDate }}</time>
+                </div>
+            </div> -->
+    </div>
 </template>
 
 <script>
-import debounce from "lodash.debounce";
-import GameService from "@/services/GameService.js";
+import GameUser from "@/components/GameUser.vue";
 
 export default {
-  name: 'home',
-  components: {},
+  name: "GamePreview",
+  components: {GameUser},
+  props: ["game", "gameCheckbox", "condition", "location", "username", "newIcon"],
   data() {
     return {
-      filterBy: {
-        allByName: true,
-        name: '',
-        allTypes: true,
-        type: [],
-        allCategories: true,
-        category: [],
-        userId: '',
-      },
-      allFilterTypes: null,
-      allFilterCategories: null,
+      checked: true
     };
   },
-  created() {
-    //   var self = this;
-    //   this.setFilter = debounce(() => {
-    //     console.log('setFilter in gameFilter cmp');
+  // created() {
+  //   this.onLoadCheckbox();
+  //   this.$emit('check', {gameId :this.game._id, checked:this.checked})
+  // },
 
-    //     self.$store.dispatch({ type: 'setFilter', filterBy: this.filterBy })
-    // }, 2000)
-
-    this.allFilterTypes = this.$store.getters.types;
-    console.log("allFilterTypes in home", this.allFilterTypes);
-    this.allFilterCategories = this.$store.getters.categories;
-    console.log('allFilterCategories in home', this.allFilterCategories);
+  methods: {
+    // toggleChecked() {
+    //   $emit('check', {gameId :game._id, checked:checked});
+    //   this.isChecked = !this.isChecked;
+    // }
   },
   computed: {
-    // allFilterTypes(){
-    //   console.log('allFilterTypes in home', this.$store.allFilterTypes);
-    //   return this.$store.allFilterTypes
+    url() {
+      return `url("${this.game.src}")`;
+    },
+    loggedinUser() {
+      // console.log(this.$store.getters.loggedUser);
+      return this.$store.getters.loggedUser || {};
+    }
+    // checked(){
+    //   $emit('check', game._id,this.checked)
+    // }
+    // user() {
+    //   // console.log('user!!!!!!!!!!!!!!!!!!', this.$store.getters.setLoginUser);
+    //   return this.$store.getters.setLoginUser;
     // },
-    // allFilterCategories(){
-    //   console.log('allFilterCategories in home', this.$store.allFilterCategories);
-    //   return this.$store.allFilterCategories
-    // },
-  },
-  methods: {
-    setFilter: debounce(function() {
-      // if(this.filterBy.type) this.filterBy.allTypes = false;
-      // console.log('setFilter in gameFilter cmp');
-      // console.log('this.filterBy.allTypes', this.filterBy.allTypes);
-      if (this.filterBy.allTypes) this.filterBy.type = this.$store.getters.types;
-      console.log("this.filterBy.type", this.filterBy.type);
-      if (this.filterBy.allCategories) this.filterBy.category = this.$store.getters.categories;
-      console.log("this.filterBy.type", this.filterBy.category);
-      // if (this.filterBy.allCategories) this.filterBy.category = this.allFilterCategories;
-
-      this.$store.dispatch({ type: "setFilter", filterBy: this.filterBy });
-    }, 2000)
   }
 };
 </script>
 
+
 <style scoped lang="scss">
-  @import "~@/assets/scss/style.scss";
+@import "../assets/scss/style.scss";
 
-  .filter-gallery-container {
-    width: 250px;
-  }
+.game-preview {
+  height: 100%;
+}
 
-  .checkbox-filter {
-    color: $secondary-color;
-    text-transform: capitalize;
+.game-preview-container {
+  // width: 200px; // i shut it for gamerequest
+  position: relative;
+  transition: all 0.5s;
+  height: 100%;
+  &:hover {
+    transform: scale(0.95, 0.95);
   }
-  .search-btn {
-    background-color: $main-color;
-  }
-  .search-in-gallery .search-input {
-    width: 350px;
-    margin-bottom: rem(20px);
-    // height: 100px;
-    // box-shadow: inset 0 0 3px 0px #000000ab;
-  }
+}
 
-  .search-in-gallery {
-    position: absolute;
-    top: 20%;
-    margin: rem(20px);
+.el-checkbox.offer-game {
+  // background-color: $secondary-color;
+  // border-color: $secondary-color;
+  padding: 15px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: scale(1.5);
+  // width: 15px;
+  // height: 15px;
+}
+
+// .isChecked {
+//   border: 3px solid $main-color;
+// }
+
+.game-name-preview {
+  font-size: rem(16px);
+  font-family: "Ubuntu";
+  // padding: rem(12px); // i shut it for gamerequest
+  color: $main-color;
+  text-transform: capitalize;
+  padding: 10px; //was added for game reqest
+ }
+
+.image-container {
+  // width: 300px;
+  //  height: 150px; // i shut it for gamerequest
+}
+img {
+  width: 50%; //todo in if class!!!
+  height: auto;
+  transition: all 0.5s;
+  margin: 5px; //was added to game request
+}
+
+img:hover {
+  // background-color: #d9d8d82b;
+  // background-color: #f7b2532b;
+}
+
+.game-category-preview,
+.game-condition-preview,
+.game-addedAt-preview,
+.game-location-preview,
+.game-user-name-preview {
+  padding: rem(5px);
+  color: $main-color;
+  font-family: "Lato-Bold";
+  span {
+    color: black;
   }
+}
+
+.game-user-name-preview span {
+  text-transform: capitalize;
+  color: $secondary-color;
+}
+
+.game-new-icon {
+  position: absolute;
+  top: -29px;
+  left: -24px;
+}
+ul{
+ position: relative;
+}
+.card-text-container{ // was before
+    text-align: left;
+    font-size: 14px;
+}
+
+.card-text-container{ //for gamerequest
+  background-color: $card-text-color;
+  width: 100%;
+  height: 27%;
+  /* margin: 20px; */
+  padding: 5px;
+}
 </style>

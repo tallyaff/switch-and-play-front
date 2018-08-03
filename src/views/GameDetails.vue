@@ -4,9 +4,7 @@
         <h2 class="game-name capitalize">{{currGame.name}}</h2>
         <h3 class="game-description" label="Description">{{currGame.desc}}</h3>
         <div class="game-details-container flex content-center align-center" v-if="!requesting">
-            <div class="img-container">        
-                    <img :src="currGame.src">     
-            </div>
+            <div class="img-container"><img :src="currGame.src"></div>
             <div class="text-container-title flex column">
                 <div class="detail-item" >Type:</div>
                 <div class="detail-item" >Categoty:</div>
@@ -110,6 +108,10 @@ export default {
 </script>
 
  <style lang="scss" scoped>
+ .game-details-all {
+   border: 1px solid $border-color;
+   margin-top: rem(20px);
+ }
 .img-container {
   max-height: 400px;
   max-width: 400px;
@@ -122,7 +124,7 @@ img {
   width: 40px;
 }
 .game-details-container {
-  margin: 50px 0;
+  margin: 50px;
 }
 .game-name {
   font-family: 'PaytoneOne';
@@ -144,14 +146,12 @@ img {
 }
 .el-button.btn-want-game {
   background-color: $secondary-color;
-  background-color: #f56c6c;
   text-transform: capitalize;
   font-weight: 400;
   // color: $main-color;
   color: white;
   transition: all 0.3 ease;
   margin-bottom: 30px;
-  margin-top: 20px;
   &:hover {
     transform: scale(1.1, 1.1);
     font-weight: 600;
@@ -183,6 +183,11 @@ img {
   float: left;
   margin-left: 40px;
 }
+ .btn-want-game {
+   background-color: $secondary-color;
+   font-size: rem(20px);
+ }
+
 </style>
 <style>
 .swal-title {
@@ -202,6 +207,8 @@ img {
   font-family: sans-serif;
 }
 .swal-button--confirm{
-      background-color: #F6AB2B;
+    background-color: #F6AB2B;
  }  
+
+
 </style>

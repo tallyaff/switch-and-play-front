@@ -4,7 +4,9 @@
             <!-- <p class="userMsg">Hello {{'loggedinUser'? loggedinUser.username: 'guest'}}</p> -->
             <div class="user-icon-container flex">
                 <router-link v-if="loggedinUser" :to="`/user/${loggedinUser._id}/`">
-                    <img :src="loggedinUser.src" class="user-img" />
+                    <!-- <img :src="loggedinUser.src" class="user-img" /> -->
+                    <div class="image-container user-img" :style="{backgroundImage: `url(${loggedinUser.src})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundrepeat: 'no-repeat'}">
+                    </div>
                 </router-link>
                 <router-link v-if="loggedinUser" :to="`/user/activity/match/${loggedinUser._id}/`" class="flex not-container">
                     <el-badge :value="matchCount.length" v-if="matchCount.length > 0">

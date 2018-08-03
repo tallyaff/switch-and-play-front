@@ -1,6 +1,8 @@
 <template>
     <section v-if="user">
-        <img :src="user.src" class="user-img"/>
+        <!-- <img :src="user.src" class="user-img"/> -->
+        <div class="user-img" :style="{backgroundImage: `url(${user.src})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundrepeat: 'no-repeat'}">
+        </div>
         <h6 class="nameUser">{{user.username}}</h6>
     </section>
 </template>
@@ -34,6 +36,8 @@ export default {
 
 <style scoped lang="scss">
   @import "~@/assets/scss/style.scss";
-
+.user-img {
+    border-radius: 50%;
+}
    
 </style>

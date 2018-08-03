@@ -66,9 +66,6 @@ export default {
       loginForm: true,
     };
   },
-  components: {
-    gamePreview
-  },
   methods: {
     login() {
       this.$router.push('/game')

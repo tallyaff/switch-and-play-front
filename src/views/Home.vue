@@ -67,7 +67,7 @@
                             <h2 class="type-title-home">Most popular child games</h2>
                         </router-link>
                         <ul v-if="gamesForChildHomeDisplay" class="cards-container-home  flex  clean-list">
-                            <li v-for="game in gamesForChildHomeDisplay.slice(2, 6)" :key="game._id">
+                            <li v-for="game in gamesForChildHomeDisplay.slice(3, 7)" :key="game._id">
                                 <router-link :to="`/game/${game._id}/`">
                                     <el-card class="card-home">
                                         <div v-if="game.isNew" class="game-new-icon">
@@ -286,7 +286,7 @@ export default {
 }
 
 .cards-container-home {
-  width: 100%;
+  // width: 100%;
   flex-wrap: wrap;
   li {
     padding: 10px;

@@ -1,23 +1,25 @@
 <template class="game-request-container">
     <div class="game-request flex column align-center justify-center">
-        <h1 class="title-game-request">Its time to Create your request!</h1>   
-        <h2 class="title-games">I would like to swap the next games:</h2>
+            <!-- <div class="choose-checkbox"> -->
+        <h1 class="title-game-request">It's time to create your request!</h1>   
+        <h2 class="title-games">Choose the optional games for swapping:</h2>
         <el-form class="request-container flex column">
           <div class="games-container flex">
-            <div class="game" v-for="game in games" :key="game._id">
-                <game-preview :game="game" :newIcon="true" :condition="true" :location="true" :username="true" :gameCheckbox="true" @check="updateGamesToSwitch"></game-preview>
-           </div>
+              <div class="game" v-for="game in games" :key="game._id">
+                  <game-preview :game="game" :newIcon="true" :condition="true" :location="true" :username="true" :gameCheckbox="true" @check="updateGamesToSwitch"></game-preview>
+            </div>
           </div>
             <div class="text-btn-container flex column">
               <h2 class="title-txt-area">Add some words:</h2>
+              <el-button class="btn-request" @click="sendRequest">Send your request!</el-button>
+            </div>
               <div class="req-container flex column">
                 <el-input class="textarea" type="textarea" :autosize="{ minRows: 2, maxRows: 4}"
                 placeholder="Enter some words to your request" v-model="textareaReq">
                 </el-input>
               </div>
-              <el-button class="btn-request" @click="sendRequest">Send your request!</el-button>
-            </div>
         </el-form>
+            <!-- </div> -->
     </div>
 </template>
 
@@ -120,9 +122,9 @@ export default {
 
     .title-game-request{
       font-size: rem(40px);
-      margin-bottom: rem(40px);
-      margin-top: rem(40px);
-      color: $third-color;
+      margin-bottom: rem(20px);
+      margin-top: rem(60px);
+      // color: $main-color;
     }
 
     .btn-back{
@@ -137,21 +139,26 @@ export default {
     }
 
     .title-games,.title-txt-area {
-      color: $main-color;
+      color: $secondary-color;
     }
     .games-container {
-      margin-top: 40px;
-      min-width: 80vw;
+      margin-top: 20px;
+      min-width: 70vw;
       max-width: rem(1200px);
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     }
 
+    .choose-checkbox {
+      background-color: red;
+    }
+
     .game {
       border: 1px solid $border-color;
-      padding: rem(20px);
+      // padding: rem(20px);
       margin: rem(10px);
-      height: 450px;
+      width: 250px;
+      height: 250px;
       transition: all 0.5s;
         &:hover {
           transform: scale(0.95, 0.95);
@@ -167,11 +174,12 @@ export default {
       margin-top: 20px;
     }
     .btn-request {
-      width: 160px;
+      width: 220px;
       height: 50px;
       align-self: center;
       margin: 20px 0;
-      background-color: #f56c6c;
+      background-color: $main-color;
+      font-size: 20px;
       color: white
       
     } 

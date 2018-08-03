@@ -5,7 +5,8 @@
         <li v-if="game.isNew" class="game-new-icon">
             <img v-if="!newIcon" src="img/new-icon.png">
         </li>
-        <div class="image-container" :style="{backgroundImage: url, backgroundSize: 'cover', backgroundPosition: 'center', backgroundrepeat: 'no-repeat'}">
+        <div class="image-container" :style="{backgroundImage: url, backgroundSize: 'cover', 
+             backgroundPosition: 'center', backgroundrepeat: 'no-repeat'}">
         </div>
         <div class="image-container flex align-center justify-center">
             <img :src="game.src" class="image-card">
@@ -34,10 +35,7 @@
               <gameUser :userId="game.userId" class="user-game-container flex column"></gameUser>
           </div> -->
         </div>
-
     </ul>
-
-
             <!-- <div class="card-text-container flex justify-center align-center column">
                 <span class="card-game-name">{{game.name}}</span>
                 <div class="username-time-container flex space-between align-center space-between">
@@ -47,10 +45,8 @@
             </div> -->
     </div>
 </template>
-
 <script>
 import GameUser from "@/components/GameUser.vue";
-
 export default {
   name: "GamePreview",
   components: {GameUser},
@@ -64,7 +60,6 @@ export default {
   //   this.onLoadCheckbox();
   //   this.$emit('check', {gameId :this.game._id, checked:this.checked})
   // },
-
   methods: {},
   computed: {
     url() {
@@ -84,16 +79,13 @@ export default {
   }
 };
 </script>
-
-
 <style scoped lang="scss">
 @import "../assets/scss/style.scss";
-
 .game-preview {
   height: 100%;
 }
-
 .game-preview-container {
+  height: 100%;
   width: 200px;
   transition: all 0.5s;
   height: 100%;
@@ -101,33 +93,30 @@ export default {
     transform: scale(0.95, 0.95);
   }
 }
-
 .offer-game {
   color: $secondary-color;
 }
-
+.game-preview{
+  height: 100%;
+}
 .game-name-preview {
-  font-size: rem(20px);
+  font-size: rem(16px);
   font-family: "Ubuntu";
   padding: rem(12px);
   color: $main-color;
   text-transform: capitalize;
 }
-
 .image-container {
   // width: 300px;
-  //  height: 100px;
-}
+    height: 50%;}
 img {
   width: 100%;
   transition: all 0.5s;
 }
-
 img:hover {
   // background-color: #d9d8d82b;
   // background-color: #f7b2532b;
 }
-
 .game-category-preview,
 .game-condition-preview,
 .game-addedAt-preview,
@@ -140,12 +129,10 @@ img:hover {
     color: black;
   }
 }
-
 .game-user-name-preview span {
   text-transform: capitalize;
   color: $secondary-color;
 }
-
 .game-new-icon {
   position: absolute;
   top: -29px;
@@ -155,7 +142,13 @@ ul{
  position: relative;
 }
 .card-text-container{
-      text-align: left;
-      font-size: 14px;
+    text-align: left;
+    font-size: 14px;
+    height: 30%;
+    width: 100%;
+    background-color: lightgray;
+}
+.el-card body{
+  padding: 8px;
 }
 </style>
