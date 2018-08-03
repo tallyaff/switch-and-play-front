@@ -6,7 +6,7 @@
         <el-form class="request-container flex column">
           <div class="games-container flex">
             <div class="game" v-for="game in games" :key="game._id">
-                <game-preview :game="game" :newIcon="true" :condition="true" :location="true" :username="true" :gameCheckbox="true" @check="updateGamesToSwitch"></game-preview>
+                <game-preview :game="game" :isGameRequest="true" :newIcon="true" :condition="true" :location="true" :username="true" :gameCheckbox="true" @check="updateGamesToSwitch"></game-preview>
            </div>
           </div>
             <div class="text-btn-container flex column">
@@ -148,9 +148,9 @@ export default {
      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
    }
 
-   .choose-checkbox {
-     background-color: red;
-   }
+  //  .choose-checkbox {
+  //    background-color: red;
+  //  }
 
    .btn-request {
      font-family: "Ubuntu-regular";
@@ -162,9 +162,9 @@ export default {
      margin: rem(10px);
      width: 250px;
      height: 250px;
-     transition: all 0.5s;
+    //  transition: all 0.5s;
        &:hover {
-         transform: scale(0.95, 0.95);
+        //  transform: scale(0.95, 0.95);
        }
    }
 
