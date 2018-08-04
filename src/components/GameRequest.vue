@@ -29,6 +29,7 @@ import MatchService from "../services/MatchService.js";
 
 export default {
   name: "GameRequest",
+  props: ["game"],
   created() {
     this.$store.dispatch({ type: "gamesById", games: this.user.games })
     
@@ -56,30 +57,30 @@ export default {
       }
     },
     sendRequest() {
+      // console.log('gameId: ',this.$route.params.gameId);
       this.$router.push('/');
-      this.$store
-        .dispatch({ type: "loadGame", gameId: this.$route.params.gameId })
-        .then(game => {
-            swal("Whoo Hoo! Your request has been sent!", {
-            className: "swal-text",
-            icon: "success",
-            timer: 2000,
-            button: false
-          })
-          this.ownerUserId = game.userId;
-          const matchReq = {
-            userPassive: {
-              userId:this.ownerUserId,
-              gameId: this.$route.params.gameId
-            },
-            userActive: {
-              userId: this.user._id,
-              games: this.gamesToSwitch
-            },
-            textareaReq: this.textareaReq,
-            isMatch: false
-          };
-          MatchService.createMatch(matchReq);
+      this.ownerUserId = this.game.userId;
+        const matchReq = {
+          userPassive: {
+            userId: this.ownerUserId,
+            gameId: this.game._id
+          },
+          userActive: {
+            userId: this.user._id,
+            games: this.gamesToSwitch
+          },
+          textareaReq: this.textareaReq,
+          isMatch: false
+        };
+      this.$store.dispatch({ type: "createMatch", newMatch: matchReq })
+        .then(match => {
+          swal("Whoo Hoo! Your request has been sent!", {
+          className: "swal-text",
+          icon: "success",
+          timer: 2000,
+          button: false
+        })
+          console.log('match:', match);
         })
         .catch(err =>{
           console.log('error send a request',err)

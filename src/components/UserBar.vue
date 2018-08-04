@@ -7,7 +7,7 @@
                   <div class="user-img" :style="{backgroundImage: `url(${loggedinUser.src})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundrepeat: 'no-repeat'}">
                   </div>                
                 </router-link>
-                <router-link v-if="loggedinUser" :to="`/user/activity/match/${loggedinUser._id}/`" class="flex not-container">
+                <router-link v-if="loggedinUser" :to="`/user/activity/${loggedinUser._id}/match`" class="flex not-container">
                     <el-badge :value="matchCount.length" v-if="matchCount.length > 0">
                         <font-awesome-icon icon="envelope" class="envelop" />
                     </el-badge>
@@ -15,7 +15,7 @@
                         <font-awesome-icon icon="envelope" class="envelop" />
                     </div>
                 </router-link>
-                <router-link v-if="loggedinUser" :to="`/user/activity/recieve/${loggedinUser._id}/`" class="flex not-container">    
+                <router-link v-if="loggedinUser" :to="`/user/activity/${loggedinUser._id}/recieve`" class="flex not-container">    
                     <el-badge :value="recieveCount.length" v-if="recieveCount.length > 0">
                         <font-awesome-icon icon="bell" class="bell" />
                     </el-badge>

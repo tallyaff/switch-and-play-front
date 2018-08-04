@@ -1,19 +1,31 @@
 /*----------  user activity  ----------*/
 
+.match-container {
+    font-family: 'Ubuntu';
+    margin: auto;
+}
 .game-box {
-    width: 150px;
-    height: 150px;
+    width: 250px;
+    height: 300px;
+    min-width: 180px;
+    min-height: 200px;
     border: 1px solid $border-color;  
     box-shadow: 0px 2px 4px 0px #d9d8d8;
     border-radius: 2px;
     margin: rem(10px);
     align-items: center;
-    justify-content: space-around;
-}
+    justify-content: space-between;
+    padding: 5px;
+    font-family: 'PaytoneOne';
 
-.game-box>img {
-    max-height: 100px;
-    max-width: 100px;
+    img {
+        max-height: 150px;
+        max-width: 150px;
+    }
+
+    h3 {
+        color: $main-color;
+    }
 }
 
 .games-box {
@@ -28,6 +40,8 @@
 
 .games-box-container {
     flex-wrap: wrap;
+    margin: auto;
+    justify-content: center
 }
 
 .game-boxes {
@@ -35,14 +49,10 @@
 }
 
 .games-container {
-    margin-bottom: 30px;
+    width: 90%;
+    padding: 20px 40px;
     align-items: center;
-}
-
-.match-container {
-    align-items: center;
-    margin: 40px 20px;
-    // background-color: beige;   /*temp color change later*/
+    margin: auto;
 }
 
 .match-container>h3 {
@@ -69,4 +79,52 @@
 
 .activity-btn {
     margin: 10px;
+}
+
+.msg-box {
+    border: 1px solid $border-color;  
+    box-shadow: 0px 2px 4px 0px #d9d8d8;
+    border-radius: 20px;
+    width: 200px;
+    height: 50px;
+    margin: 20px 0;
+
+    h4 {
+        align-self: center;
+    }
+    img {
+        max-height: 150px;
+        max-width: 150px
+    }
+}
+
+@media only screen and  (max-width: 767px) {
+	.games-box {
+        width: 90%;
+    }
+    .games-box-container {
+        justify-content: center;
+    }
+    .msg-box {
+        // width: 150px;
+        margin: 10px 0;
+    }
+    .game-box {
+        // width: 120px;
+        // height: 150px;
+    }
+} 
+
+@media only screen and  (max-width: 540px) {
+    .games-box {
+        width: 90%;
+        margin:  10px auto;
+    }
+    .games-box-container {
+        justify-content: center;
+        margin: auto;
+    }
+    .match-container {
+        justify-content: center;
+    }
 }
