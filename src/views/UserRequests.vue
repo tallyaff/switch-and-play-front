@@ -1,8 +1,6 @@
 <template>
     <section>
         <div class="flex column match-container">
-            <!-- <div class="activity-header flex">
-            </div> -->
             <ul v-if="requestes" class="flex games-box recieve">
                 <li v-for="request in requestes" :key="request._id">
                     <div class="flex column game-box">

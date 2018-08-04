@@ -4,7 +4,10 @@
             <ul v-if="matches" class="games-box-container flex">
                 <li v-for="match in matches" :key="match._id" class="flex column games-box">
                     <!-- <div class="flex column games-container"> -->
-                        <h2><GameUserName :userId="match.userPassive.userId"></GameUserName> approved swapping!</h2>
+                        <h2 class="user-approved">
+                            <GameUserName :userId="match.userPassive.userId"></GameUserName> 
+                            approved swapping!
+                        </h2>
                         <div class="flex games-img">
                             <div class="flex column game-box">
                                 <h3>{{match.userPassiveGame.name}}</h3> 
@@ -49,14 +52,14 @@ export default {
         this.$store.dispatch({type: 'getMatch', 
             user: this.$route.params.userId
             });
-        console.log('matchhhhhh', this.matches);
-        console.log('usrtID^^^', this.userId);
+        // console.log('matchhhhhh', this.matches);
+        // console.log('usrtID^^^', this.userId);
         this.getGameUser();
         
     },
     computed: {
         matches() {
-            console.log('%%%', this.$store.getters.getMatches);
+            // console.log('%%%', this.$store.getters.getMatches);
             return this.$store.getters.getMatches;
         },
         loggedinUser() {
@@ -67,7 +70,7 @@ export default {
         getGameUser() {
             return GameService.getUserById(this.userId)
                 .then(user => {
-                    console.log('user from server&&&', user);
+                    // console.log('user from server&&&', user);
                     this.passiveUser = user
                 })
         }
@@ -78,16 +81,27 @@ export default {
 <style scoped lang="scss">
   @import "~@/assets/scss/style.scss";
   
-  .games-img {
-      .exchange {
-          align-self: center;
-          font-size: 2em;
-      }
-  }
+    .games-img {
+        .exchange {
+            align-self: center;
+            font-size: 2em;
+        }
+    }
 
-  .game-box {
-      justify-content: space-around;
-      border: none;
-      box-shadow: none;
-  }
+    .games-box {
+        border: 1px solid $border-color;  
+        box-shadow: 0px 2px 4px 0px #d9d8d8;
+        border-radius: 20px;
+    }
+    .game-box {
+       justify-content: space-between;
+       border: none;
+       box-shadow: none;
+       height: 250px;
+       margin-bottom: 0;
+    }
+
+    .user-approved {
+        margin-top: 5px;
+    }
 </style>
