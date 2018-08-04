@@ -52,9 +52,7 @@ export default {
   font-size: 22px;
   height: 90px;
 }
-img {
-  margin-top: 18px;
-}
+
 .header-container {
   box-shadow: 0px 0.5px 4px 0px #d9d8d8;
 }
