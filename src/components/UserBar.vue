@@ -134,10 +134,10 @@ p {
   position: absolute;
   margin-top: -30px;
 }
-a {
-  &:hover {
-    color: $main-color;
-  }
+  a {
+    &:hover {
+      color: $main-color;
+    }
 }
 .user-icon-container {
   color: $secondary-color;

@@ -16,7 +16,7 @@
         </div>
         <el-button @click="schedule" class="btn-schedule" type="primary">Schedule swap</el-button>
         <div v-if="userActive && isSchedule" class="meet-form">
-            <h3 class="text margin-bottom"><span class="username capitalize">{{userActive.username}}</span> leaves in {{userActive.city}}</h3>
+            <h3 class="text margin-bottom"><span class="username capitalize">{{userActive.username}}</span> lives in {{userActive.city}}</h3>
             <form  @submit.prevent="sendMeetForm" class="form-meeting flex column">
                  <div class="form-input-title flex align-center space-between margin-bottom">
                     <!-- <h3 class="small-text">Type a message:</h3> -->
