@@ -234,11 +234,11 @@ export default {
 
 .header-bg-image {
   position: absolute;
-  top: 185px;
+  top: 195px;
   // top: 300px;
   width: 100%;
   color: white;
-  font-size: rem(30px);
+  font-size: rem(25px);
   // font-size: rem(50px);
   font-family: "Ubuntu-regular";
   text-shadow: 3px 1px black;
@@ -274,7 +274,7 @@ export default {
 
 .type-title-home {
   align-self: flex-start;
-  font-size: rem(25px);
+  font-size: rem(20px);
   // font-size: rem(40px);
   font-family: "Ubuntu";
   margin-top: rem(30px);
@@ -418,9 +418,24 @@ export default {
   left: -15px;
 }
 
-@media (min-width: 750px) {
+@media (min-width: 540px) {
   .header-bg-image {
-    top: 283px;
+    top: 208px;
+    font-size: rem(33px);
+  }
+    .search {
+  margin-bottom: rem(18px);
+  bottom: rem(-70px);
+}
+}
+
+
+
+
+
+@media (min-width: 800px) {
+  .header-bg-image {
+    top: 320px;
     font-size: rem(50px);
   }
   .home-bg-img {
@@ -428,13 +443,18 @@ export default {
   }
   .search-btn {
     display: none;
+
   }
   .search-btn-text {
     display: block;
     height: 50px;
     float: right;
-    font-size: rem(14px);
+    font-size: rem(18px);
     background-color: $main-color;
+    margin-left: 0px;
+  }
+  .el-button+.el-button{
+    margin-left: 0;
   }
   .search-input {
     width: 500px;
@@ -446,15 +466,24 @@ export default {
   .cards-container-home{
     justify-content: flex-start;
   }
+  .search {
+  margin-bottom: rem(18px);
+  bottom: rem(-90px);
+}
 }
 
 @media (min-width: 1080px) {
   .header-bg-image {
-    top: 300px;
+    top: 320px;
     font-size: rem(60px);
   }
   .type-title-home {
     font-size: rem(40px);
   }
+  .search {
+  margin-bottom: rem(20px);
+  bottom: rem(-100px);
+}
+
 }
 </style>

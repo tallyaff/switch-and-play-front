@@ -148,14 +148,14 @@ h3{
   height: 45px;
 }
 
-@media (min-width: 300px) {
-  .filter-gallery-container{
-    display:none;
-  }
-  .filter-icon{
-  display:block;
-}
+// @media (min-width: 300px) {
+//   .filter-gallery-container{
+//     display:none;
+//   }
+//   .filter-icon{
+//   display:block;
+// }
 
-}
+// }
 
 </style>

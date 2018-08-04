@@ -59,13 +59,18 @@ img {
   box-shadow: 0px 0.5px 4px 0px #d9d8d8;
 }
 
-@media  (min-width: 420px){
-  .header {
-    padding: 20px;
-  }
-  img{
-     content:url("/img/logo.png");
+@media (min-width: 890px) {
+  .user-bar {
+    order: 2;
   }
 }
 
+@media (min-width: 420px) {
+  .header {
+    padding: 20px;
+  }
+  img {
+    content: url("/img/logo.png");
+  }
+}
 </style>
