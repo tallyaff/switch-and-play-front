@@ -1,40 +1,31 @@
 <template>
     <section>
-        <div class="activity-container">
-
-
-
-<!-- THIS CMP CAN BE DELETED -->
-
-
-            <div>
-                <!-- <UserRecievedRequests :recieves="recieves">
-                </UserRecievedRequests> -->
+        <div class="activity-container flex column">
+            <div class="nav-container flex">
+                <router-link :to="`/user/activity/${loggedinUser._id}/match`">Swapping
+                </router-link>
+                <router-link :to="`/user/activity/${loggedinUser._id}/request`">My Requests
+                </router-link>
+                <router-link :to="`/user/activity/${loggedinUser._id}/recieve`">Request From Me
+                </router-link>
             </div>
-            <div>
-                <!-- <UserSentRequests :requestes="requestes">
-                </UserSentRequests> -->
-            </div>
-            <div>
-                <!-- <UserMatches >
-                </UserMatches> -->
-            </div>
+            <router-view></router-view>
         </div>
     </section>
 </template>
 
 <script>
-// import {LOAD_USER} from '@/store/UserModule.js'
-// import UserMatches from '@/components/UserMatches.vue'
-// import UserRecievedRequests from '@/components/UserRecievedRequests.vue'
-// import UserSentRequests from '@/components/UserSentRequests.vue'
+// import {LOAD_USER} from '../store/UserModule.js'
+import UserMatches from './UserMatches.vue'
+import UserRecieved from './UserRecieved.vue'
+import UserRequests from './UserRequests.vue'
 
 export default {
     name: "userActivity",
     components: {
-        // UserMatches,
-        // UserRecievedRequests,
-        // UserSentRequests
+        UserMatches,
+        UserRecieved,
+        UserRequests
     },
     // data(){
     //     return {
@@ -76,5 +67,24 @@ export default {
 <style scoped lang="scss">
   @import "~@/assets/scss/style.scss";
 
+.nav-container {
+    align-items: center;
+    // justify-content: space-around;
+    padding: 30px;
+    font-family: 'Ubuntu-regular';
+    a {
+        padding: 15px;
+        color: #F6AB2B;
+        transition: all 0.3s ease;
+        position: relative;
+        font-size: 1.3em;
 
+        &.router-link-exact-active {
+            color: $main-color;
+        }
+        &:hover {
+            color: $main-color;
+        }
+    }
+}
 </style>

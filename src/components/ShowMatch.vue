@@ -17,6 +17,21 @@
         <el-button @click="schedule" class="btn-schedule" type="primary">Schedule swap</el-button>
         <div v-if="userActive && isSchedule" class="meet-form">
             <h3 class="text margin-bottom"><span class="username capitalize">{{userActive.username}}</span> leaves in {{userActive.city}}</h3>
+            <form  @submit.prevent="sendMeetForm" class="form-meeting flex column">
+                 <div class="form-input-title flex align-center space-between margin-bottom">
+                    <!-- <h3 class="small-text">Type a message:</h3> -->
+                    <el-input class="form-input form-textarea" type="textarea" v-model="formDetails.text"></el-input>                    
+                </div>
+                <div class="btns-container">
+                 <el-button class="btn send-btn" type="primary" @click="sendMeetForm">Send</el-button>
+                 <el-button class="btn cancel-btn" type="info">Cancel</el-button>
+                </div>
+            </form>
+        </div>
+
+        <!-- <el-button @click="schedule" class="btn-schedule" type="primary">Schedule swap</el-button> -->
+        <!-- <div v-if="userActive && isSchedule" class="meet-form">
+            <h3 class="text margin-bottom"><span class="username capitalize">{{userActive.username}}</span> leaves in {{userActive.city}}</h3>
             <el-form  @submit.prevent="sendMeetForm" class="form-meeting flex column">
                 <div class="form-input-title flex align-center space-between margin-bottom">
                     <h3 class="small-text">Send <span class="username capitalize">{{userActive.username}}</span> email:</h3>
@@ -35,7 +50,7 @@
                  <el-button class="btn cancel-btn" type="info">Cancel</el-button>
                 </div>
             </el-form>
-        </div>
+        </div> -->
     </section>    
 </template>
 
@@ -45,7 +60,7 @@ import UserService from "@/services/UserService.js";
 
 export default {
   name: "showMatch",
-  props: ["trueMatchh", "game"],
+  props: ["game"],
   data() {
     return {
       gameActive: null,

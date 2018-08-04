@@ -7,7 +7,7 @@
                 <!-- <h2 class="headres-in-profile-details my-profile-header">My profile</h2> -->
                 <!-- background image -->
                 <div class="image-container" :style="{backgroundImage: `url(${loggedinUser.src})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundrepeat: 'no-repeat'}">
-                    <!-- <img :src="loggedinUser.src" class="user-img profile-img-page"/>     -->
+                    <img :src="loggedinUser.src" class="user-img profile-img-page"/>    
                 </div>
                 <div class="user-details-container flex column">
                     <p>{{loggedinUser.username}}</p>
@@ -17,7 +17,8 @@
                 <button v-if="loggedinUser" v-show="!isEdit" class="btn icon-btn edit-profile-btn" type="primary" @click="editProfile"><font-awesome-icon icon="pen" /></button>
                 <div class="my-games-header-container flex">
                     <el-button v-if="loggedinUser" class="btn add-game-btn" type="primary" @click="checkIfDisplay"><font-awesome-icon icon="plus" />&nbsp;&nbsp;Game</el-button>
-                    <router-link :to="`/user/activity/recieve/${loggedinUser._id}`">
+                    <!-- <router-link :to="`/user/activity/recieve/${loggedinUser._id}`"> -->
+                    <router-link :to="`/user/activity/${loggedinUser._id}/recieve`">
                             <el-button v-if="loggedinUser" class="btn add-game-btn" type="primary" @click="checkIfDisplay">My activity</el-button>
                     </router-link>
                 </div>
@@ -88,7 +89,7 @@ export default {
     },
     created() {
         this.$store.dispatch({ type: "gamesById", games: this.loggedinUser.games });
-        // console.log('this.loggedinUser.games', this.loggedinUser.games);
+        // console.log('$$$games$$$', this.games);
         
     },
     computed: {
@@ -99,7 +100,7 @@ export default {
             return JSON.parse(JSON.stringify(this.loggedinUser));
         },
         games() {
-            // console.log(this.$store.getters.getUserGames);
+            // console.log('gamezzzzzz', this.$store.getters.getUserGames);
             return this.$store.getters.getUserGames || [];
         },
     },
