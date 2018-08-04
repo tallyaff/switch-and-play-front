@@ -6,6 +6,7 @@
             <el-button class="btn search-btn" type="primary">Search</el-button>
         </form>
 
+<div class="filter-icon" :class="{close: isOpen}" @click="isOpen=!isOpen">Filter</div>
         <div class="checkbox-filter-container capitalize">
         <el-checkbox v-show='false' class="checkbox-filter" label="All" value="all" v-model="filterBy.allByName" @change="setFilter"></el-checkbox>
         <div>
@@ -47,6 +48,7 @@ export default {
   components: {},
   data() {
     return {
+      isOpen: false,
       filterBy: {
         allByName: true,
         name: "",
@@ -107,9 +109,7 @@ export default {
 <style scoped lang="scss">
 @import "~@/assets/scss/style.scss";
 
-.filter-gallery-container {
 
-}
 
 .checkbox-filter-container {
   text-align: left;
@@ -119,8 +119,6 @@ export default {
 .checkbox-filter {
   color: $secondary-color;
   padding: 5px;
-
-
 }
 
 .search-btn {
@@ -142,6 +140,22 @@ export default {
 h3{
     text-align: center;
     margin-bottom: 10px;
+}
+
+.filter-icon{
+  display:none;
+  width: 45px;
+  height: 45px;
+}
+
+@media (min-width: 300px) {
+  .filter-gallery-container{
+    display:none;
+  }
+  .filter-icon{
+  display:block;
+}
+
 }
 
 </style>

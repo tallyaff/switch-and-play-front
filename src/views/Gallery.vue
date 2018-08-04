@@ -4,9 +4,11 @@
     <h1>lalalalalala</h1>
     <img src="img/new-icon.png">
   </div> -->
-  <div class="user-icons-container flex">
-    <div class="filter-images-container-gallery flex">
-        <GameFilter></GameFilter> 
+  <div class="gallery-container flex">
+    <div class="filter-gallery">
+              <Game-filter></Game-filter> 
+    </div>
+    <div class="images-container-gallery flex">
         <game-list class="game-list container" :games="gamesForDisplay" @remove="removeGame"></game-list>
     </div>
   </div>
@@ -24,7 +26,7 @@ export default {
   components: {
     GameList,
     GameFilter,
-    Header
+    Header,
   },
   created() {
 
@@ -116,14 +118,19 @@ export default {
 .game-list{
   padding: 0 20px;
 }
+.filter-gallery{
+      margin-top: 108px;
+}
 
 </style>
 
 <style scoped lang="scss">
 @import "~@/assets/scss/style.scss";
-.filter-images-container-gallery {
+.images-container-gallery {
   margin-top: rem(100px);
 }
+
+
 </style>
     
 

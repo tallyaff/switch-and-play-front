@@ -1,28 +1,87 @@
 <template>
-    <div class="nav">
-        <router-link to="/">Home</router-link>
-        <router-link to="/gallery">Gallery</router-link>
-        <router-link to="/about">About</router-link>
-        <router-link to="/contact">Contact</router-link>
+    <div class="nav-bar">
+        <div class="mobile-menue" :class="{close: isOpen}" @click="isOpen=!isOpen">
+            <span class="line line01"></span>
+            <span class="line line02"></span>
+            <span class="line line03"></span>
+        </div>
+        <ul class="nav-mobile flex column" v-if="isOpen" :class="{close: isOpen}">
+            <router-link to="/">
+                <li @click="isOpen=!isOpen">Home</li>
+            </router-link>
+            <router-link to="/gallery">
+                <li @click="isOpen=!isOpen">Gallery</li>
+            </router-link>
+            <router-link to="/about">
+                <li @click="isOpen=!isOpen">About</li>
+            </router-link>
+            <router-link to="/contact">
+                <li @click="isOpen=!isOpen">Contact</li>
+            </router-link>
+        </ul>
+        <div class="nav">
+            <router-link to="/">Home</router-link>
+            <router-link to="/gallery">Gallery</router-link>
+            <router-link to="/about">About</router-link>
+            <router-link to="/contact">Contact</router-link>
+        </div>
     </div>
 </template>
-
 <script>
+
 export default {
   name: "NavBar",
-  // props: ["loggedinUser"],
-  methods: {
-    // onLogout() {
-    //   this.$emit("update:loggedinUser", null);
-    //   this.$emit("logout");
-    // },
+
+  data(){
+    return{
+      isOpen:false,
+
+    }
   }
 };
 </script>
 
 <style scoped lang="scss">
+.nav-mobile{
+    position: fixed;
+    min-width: 100%;
+    transition: all .8s;
+    z-index: 1;
+    background-color: $secondary-color;
+    width: 100%;
+    color: white;
+    top: 0;
+    right: 0;
+    margin-top: 90px;
+
+}
+.mobile-menue{
+  float:right;
+}
+
+.nav-mobile a {
+
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+}
+
+.nav-mobile li{
+  width: 100%;
+  height: 50px;
+   color: white;
+}
+
+.nav-mobile  li:hover{
+    background-color: $main-hover-color;
+    transition: all .3s ease;
+}
+
 .nav {
-  display: flex;
+  display: none;
+  // display: flex;
   align-items: center;
   justify-content: space-around;
   padding: 30px;
@@ -45,5 +104,64 @@ export default {
 
 .nav > h4 {
   cursor: pointer;
+}
+
+.mobile-menue {
+    width: 35px;
+    height: 35px;
+  position:relative;
+   cursor: pointer;
+}
+
+.line {
+	position: absolute;
+	height: 15px;
+  width: 80%;
+  left: 2%;
+	background:$main-color;
+  border-radius:10px;
+  cursor: pointer;
+	transition: all cubic-bezier(0.25, 0.1, 0.28, 1.54) 0.32s;
+}
+
+.line01 {
+  top:19%;
+  height: 3px;
+}
+
+.line02 {
+  top:49%;
+  height: 3px;
+}
+
+.line03 {
+  top:79%;
+  height: 3px;
+}
+
+.mobile-menue.close .line01 {
+	transform:rotate(45deg);
+	top:49%;
+}
+
+.mobile-menue.close .line02, .mobile-menue.close .line03 {
+	transform:rotate(-45deg);
+	top:49%;
+}
+
+
+
+@media (min-width: 890px){
+  .nav{
+    display: flex;
+  }
+ .mobile-menue{
+    display: none;
+
+  }
+  .user-icon-container{
+    display: flex;
+    order: -1;
+  }
 }
 </style>

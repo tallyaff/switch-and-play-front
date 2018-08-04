@@ -73,17 +73,19 @@ export default {
         font-family: 'PaytoneOne';
         color: $main-color;
         font-size: rem(30px);
+        margin-top: rem(20px);
     }
     & .game-desc {
         font-family: 'Ubuntu';
         font-size: rem(20px);
-        position: absolute;
-        top: 16%;
+        margin: rem(30px);
+        // position: absolute;
+        // top: 16%;
     }
     & .game-box-details {
         font-family: 'Ubuntu-regular';
         font-size: rem(17px);
-        margin: 20px 0 0 0;
+        margin: 40px 0;
     }
 }
 
@@ -105,5 +107,8 @@ export default {
 .btn-choose {
     background-color: $main-color;
     font-size: rem(20px);
+    margin-bottom: rem(30px);
+    width: 150px;
+    height: 90px;
 }
 </style>
