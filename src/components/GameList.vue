@@ -4,7 +4,7 @@
           <el-card class="game game-preview clean-list" v-for="game in games" :key="game._id">
             <router-link class="btn btn-more-details" :to="'/game/'+game._id">
             <!-- <el-c class="masonry" v-if="games" v-for="game in games" :key="game._id"> -->
-                <game-preview  :game="game" @remove="$emit('remove', game._id)"></game-preview>
+                <game-preview :isGallery="true" :game="game" @remove="$emit('remove', game._id)"></game-preview>
             </router-link>
           </el-card>
         </ul>
@@ -49,6 +49,7 @@ export default {
       // border-radius: 20px;
       // margin: rem(10px);
       transition: all 0.5s;
+      // height: 100%;
       
   }
 

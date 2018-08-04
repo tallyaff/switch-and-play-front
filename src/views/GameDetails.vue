@@ -1,11 +1,11 @@
 <template>
-    <section class="Game-details flex justify-center align-center" v-if="currGame && currUser">
+    <section class="game-details flex justify-center align-center" v-if="currGame && currUser">
       <div class="game-details-all" v-if="!requesting">
         <h2 class="game-name capitalize">{{currGame.name}}</h2>
         <h3 class="game-description" label="Description">{{currGame.desc}}</h3>
         <div class="game-details-container flex content-center align-center" v-if="!requesting">
             <div class="img-container">        
-                    <img :src="currGame.src">     
+                <img :src="currGame.src">     
             </div>
             <div class="text-container-title flex column">
                 <div class="detail-item" >Type:</div>
@@ -110,6 +110,11 @@ export default {
 </script>
 
  <style lang="scss" scoped>
+
+ .game-details-all {
+   border: 1px solid $border-color;
+   margin-top: rem(20px);
+ }
 .img-container {
   max-height: 400px;
   max-width: 400px;
@@ -122,7 +127,7 @@ img {
   width: 40px;
 }
 .game-details-container {
-  margin: 50px 0;
+  margin: 50px;
 }
 .game-name {
   font-family: 'PaytoneOne';
@@ -131,20 +136,20 @@ img {
   font-size: 24px;
 }
 
-.game-description {
+.GameDetails, .game-description, .game-details-container, .el-button.btn-want-game {
   font-size: rem(18px);
+  font-family: "Ubuntu-regular";
 }
 
 .GameDetails {
-  font-family: "Ubuntu-regular";
   font-size: 18px;
   justify-content: space-between;
   align-items: baseline;
   margin-top: 40px;
 }
 .el-button.btn-want-game {
+  font-size: rem(20px);
   background-color: $secondary-color;
-  background-color: #f56c6c;
   text-transform: capitalize;
   font-weight: 400;
   // color: $main-color;
@@ -183,6 +188,7 @@ img {
   float: left;
   margin-left: 40px;
 }
+
 </style>
 <style>
 .swal-title {

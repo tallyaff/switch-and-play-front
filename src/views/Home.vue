@@ -37,11 +37,6 @@
                                         </div>
                                         <div>
                                             <span class="card-game-name">{{game.name}}</span>
-                                            <!-- <div class="username-time-container flex space-between align-center"> -->
-                                            <!-- <div class="username-time-container flex space-between align-center space-between">
-                          <div type="text" class="user-name-card-home">
-                            <gameUser :userId="game.userId" class="user-game-container flex column"></gameUser>
-                          </div> -->
                                         </div>
                                         <div class="username-time-container flex space-between align-center">
                                             <time class="time">{{ game.addedAt | getDate }}</time>
@@ -162,7 +157,7 @@ export default {
         category: [],
         userId: ""
       },
-      url: 'url("img/shutterstock_261496907.jpg")'
+      url: 'url("img/homepage-img.jpg")'
       // url: 'url("img/home-img-3.png")',
     };
   },
