@@ -27,10 +27,12 @@
     width: 150px;
     height: 170px;
     justify-content: center;
+    align-content: flex-end;
     align-items: center;
     img {
         width: 100%;
         align-self: center;
+        align-items: flex-end;
     }
 }
 .games-box {
@@ -58,7 +60,6 @@
 .games-container {
     width: 90%;
     padding: 20px 40px;
-    align-items: center;
     margin: auto;
 }
 
@@ -91,21 +92,37 @@
 .msg-box {
     border: 1px solid $border-color;  
     box-shadow: 0px 2px 4px 0px #d9d8d8;
-    border-radius: 20px;
-    width: 200px;
-    height: 50px;
+    border-radius: 30px;
+    width: 250px;
+    height: 60px;
     margin: 20px 0;
+    // background-color: black;
+    background-color: $card-text-color;
 
     h4 {
         align-self: center;
         text-transform: none;
     }
-    img {
-        max-height: 150px;
-        max-width: 150px
-    }
+    
 }
 
+.user-ask {
+    justify-content: flex-start;
+    // align-content: center;
+    margin-right: 50px;
+
+    img {
+    max-height: 150px;
+    max-width: 150px;
+    align-self: center;
+    margin: 20px;
+    }
+
+    .username {
+        margin-bottom: 4px;
+        font-size: 2em;
+    }
+}
 @media only screen and  (max-width: 767px) {
 	.games-box {
         width: 90%;
@@ -134,5 +151,18 @@
     }
     .match-container {
         justify-content: center;
+    }
+    .games-container {
+        flex-direction: column;
+    }
+    .offers {
+        margin-top: 40px;
+        h2 {
+            margin: auto;
+        }
+    }
+    .user-ask {
+        margin: auto;
+        align-items: center;
     }
 }

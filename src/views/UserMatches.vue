@@ -91,7 +91,7 @@ export default {
     .games-box {
         border: 1px solid $border-color;  
         box-shadow: 0px 2px 4px 0px #d9d8d8;
-        border-radius: 20px;
+        border-radius: 2px;
     }
     .game-box {
        justify-content: space-between;
