@@ -144,6 +144,7 @@ p {
   display: flex;
   width: 190px;
   justify-content: space-around;
+  
 
   a {
     transition: all 0.3s ease;
@@ -153,7 +154,7 @@ p {
   display: relative;
   align-items: center;
 }
-img{
+.user-img{
     transition: all 0.3s ease;
     &:hover {
     border-color: $main-color;

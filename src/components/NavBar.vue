@@ -5,7 +5,7 @@
             <span class="line line02"></span>
             <span class="line line03"></span>
         </div>
-        <ul class="nav-mobile flex column" v-if="isOpen" :class="{close: isOpen}">
+        <ul class="nav-mobile flex column" v-if="isOpen" :class="{open: isOpen}">
             <router-link to="/">
                 <li @click="isOpen=!isOpen">Home</li>
             </router-link>
@@ -45,6 +45,7 @@ export default {
 .nav-mobile{
     position: fixed;
     min-width: 100%;
+    transform: translate(100%, 0);
     transition: all .8s;
     z-index: 1;
     background-color: $secondary-color;
@@ -53,10 +54,18 @@ export default {
     top: 0;
     right: 0;
     margin-top: 90px;
-
+    font-size: rem(20px);
+    line-height: 50px;
 }
+
+.nav-mobile.open{
+    transform: translate(0, 0);
+}
+
+
 .mobile-menue{
   float:right;
+  order:1;
 }
 
 .nav-mobile a {
@@ -81,7 +90,6 @@ export default {
 
 .nav {
   display: none;
-  // display: flex;
   align-items: center;
   justify-content: space-around;
   padding: 30px;
@@ -89,7 +97,6 @@ export default {
   a {
     padding: 10px;
     color: $secondary-color;
-    // color:	#362026;
     transition: all 0.3s ease;
     position: relative;
     text-decoration: none;
@@ -107,8 +114,8 @@ export default {
 }
 
 .mobile-menue {
-    width: 35px;
-    height: 35px;
+  width: 35px;
+  height: 35px;
   position:relative;
    cursor: pointer;
 }
@@ -154,6 +161,7 @@ export default {
 @media (min-width: 890px){
   .nav{
     display: flex;
+    order: 1;
   }
  .mobile-menue{
     display: none;
@@ -161,7 +169,6 @@ export default {
   }
   .user-icon-container{
     display: flex;
-    order: -1;
   }
 }
 </style>
