@@ -57,7 +57,6 @@ export default {
       }
     },
     sendRequest() {
-      // console.log('gameId: ',this.$route.params.gameId);
       this.$router.push('/');
       this.ownerUserId = this.game.userId;
         const matchReq = {

@@ -3,8 +3,10 @@
         <div v-if="!isMatch" class="game-box-container flex align-center justify-center column">
             <h3 class="game-name capitalize">{{game.name}}</h3>
             <p class="game-desc capitalize">{{game.desc}}</p>
-            <div class="flex game-box-details capitalize">  
-                <img :src="game.src"/>
+            <div class="flex justify-center game-box-details capitalize">
+                <div class="image-container">
+                    <img class="game-image" :src="game.src"/>
+                </div> 
                 <div class="flex column details capitalize">
                     <p><span>Type: </span>{{game.type}}</p>
                     <p><span>Category: </span>{{game.category}}</p>
@@ -59,7 +61,7 @@ export default {
   @import "~@/assets/scss/style.scss";
 
 .game-box-container {
-    height: 450px;
+    height: 60%;
     width: 680px;
     border: 1px solid $border-color;  
     box-shadow: 0px 2px 4px 0px #d9d8d8;
@@ -86,6 +88,8 @@ export default {
         font-family: 'Ubuntu-regular';
         font-size: rem(17px);
         margin: 40px 0;
+        width: 100%;
+        text-align: left;
     }
 }
 
@@ -95,9 +99,16 @@ export default {
 // .game-box-details {
 //     height: 80%;
 // }
-.game-box-details > img {
-    max-width: 300px;
+
+.image-container {
+    width: 50%;
+    margin-right: 30px;
+}
+
+.game-box-details .game-image {
+    // max-width: 300px;
     margin: 0 20px;
+    width: 80%;
 }
 
 .details {
@@ -109,6 +120,5 @@ export default {
     font-size: rem(20px);
     margin-bottom: rem(30px);
     width: 150px;
-    height: 90px;
 }
 </style>
