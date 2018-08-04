@@ -5,7 +5,9 @@
          backgroundrepeat: 'no-repeat'}">
             <form @submit.prevent="setSearchHome" class="search">
                 <input class="search-input" type="text" v-model="filterBy.name" placeholder="Search for games">
-                <el-button class="btn search-btn" type="primary">Search</el-button>
+                <el-button class="btn search-btn" type="primary"><font-awesome-icon icon="search"></font-awesome-icon></el-button>
+                <el-button class="btn search-btn-text" type="primary">Search</el-button>
+                <!-- <el-button class="btn search-btn" type="primary">Search</el-button> -->
             </form>
             <h1 class="header-bg-image">Do you want to swap some games?</h1>
         </div>
@@ -225,16 +227,19 @@ export default {
 }
 
 .home-bg-img {
-  height: 400px;
+  height: 260px;
+  // height: 400px;
   position: relative;
 }
 
 .header-bg-image {
   position: absolute;
-  top: 300px;
+  top: 185px;
+  // top: 300px;
   width: 100%;
   color: white;
-  font-size: rem(60px);
+  font-size: rem(30px);
+  // font-size: rem(50px);
   font-family: "Ubuntu-regular";
   text-shadow: 3px 1px black;
 }
@@ -242,26 +247,35 @@ export default {
 .search {
   margin-bottom: rem(20px);
   position: relative;
-  bottom: rem(-70px);
+  bottom: rem(-50px);
 }
 .search-input {
-  width: 500px;
-  height: 50px;
+  width: 200px;
+  // width: 500px;
+  // height: 30px;
+  height: 36px;
   border-radius: 4px;
   border: 1px solid $border-color;
   padding: rem(10px);
   font-size: rem(18px);
 }
 
+.search-btn-text {
+  display: none;
+}
+
 .search-btn {
-  height: 50px;
-  font-size: rem(18px);
+  // display: none;
+  // height: 50px;
+  height: 38px;
+  font-size: rem(14px);
   background-color: $main-color;
 }
 
 .type-title-home {
   align-self: flex-start;
-  font-size: rem(40px);
+  font-size: rem(25px);
+  // font-size: rem(40px);
   font-family: "Ubuntu";
   margin-top: rem(30px);
   margin-bottom: rem(10px);
@@ -402,5 +416,42 @@ export default {
   position: absolute;
   top: -62px;
   left: -15px;
+}
+
+@media (min-width: 750px) {
+  .header-bg-image {
+    top: 283px;
+    font-size: rem(50px);
+  }
+  .home-bg-img {
+    height: 400px;
+  }
+  .search-btn {
+    display: none;
+  }
+  .search-btn-text {
+    display: block;
+    height: 50px;
+    float: right;
+    font-size: rem(14px);
+    background-color: $main-color;
+  }
+  .search-input {
+    width: 500px;
+    height: 50px;
+  }
+  .type-title-home {
+    font-size: rem(35px);
+  }
+}
+
+@media (min-width: 1080px) {
+  .header-bg-image {
+    top: 300px;
+    font-size: rem(60px);
+  }
+  .type-title-home {
+    font-size: rem(40px);
+  }
 }
 </style>

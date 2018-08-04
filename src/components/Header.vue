@@ -1,15 +1,15 @@
 <template>
   <section class="header-container ">
-    <div class="header flex container space-between">
+    <div class="header flex container space-between align-center">
        <router-link to="/">
         <div class="img ">
           <router-link :to="`/`" class="pointer">
-            <img src="img/logo.png">
+            <img  src="img/favicon.png">
           </router-link>
         </div>
         </router-link>
-        <nav-bar :loggedinUser.sync="loggedinUser"></nav-bar>
-        <user-bar :loggedinUser="loggedinUser" @logout="logout"></user-bar>
+         <user-bar :loggedinUser="loggedinUser" @logout="logout"></user-bar>
+        <nav-bar  :loggedinUser.sync="loggedinUser"></nav-bar>
     </div>
   </section>
 </template>
@@ -22,9 +22,8 @@ import UserBar from "@/components/UserBar.vue";
 
 export default {
   created() {
-    this.loggedinUser
-    console.log('this.loggedinUser:', this.loggedinUser);
-    
+    this.loggedinUser;
+    console.log("this.loggedinUser:", this.loggedinUser);
   },
   computed: {
     loggedinUser() {
@@ -44,23 +43,29 @@ export default {
   }
 };
 </script>
-
-
 <style scoped lang="scss">
-@import '~@/assets/scss/style.scss';
-  
+@import "~@/assets/scss/style.scss";
+
 .header {
-  font-family: 'Ubuntu-regular';
+  font-family: "Ubuntu-regular";
   display: flex;
   font-size: 22px;
   height: 90px;
 }
-img{
-      margin-top: 18px;
+img {
+  margin-top: 18px;
 }
-.header-container{
+.header-container {
   box-shadow: 0px 0.5px 4px 0px #d9d8d8;
 }
 
+@media  (min-width: 420px){
+  .header {
+    padding: 20px;
+  }
+  img{
+     content:url("/img/logo.png");
+  }
+}
 
 </style>

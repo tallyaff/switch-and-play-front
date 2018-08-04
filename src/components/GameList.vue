@@ -1,12 +1,12 @@
 <template>
   <div class="game-list flex">
         <ul class="game-cards-container flex space-between" v-if="games">
-          <el-card class="game game-preview clean-list" v-for="game in games" :key="game._id">
+          <div class="game game-preview clean-list" v-for="game in games" :key="game._id">
             <router-link class="btn btn-more-details" :to="'/game/'+game._id">
             <!-- <el-c class="masonry" v-if="games" v-for="game in games" :key="game._id"> -->
                 <game-preview :isGallery="true" :game="game" @remove="$emit('remove', game._id)"></game-preview>
             </router-link>
-          </el-card>
+          </div>
         </ul>
   </div>
 </template>
@@ -33,7 +33,7 @@ export default {
   @import '~@/assets/scss/style.scss';
 
   .game-list {
-    width: 1800px;
+    max-width: 1800px;
     // width: 1800px;
   }
 
@@ -41,8 +41,19 @@ export default {
     flex-wrap: wrap;  
     padding-right: 20px;  
   }
-
+.game img{
+  width: 55%;
+}
   .game {
+    border: 1px solid #dadada;
+    height: 263px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+    // margin-left: 0;
       // width: 300px;
       // border: 1px solid $border-color;  
       // box-shadow: 0px 2px 4px 0px #d9d8d8;

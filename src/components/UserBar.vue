@@ -1,7 +1,6 @@
 <template>
     <div class="user-bar flex">
         <div v-if="loggedinUser" class="user-bar-container flex space-evenly">
-            <!-- <p class="userMsg">Hello {{'loggedinUser'? loggedinUser.username: 'guest'}}</p> -->
             <div class="user-icon-container flex">
                 <router-link v-if="loggedinUser" :to="`/user/${loggedinUser._id}/`">
                   <div class="user-img" :style="{backgroundImage: `url(${loggedinUser.src})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundrepeat: 'no-repeat'}">
@@ -27,7 +26,6 @@
             </div>
         </div>
         <div v-else class="hello-login flex">
-            <!-- <p class="helloMsg">Hello Guest</p> -->
             <router-link class="login-link" to="/login">Login</router-link>
         </div>
     </div>
@@ -121,6 +119,7 @@ p {
   cursor: pointer;
   font-size: 16px;
   border: none;
+  padding-right: 0;
   background-color: transparent;
   &:hover {
     color: $main-color;

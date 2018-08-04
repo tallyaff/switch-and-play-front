@@ -1,64 +1,61 @@
 <template>
-  <div class="game-preview" :class="{checkedBorder: checked, gameRequest: isGameRequest}">
-    <ul :class="{gallery: isGallery}" class="game-preview-container pointer flex column align-center clean-list space-between" v-if="game">
-        <!-- <li>
-          <el-checkbox class="offer-game" checked @change=" $emit('check', {gameId :game._id, checked:checked})
-                " v-model="checked" v-if="gameCheckbox"></el-checkbox>
-        </li> -->
+    <div class="game-preview" :class="{checkedBorder: checked, gameRequest: isGameRequest}">
+        <ul :class="{gallery: isGallery}" class="game-preview-container pointer flex column align-center clean-list space-between"
+            v-if="game">
+            <!-- <li>
+            <el-checkbox class="offer-game" checked @change=" $emit('check', {gameId :game._id, checked:checked})
+                  " v-model="checked" v-if="gameCheckbox"></el-checkbox>
+          </li> -->
 
-        <li class="offer-game-2" :class="{gameRequest: isGameRequest}">
-            <label class="check" :class="{gameRequest: isGameRequest}">
-                <input type="checkbox" checked @change=" $emit('check', {gameId :game._id, checked:checked})
-                " v-model="checked" v-if="gameCheckbox"/>
-                <div class="box" :class="{gameRequest: isGameRequest}"></div>
-            </label>
-        </li>
-
-
-        <li class="game-name-preview">{{game.name}}</li>
-        <li v-if="game.isNew" class="game-new-icon">
-            <img v-if="!newIcon" src="img/new-icon.png">
-        </li>
-        <div class="image-container" :style="{backgroundImage: url, backgroundSize: 'cover', 
-             backgroundPosition: 'center', backgroundrepeat: 'no-repeat'}">
-        </div>
-        <div class="image-container flex align-center justify-center">
-            <img :src="game.src" class="image-card">
-        </div>
-        <div class="card-text-container" :class="{gallery: isGallery}">
-          <li class="game-category-preview capitalize" :class="{gameRequest: isGameRequest}">
-              <span>Category: </span>{{game.category}}</li>
-          <li class="game-condition-preview capitalize" v-if="!condition">
-              <span>Condition: </span>{{game.condition}}</li>
-          <li class="game-addedAt-preview capitalize" :class="{gameRequest: isGameRequest}">
-              <span>Added at: </span>{{game.addedAt | getDate }}</li>
-          <!-- TODO: user location & name -->
-          <li class="game-location-preview capitalize" v-if="!location">
-              <!-- <span>Location: </span> -->
-          </li>
-          <li class="game-user-name-preview capitalize" v-if="!username">
-              <!-- <span>by </span>{{username}} -->
-          </li>
-          <li>
-              <!-- <button v-if="loggedinUser === 'game.userId'" class="btn btn-remove" @click="$emit('remove', game._id)">Remove</button> 
-                    <router-link v-if="loggedinUser === 'game.userId'" tag="button" :to="'/game/edit/'+game._id">Edit</router-link>  -->
-          </li>
-          <!-- <div type="text" class="user-name-card-home">
-              <gameUser :userId="game.userId" class="user-game-container flex column"></gameUser>
-          </div> -->
-        </div>
-
-    </ul>
+            <li class="offer-game-2" :class="{gameRequest: isGameRequest}">
+                <label class="check" :class="{gameRequest: isGameRequest}">
+                    <input type="checkbox" checked @change=" $emit('check', {gameId :game._id, checked:checked})
+                  " v-model="checked" v-if="gameCheckbox" />
+                    <div class="box" :class="{gameRequest: isGameRequest}"></div>
+                </label>
+            </li>
 
 
-            <!-- <div class="card-text-container flex justify-center align-center column">
-                <span class="card-game-name">{{game.name}}</span>
-                <div class="username-time-container flex space-between align-center space-between">
-                    <div type="text" class="user-name-card-home">User Name</div>
-                    <time class="time">{{ game.addedAt | getDate }}</time>
-                </div>
+            <li class="game-name-preview">{{game.name}}</li>
+            <li v-if="game.isNew" class="game-new-icon">
+                <img v-if="!newIcon" src="img/new-icon.png">
+            </li>
+            <div class="image-container" :style="{backgroundImage: url, backgroundSize: 'cover', 
+               backgroundPosition: 'center', backgroundrepeat: 'no-repeat'}">
+            </div>
+            <div class="image-container flex align-center justify-center">
+                <img :src="game.src" class="image-card">
+            </div>
+            <div class="card-text-container" :class="{gallery: isGallery}">
+                <li class="game-category-preview capitalize" :class="{gameRequest: isGameRequest}">
+                    <span>Category: </span>{{game.category}}</li>
+                <li class="game-condition-preview capitalize" v-if="!condition">
+                    <span>Condition: </span>{{game.condition}}</li>
+                <li class="game-addedAt-preview capitalize" :class="{gameRequest: isGameRequest}">
+                    <span>Added at: </span>{{game.addedAt | getDate }}</li>
+                <!-- TODO: user location & name -->
+                <!-- <li class="game-location-preview capitalize" v-if="!location"> -->
+                <!-- <span>Location: </span> -->
+                <!-- </li> -->
+                <!-- <li class="game-user-name-preview capitalize" v-if="!username"> -->
+                <!-- <span>by </span>{{username}} -->
+                <!-- </li> -->
+                <!-- <button v-if="loggedinUser === 'game.userId'" class="btn btn-remove" @click="$emit('remove', game._id)">Remove</button> 
+                      <router-link v-if="loggedinUser === 'game.userId'" tag="button" :to="'/game/edit/'+game._id">Edit</router-link>  -->
+
+                <!-- <div type="text" class="user-name-card-home">
+                <gameUser :userId="game.userId" class="user-game-container flex column"></gameUser>
             </div> -->
-    </div>
+            </div>
+        </ul>
+        <!-- <div class="card-text-container flex justify-center align-center column">
+                  <span class="card-game-name">{{game.name}}</span>
+                  <div class="username-time-container flex space-between align-center space-between">
+                      <div type="text" class="user-name-card-home">User Name</div>
+                      <time class="time">{{ game.addedAt | getDate }}</time>
+                  </div>
+              <!-- <div> --> -->
+        </div>
 </template>
 
 <script>
@@ -174,17 +171,26 @@ export default {
 
 .gallery.game-preview-container {
     width: 200px;
+    height: 260px;
+
+
+    // pointer flex column align-center clean-list space-between
 }
 
 .gallery.card-text-container {
     text-align: left;
     font-size: 14px;
+     background-color: $card-text-color;
+ width: 100%;
+    height: 35%;   
+ /* margin: 20px; */
+ padding: 5px;
 }
 
 .game-preview {
  height: 100%;
-}
 
+}
 .game-preview-container {
  // width: 200px; // i shut it for gamerequest ****
  
@@ -276,6 +282,5 @@ position: relative;
  /* margin: 20px; */
  padding: 5px;
 }
-
 
 </style>
