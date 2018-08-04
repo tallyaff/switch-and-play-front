@@ -45,7 +45,7 @@ export default {
   data() {
     return {
       currGame: null,
-      requesting: null,
+      requesting: false,
       currUser: null,
       filterBy: {
         allByName: true,

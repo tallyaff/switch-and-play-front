@@ -25,7 +25,7 @@ export default {
             }
         },
         getRecieves(state) {
-            console.log('stateactivity:', state.activities);
+            console.log('state activity:', state.activities);
             if (state.activities) {
                 return state.activities.filter(activity => {
                     return activity.userPassive.userId === state.userId && !activity.isMatch;
@@ -48,9 +48,15 @@ export default {
             context.commit({type: 'setCurrUserId', payload: payload.user})
             MatchService.getMatch(payload.user)
                .then(activities => {
-                   console.log('match from backend in front', activities);
+                //    console.log('match from backend in front', activities);
                    context.commit({type: 'setMatch', activities})
                    })
+        },
+        createMatch(context, payload) {
+            MatchService.createMatch(payload.newMatch)
+            .then(match => {
+                   console.log('match from backend in front', match);
+               })
         },
         updateMatch(context, payload) {
             MatchService.updateMatch(payload.matchDetails)

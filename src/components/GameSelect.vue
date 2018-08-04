@@ -30,8 +30,8 @@ export default {
         ShowMatch
     },
     created() {
-        console.log('!!match: ', this.match)
-        console.log('!!game: ', this.game)
+        // console.log('!!match: ', this.match)
+        // console.log('!!game: ', this.game)
 },
     data() {
         return {
@@ -47,9 +47,9 @@ export default {
             // const match = {gameId: this.choosenGame, match: this.recieve}
             const match = {gameId: this.choosenGame, matchId: this.currRecieved}
             this.isMatch = true;
-            console.log('game id', this.choosenGame);
-            console.log('match id', this.currRecieved);
-            console.log('###match:!!', match);
+            // console.log('game id', this.choosenGame);
+            // console.log('match id', this.currRecieved);
+            // console.log('###match:!!', match);
             this.$store.dispatch({ type: "updateMatch", matchDetails: match })
         },
     }
