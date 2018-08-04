@@ -8,14 +8,17 @@
                         <div class="flex games-img">
                             <div class="flex column game-box">
                                 <h3>{{match.userPassiveGame.name}}</h3> 
-                                <img :src="match.userPassiveGame.src"/>
+                                <div class="img-activity-container">
+                                    <img :src="match.userPassiveGame.src"/>
+                                </div>
                             </div>
-                            <h3>⇆</h3>
-                            <font-awesome-icon icon="exchange"/>
+                            <font-awesome-icon icon="exchange-alt" class="exchange"/>
                             <!-- <i class="fas fa-exchange-alt"></i> -->
                             <div class="flex column game-box">
                                 <h3>{{match.userActiveGames[0].name}}</h3>
-                                <img :src="match.userActiveGames[0].src"/> 
+                                <div class="img-activity-container">
+                                    <img :src="match.userActiveGames[0].src"/> 
+                                </div>
                             </div>
                         </div>
                         <div class="flex msg-box">
@@ -75,8 +78,11 @@ export default {
 <style scoped lang="scss">
   @import "~@/assets/scss/style.scss";
   
-  .games-img h3 {
-      align-self: center;
+  .games-img {
+      .exchange {
+          align-self: center;
+          font-size: 2em;
+      }
   }
 
   .game-box {

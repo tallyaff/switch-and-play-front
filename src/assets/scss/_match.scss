@@ -18,16 +18,18 @@
     padding: 5px;
     font-family: 'PaytoneOne';
 
-    img {
-        max-height: 150px;
-        max-width: 150px;
-    }
-
     h3 {
         color: $main-color;
     }
 }
 
+.img-activity-container {
+    width: 150px;
+    height: 170px;
+    img {
+        width: 100%;
+    }
+}
 .games-box {
     align-items: center;
     margin: 20px;

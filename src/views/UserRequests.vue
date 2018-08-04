@@ -7,7 +7,9 @@
                 <li v-for="request in requestes" :key="request._id">
                     <div class="flex column game-box">
                         <h3>{{request.userPassiveGame.name}}</h3>
-                        <img :src="request.userPassiveGame.src"/>
+                        <div class="img-activity-container">
+                            <img :src="request.userPassiveGame.src"/>
+                        </div>
                         <div type="text" class="user-details-container">
                             <GameUser :userId="request.userPassive.userId" class="user-details flex"></GameUser>
                         </div>

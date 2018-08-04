@@ -16,7 +16,9 @@
                             <GameUserImg :userId="recieve.userActive.userId"></GameUserImg>
                             <h4>{{recieve.textareaReq}}</h4>
                         </div>
-                        <img :src="recieve.userPassiveGame.src"/>
+                        <div class="img-activity-container">
+                            <img :src="recieve.userPassiveGame.src"/>
+                        </div>
                     </div>
                     <!-- <div class="choose-game flex column"> -->
                     <!-- </div> -->
@@ -26,7 +28,9 @@
                             <li v-for="game in recieve.userActiveGames" :key="game._id">
                                 <div class="flex column game-box">
                                     <h3>{{game.name}}</h3>
-                                    <img :src="game.src"/>
+                                    <div class="img-activity-container">
+                                        <img :src="game.src"/>
+                                    </div>
                                     <div class="flex btns-details">
                                         <el-button @click="getMatch(game, recieve)" type="primary" class="details-btn">
                                             <!-- <font-awesome-icon icon="info"/>  -->
