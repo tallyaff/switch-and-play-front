@@ -15,29 +15,30 @@
         <div class="image-container flex align-center justify-center">
             <img :src="game.src" class="image-card">
         </div>
-        <div class="card-text-container" :class="isGallery">
+
+
+        <div class="card-text-container" :class="{gallery: isGallery}">
           <li class="game-category-preview capitalize">
               <span>Category:</span>{{game.category}}</li>
           <li class="game-condition-preview capitalize" v-if="!condition">
               <span>Condition:</span>{{game.condition}}</li>
           <li class="game-addedAt-preview capitalize">
               <span>Added at:</span>{{game.addedAt | getDate }}</li>
+        </div>
+
           <!-- TODO: user location & name -->
-          <li class="game-location-preview capitalize" v-if="!location">
+          <!-- <li class="game-location-preview capitalize" v-if="!location"> -->
               <!-- <span>Location: </span> -->
-          </li>
-          <li class="game-user-name-preview capitalize" v-if="!username">
+          <!-- </li> -->
+          <!-- <li class="game-user-name-preview capitalize" v-if="!username"> -->
               <!-- <span>by </span>{{username}} -->
-          </li>
-          <li>
+          <!-- </li> -->
               <!-- <button v-if="loggedinUser === 'game.userId'" class="btn btn-remove" @click="$emit('remove', game._id)">Remove</button> 
                     <router-link v-if="loggedinUser === 'game.userId'" tag="button" :to="'/game/edit/'+game._id">Edit</router-link>  -->
-          </li>
+
           <!-- <div type="text" class="user-name-card-home">
               <gameUser :userId="game.userId" class="user-game-container flex column"></gameUser>
           </div> -->
-        </div>
-
     </ul>
 
 
@@ -61,7 +62,7 @@ export default {
   data() {
     return {
       checked: true,
-      isGallery: false,
+    //   isGallery: false,
     };
   },
   // created() {
@@ -95,17 +96,26 @@ export default {
 
 .gallery.game-preview-container {
     width: 200px;
+    height: 260px;
+
+
+    // pointer flex column align-center clean-list space-between
 }
 
 .gallery.card-text-container {
     text-align: left;
     font-size: 14px;
+     background-color: $card-text-color;
+ width: 100%;
+    height: 35%;   
+ /* margin: 20px; */
+ padding: 5px;
 }
 
 .game-preview {
  height: 100%;
-}
 
+}
 .game-preview-container {
  // width: 200px; // i shut it for gamerequest ****
  
@@ -116,6 +126,7 @@ export default {
    transform: scale(0.95, 0.95);
  }
 }
+
 
 .el-checkbox.offer-game {
 //  background-color: $secondary-color;
@@ -195,4 +206,5 @@ position: relative;
  /* margin: 20px; */
  padding: 5px;
 }
+
 </style>
