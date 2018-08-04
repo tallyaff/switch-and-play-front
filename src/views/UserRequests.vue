@@ -1,8 +1,8 @@
 <template>
     <section>
         <div class="flex column match-container">
-            <div class="activity-header flex">
-            </div>
+            <!-- <div class="activity-header flex">
+            </div> -->
             <ul v-if="requestes" class="flex games-box recieve">
                 <li v-for="request in requestes" :key="request._id">
                     <div class="flex column game-box">
@@ -16,6 +16,9 @@
                     </div>
                 </li>
             </ul>
+            <div v-else>
+                <h1> no request for now...</h1>
+            </div>
         </div>
     </section>
 </template>
@@ -47,8 +50,8 @@ export default {
   @import "~@/assets/scss/style.scss";
 
 .recieve {
-    border: none;
-    box-shadow: none;
+    // border: none;
+    // box-shadow: none;
 }
 .my-request {
     margin: 20px;

@@ -23,7 +23,7 @@
                         </div>
                         <div class="flex msg-box">
                             <GameUserImg :userId="match.userPassive.userId"></GameUserImg>
-                            <h5>{{match.textareaReq}}</h5>
+                            <h4>{{match.textareaReq}}</h4>
                         </div>
                     <!-- </div> -->
                 </li>

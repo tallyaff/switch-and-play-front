@@ -3,6 +3,7 @@
 .match-container {
     font-family: 'Ubuntu';
     margin: auto;
+    text-transform: capitalize;
 }
 .game-box {
     width: 250px;
@@ -33,9 +34,9 @@
 .games-box {
     align-items: center;
     margin: 20px;
-    border: 1px solid $border-color;  
-    box-shadow: 0px 2px 4px 0px #d9d8d8;
-    border-radius: 2px;
+    // border: 1px solid $border-color;  
+    // box-shadow: 0px 2px 4px 0px #d9d8d8;
+    // border-radius: 2px;
     padding: 5px;
     flex-wrap: wrap;
 }
@@ -93,6 +94,7 @@
 
     h4 {
         align-self: center;
+        text-transform: none;
     }
     img {
         max-height: 150px;
