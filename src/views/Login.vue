@@ -40,6 +40,7 @@
           </el-form-item>
         </el-form>
     </div>
+
   </div>
 </template>
 
@@ -63,7 +64,7 @@ export default {
         games: []
       },
       signupForm: false,
-      loginForm: true
+      loginForm: true,
     };
   },
   methods: {
