@@ -6,7 +6,7 @@
                     <!-- <div class="flex column games-container"> -->
                         <h2 class="user-approved">
                             <GameUserName :userId="match.userPassive.userId"></GameUserName> 
-                            approved swapping!
+                            Approved swapping!
                         </h2>
                         <div class="flex games-img">
                             <div class="flex column game-box">
@@ -15,7 +15,8 @@
                                     <img :src="match.userPassiveGame.src"/>
                                 </div>
                             </div>
-                            <font-awesome-icon icon="exchange-alt" class="exchange"/>
+                            <!-- <font-awesome-icon icon="exchange-alt" class="exchange"/> -->
+                            <img class="swap-arrows" src="img/swaparrows.png"/>
                             <!-- <i class="fas fa-exchange-alt"></i> -->
                             <div class="flex column game-box">
                                 <h3>{{match.userActiveGames[0].name}}</h3>
@@ -86,6 +87,12 @@ export default {
             align-self: center;
             font-size: 2em;
         }
+    }
+
+    .swap-arrows {
+        width: 80px;
+        height: 80px;
+        align-self: center;
     }
 
     .games-box {

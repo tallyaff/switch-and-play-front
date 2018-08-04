@@ -3,30 +3,31 @@
       <div class="game-details-all" v-if="!requesting">
         <h2 class="game-name capitalize">{{currGame.name}}</h2>
         <h3 class="game-description" label="Description">{{currGame.desc}}</h3>
-        <div class="game-details-container flex content-center align-center" v-if="!requesting">
+        <div class="game-details-container flex column content-center align-center" v-if="!requesting">
             <div class="img-container">        
-                <img :src="currGame.src">     
+                <img class="game-image" :src="currGame.src">     
             </div>
-            <div class="text-container-title flex column">
-                <div class="detail-item" >Type:</div>
-                <div class="detail-item" >Categoty:</div>
-                <div class="detail-item" >Condition:</div>
-                <div class="detail-item" >Added at:</div>
-                <div class="detail-item" >Owner:</div>
-                <div class="detail-item" >City:</div>
+            <div class="game-text-container flex">
+              <div class="text-container-title flex column">
+                    <div class="detail-item" >Type:</div>
+                    <div class="detail-item" >Categoty:</div>
+                    <div class="detail-item" >Condition:</div>
+                    <div class="detail-item" >Added at:</div>
+                    <div class="detail-item" >Owner:</div>
+                    <div class="detail-item" >City:</div>
+                    </div>
+                <div class="text-container flex column capitalize">
+                    <div class="detail-item" label="Type">{{currGame.type}}
+                    <!-- <img class="details-img" :src="`img/details/${currGame.type}.png`"> -->
+                    </div>
+                    <!-- <img src="@/assets/img/details/baby.png"> -->
+                    <div class="detail-item" label="Category">{{currGame.category}}</div>
+                    <div class="detail-item" label="Condition">{{currGame.condition}}</div>
+                    <div class="detail-item" >{{ currGame.addedAt | getDate }}</div>
+                    <div class="detail-item" >{{currUser.username}}</div>
+                    <div class="detail-item" >{{currUser.city}}</div>
                 </div>
-            <div class="text-container flex column capitalize">
-                <div class="detail-item" label="Type">{{currGame.type}}
-                <!-- <img class="details-img" :src="`img/details/${currGame.type}.png`"> -->
-                </div>
-                <!-- <img src="@/assets/img/details/baby.png"> -->
-                <div class="detail-item" label="Category">{{currGame.category}}</div>
-                <div class="detail-item" label="Condition">{{currGame.condition}}</div>
-                <div class="detail-item" >{{ currGame.addedAt | getDate }}</div>
-                <div class="detail-item" >{{currUser.username}}</div>
-                <div class="detail-item" >{{currUser.city}}</div>
-                </div>
-                
+            </div>
             </div>
              <el-button class="btn-want-game" v-if="!requesting" @click="checkIfLogin">I want this game!</el-button>
              </div>
@@ -117,10 +118,11 @@ export default {
  }
 .img-container {
   max-height: 400px;
-  max-width: 400px;
-}
-img {
+  max-width: 350px;
   width: 100%;
+}
+.game-image {
+  width: 80%;
 }
 .details-img{
   height: 40px;
@@ -139,6 +141,10 @@ img {
 .GameDetails, .game-description, .game-details-container, .el-button.btn-want-game {
   font-size: rem(18px);
   font-family: "Ubuntu-regular";
+}
+
+.game-description {
+  margin: 0 50px;
 }
 
 .GameDetails {
@@ -163,22 +169,26 @@ img {
     border: none;
   }
 }
+
+.text-container-title, .text-container {
+    font-size: 18px;
+}
+
 .text-container {
   align-items: baseline;
   font-weight: 200;
-  font-size: 18px;
   padding: 0;
 }
 .text-container-title{
   align-items: baseline;
   font-weight: 200;
-  font-size: 18px;
   padding: 0;
   font-weight: bold;
 }
 .detail-item {
   text-align: left;
   width: 100%; // Default to full width
+  // padding: 0.6em 1.0em;
   padding: 0.8em 1.2em;
   overflow: hidden; // Or flex might break
   list-style: none;
@@ -188,6 +198,52 @@ img {
   float: left;
   margin-left: 40px;
 }
+
+@media (min-width: 730px) {
+
+  .game-details-container  {
+    flex-direction: row;
+  }
+}
+
+// @media (min-width: 730px) {
+
+//   .img-container {
+//     max-width: 300px;
+//   }
+//   .text-container-title, .text-container {
+//       font-size: 16px;
+//   }
+
+//   .text-container {
+//       width: 50%;
+//   }
+
+//   .game-image {
+//     width: 80%;
+//   }
+
+
+// }
+
+// @media (min-width: 790px) {
+//   .text-container-title, .text-container {
+//       font-size: 18px;
+//   }
+
+//   .text-container {
+//       width: 60%;
+//   }
+
+//   .game-image {
+//     width: 100%;
+//   }
+
+//   .detail-item {
+//     padding: 0.8em 1.2em;
+//   }
+// }
+
 
 </style>
 <style>

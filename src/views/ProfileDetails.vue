@@ -97,6 +97,9 @@ export default {
         loggedinUser() {
             return this.$store.getters.loggedUser || {};
         },
+        url() {
+            return `url("${this.loggedinUser.src}")`;
+        },
         copiedUser() {
             return JSON.parse(JSON.stringify(this.loggedinUser));
         },
