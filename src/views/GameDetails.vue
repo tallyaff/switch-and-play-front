@@ -3,7 +3,7 @@
       <div class="game-details-all" v-if="!requesting">
         <h2 class="game-name capitalize">{{currGame.name}}</h2>
         <h3 class="game-description" label="Description">{{currGame.desc}}</h3>
-        <div class="game-details-container flex content-center align-center" v-if="!requesting">
+        <div class="game-details-container flex column content-center align-center" v-if="!requesting">
             <div class="img-container">        
                 <img class="game-image" :src="currGame.src">     
             </div>
@@ -119,7 +119,7 @@ export default {
 .img-container {
   max-height: 400px;
   max-width: 350px;
-  width: 80%;
+  width: 100%;
 }
 .game-image {
   width: 80%;
@@ -141,6 +141,10 @@ export default {
 .GameDetails, .game-description, .game-details-container, .el-button.btn-want-game {
   font-size: rem(18px);
   font-family: "Ubuntu-regular";
+}
+
+.game-description {
+  margin: 0 50px;
 }
 
 .GameDetails {
@@ -167,7 +171,7 @@ export default {
 }
 
 .text-container-title, .text-container {
-    font-size: 16px;
+    font-size: 18px;
 }
 
 .text-container {
@@ -184,7 +188,8 @@ export default {
 .detail-item {
   text-align: left;
   width: 100%; // Default to full width
-  padding: 0.6em 1.0em;
+  // padding: 0.6em 1.0em;
+  padding: 0.8em 1.2em;
   overflow: hidden; // Or flex might break
   list-style: none;
   border: solid white;
@@ -194,19 +199,50 @@ export default {
   margin-left: 40px;
 }
 
-@media (min-width: 790px) {
-  .text-container-title, .text-container {
-      font-size: 18px;
-  }
+@media (min-width: 730px) {
 
-  .text-container {
-      width: 60%;
-  }
-
-  .game-image {
-    width: 100%;
+  .game-details-container  {
+    flex-direction: row;
   }
 }
+
+// @media (min-width: 730px) {
+
+//   .img-container {
+//     max-width: 300px;
+//   }
+//   .text-container-title, .text-container {
+//       font-size: 16px;
+//   }
+
+//   .text-container {
+//       width: 50%;
+//   }
+
+//   .game-image {
+//     width: 80%;
+//   }
+
+
+// }
+
+// @media (min-width: 790px) {
+//   .text-container-title, .text-container {
+//       font-size: 18px;
+//   }
+
+//   .text-container {
+//       width: 60%;
+//   }
+
+//   .game-image {
+//     width: 100%;
+//   }
+
+//   .detail-item {
+//     padding: 0.8em 1.2em;
+//   }
+// }
 
 
 </style>

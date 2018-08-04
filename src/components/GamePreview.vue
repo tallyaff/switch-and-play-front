@@ -226,6 +226,7 @@ export default {
     color: $main-color;
     text-transform: capitalize;
     padding: 10px;
+    z-index: 5;
 }
 
 .image-container {
@@ -233,10 +234,10 @@ export default {
  //  height: 150px; // i shut it for gamerequest - i think we dont need
 }
 img {
-    width: 50%; //todo in if class!!! - i think we dont need
+    width: 70%; //todo in if class!!! - i think we dont need
     height: auto;
     transition: all 0.5s;
-    margin: 5px; //was added to game request
+    margin: 15px -10px; //was added to game request
 }
 
 img:hover {
