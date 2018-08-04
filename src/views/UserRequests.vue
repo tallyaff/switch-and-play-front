@@ -1,19 +1,22 @@
 <template>
     <section>
         <div class="flex column match-container">
-            <div class="activity-header flex">
-            </div>
             <ul v-if="requestes" class="flex games-box recieve">
                 <li v-for="request in requestes" :key="request._id">
                     <div class="flex column game-box">
                         <h3>{{request.userPassiveGame.name}}</h3>
-                        <img :src="request.userPassiveGame.src"/>
+                        <div class="img-activity-container">
+                            <img :src="request.userPassiveGame.src"/>
+                        </div>
                         <div type="text" class="user-details-container">
                             <GameUser :userId="request.userPassive.userId" class="user-details flex"></GameUser>
                         </div>
                     </div>
                 </li>
             </ul>
+            <div v-else>
+                <h1> no request for now...</h1>
+            </div>
         </div>
     </section>
 </template>
@@ -45,8 +48,8 @@ export default {
   @import "~@/assets/scss/style.scss";
 
 .recieve {
-    border: none;
-    box-shadow: none;
+    // border: none;
+    // box-shadow: none;
 }
 .my-request {
     margin: 20px;
