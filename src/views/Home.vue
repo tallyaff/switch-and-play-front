@@ -23,7 +23,7 @@
                         <h2 class="type-title-home">Most popular baby games</h2>
                     </router-link>
                     <font-awesome-icon icon="trashAlt" />
-                    <ul v-if="gamesForBabyHomeDisplay" class="cards-container-home  flex  clean-list">
+                    <ul v-if="gamesForBabyHomeDisplay" class="cards-container-home  flex  clean-list content-center">
                         <li v-for="game in gamesForBabyHomeDisplay.slice(2, 6)" :key="game._id">
                             <router-link :to="`/game/${game._id}/`">
                                 <el-card class="card-home">
@@ -63,7 +63,7 @@
                         <router-link :to="'/game'" @click.native="setFilter('child')">
                             <h2 class="type-title-home">Most popular child games</h2>
                         </router-link>
-                        <ul v-if="gamesForChildHomeDisplay" class="cards-container-home  flex  clean-list">
+                        <ul v-if="gamesForChildHomeDisplay" class="cards-container-home  flex  clean-list content-center">
                             <li v-for="game in gamesForChildHomeDisplay.slice(2, 6)" :key="game._id">
                                 <router-link :to="`/game/${game._id}/`">
                                     <el-card class="card-home">
@@ -99,7 +99,7 @@
                         <router-link :to="'/game'" @click.native="setFilter('teen')">
                             <h2 class="type-title-home">Most popular teen games</h2>
                         </router-link>
-                        <ul v-if="gamesForTeenHomeDisplay" class="cards-container-home flex clean-list">
+                        <ul v-if="gamesForTeenHomeDisplay" class="cards-container-home flex clean-list content-center">
                             <li v-for="game in gamesForTeenHomeDisplay.slice(2, 6)" :key="game._id">
                                 <router-link :to="`/game/${game._id}/`">
                                     <el-card class="card-home">
@@ -442,6 +442,9 @@ export default {
   }
   .type-title-home {
     font-size: rem(35px);
+  }
+  .cards-container-home{
+    justify-content: flex-start;
   }
 }
 
