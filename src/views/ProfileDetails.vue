@@ -6,15 +6,17 @@
             <div class="profile-edit-container flex">
                 <!-- <h2 class="headres-in-profile-details my-profile-header">My profile</h2> -->
                 <!-- background image -->
-                <div class="image-container" :style="{backgroundImage: `url(${loggedinUser.src})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundrepeat: 'no-repeat'}">
+                <div class="user-img" :style="{backgroundImage: `url(${loggedinUser.src})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundrepeat: 'no-repeat'}">
+                  </div>   
+                <!-- <div class="image-container" :style="{backgroundImage: `url(${loggedinUser.src})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundrepeat: 'no-repeat'}">
                     <img :src="loggedinUser.src" class="user-img profile-img-page"/>    
-                </div>
+                </div> -->
                 <div class="user-details-container flex column">
-                    <p>{{loggedinUser.username}}</p>
+                    <p class="user-name">{{loggedinUser.username}}</p>
                     <p>{{loggedinUser.city}}</p>
                     <p>{{loggedinUser.email}}</p>
                 </div>
-                <button v-if="loggedinUser" v-show="!isEdit" class="btn icon-btn edit-profile-btn" type="primary" @click="editProfile"><font-awesome-icon icon="pen" /></button>
+                <button v-if="loggedinUser && !editMode" class="btn icon-btn edit-profile-btn" type="primary" @click="editProfile"><font-awesome-icon icon="pen" /></button>
                 <div class="my-games-header-container flex">
                     <el-button v-if="loggedinUser" class="btn add-game-btn" type="primary" @click="checkIfDisplay"><font-awesome-icon icon="plus" />&nbsp;&nbsp;Game</el-button>
                     <!-- <router-link :to="`/user/activity/recieve/${loggedinUser._id}`"> -->
@@ -24,7 +26,7 @@
                 </div>
             </div>
             <div v-if="copiedUser">
-            <el-form v-show="isEdit" v-if="isEdit" class="edit-user-profile no-margin" :label-position="labelPosition" @submit.native.prevent="saveUserProfile">
+            <el-form v-if="editMode" class="edit-user-profile no-margin" :label-position="labelPosition" @submit.native.prevent="saveUserProfile">
               <el-form-item class="form-item" label="username">
                 <el-input v-model="copiedUser.username"/>
               </el-form-item>
@@ -83,8 +85,7 @@ export default {
         return {
             labelPosition: 'left',
             isEdit: false,
-            url: `url("${this.loggedinUser.src}")`,
-
+            // url: `url("${this.loggedinUser.src}")`,
         }
     },
     created() {
@@ -96,6 +97,9 @@ export default {
         loggedinUser() {
             return this.$store.getters.loggedUser || {};
         },
+        url() {
+            return `url("${this.loggedinUser.src}")`;
+        },
         copiedUser() {
             return JSON.parse(JSON.stringify(this.loggedinUser));
         },
@@ -103,6 +107,12 @@ export default {
             // console.log('gamezzzzzz', this.$store.getters.getUserGames);
             return this.$store.getters.getUserGames || [];
         },
+        url() {
+            return `url("${this.loggedinUser.src}")`;
+        },
+        editMode() {
+            return this.isEdit;
+        }
     },
     methods: {
         checkIfDisplay() {
@@ -150,154 +160,160 @@ export default {
 <style scoped lang="scss">
     // @import "~@/assets/scss/style.scss";
 
-    .profile-edit-container { 
-        // justify-content: center;    
-        margin: 30px 100px;
-    }
+.profile-edit-container { 
+    // justify-content: center;    
+    margin: 30px 100px;
+}
 
-    .image-container {
-        width: 200px;
-        height: 200px;
-        border-radius: 50%;
-    }
-    .profile-img-page {
+.image-container {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+.profile-img-page {
+    width: 100%;
+    height: 100%;
+}
+.user-details-container {
+    // justify-content: space-around;
+    margin-top: 15px;
+}
+.user-details-container p {
+    margin: 5px;
+    font-size: 1.5em;
+    text-align: left;
+}
+.user-details-container p:first-child {
+    font-weight: bold;
+}
+
+.my-games-header-container button{
+    margin: 0 5px;
+}
+.btn {
+    background-color: $main-color;
+}
+
+.header-your-games {
+    margin-bottom: rem(20px);
+}
+
+.my-profile-header {
+    padding: rem(20px);
+}
+
+.edit-user-profile {
+    border: 1px solid $main-color;
+    width: rem(500px);
+    padding: rem(40px);
+}
+
+.form-item, .form-input{
+    text-transform: capitalize;
+}
+
+.add-game-btn {
+    align-self: flex-start;
+    position: relative;
+    left: rem(60px);
+}
+
+.cards-in-profile-container {
+    flex-wrap: wrap;
+    width: 1200px;
+}
+
+.headres-in-profile-details {
+    font-size: rem(30px);
+    font-family: 'Ubuntu';
+    // margin-bottom: rem(20px);
+}
+
+.card-in-profile-details {
+    width: rem(250px);
+    margin: rem(20px);
+    padding: rem(10px);
+    transition: all 0.5s;
+    height: 400px;
+    .image-card {
         width: 100%;
-        height: 100%;
     }
-    .user-details-container {
-        // justify-content: space-around;
-        margin-top: 15px;
+    &:hover {
+        transform: scale(0.95, 0.95);
     }
-    .user-details-container p {
-        margin: 5px;
-        font-size: 1.5em;
-        text-align: left;
-    }
-    .user-details-container p:first-child {
-        font-weight: bold;
-    }
-
-    .my-games-header-container button{
-        margin: 0 5px;
-    }
-    .btn {
-        background-color: $main-color;
-    }
-
-    .header-your-games {
-        margin-bottom: rem(20px);
-    }
-
-    .my-profile-header {
-        padding: rem(20px);
-    }
-
-    .edit-user-profile {
-        border: 1px solid $main-color;
-        width: rem(500px);
-        padding: rem(40px);
-    }
-
-    .form-item, .form-input{
+    .card-game-name {
         text-transform: capitalize;
+        font-family: 'PaytoneOne';
+        font-size: rem(20px);
+        color: $main-color;
+        // text-shadow: 2px 1px $secondary-color;
     }
+}
 
-    .add-game-btn {
-        align-self: flex-start;
-        position: relative;
-        left: rem(60px);
-    }
-
-    .cards-in-profile-container {
-        flex-wrap: wrap;
-        width: 1200px;
-    }
-
-    .headres-in-profile-details {
-        font-size: rem(30px);
-        font-family: 'Ubuntu';
-        // margin-bottom: rem(20px);
-    }
-
-    .card-in-profile-details {
-        width: rem(250px);
-        margin: rem(20px);
-        padding: rem(10px);
-        transition: all 0.5s;
-        height: 400px;
-        .image-card {
-            width: 100%;
-        }
-        &:hover {
-            transform: scale(0.95, 0.95);
-        }
-        .card-game-name {
-            text-transform: capitalize;
-            font-family: 'PaytoneOne';
-            font-size: rem(20px);
-            color: $main-color;
-            // text-shadow: 2px 1px $secondary-color;
-        }
-    }
-
-  .bottom {
+.bottom {
     margin-top: 13px;
     line-height: 12px;
-  }
-  .clearfix:before,
-  .clearfix:after {
-      display: table;
-      content: "";
-  }
-  .clearfix:after {
-      clear: both
-  }
-  .icon-btn {
-      font-size: rem(25px);
-      
-      transition: all 0.3s;
-  }
-  .btn-remove, .edit-profile-btn {
-      border: 0;
-      background-color: transparent;
-  }
-  .btn-remove, .btn-edit {
-    color: $secondary-color;
-        &:hover {
-            color: $main-color;
-      }
+    color: grey;
+}
+.clearfix:before,
+.clearfix:after {
+    display: table;
+    content: "";
+}
+.clearfix:after {
+    clear: both
+}
+.icon-btn {
+    font-size: rem(25px);
+    
+    transition: all 0.3s;
+}
+.btn-remove, .edit-profile-btn {
+    border: 0;
+    background-color: transparent;
+}
+.btn-remove, .btn-edit {
+color: $secondary-color;
+    &:hover {
+        color: $main-color;
     }
-  .edit-profile-btn {
-      color: $main-color;
-      &:hover {
-          color: $secondary-color;
-      }
-      align-self: flex-start;
-  }
-  .bottom {
-      color: grey;
-  }
-  .game-category {
-    font-family: 'Ubuntu-regular';
-    white-space: nowrap;
-    margin-bottom: rem(20px);
+}
+.edit-profile-btn {
+    color: $main-color;
+    align-self: flex-start;
+    &:hover {
+        color: $secondary-color;
+    }
+}
+
+.game-category {
+font-family: 'Ubuntu-regular';
+white-space: nowrap;
+margin-bottom: rem(20px);
     & span {
         font-family: 'Lato-Bold';
     }
-  }
-  .time {
-      font-family: 'Ubuntu-regular';
-  }
-  .edit-remove-btns-container {
-    //   justify-content: flex-end;
-  }
+}
 
-  .swal-text {
-    font-size: 50px;
-    font-family: sans-serif;
-  }
+.time {
+    font-family: 'Ubuntu-regular';
+}
+.edit-remove-btns-container {
+//   justify-content: flex-end;
+}
 
+.swal-text {
+font-size: 50px;
+font-family: sans-serif;
+}
+.user-img {
+    width: 200px;
+    height: 200px;
+}
 
+.user-name {
+    text-transform: capitalize;
+}
 </style>
 
 

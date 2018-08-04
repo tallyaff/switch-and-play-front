@@ -172,34 +172,31 @@ export default {
 .gallery.game-preview-container {
     width: 200px;
     height: 260px;
-
-
     // pointer flex column align-center clean-list space-between
 }
 
 .gallery.card-text-container {
     text-align: left;
     font-size: 14px;
-     background-color: $card-text-color;
- width: 100%;
+    background-color: $card-text-color;
+    width: 100%;
     height: 35%;   
- /* margin: 20px; */
- padding: 5px;
+    /* margin: 20px; */
+    padding: 5px;
 }
 
 .game-preview {
- height: 100%;
+    height: 100%;
 
 }
 .game-preview-container {
  // width: 200px; // i shut it for gamerequest ****
- 
- position: relative;
- transition: all 0.5s;
- height: 100%;
- &:hover {
-//    transform: scale(0.95, 0.95);
- }
+    position: relative;
+    transition: all 0.5s;
+    height: 100%;
+        &:hover {
+        //    transform: scale(0.95, 0.95);
+        }
 }
 
 .gameRequest.offer-game-2 {
@@ -211,13 +208,13 @@ export default {
 .el-checkbox.offer-game {
 //  background-color: $secondary-color;
  // border-color: $secondary-color;
- padding: 15px;
- position: absolute;
- top: 0;
- left: 0;
- transform: scale(1.5);
- // width: 15px;
- // height: 15px;
+    padding: 15px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: scale(1.5);
+    // width: 15px;
+    // height: 15px;
 }
 
 // .isChecked {
@@ -225,11 +222,11 @@ export default {
 // }
 
 .game-name-preview {
- font-size: rem(16px);
- font-family: "Ubuntu";
- color: $main-color;
- text-transform: capitalize;
- padding: 10px;
+    font-size: rem(16px);
+    font-family: "Ubuntu";
+    color: $main-color;
+    text-transform: capitalize;
+    padding: 10px;
 }
 
 .image-container {
@@ -237,10 +234,10 @@ export default {
  //  height: 150px; // i shut it for gamerequest - i think we dont need
 }
 img {
- width: 50%; //todo in if class!!! - i think we dont need
- height: auto;
- transition: all 0.5s;
- margin: 5px; //was added to game request
+    width: 50%; //todo in if class!!! - i think we dont need
+    height: auto;
+    transition: all 0.5s;
+    margin: 5px; //was added to game request
 }
 
 img:hover {
@@ -262,25 +259,26 @@ img:hover {
 }
 
 .game-user-name-preview span {
- text-transform: capitalize;
- color: $secondary-color;
+    text-transform: capitalize;
+    color: $secondary-color;
 }
 
 .game-new-icon {
- position: absolute;
- top: -29px;
- left: -24px;
-}
-ul{
-position: relative;
+    position: absolute;
+    top: -29px;
+    left: -24px;
 }
 
-.card-text-container { //for gamerequest
- background-color: $card-text-color;
- width: 100%;
- height: 27%;
- /* margin: 20px; */
- padding: 5px;
+ul {
+    position: relative;
+}
+
+.card-text-container {      //for gamerequest
+    background-color: $card-text-color;
+    width: 100%;
+    height: 27%;
+    /* margin: 20px; */
+    padding: 5px;
 }
 
 </style>

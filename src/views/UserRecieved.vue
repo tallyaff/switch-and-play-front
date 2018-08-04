@@ -16,25 +16,29 @@
                             <GameUserImg :userId="recieve.userActive.userId"></GameUserImg>
                             <h4>{{recieve.textareaReq}}</h4>
                         </div>
-                        <img :src="recieve.userPassiveGame.src"/>
+                        <div class="img-activity-container flex">
+                            <img :src="recieve.userPassiveGame.src"/>
+                        </div>
                     </div>
                     <!-- <div class="choose-game flex column"> -->
                     <!-- </div> -->
                     <div class="offers flex column">
                         <h2 class="choose-one">choose one: </h2>
                         <ul class="flex games-box offer-box">
-                            <li v-for="game in recieve.userActiveGames" :key="game._id">
+                            <li v-for="game in recieve.userActiveGames" @click="getMatch(game, recieve)" :key="game._id">
                                 <div class="flex column game-box">
                                     <h3>{{game.name}}</h3>
-                                    <img :src="game.src"/>
+                                    <div class="img-activity-container">
+                                        <img :src="game.src"/>
+                                    </div>
                                     <div class="flex btns-details">
-                                        <el-button @click="getMatch(game, recieve)" type="primary" class="details-btn">
-                                            <!-- <font-awesome-icon icon="info"/>  -->
+                                        <!-- <el-button @click="getMatch(game, recieve)" type="primary" class="details-btn"> -->
+                                            <!-- <font-awesome-icon icon="info"/> 
                                             <h5>choose</h5>
                                         </el-button>
                                         <el-button @click="getMatch(game, recieve)" type="primary" class="details-btn">
                                             <font-awesome-icon icon="info" class="pen"/> 
-                                        </el-button>    
+                                        </el-button>     -->
                                     </div>
                                 </div>
                             </li>
@@ -112,9 +116,9 @@ h2 h3 {
 }
 
 .recieve {
-    border: 1px solid $border-color;  
-    box-shadow: 0px 2px 4px 0px #d9d8d8;
-    border-radius: 2px;
+    // border: 1px solid $border-color;  
+    // box-shadow: 0px 2px 4px 0px #d9d8d8;
+    // border-radius: 2px;
     
 }
 
@@ -126,6 +130,9 @@ h2 h3 {
     border: none;
     box-shadow: none;
     margin-left: 1px;
+    li {
+        cursor: pointer;
+    }
 }
 .h4-recieve {
     margin-left: 30px;
