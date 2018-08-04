@@ -14,7 +14,7 @@
                     <p>{{loggedinUser.city}}</p>
                     <p>{{loggedinUser.email}}</p>
                 </div>
-                <button v-if="loggedinUser" v-show="!isEdit" class="btn icon-btn edit-profile-btn" type="primary" @click="editProfile"><font-awesome-icon icon="pen" /></button>
+                <button v-if="loggedinUser" v-show="!editMode" class="btn icon-btn edit-profile-btn" type="primary" @click="editProfile"><font-awesome-icon icon="pen" /></button>
                 <div class="my-games-header-container flex">
                     <el-button v-if="loggedinUser" class="btn add-game-btn" type="primary" @click="checkIfDisplay"><font-awesome-icon icon="plus" />&nbsp;&nbsp;Game</el-button>
                     <!-- <router-link :to="`/user/activity/recieve/${loggedinUser._id}`"> -->
@@ -24,7 +24,7 @@
                 </div>
             </div>
             <div v-if="copiedUser">
-            <el-form v-show="isEdit" v-if="isEdit" class="edit-user-profile no-margin" :label-position="labelPosition" @submit.native.prevent="saveUserProfile">
+            <el-form v-show="editMode" v-if="editMode" class="edit-user-profile no-margin" :label-position="labelPosition" @submit.native.prevent="saveUserProfile">
               <el-form-item class="form-item" label="username">
                 <el-input v-model="copiedUser.username"/>
               </el-form-item>
@@ -83,7 +83,7 @@ export default {
         return {
             labelPosition: 'left',
             isEdit: false,
-            url: `url("${this.loggedinUser.src}")`,
+            // url: `url("${this.loggedinUser.src}")`,
 
         }
     },
@@ -96,6 +96,9 @@ export default {
         loggedinUser() {
             return this.$store.getters.loggedUser || {};
         },
+        url() {
+            return `url("${this.loggedinUser.src}")`;
+        },
         copiedUser() {
             return JSON.parse(JSON.stringify(this.loggedinUser));
         },
@@ -103,6 +106,9 @@ export default {
             // console.log('gamezzzzzz', this.$store.getters.getUserGames);
             return this.$store.getters.getUserGames || [];
         },
+        editMode() {
+            return this.isEdit;
+        }
     },
     methods: {
         checkIfDisplay() {

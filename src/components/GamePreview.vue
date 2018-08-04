@@ -54,7 +54,7 @@
                       <div type="text" class="user-name-card-home">User Name</div>
                       <time class="time">{{ game.addedAt | getDate }}</time>
                   </div>
-              <!-- <div> --> -->
+              <!<div> --> 
         </div>
 </template>
 
