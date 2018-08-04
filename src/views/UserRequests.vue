@@ -2,20 +2,11 @@
     <section>
         <div class="flex column match-container">
             <div class="activity-header flex">
-                <h3>Games I asked:</h3>
-                <div class="router-container-activity flex">
-                    <router-link :to="`/user/activity/recieve/${loggedinUser._id}/`" class="flex not-container">
-                        <el-button type="primary" class="activity-btn">Requests From Me</el-button>
-                    </router-link>
-                    <router-link :to="`/user/activity/match/${loggedinUser._id}/`" class="flex not-container">
-                        <el-button type="primary" class="activity-btn">My Swapping</el-button>
-                    </router-link>
-                </div>
             </div>
             <ul v-if="requestes" class="flex games-box recieve">
                 <li v-for="request in requestes" :key="request._id">
                     <div class="flex column game-box">
-                        <h5>{{request.userPassiveGame.name}}</h5>
+                        <h3>{{request.userPassiveGame.name}}</h3>
                         <img :src="request.userPassiveGame.src"/>
                         <div type="text" class="user-details-container">
                             <GameUser :userId="request.userPassive.userId" class="user-details flex"></GameUser>
@@ -56,5 +47,14 @@ export default {
 .recieve {
     border: none;
     box-shadow: none;
+}
+.my-request {
+    margin: 20px;
+}
+
+.game-box {
+    justify-content: space-around;
+    height: 300px;
+    width: 250px;
 }
 </style>

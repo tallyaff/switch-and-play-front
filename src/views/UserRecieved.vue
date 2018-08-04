@@ -3,35 +3,39 @@
         <!-- <showMatch v-if="isMatch" :game="choosenGame" :match="currRecieved"></showMatch>   -->
         <div v-if="!openDetails" class="flex column match-container">
             <div class="activity-header flex">
-                <h3>Request From Me:</h3>
-                <div class="router-container-activity flex">
-                    <router-link :to="`/user/activity/match/${loggedinUser._id}/`" class="flex not-container">
-                        <el-button type="primary" class="activity-btn">My Swapping</el-button>
-                    </router-link>
-                    <router-link :to="`/user/activity/request/${loggedinUser._id}`" class="flex not-container">
-                        <el-button type="primary" class="activity-btn">My Requests</el-button>
-                    </router-link>
-                </div>
+                <!-- <h3>Request From Me:</h3> -->
             </div>
             <ul v-if="recieves" class="recieve">
                 <li v-for="recieve in recieves" :key="recieve._id" class="flex games-container">
-                    <div class="flex column game-box mr50">
-                        <h5>{{recieve.userPassiveGame.name}}</h5>
+                    <div class="flex column user-ask">
+                        <div class="user-ask-name">
+                            <h2>A request from</h2>
+                            <GameUserName :userId="recieve.userActive.userId" class="username"></GameUserName>
+                        </div>  
+                        <div class="flex msg-box">
+                            <GameUserImg :userId="recieve.userActive.userId"></GameUserImg>
+                            <h4>{{recieve.textareaReq}}</h4>
+                        </div>
                         <img :src="recieve.userPassiveGame.src"/>
                     </div>
-                    <div class="choose-game flex column">
-                        <div type="text" class="user-details-container user-recieve">
-                            <GameUser :userId="recieve.userActive.userId" class="user-details flex"></GameUser>
-                        </div>
-                        <h4 class="h4-recieve">choose one: </h4>
-                    </div>
-                    <div class="offers">
+                    <!-- <div class="choose-game flex column"> -->
+                    <!-- </div> -->
+                    <div class="offers flex column">
+                        <h2 class="choose-one">choose one: </h2>
                         <ul class="flex games-box offer-box">
                             <li v-for="game in recieve.userActiveGames" :key="game._id">
                                 <div class="flex column game-box">
-                                    <h5>{{game.name}}</h5>
+                                    <h3>{{game.name}}</h3>
                                     <img :src="game.src"/>
-                                    <el-button @click="getMatch(game, recieve)" type="primary" class="details-btn">details </el-button>
+                                    <div class="flex btns-details">
+                                        <el-button @click="getMatch(game, recieve)" type="primary" class="details-btn">
+                                            <!-- <font-awesome-icon icon="info"/>  -->
+                                            <h5>choose</h5>
+                                        </el-button>
+                                        <el-button @click="getMatch(game, recieve)" type="primary" class="details-btn">
+                                            <font-awesome-icon icon="info" class="pen"/> 
+                                        </el-button>    
+                                    </div>
                                 </div>
                             </li>
                         </ul>
@@ -44,14 +48,16 @@
 </template>
 
 <script>
-import GameUser from '@/components/GameUser.vue';
+import GameUserImg from '@/components/GameUserImg.vue';
+import GameUserName from '@/components/GameUserName.vue';
 import GameService from '@/services/GameService.js';
 import GameSelect from '@/components/GameSelect.vue';
 
 export default {
     name: 'userRecieve',
     components: {
-        GameUser,
+        GameUserImg,
+        GameUserName,
         GameSelect,
         },
     data() {
@@ -66,9 +72,14 @@ export default {
         this.$store.dispatch({type: 'getMatch', 
             user: this.$route.params.userId
             });
+        console.log('recieveddddd', this.matches);
+        // this.getActiveUser();
+        // console.log('get userrrrr', this.user);
     },
     computed: {
         recieves() {
+            console.log('****', this.$store.getters.getRecieves);
+            
             return this.$store.getters.getRecieves;
         },
         loggedinUser() {
@@ -87,29 +98,57 @@ export default {
 
 <style scoped lang="scss">
   @import "~@/assets/scss/style.scss";
+h2 h3 {
+    // padding:2px;
+}
+
+.details-btn {
+    line-height: 0;
+    // width: 30px;
+    height: 35px;
+    h5 {
+        color: white;
+    }
+}
+
+.recieve {
+    border: 1px solid $border-color;  
+    box-shadow: 0px 2px 4px 0px #d9d8d8;
+    border-radius: 2px;
     
-    .games-box>h4 {
-    }
-    .details-btn {
-        line-height: 0;
+}
+
+.choose-one {
+    margin-left: 30px;
+}
+
+.offer-box {
+    border: none;
+    box-shadow: none;
+    margin-left: 1px;
+}
+.h4-recieve {
+    margin-left: 30px;
+}
+    
+.user-ask {
+    justify-content: center;
+    align-content: center;
+    margin-right: 50px;
+
+    img {
+    max-height: 150px;
+    max-width: 150px;
+    align-self: center;
+    margin: 20px;
     }
 
-    .recieve {
-        border: 1px solid $border-color;  
-        box-shadow: 0px 2px 4px 0px #d9d8d8;
-        border-radius: 2px;
+    .username {
+        margin-bottom: 4px;
     }
-
-    .offer-box {
-       border: none;
-       box-shadow: none;
-       margin-left: 1px;
+    .pen {
+        width: 30px;
+        height: 50px;
     }
-    .h4-recieve {
-        margin-left: 30px;
-    }
-    .user-recieve {
-        top: -22px;
-        left: 83px;
-    }
+}
 </style>

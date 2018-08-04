@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
 import About from './views/About.vue'
-// import Contact from './views/Contact.vue'
+import Contact from './views/Contact.vue'
 import Gallery from './views/Gallery.vue'
 import Login from './views/Login.vue'
 import EditGame from './views/EditGame.vue'
@@ -39,11 +39,11 @@ export default new Router({
       name: 'about',
       component: About
     },
-    // {
-    //   path: '/contact',
-    //   name: 'contact',
-    //   component: Contact
-    // },
+    {
+      path: '/contact',
+      name: 'contact',
+      component: Contact
+    },
     {
       path: '/game',
       name: 'game',
@@ -67,23 +67,36 @@ export default new Router({
     {
       path: '/user/activity/:userId',
       name: 'activity',
-      component: UserActivity
-    },
-    {
-      path: '/user/activity/match/:userId',
-      name: 'match',
-      component: UserMatch
-    },
-    {
-      path: '/user/activity/request/:userId',
-      name: 'request',
-      component: UserRequest
-    },
-    {
-      path: '/user/activity/recieve/:userId',
-      name: 'recieve',
-      component: UserRecieve
-    },
-
+      component: UserActivity,
+        children: [
+          {
+            path: 'match/',
+            component: UserMatch
+          },
+          {
+            path: 'request',
+            component: UserRequest
+          },
+          {
+            path: 'recieve',
+            component: UserRecieve
+          }
+        ]
+    }
+    // {
+    //   path: '/user/activity/match/:userId',
+    //   name: 'match',
+    //   component: UserMatch
+    // },
+    // {
+    //   path: '/user/activity/request/:userId',
+    //   name: 'request',
+    //   component: UserRequest
+    // },
+    // {
+    //   path: '/user/activity/recieve/:userId',
+    //   name: 'recieve',
+    //   component: UserRecieve
+    // },
   ]
 })

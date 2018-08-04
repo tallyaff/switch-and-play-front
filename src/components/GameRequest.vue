@@ -1,11 +1,12 @@
 <template class="game-request-container">
+<!-- test for see if master updated with SAP-27 -->
     <div class="game-request flex column align-center justify-center">
         <h1 class="title-game-request">It's time to create your request!</h1>   
         <h2 class="title-games">Choose optional games for swapping</h2>
         <el-form class="request-container flex column">
           <div class="games-container flex">
             <div class="game" v-for="game in games" :key="game._id">
-                <game-preview :game="game" :newIcon="true" :condition="true" :location="true" :username="true" :gameCheckbox="true" @check="updateGamesToSwitch"></game-preview>
+                <game-preview :game="game" :isGameRequest="true" :newIcon="true" :condition="true" :location="true" :username="true" :gameCheckbox="true" @check="updateGamesToSwitch"></game-preview>
            </div>
           </div>
             <div class="text-btn-container flex column">
@@ -28,6 +29,7 @@ import MatchService from "../services/MatchService.js";
 
 export default {
   name: "GameRequest",
+  props: ["game"],
   created() {
     this.$store.dispatch({ type: "gamesById", games: this.user.games })
     
@@ -55,30 +57,30 @@ export default {
       }
     },
     sendRequest() {
+      // console.log('gameId: ',this.$route.params.gameId);
       this.$router.push('/');
-      this.$store
-        .dispatch({ type: "loadGame", gameId: this.$route.params.gameId })
-        .then(game => {
-            swal("Whoo Hoo! Your request has been sent!", {
-            className: "swal-text",
-            icon: "success",
-            timer: 2000,
-            button: false
-          })
-          this.ownerUserId = game.userId;
-          const matchReq = {
-            userPassive: {
-              userId:this.ownerUserId,
-              gameId: this.$route.params.gameId
-            },
-            userActive: {
-              userId: this.user._id,
-              games: this.gamesToSwitch
-            },
-            textareaReq: this.textareaReq,
-            isMatch: false
-          };
-          MatchService.createMatch(matchReq);
+      this.ownerUserId = this.game.userId;
+        const matchReq = {
+          userPassive: {
+            userId: this.ownerUserId,
+            gameId: this.game._id
+          },
+          userActive: {
+            userId: this.user._id,
+            games: this.gamesToSwitch
+          },
+          textareaReq: this.textareaReq,
+          isMatch: false
+        };
+      this.$store.dispatch({ type: "createMatch", newMatch: matchReq })
+        .then(match => {
+          swal("Whoo Hoo! Your request has been sent!", {
+          className: "swal-text",
+          icon: "success",
+          timer: 2000,
+          button: false
+        })
+          console.log('match:', match);
         })
         .catch(err =>{
           console.log('error send a request',err)
@@ -147,9 +149,9 @@ export default {
      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
    }
 
-   .choose-checkbox {
-     background-color: red;
-   }
+  //  .choose-checkbox {
+  //    background-color: red;
+  //  }
 
    .btn-request {
      font-family: "Ubuntu-regular";
@@ -161,9 +163,9 @@ export default {
      margin: rem(10px);
      width: 250px;
      height: 250px;
-     transition: all 0.5s;
+    //  transition: all 0.5s;
        &:hover {
-         transform: scale(0.95, 0.95);
+        //  transform: scale(0.95, 0.95);
        }
    }
 

@@ -70,7 +70,7 @@ export default {
         },
         loggedUserGames(state,{ games }){
             state.loggedUserGames = games;
-            // console.log(this.loggedUserGames,'this.loggedUserGames')
+            console.log('@@@this.loggedUserGames', state.loggedUserGames)
         }
     },
     getters: {
@@ -183,12 +183,13 @@ export default {
                 })
             )
             .then(games =>{
+                // console.log('gamesssss', games);
                 context.commit({ type: 'loggedUserGames', games })
                 context.commit({ type: 'setGamesLoading', isLoading: false })
             })
-            .catch(err =>{
-                context.commit({ type: 'setGamesLoading', isLoading: false })
-            })
+            // .catch(err =>{
+            //     context.commit({ type: 'setGamesLoading', isLoading: false })
+            // })
         }
     }
 };

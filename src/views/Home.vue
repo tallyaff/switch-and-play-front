@@ -157,7 +157,7 @@ export default {
         category: [],
         userId: ""
       },
-      url: 'url("img/shutterstock_261496907.jpg")'
+      url: 'url("img/homepage-img.jpg")'
       // url: 'url("img/home-img-3.png")',
     };
   },
