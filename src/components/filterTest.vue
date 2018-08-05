@@ -153,15 +153,15 @@ export default {
   .search-btn {
     background-color: $main-color;
   }
-  .search-in-gallery .search-input {
-    width: 350px;
-    margin-bottom: rem(20px);
-    // height: 100px;
-    // box-shadow: inset 0 0 3px 0px #000000ab;
-  }
+  // .search-in-gallery .search-input {
+  //   width: 350px;
+  //   margin-bottom: rem(20px);
+  //   // height: 100px;
+  //   // box-shadow: inset 0 0 3px 0px #000000ab;
+  // }
 
-  .search-in-gallery {
-    position: absolute;
-    top: 20%;
-  }
+  // .search-in-gallery {
+  //   position: absolute;
+  //   top: 20%;
+  // }
 </style>

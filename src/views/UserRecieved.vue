@@ -1,11 +1,12 @@
 <template>
-    <section>
+    <section class="user-recieved container">
         <!-- <showMatch v-if="isMatch" :game="choosenGame" :match="currRecieved"></showMatch>   -->
-        <div v-if="!openDetails" class="flex column match-container">
+        <div v-if="!openDetails" class="flex column match-container ">
             <div class="activity-header flex">
                 <!-- <h3>Request From Me:</h3> -->
             </div>
             <ul v-if="recieves" class="recieve">
+                
                 <li v-for="recieve in recieves" :key="recieve._id" class="flex games-container">
                     <div class="flex column user-ask">
                         <div class="user-ask-name">
@@ -54,94 +55,131 @@
 </template>
 
 <script>
-import GameUserImg from '@/components/GameUserImg.vue';
-import GameUserName from '@/components/GameUserName.vue';
-import GameService from '@/services/GameService.js';
-import GameSelect from '@/components/GameSelect.vue';
+import GameUserImg from "@/components/GameUserImg.vue";
+import GameUserName from "@/components/GameUserName.vue";
+import GameService from "@/services/GameService.js";
+import GameSelect from "@/components/GameSelect.vue";
 
 export default {
-    name: 'userRecieve',
-    components: {
-        GameUserImg,
-        GameUserName,
-        GameSelect,
-        },
-    data() {
-        return {
-            choosenGame: '',
-            currRecieved: '',
-            openDetails: false,
-            isMatch: true,
-        }
+  name: "userRecieve",
+  components: {
+    GameUserImg,
+    GameUserName,
+    GameSelect
+  },
+  data() {
+    return {
+      choosenGame: "",
+      currRecieved: "",
+      openDetails: false,
+      isMatch: true
+    };
+  },
+  created() {
+    this.$store.dispatch({
+      type: "getMatch",
+      user: this.$route.params.userId
+    });
+    console.log("recieveddddd", this.matches);
+    // this.getActiveUser();
+    // console.log('get userrrrr', this.user);
+  },
+  computed: {
+    recieves() {
+      console.log("****", this.$store.getters.getRecieves);
+
+      return this.$store.getters.getRecieves;
     },
-    created() {
-        this.$store.dispatch({type: 'getMatch', 
-            user: this.$route.params.userId
-            });
-        console.log('recieveddddd', this.matches);
-        // this.getActiveUser();
-        // console.log('get userrrrr', this.user);
-    },
-    computed: {
-        recieves() {
-            console.log('****', this.$store.getters.getRecieves);
-            
-            return this.$store.getters.getRecieves;
-        },
-        loggedinUser() {
-             return this.$store.getters.loggedUser;
-        },
-    },
-    methods: {
-        getMatch(game, recieve) {
-            this.openDetails = true;
-            this.choosenGame = game;
-            this.currRecieved = recieve;           
-        },
+    loggedinUser() {
+      return this.$store.getters.loggedUser;
     }
-}
+  },
+  methods: {
+    getMatch(game, recieve) {
+      this.openDetails = true;
+      this.choosenGame = game;
+      this.currRecieved = recieve;
+    }
+  }
+};
 </script>
 
 <style scoped lang="scss">
-  @import "~@/assets/scss/style.scss";
-h2 h3 {
-    // padding:2px;
-}
+@import "~@/assets/scss/style.scss";
 
 .details-btn {
-    line-height: 0;
-    // width: 30px;
-    height: 35px;
-    h5 {
-        color: white;
-    }
+  line-height: 0;
+  // width: 30px;
+  height: 35px;
+  h5 {
+    color: white;
+  }
 }
 
 .recieve {
-    // border: 1px solid $border-color;  
-    // box-shadow: 0px 2px 4px 0px #d9d8d8;
-    // border-radius: 2px;
+  // border: 1px solid $border-color;
+  // box-shadow: 0px 2px 4px 0px #d9d8d8;
+  // border-radius: 2px;
 }
 
 .choose-one {
-    margin-left: 30px;
+  margin-left: 30px;
 }
 
 .offer-box {
-    border: none;
-    box-shadow: none;
-    margin-left: 1px;
-    li {
-        cursor: pointer;
-    }
-}
-.h4-recieve {
-    margin-left: 30px;
+  margin-top: 30px;
+  border: none;
+  box-shadow: none;
+  margin-left: 1px;
+  li {
+    cursor: pointer;
+  }
 }
 
-.game-box {
+.user-ask {
+  justify-content: center;
+  align-content: center;
+  // margin-right: 50px; butal
+
+  img {
+    max-height: 150px;
+    max-width: 150px;
+    align-self: center;
+    margin: 20px;
+  }
+
+  .username {
+    margin-bottom: 4px;
+  }
+  .pen {
+    width: 30px;
+    height: 50px;
+  }
+}
+
+.games-container {
+  flex-direction: column;
+  margin: 0;
+  padding: 5px;
+}
+
+@media (min-width: 980px) {
+  .h4-recieve {
+    margin-left: 30px;
+  }
+  h2 h3 {
+    padding: 2px;
+  }
+  .user-ask {
+    margin-right: 50px;
+  }
+  .games-container {
+    flex-direction: row;
+  }
+
+  .game-box {
     height: 250px;
     justify-content: space-between;
+  }
 }
-
 </style>

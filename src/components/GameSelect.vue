@@ -1,5 +1,8 @@
 <template>
     <section class="flex justify-center">
+        <button class="btn-back" @click="back">
+        <font-awesome-icon icon="arrow-circle-left" class="back" />
+        </button>
         <div v-if="!isMatch" class="game-box-container flex align-center justify-center column">
             <h3 class="game-name capitalize">{{game.name}}</h3>
             <p class="game-desc capitalize">{{game.desc}}</p>
@@ -68,6 +71,9 @@ export default {
                 this.user = user;
             });
         },
+        back(){
+            this.$router.go();
+        },
     },
 }
 </script>
@@ -75,9 +81,24 @@ export default {
 <style scoped lang="scss">
   @import "~@/assets/scss/style.scss";
 
+.btn-back{
+  // margin-top: 20px;
+  width: 25px;
+  height: 38px;
+  text-align: left;
+  background-color: $main-color;
+  color: $main-color;
+  margin-right: 20px;
+  border: none;
+  background-color: transparent;
+  // position: absolute;
+}
+    
 .game-box-container {
+    margin-top: 50px;
+    line-height: 1.6;
     height: 60%;
-    width: 680px;
+    max-width: 680px;
     border: 1px solid $border-color;  
     box-shadow: 0px 2px 4px 0px #d9d8d8;
     border-radius: 2px;

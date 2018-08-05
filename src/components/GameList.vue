@@ -1,6 +1,6 @@
 <template>
   <div class="game-list flex">
-        <ul class="game-cards-container flex space-between" v-if="games">
+        <ul class="game-cards-container flex justify-center" v-if="games">
           <div class="game game-preview clean-list" v-for="game in games" :key="game._id">
             <router-link class="btn btn-more-details" :to="'/game/'+game._id">
             <!-- <el-c class="masonry" v-if="games" v-for="game in games" :key="game._id"> -->
@@ -39,7 +39,7 @@ export default {
 
   .game-cards-container {
     flex-wrap: wrap;  
-    padding-right: 20px;  
+    // padding-right: 20px;  
   }
 .game img{
   width: 55%;
@@ -52,7 +52,7 @@ export default {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    margin: 10px 0;
+    margin: 10px;
     // margin-left: 0;
       // width: 300px;
       // border: 1px solid $border-color;  
@@ -81,4 +81,10 @@ export default {
   //     color: $secondary-color;
   //   }
   // }
+
+  @media (min-width: 980px) {
+    .game-cards-container{
+      justify-content: space-between;
+    }
+  }
 </style>

@@ -1,13 +1,22 @@
 <template>
-  <div class="filter-gallery-container">
+  <div class="filter-gallery-container flex flex-start ">
+    <button class="btn-filter" :class="{close: isFilterOpen}" @click="isFilterOpen=!isFilterOpen">
+        <font-awesome-icon icon="filter" class="fiter-icon" />
+</button>
+
         <form @submit.prevent="setFilter" class="search-in-gallery">
             <el-input class="search-input" type="text" v-model="filterBy.name" placeholder="Search for games" autofocus></el-input>
-            <!-- <button>Search</button> -->
-            <el-button class="btn search-btn" type="primary">Search</el-button>
+                <el-button class="btn search-btn" type="primary"><font-awesome-icon icon="search"></font-awesome-icon></el-button>
+                <el-button class="btn search-btn-text" type="primary">Search</el-button>
+
         </form>
 
-<div class="filter-icon" :class="{close: isOpen}" @click="isOpen=!isOpen">Filter</div>
-        <div class="checkbox-filter-container capitalize">
+        <div v-if="isFilterOpen" class="checkbox-filter-container capitalize" :class="{open: isFilterOpen}" >
+              <div class="exit">
+        <font-awesome-icon icon="times" class="exit-icon" 
+         :class="{close: isFilterOpen}" @click="isFilterOpen=!isFilterOpen"/>
+</div>
+
         <el-checkbox v-show='false' class="checkbox-filter" label="All" value="all" v-model="filterBy.allByName" @change="setFilter"></el-checkbox>
         <div>
             <h3>Type</h3>
@@ -48,7 +57,7 @@ export default {
   components: {},
   data() {
     return {
-      isOpen: false,
+      isFilterOpen: false,
       filterBy: {
         allByName: true,
         name: "",
@@ -93,15 +102,16 @@ export default {
       this.filterBy.allCategories = !this.filterBy.allCategories;
       if (this.filterBy.allCategories) this.filterBy.category = [];
       this.setFilter();
-    },
+    }
   },
   watch: {
-    ['filterBy.type']() {
+    ["filterBy.type"]() {
       if (this.filterBy.type.length > 0) this.filterBy.allTypes = false;
     },
-    ['filterBy.category']() {
-      if (this.filterBy.category.length > 0) this.filterBy.allCategories = false;
-    },
+    ["filterBy.category"]() {
+      if (this.filterBy.category.length > 0)
+        this.filterBy.allCategories = false;
+    }
   }
 };
 </script>
@@ -109,11 +119,32 @@ export default {
 <style scoped lang="scss">
 @import "~@/assets/scss/style.scss";
 
-
-
 .checkbox-filter-container {
   text-align: left;
   padding-left: 20px;
+  transition: 0.5s;
+    overflow-y: scroll;
+    max-height: 100vh;
+  width: 200px;
+  position: fixed;
+  z-index: 7;
+  top: 92;
+  left: 0;
+  background-color:$card-text-color; 
+  padding-top: 15px;
+
+  // #e7e7e8bd
+}
+// .checkbox-filter-container.open {
+//   transform: translate(0, 0);
+// }
+
+.btn-filter {
+  border: none;
+  background-color: transparent;
+  height: 38px;
+  padding-right: 20px;
+  color: $main-color;
 }
 
 .checkbox-filter {
@@ -132,22 +163,62 @@ export default {
 }
 
 .search-in-gallery {
-  position: absolute;
-  top: 120px;
-  margin: rem(20px);
-  left: 143px;
+  // position: absolute;
+  // top: 120px;
+  // margin: rem(20px);
+  // left: 143px;
 }
-h3{
-    text-align: center;
-    margin-bottom: 10px;
+h3 {
+  text-align: left;
+  margin-bottom: 10px;
+  margin-top: 30px;
 }
 
-.filter-icon{
-  display:none;
-  width: 45px;
+.filter-icon {
+  display: block;
+  width: 25px;
   height: 45px;
 }
 
+.filter {
+  // margin-top: 20px;
+  width: 25px;
+  height: 38px;
+  text-align: left;
+  background-color: $main-color;
+  color: white;
+  margin-right: 20px;
+  // position: absolute;
+}
+
+.search-btn-text {
+  display: none;
+}
+
+.search-btn {
+  // display: none;
+  // height: 50px;
+  width: 25px;
+  height: 38px;
+  font-size: rem(14px);
+  background-color: $main-color;
+}
+.search-in-gallery .search-input {
+  width: 180px;
+
+  margin-bottom: rem(20px);
+  // height: 100px;
+  // box-shadow: inset 0 0 3px 0px #000000ab;
+}
+
+.search-in-gallery {
+  // position: absolute;
+  top: 20%;
+}
+.filter-gallery-container {
+  margin-top: 30px;
+  padding: 0 5px;
+}
 // @media (min-width: 300px) {
 //   .filter-gallery-container{
 //     display:none;
@@ -157,5 +228,38 @@ h3{
 // }
 
 // }
+.exit {
+  cursor: pointer;
+  float: right;
+  padding-right: 10px;
+}
 
+@media (min-width: 420px) {
+  .filter-gallery-container {
+    padding: 0 20px;
+  }
+}
+
+@media (min-width: 980px) {
+  .search-in-gallery .search-input {
+    width: 350px;
+  }
+  .search-btn {
+    display: none;
+  }
+  .search-btn-text {
+    font-family: "Ubuntu-regular";
+    display: block;
+    height: 40px;
+    float: right;
+    font-size: 1.125rem;
+    background-color: $main-color;
+  }
+  .el-button + .el-button {
+    margin-left: 0;
+  }
+  .btn-filter{
+    display: none;
+  }
+}
 </style>
