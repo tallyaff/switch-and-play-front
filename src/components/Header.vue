@@ -34,6 +34,7 @@ export default {
     logout() {
       UserService.logout();
       this.$store.commit({ type: "logoutUser" });
+      this.$store.dispatch({type: 'logoutActivity'});
       this.$router.push("/");
     }
   },

@@ -2,7 +2,7 @@
 <template>
     <section class="show-match flex column align-center space-between">
         <div class="show-match-container flex column align-center justify-center">
-            <h1 class="text congrats">Congrats we have a match!!!</h1>
+            <h1 class="text congrats animated jello">Congrats we have a match!!!</h1>
             <div class="images-container margin-bottom flex align-center space-between">
                 <div v-if="gameActive" class="your-choose-container margin-bottom flex column align-center space-between">
                     <h2 class="card-title margin-bottom">You chose this amazing</h2>
@@ -20,18 +20,18 @@
                   </div>
                 </div>
             </div>
-            <el-button @click="schedule" class="btn-schedule" type="primary">Schedule swap</el-button>
+            <!-- <el-button @click="schedule" class="btn-schedule" type="primary">Schedule swap</el-button> -->
             <!-- <div v-if="userActive && isSchedule && currRecieved" class="meet-form align-center justify-center"> -->
-            <div v-if="userActive && isSchedule" class="meet-form align-center justify-center">
-                <h3 class="text margin-bottom"><span class="username capitalize">{{userActive.username}}</span> lives in {{userActive.city}}</h3>
+            <div v-if="userActive" class="meet-form align-center justify-center">
+                <h3 class="text margin-bottom"><span class="username capitalize">{{userActive.username}}</span> lives in {{userActive.city}}, send him/her a message</h3>
                 <div class="form-meeting flex column align-center justify-center">
                     <div class="form-input-title">
                         <!-- <h3 class="small-text">Type a message:</h3> -->
-                        <el-input class="form-input form-textarea" type="textarea" v-model="textareaRes"></el-input>                    
+                        <el-input class="form-input form-textarea" type="textarea" v-model="textareaRes" placeholder="Please type yours message"></el-input>                    
                     </div>
                     <div class="btns-container">
                     <el-button class="btn send-btn" type="primary" @click="itsMatch(game._id, match._id)">Send</el-button>
-                    <el-button class="btn cancel-btn" type="info">Cancel</el-button>
+                    <!-- <el-button class="btn cancel-btn" type="info">Cancel</el-button> -->
                     </div>
                 </div>
             </div>
@@ -71,50 +71,21 @@ export default {
   props: ["game", "match"],
   data() {
     return {
-      gameActive: null,
-      userActive: null,
-      gamePassive: null,
-      formDetails: {
-        email: null,
-        subject: `Hi let's meet to swap the games`,
-        text: `Please type yours message`
-      },
-      isSchedule: false,
-    };
+        choosenGameId: '',
+        currMatchId: '',
+        gameActive: null,
+        userActive: null,
+        gamePassive: null,
+        textareaRes: ``,
+        // isSchedule: false,
+        };
   },
   created() {
       console.log('####', this.match);
-      
-    // this.match = {
-    //   _id: "5b60bd23ea5c0347c8e2d120",
-    //   userPassive: {
-    //     userId: "5b5867f85d5aba03c1ce2e83",
-    //     gameId: "5b596cf23af932a16bcd90a0"
-    //   },
-    //   userActive: {
-    //     userId: "5b589ba35d5aba03c1d35692",
-    //     games: ["5b596cf23af932a16bcd90ac"]
-    //   },
-    //   isMatch: false
-    // };
-    // this.game = {
-    //   _id: "5b596cf23af932a16bcd90ac",
-    //   name: "green tractor",
-    //   src: "img/gameImg/wheels/tractor.jpg",
-    //   type: "baby",
-    //   category: "wheels",
-    //   desc: "nice green tractor for babys!",
-    //   userId: "5b589ba35d5aba03c1d35692",
-    //   condition: "Brand new",
-    //   isAvailble: true,
-    //   isNew: false,
-    //   addedAt: 1533016520092
-    // };
-    // console.log('game from match##:', this.game);
-    // console.log('match from match##:', this.match);
-    this.gameActive = this.game;
-    this.getUserActive();
-    this.getGamePassive();
+      console.log('####@@9', this.game);
+        this.gameActive = this.game;
+        this.getUserActive();
+        this.getGamePassive();
   },
   computed: {
     userPassive() {
@@ -127,31 +98,40 @@ export default {
     },
     getUserActive() {
       let userActiveId = this.match.userActive.userId;
-      UserService.getUserById(userActiveId).then(user => {
+      UserService.getUserById(userActiveId)
+      .then(user => {
         console.log("this.userActive in show match:", user);
         this.userActive = user;
-        this.formDetails.email = this.userActive.email;
-
       });
     },
     getGamePassive() {
       let gamePassiveId = this.match.userPassive.gameId;
-      console.log("gameId in show match", this.gamePassiveId);
+      console.log("gameId in show match", gamePassiveId);
       GameService.getGameById(gamePassiveId).then(game => {
         console.log("this.gamePassive in show match:", game);
         this.gamePassive = game;
       });
     },
-    // sendMeetForm() {
-    //    window.location = open(`https://mail.google.com/mail/?view=cm&fs=1&to=${this.formDetails.email}&su=${this.formDetails.subject}&body=${this.formDetails.text}`, "_blank");
-    //    // reset feilds
-    //    this.userActive.email = '';
-    //    this.userActive.subject = '';
-    //    this.userActive.text = '';
+    // schedule() {
+    //     this.isSchedule = !this.isSchedule;
     // },
-    schedule() {
-        this.isSchedule = !this.isSchedule;
-    }
+    itsMatch(gameId, matchId) {
+        // this.choosenGameId = gameId;
+        // console.log('this.choosenGame in itsMatch', this.choosenGame);
+        console.log('this.gameeeeee', this.game._id);
+        // this.currMatchId = matchId;
+        console.log('this.currRecieved in itsMatch', this.match._id);
+        // const match = {gameId: this.choosenGame, match: this.recieve}
+        const match = {gameId: this.game._id, matchId: this.match._id, textareaRes: this.textareaRes}
+        // console.log('game id', this.choosenGame);
+        // console.log('match id', this.currRecieved);
+        // console.log('###match:!!', match);
+        this.$store.dispatch({ type: "updateMatch", matchDetails: match })
+        .then( () => {
+                this.$router.push('/');
+                this.$socket.emit('newMatch')
+            })
+    },
   }
 };
 </script>
@@ -204,13 +184,13 @@ export default {
         width: 50%;
     }
 
-    .your-choose-container .card-title {
-        height: 40%;
-    } 
+    // .your-choose-container .card-title {
+    //     height: 40%;
+    // } 
     
-    .game-match-container .card-title {
-        height: 10%;
-    }
+    // .game-match-container .card-title {
+    //     height: 10%;
+    // }
 
 
     .name-image-container {
@@ -218,7 +198,7 @@ export default {
     }
 
     .images-container .game-image {
-        width: 80%;
+        width: 70%;
     }
 
     .swap-arrows {

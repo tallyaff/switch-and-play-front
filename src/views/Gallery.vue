@@ -26,12 +26,11 @@ export default {
   components: {
     GameList,
     GameFilter,
-    Header,
+    Header
   },
   created() {
-
     // this.$store.loadGames();
-    // console.log('this.gamesForDisplay in gallery', this.gamesForDisplay);    
+    // console.log('this.gamesForDisplay in gallery', this.gamesForDisplay);
     // this.gamesForDisplay;
   },
   computed: {
@@ -44,7 +43,7 @@ export default {
     loggedinUser() {
       return this.$store.getters.loggedUser;
     },
-    gamesLoading(){
+    gamesLoading() {
       return this.$store.getters.gamesLoading;
     }
   },
@@ -115,14 +114,12 @@ export default {
   font-family: "Ubuntu";
   font-size: 20px;
 }
-.game-list{
+.game-list {
   padding: 0 20px;
 }
-.filter-gallery{
-      // margin-top: 108px;
+.filter-gallery {
+  // margin-top: 108px;
 }
-
-
 </style>
 
 <style scoped lang="scss">
@@ -131,8 +128,11 @@ export default {
   // margin-top: rem(100px);
 }
 
-
-
+@media (min-width: 980px) {
+  .filter-images-container-gallery {
+    margin-top: rem(30px);
+  }
+}
 </style>
     
 

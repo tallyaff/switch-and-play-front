@@ -1,10 +1,8 @@
 <template>
     <section class="flex justify-center">
-        <el-button class="btn-back">
-            <router-link :to="`/user/activity/${match.userPassive.userId}/recieve`">
-        <font-awesome-icon icon="arrow-circle-left" class="back" />
-        </router-link>
-        </el-button>
+        
+        
+        
         <div v-if="!isMatch" class="game-box-container flex align-center justify-center column">
             <h3 class="game-name capitalize">{{game.name}}</h3>
             <p class="game-desc capitalize">{{game.desc}}</p>
@@ -20,8 +18,15 @@
                     <p><span>Added At: </span>{{game.addedAt | getDate }}</p>
                 </div>
             </div>
-            <el-button @click="itsMatch(game._id, match._id)" type="primary" class="btn btn-choose">Choose me! 
-            </el-button>
+            <div class="btns-select flex space-between">
+                <button class="btn-back" @click="back" title="back">
+                    <font-awesome-icon icon="arrow-left" class="back" />
+                </button>
+                <el-button @click="itsMatch" type="primary" class="btn btn-choose" title="choose">Choose me! 
+                </el-button>
+            </div>
+            <!-- <el-button @click="itsMatch(game._id, match._id)" type="primary" class="btn btn-choose">Choose me! 
+            </el-button> -->
         </div>
         <ShowMatch :match="match" :game="game" v-if="isMatch"></ShowMatch>
     </section>
@@ -51,24 +56,35 @@ export default {
         }
     },
     methods: {
-        itsMatch(game, recieveId) {
-            this.choosenGame = game;
-            this.currRecieved = recieveId;
-            // const match = {gameId: this.choosenGame, match: this.recieve}
-            const match = {gameId: this.choosenGame, matchId: this.currRecieved}
+        // itsMatch(game, recieveId) {
+        //     this.choosenGame = game;
+        //     this.currRecieved = recieveId;
+        //     // const match = {gameId: this.choosenGame, match: this.recieve}
+        //     const match = {gameId: this.choosenGame, matchId: this.currRecieved}
+        //     this.isMatch = true;
+        //     // console.log('game id', this.choosenGame);
+        //     // console.log('match id', this.currRecieved);
+        //     // console.log('###match:!!', match);
+        //     this.$store.dispatch({ type: "updateMatch", matchDetails: match })
+        //   },
+        itsMatch() {
             this.isMatch = true;
             // console.log('game id', this.choosenGame);
             // console.log('match id', this.currRecieved);
             // console.log('###match:!!', match);
-            this.$store.dispatch({ type: "updateMatch", matchDetails: match })
-          },
+            
+        },
         getUser() {
             let userId = this.game.userId;
             console.log("userId in game select:", userId);
-            UserService.getUserById(userId).then(user => {
+            UserService.getUserById(userId).
+            then(user => {
             console.log("this.user in game select:", user);
                 this.user = user;
             });
+        },
+        back(){
+            this.$router.go();
         },
     },
 }
@@ -76,15 +92,20 @@ export default {
 
 <style scoped lang="scss">
   @import "~@/assets/scss/style.scss";
+
 .btn-back{
-    width: 25px;
-    height: 38px;
-    font-size: 0.875rem;
-    background-color: #0D72FA;
-    margin-left: 20px;
-    color:white;
-    
+  // margin-top: 20px;
+  width: 25px;
+  height: 38px;
+  text-align: left;
+  background-color: $main-color;
+  color: $main-color;
+  margin-right: 20px;
+  border: none;
+  background-color: transparent;
+  // position: absolute;
 }
+    
 .game-box-container {
     margin-top: 50px;
     line-height: 1.6;
@@ -146,7 +167,15 @@ export default {
 .btn-choose {
     background-color: $main-color;
     font-size: rem(20px);
-    margin-bottom: rem(30px);
     width: 150px;
+}
+.btn-back {
+    font-size: 2em;
+    color: $secondary-color;
+}
+.btns-select {
+    align-items: center;
+    margin-bottom: rem(30px);
+    width: 220px;
 }
 </style>

@@ -9,9 +9,10 @@ import './assets/scss/style.scss'
 import axios from 'axios'
 import moment from 'moment'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faCoffee, faUser, faBell,faArrowCircleLeft, faExchangeAlt, faSearch , faFilter, faTimes } from '@fortawesome/free-solid-svg-icons'
+import { faCoffee, faUser, faBell, faExchangeAlt, faArrowLeft, faSearch , faFilter, faTimes } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import i18n from 'vue-i18n';
+import socketIo from 'vue-socket.io';
 
 
 import { faInfo } from '@fortawesome/free-solid-svg-icons'
@@ -22,6 +23,9 @@ import { faAngleLeft } from '@fortawesome/free-solid-svg-icons'
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
 // import { faExchangeAlt } from '@fortawesome/free-solid-svg-icons'
 
+const PORT = process.env.NODE_ENV !== 'production' ? '//localhost:3000' : '';
+Vue.use(socketIo, PORT, store);
+
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 library.add(faCoffee);
@@ -31,13 +35,13 @@ library.add(faPen);
 library.add(faPlus);
 library.add(faUser);
 library.add(faBell);
-library.add(faArrowCircleLeft);
 library.add(faAngleLeft);
 library.add(faEnvelope);
 library.add(faSearch);
 library.add(faExchangeAlt);
 library.add(faFilter); 
 library.add(faTimes); 
+library.add(faArrowLeft); 
 
 
 /* eslint-disable no-new */

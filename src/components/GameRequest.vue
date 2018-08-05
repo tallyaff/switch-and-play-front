@@ -58,20 +58,19 @@ export default {
     sendRequest() {
       this.$router.push("/");
       this.ownerUserId = this.game.userId;
-      const matchReq = {
-        userPassive: {
-          userId: this.ownerUserId,
-          gameId: this.game._id
-        },
-        userActive: {
-          userId: this.user._id,
-          games: this.gamesToSwitch
-        },
-        textareaReq: this.textareaReq,
-        isMatch: false
-      };
-      this.$store
-        .dispatch({ type: "createMatch", newMatch: matchReq })
+        const matchReq = {
+          userPassive: {
+            userId: this.ownerUserId,
+            gameId: this.game._id,
+          },
+          userActive: {
+            userId: this.user._id,
+            games: this.gamesToSwitch,
+            textareaReq: this.textareaReq,
+          },
+          isMatch: false
+        };
+      this.$store.dispatch({ type: "createMatch", newMatch: matchReq })
         .then(match => {
           swal("Whoo Hoo! Your request has been sent!", {
             className: "swal-text",

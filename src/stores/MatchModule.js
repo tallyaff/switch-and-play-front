@@ -16,7 +16,9 @@ export default {
         setCurrUserId(state, payload) {
             state.userId = payload.payload
         },
-        
+        logoutActivities(state) {
+            state.activities = []
+        }
     },
     getters: {
         getMatches(state){
@@ -48,7 +50,7 @@ export default {
             context.commit({type: 'setCurrUserId', payload: payload.user})
             MatchService.getMatch(payload.user)
                .then(activities => {
-                //    console.log('match from backend in front', activities);
+                   console.log('match from backend in front', activities);
                    context.commit({type: 'setMatch', activities})
                    })
         },
@@ -64,7 +66,10 @@ export default {
                    console.log('match from backend in front', activities);
                })
         },
-    }
+        logoutActivity(context) {
+           context.commit({type: 'logoutActivities'})
+        }   
+    }   
 }
 
 

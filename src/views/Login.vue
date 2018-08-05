@@ -78,14 +78,14 @@ export default {
         .then(user => {
             console.log('user$$:', user);
             this.$store.dispatch({
-            type: 'getMatch', 
-            user: user._id
+              type: 'getMatch', 
+              user: user._id
             })
-            // debugger
         })
         .then(_ => {
-            console.log(this.user.username,'res login function before emit eventbus')
+            // console.log(this.user.username,'res login function before emit eventbus')
           eventBus.$emit(EVENT_LOGIN_USER, this.user.username);
+          return this.$store.getters.loggedUser;
         })
         .catch(err => console.log(err));
     },

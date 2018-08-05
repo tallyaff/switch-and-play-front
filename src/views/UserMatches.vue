@@ -1,18 +1,21 @@
 <template>
-    <section>
-        <div class="flex column match-container">
+    <section class="user-matches flex align-center justify-center">
+        <div class="flex column match-container align-center justify-center">
             <ul v-if="matches" class="games-box-container flex">
-                <li v-for="match in matches" :key="match._id" class="flex column games-box">
+                <li v-for="match in matches" :key="match._id" class="flex games-box align-center justify-center">
+                    <div class="whole-box">
                     <!-- <div class="flex column games-container"> -->
-                        <h2 class="user-approved">
-                            <GameUserName :userId="match.userPassive.userId"></GameUserName> 
-                            Approved swapping!
-                        </h2>
+                        <div class="user-approved-container">
+                            <h2 class="user-approved">
+                                <GameUserName :userId="match.userPassive.userId"></GameUserName> 
+                                Approved swapping!
+                            </h2>
+                        </div>
                         <div class="flex games-img">
                             <div class="flex column game-box">
                                 <h3>{{match.userPassiveGame.name}}</h3> 
                                 <div class="img-activity-container">
-                                    <img :src="match.userPassiveGame.src"/>
+                                    <img :src="match.userPassiveGame.src" />
                                 </div>
                             </div>
                             <!-- <font-awesome-icon icon="exchange-alt" class="exchange"/> -->
@@ -27,9 +30,10 @@
                         </div>
                         <div class="flex msg-box">
                             <GameUserImg :userId="match.userPassive.userId"></GameUserImg>
-                            <h4>{{match.textareaReq}}</h4>
+                            <h4>{{match.userPassive.textareaRes}}</h4>
                         </div>
                     <!-- </div> -->
+                    </div>
                 </li>
             </ul>
         </div>
@@ -81,8 +85,46 @@ export default {
 
 <style scoped lang="scss">
   @import "~@/assets/scss/style.scss";
+
+  .user-matches {
+      width: 100%;
+  }
+
+  .match-container {
+      width: 980px;
+  }
+
+  .games-box-container {
+      width: 100%;
+      align-self: center;
+  }
   
+  .whole-box {
+      width: 122%;
+      height: 111%;
+      position: relative;
+  }
+
+  .user-approved-container {
+      height: 10%;
+  }
+
+  .game-box {
+      width: 5%;
+  }
+
+
+  .img-activity-container img{
+      width: 75%;
+  }
+    .msg-box{
+      width: 55%;
+      position: absolute;
+      top: 195px;
+      left: 30px;
+  }
     .games-img {
+        width: 100%;
         .exchange {
             align-self: center;
             font-size: 2em;
@@ -90,8 +132,8 @@ export default {
     }
 
     .swap-arrows {
-        width: 80px;
-        height: 80px;
+        width: 40px;
+        height: 40px;
         align-self: center;
     }
 
@@ -99,16 +141,20 @@ export default {
         border: 1px solid $border-color;  
         box-shadow: 0px 2px 4px 0px #d9d8d8;
         border-radius: 2px;
+        width: 400px;
+        height: 300px;
     }
     .game-box {
        justify-content: space-between;
        border: none;
        box-shadow: none;
-       height: 250px;
+       height: 150px;
        margin-bottom: 0;
     }
 
     .user-approved {
+        font-size: 18px;
+        font-family: 'Ubuntu';
         margin-top: 5px;
     }
 </style>

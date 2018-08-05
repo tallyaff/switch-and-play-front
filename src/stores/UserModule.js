@@ -40,10 +40,11 @@ export default {
         },
         getUser(context, payload) {
             // console.log('currUser from action***', payload.user);
-            UserService.getUser(payload.user)
+            return UserService.getUser(payload.user)
                .then(currUser => {
-                //    console.log('user from backend in front', currUser);
+                   console.log('user from backend in front', currUser);
                    context.commit({type: 'setUser', currUser})
+                   return currUser
                })
         },
         savedUserProfile(context, { savedUserProfile }) {

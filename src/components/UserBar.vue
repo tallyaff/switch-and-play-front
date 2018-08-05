@@ -55,11 +55,11 @@ export default {
     };
   },
   methods: {
-    logout() {
-      UserService.logout();
-      this.$store.commit({ type: "logoutUser" });
-      this.$router.push("/");
-    },
+    // logout() {
+    //   UserService.logout();
+    //   this.$store.commit({ type: "logoutUser" });
+    //   this.$router.push("/");
+    // },
   
     onLogout() {
       this.$emit("update:loggedinUser", null);
@@ -75,6 +75,12 @@ export default {
     },
     matchCount() {
       return this.$store.getters.getMatches;
+    }
+  },
+  sockets: {
+    newMatch() {
+      if (!this.loggedinUser) return;
+      this.$store.dispatch({type: 'getMatch', user: this.loggedinUser._id});
     }
   }
 };

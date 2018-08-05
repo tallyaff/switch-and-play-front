@@ -15,7 +15,7 @@
                         </div>  
                         <div class="flex msg-box">
                             <GameUserImg :userId="recieve.userActive.userId" class="msg-box-img"></GameUserImg>
-                            <h4>{{recieve.textareaReq}}</h4>
+                            <h4>{{recieve.userActive.textareaReq}}</h4>
                         </div>
                         <!-- <div class="user-img" :style="{backgroundImage: `url(${recieve.userPassiveGame.src})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundrepeat: 'no-repeat'}">
                         </div>  -->
@@ -107,7 +107,6 @@ export default {
 <style scoped lang="scss">
 @import "~@/assets/scss/style.scss";
 
-
 .details-btn {
   line-height: 0;
   // width: 30px;
@@ -118,11 +117,13 @@ export default {
 }
 
 .recieve {
+  // border: 1px solid $border-color;
+  // box-shadow: 0px 2px 4px 0px #d9d8d8;
+  // border-radius: 2px;
+}
 
-    // border: 1px solid $border-color;  
-    // box-shadow: 0px 2px 4px 0px #d9d8d8;
-    // border-radius: 2px;
-
+.img-activity-container img {
+  width: 85%;
 }
 
 .choose-one {
@@ -138,8 +139,6 @@ export default {
     cursor: pointer;
   }
 }
-
-
 
 .user-ask {
   align-content: center;
@@ -163,6 +162,8 @@ export default {
 
 .games-container {
   flex-direction: column;
+  margin: 0;
+  padding: 5px;
 }
 
 @media (min-width: 980px) {
@@ -173,17 +174,16 @@ export default {
     padding: 2px;
   }
   .user-ask {
-  margin-right: 50px; 
+    margin-right: 50px;
   }
-  .games-container{
-      flex-direction: row;
-}
+  .games-container {
+    flex-direction: row;
+  }
 
-.game-box {
+  .game-box {
     height: 250px;
     justify-content: space-between;
 
   }
 }
-
 </style>

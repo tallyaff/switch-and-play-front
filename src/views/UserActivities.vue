@@ -1,15 +1,17 @@
 <template>
     <section>
-        <div class="activity-container flex column">
-            <div class="nav-container flex">
-                <router-link :to="`/user/activity/${loggedinUser._id}/match`">Swaps
-                </router-link>
-                <router-link :to="`/user/activity/${loggedinUser._id}/request`">My Requests
-                </router-link>
-                <router-link :to="`/user/activity/${loggedinUser._id}/recieve`">Request For Me
-                </router-link>
+        <div class="activity-container flex column align-center justify-center">
+            <div class="activity-nav-container ">
+                <div class="nav-container flex">
+                    <router-link :to="`/user/activity/${loggedinUser._id}/match`">My Swaps
+                    </router-link>
+                    <router-link :to="`/user/activity/${loggedinUser._id}/request`">My Requests
+                    </router-link>
+                    <router-link :to="`/user/activity/${loggedinUser._id}/recieve`">Request For Me
+                    </router-link>
+                </div>
+                <router-view></router-view>
             </div>
-            <router-view></router-view>
         </div>
     </section>
 </template>
@@ -67,11 +69,22 @@ export default {
 <style scoped lang="scss">
   @import "~@/assets/scss/style.scss";
 
+  .activity-container {
+      width: 100%;
+  }
+
+.activity-nav-container {
+    width: 980px;
+  }
+
 .nav-container {
     align-items: center;
+    align-self: center;
     // justify-content: space-around;
     // padding: 30px;
     font-family: 'Ubuntu-regular';
+    margin: 20px 30px 10px 30px;
+    // align-self: flex-start;
     a {
         padding: 15px;
         color: #F6AB2B;
@@ -90,5 +103,8 @@ export default {
             color: $main-color;
         }
     }
+.games-box {
+    width: 300px;
+}
 }
 </style>
