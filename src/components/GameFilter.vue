@@ -1,5 +1,5 @@
 <template>
-  <div class="filter-gallery-container flex flex-start ">
+  <div class="filter-gallery-container flex flex-start">
     <el-button class="filter">
         <font-awesome-icon icon="filter" class="fiter-icon" 
          :class="{close: isFilterOpen}" @click="isFilterOpen=!isFilterOpen"/>
