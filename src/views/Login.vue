@@ -70,7 +70,7 @@ export default {
   methods: {
     login() {
       this.$router.push('/game')
-      // console.log("login user##", this.user);
+      console.log("login user##", this.user);
       this.$store.dispatch ({
             type: "getUser",
             user: this.user

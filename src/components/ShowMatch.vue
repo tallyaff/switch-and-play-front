@@ -98,7 +98,8 @@ export default {
     },
     getUserActive() {
       let userActiveId = this.match.userActive.userId;
-      UserService.getUserById(userActiveId).then(user => {
+      UserService.getUserById(userActiveId)
+      .then(user => {
         console.log("this.userActive in show match:", user);
         this.userActive = user;
       });
@@ -126,6 +127,10 @@ export default {
         // console.log('match id', this.currRecieved);
         // console.log('###match:!!', match);
         this.$store.dispatch({ type: "updateMatch", matchDetails: match })
+        .then( () => {
+                this.$router.push('/');
+                this.$socket.emit('newMatch')
+            })
     },
   }
 };

@@ -1,8 +1,8 @@
 <template>
     <section class="flex justify-center">
-        <button class="btn-back" @click="back">
-        <font-awesome-icon icon="arrow-circle-left" class="back" />
-        </button>
+        
+        
+        
         <div v-if="!isMatch" class="game-box-container flex align-center justify-center column">
             <h3 class="game-name capitalize">{{game.name}}</h3>
             <p class="game-desc capitalize">{{game.desc}}</p>
@@ -18,8 +18,13 @@
                     <p><span>Added At: </span>{{game.addedAt | getDate }}</p>
                 </div>
             </div>
-            <el-button @click="itsMatch" type="primary" class="btn btn-choose">Choose me! 
-            </el-button>
+            <div class="btns-select flex space-between">
+                <button class="btn-back" @click="back" title="back">
+                    <font-awesome-icon icon="arrow-left" class="back" />
+                </button>
+                <el-button @click="itsMatch" type="primary" class="btn btn-choose" title="choose">Choose me! 
+                </el-button>
+            </div>
             <!-- <el-button @click="itsMatch(game._id, match._id)" type="primary" class="btn btn-choose">Choose me! 
             </el-button> -->
         </div>
@@ -67,15 +72,13 @@ export default {
             // console.log('game id', this.choosenGame);
             // console.log('match id', this.currRecieved);
             // console.log('###match:!!', match);
-            this.$store.dispatch({ type: "updateMatch", matchDetails: match })
-            .then( () => {
-                this.$socket.emit('newMatch')
-            })
+            
         },
         getUser() {
             let userId = this.game.userId;
             console.log("userId in game select:", userId);
-            UserService.getUserById(userId).then(user => {
+            UserService.getUserById(userId).
+            then(user => {
             console.log("this.user in game select:", user);
                 this.user = user;
             });
@@ -164,7 +167,15 @@ export default {
 .btn-choose {
     background-color: $main-color;
     font-size: rem(20px);
-    margin-bottom: rem(30px);
     width: 150px;
+}
+.btn-back {
+    font-size: 2em;
+    color: $secondary-color;
+}
+.btns-select {
+    align-items: center;
+    margin-bottom: rem(30px);
+    width: 220px;
 }
 </style>
