@@ -1,12 +1,12 @@
 <template>
     <section>
         <div class="activity-container flex column">
-            <div class="nav-container flex container">
-                <router-link :to="`/user/activity/${loggedinUser._id}/match`">Swapping
+            <div class="nav-container flex">
+                <router-link :to="`/user/activity/${loggedinUser._id}/match`">Swaps
                 </router-link>
                 <router-link :to="`/user/activity/${loggedinUser._id}/request`">My Requests
                 </router-link>
-                <router-link :to="`/user/activity/${loggedinUser._id}/recieve`"> Request From Me
+                <router-link :to="`/user/activity/${loggedinUser._id}/recieve`">Request For Me
                 </router-link>
             </div>
             <router-view></router-view>
@@ -78,6 +78,10 @@ export default {
         transition: all 0.3s ease;
         position: relative;
         font-size: 1.3em;
+
+        @media only screen and  (max-width: 540px) {
+            font-size: 1em;
+        }
 
         &.router-link-exact-active {
             color: $main-color;

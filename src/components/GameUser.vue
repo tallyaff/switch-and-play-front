@@ -36,5 +36,10 @@ export default {
 <style scoped lang="scss">
   @import "~@/assets/scss/style.scss";
 
+.nameUser {
+    color: #F6AB2B;
+    font-family: "Ubuntu-regular";
+    padding: 5px;
+}
    
 </style>

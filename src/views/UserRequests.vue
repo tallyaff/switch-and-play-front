@@ -15,7 +15,7 @@
                 </li>
             </ul>
             <div v-else>
-                <h1> no request for now...</h1>
+                <h1> no requests for now...</h1>
             </div>
         </div>
     </section>

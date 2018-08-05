@@ -14,9 +14,11 @@
                             <GameUserName :userId="recieve.userActive.userId" class="username"></GameUserName>
                         </div>  
                         <div class="flex msg-box">
-                            <GameUserImg :userId="recieve.userActive.userId"></GameUserImg>
+                            <GameUserImg :userId="recieve.userActive.userId" class="msg-box-img"></GameUserImg>
                             <h4>{{recieve.textareaReq}}</h4>
                         </div>
+                        <!-- <div class="user-img" :style="{backgroundImage: `url(${recieve.userPassiveGame.src})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundrepeat: 'no-repeat'}">
+                        </div>  -->
                         <div class="img-activity-container flex">
                             <img :src="recieve.userPassiveGame.src"/>
                         </div>
@@ -32,7 +34,7 @@
                                     <div class="img-activity-container">
                                         <img :src="game.src"/>
                                     </div>
-                                    <div class="flex btns-details">
+                                    <!-- <div class="flex btns-details"> -->
                                         <!-- <el-button @click="getMatch(game, recieve)" type="primary" class="details-btn"> -->
                                             <!-- <font-awesome-icon icon="info"/> 
                                             <h5>choose</h5>
@@ -40,7 +42,7 @@
                                         <el-button @click="getMatch(game, recieve)" type="primary" class="details-btn">
                                             <font-awesome-icon icon="info" class="pen"/> 
                                         </el-button>     -->
-                                    </div>
+                                    <!-- </div> -->
                                 </div>
                             </li>
                         </ul>
@@ -116,9 +118,11 @@ export default {
 }
 
 .recieve {
-  // border: 1px solid $border-color;
-  // box-shadow: 0px 2px 4px 0px #d9d8d8;
-  // border-radius: 2px;
+
+    // border: 1px solid $border-color;  
+    // box-shadow: 0px 2px 4px 0px #d9d8d8;
+    // border-radius: 2px;
+
 }
 
 .choose-one {
@@ -134,6 +138,7 @@ export default {
     cursor: pointer;
   }
 }
+
 
 
 .user-ask {
@@ -173,6 +178,12 @@ export default {
   }
   .games-container{
       flex-direction: row;
-  }
 }
+
+.game-box {
+    height: 250px;
+    justify-content: space-between;
+
+}
+
 </style>
