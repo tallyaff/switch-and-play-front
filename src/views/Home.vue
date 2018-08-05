@@ -92,43 +92,42 @@
                     </div>
                 </div>
             </div>
-
-            <div class="teen-cards-container space-between justify-center">
-                <div class="teen-cards flex container">
-                    <div class="filter-type home-filter-container home-filter-container-teen flex column align-center justify-center">
-                        <router-link :to="'/game'" @click.native="setFilter('teen')">
-                            <h2 class="type-title-home">Most popular teen games</h2>
-                        </router-link>
-                        <ul v-if="gamesForTeenHomeDisplay" class="cards-container-home flex clean-list content-center">
-                            <li v-for="game in gamesForTeenHomeDisplay.slice(2, 6)" :key="game._id">
-                                <router-link :to="`/game/${game._id}/`">
-                                    <el-card class="card-home">
-                                        <div v-if="game.isNew" class="game-new-icon">
-                                            <img src="img/new-icon.png">
-                                        </div>
-                                        <div class="image-container flex align-center justify-center">
-                                            <img :src="game.src" class="image-card">
-                                        </div>
-                                        <div class="card-text-container flex justify-center align-center column">
-                                              <div type="text" class="user-name-card-home">
-                                                 <gameUser :userId="game.userId" class="user-game-container flex column"></gameUser>
+              <div class="teen-cards-container space-between justify-center">
+                  <div class="teen-cards flex container justify-center">
+                      <div class="filter-type home-filter-container home-filter-container-teen flex column align-center justify-center">
+                          <router-link :to="'/game'" @click.native="setFilter('teen')">
+                              <h2 class="type-title-home">Most popular teen games</h2>
+                          </router-link>
+                          <ul v-if="gamesForTeenHomeDisplay" class="cards-container-home flex clean-list content-center">
+                              <li v-for="game in gamesForTeenHomeDisplay.slice(2, 6)" :key="game._id">
+                                  <router-link :to="`/game/${game._id}/`">
+                                      <el-card class="card-home">
+                                          <div v-if="game.isNew" class="game-new-icon">
+                                              <img src="img/new-icon.png">
+                                          </div>
+                                          <div class="image-container flex align-center justify-center">
+                                              <img :src="game.src" class="image-card">
+                                          </div>
+                                          <div class="card-text-container flex justify-center align-center column">
+                                                <div type="text" class="user-name-card-home">
+                                                  <gameUser :userId="game.userId" class="user-game-container flex column"></gameUser>
+                                                </div>
+                                              <span class="card-game-name">{{game.name}}</span>
+                                              <div class="username-time-container flex space-between align-center space-between">
+                                                  <time class="time">{{ game.addedAt | getDate }}</time>
                                               </div>
-                                            <span class="card-game-name">{{game.name}}</span>
-                                            <div class="username-time-container flex space-between align-center space-between">
-                                                <time class="time">{{ game.addedAt | getDate }}</time>
-                                            </div>
-                                        </div>
-                                    </el-card>
-                                </router-link>
-                            </li>
-                        </ul>
-                        <router-link class="link-to-gallery" :to="'/game'" @click.native="setFilter('teen')">
-                            <h2 class="link-to-gallery">See more...</h2>
-                        </router-link>
-                    </div>
-                </div>
+                                          </div>
+                                      </el-card>
+                                  </router-link>
+                              </li>
+                          </ul>
+                          <router-link class="link-to-gallery" :to="'/game'" @click.native="setFilter('teen')">
+                              <h2 class="link-to-gallery">See more...</h2>
+                          </router-link>
+                      </div>
+                  </div>
+              </div>
             </div>
-        </div>
     </section>
 </template>
 <script>
@@ -339,6 +338,10 @@ export default {
     font-size: rem(20px);
     color: $main-color;
     padding: 0;
+    width: 170px;
+    white-space: nowrap; 
+    overflow:hidden;
+    text-overflow:ellipsis;
     // text-shadow: 2px 1px $secondary-color;
   }
   .game-new-icon .game-new-icon {

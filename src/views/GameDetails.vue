@@ -204,6 +204,10 @@ export default {
   .game-details-container  {
     flex-direction: row;
   }
+
+  .game-details-all {
+   width: 980px;
+ }
 }
 
 // @media (min-width: 730px) {
