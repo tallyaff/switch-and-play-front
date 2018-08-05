@@ -20,18 +20,18 @@
                   </div>
                 </div>
             </div>
-            <el-button @click="schedule" class="btn-schedule" type="primary">Schedule swap</el-button>
+            <!-- <el-button @click="schedule" class="btn-schedule" type="primary">Schedule swap</el-button> -->
             <!-- <div v-if="userActive && isSchedule && currRecieved" class="meet-form align-center justify-center"> -->
-            <div v-if="userActive && isSchedule" class="meet-form align-center justify-center">
-                <h3 class="text margin-bottom"><span class="username capitalize">{{userActive.username}}</span> lives in {{userActive.city}}</h3>
+            <div v-if="userActive" class="meet-form align-center justify-center">
+                <h3 class="text margin-bottom"><span class="username capitalize">{{userActive.username}}</span> lives in {{userActive.city}}, send him/her a message</h3>
                 <div class="form-meeting flex column align-center justify-center">
                     <div class="form-input-title">
                         <!-- <h3 class="small-text">Type a message:</h3> -->
-                        <el-input class="form-input form-textarea" type="textarea" v-model="textareaRes"></el-input>                    
+                        <el-input class="form-input form-textarea" type="textarea" v-model="textareaRes" placeholder="Please type yours message"></el-input>                    
                     </div>
                     <div class="btns-container">
                     <el-button class="btn send-btn" type="primary" @click="itsMatch(game._id, match._id)">Send</el-button>
-                    <el-button class="btn cancel-btn" type="info">Cancel</el-button>
+                    <!-- <el-button class="btn cancel-btn" type="info">Cancel</el-button> -->
                     </div>
                 </div>
             </div>
@@ -76,8 +76,8 @@ export default {
         gameActive: null,
         userActive: null,
         gamePassive: null,
-        textareaRes: `Please type yours message`,
-        isSchedule: false,
+        textareaRes: ``,
+        // isSchedule: false,
         };
   },
   created() {
@@ -111,9 +111,9 @@ export default {
         this.gamePassive = game;
       });
     },
-    schedule() {
-        this.isSchedule = !this.isSchedule;
-    },
+    // schedule() {
+    //     this.isSchedule = !this.isSchedule;
+    // },
     itsMatch(gameId, matchId) {
         // this.choosenGameId = gameId;
         // console.log('this.choosenGame in itsMatch', this.choosenGame);

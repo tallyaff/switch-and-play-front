@@ -26,9 +26,9 @@ export default {
           type: "setUser",
           currUser: this.currUser
         })
-      $(window).load(function(){
-        $('.loader').fadeOut();
-      });
+      // $(window).load(function(){
+      //   $('.loader').fadeOut();
+      // });
   }
 };
 </script>
