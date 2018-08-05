@@ -42,7 +42,7 @@ export default {
             // console.log('currUser from action***', payload.user);
             UserService.getUser(payload.user)
                .then(currUser => {
-                //    console.log('user from backend in front', currUser);
+                   console.log('user from backend in front', currUser);
                    context.commit({type: 'setUser', currUser})
                })
         },

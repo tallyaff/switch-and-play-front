@@ -1,10 +1,8 @@
 <template>
     <section class="flex justify-center">
-        <el-button class="btn-back">
-            <router-link :to="`/user/activity/${match.userPassive.userId}/recieve`">
+        <button class="btn-back" @click="back">
         <font-awesome-icon icon="arrow-circle-left" class="back" />
-        </router-link>
-        </el-button>
+        </button>
         <div v-if="!isMatch" class="game-box-container flex align-center justify-center column">
             <h3 class="game-name capitalize">{{game.name}}</h3>
             <p class="game-desc capitalize">{{game.desc}}</p>
@@ -66,6 +64,13 @@ export default {
         //   },
         itsMatch() {
             this.isMatch = true;
+            // console.log('game id', this.choosenGame);
+            // console.log('match id', this.currRecieved);
+            // console.log('###match:!!', match);
+            this.$store.dispatch({ type: "updateMatch", matchDetails: match })
+            .then( () => {
+                this.$socket.emit('newMatch')
+            })
         },
         getUser() {
             let userId = this.game.userId;
@@ -75,21 +80,29 @@ export default {
                 this.user = user;
             });
         },
+        back(){
+            this.$router.go();
+        },
     },
 }
 </script>
 
 <style scoped lang="scss">
   @import "~@/assets/scss/style.scss";
+
 .btn-back{
-    width: 25px;
-    height: 38px;
-    font-size: 0.875rem;
-    background-color: #0D72FA;
-    margin-left: 20px;
-    color:white;
-    
+  // margin-top: 20px;
+  width: 25px;
+  height: 38px;
+  text-align: left;
+  background-color: $main-color;
+  color: $main-color;
+  margin-right: 20px;
+  border: none;
+  background-color: transparent;
+  // position: absolute;
 }
+    
 .game-box-container {
     margin-top: 50px;
     line-height: 1.6;

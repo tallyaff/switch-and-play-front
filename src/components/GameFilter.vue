@@ -1,9 +1,8 @@
 <template>
   <div class="filter-gallery-container flex flex-start ">
-    <el-button class="filter">
-        <font-awesome-icon icon="filter" class="fiter-icon" 
-         :class="{close: isFilterOpen}" @click="isFilterOpen=!isFilterOpen"/>
-</el-button>
+    <button class="btn-filter" :class="{close: isFilterOpen}" @click="isFilterOpen=!isFilterOpen">
+        <font-awesome-icon icon="filter" class="fiter-icon" />
+</button>
 
         <form @submit.prevent="setFilter" class="search-in-gallery">
             <el-input class="search-input" type="text" v-model="filterBy.name" placeholder="Search for games" autofocus></el-input>
@@ -124,19 +123,29 @@ export default {
   text-align: left;
   padding-left: 20px;
   transition: 0.5s;
-  height: 100%;
+    overflow-y: scroll;
+    max-height: 100vh;
   width: 200px;
   position: fixed;
-  z-index: 1;
+  z-index: 7;
   top: 92;
   left: 0;
-  background-color: $secondary-color-hover;
+  background-color:$card-text-color; 
   padding-top: 15px;
 
+  // #e7e7e8bd
 }
 // .checkbox-filter-container.open {
 //   transform: translate(0, 0);
 // }
+
+.btn-filter {
+  border: none;
+  background-color: transparent;
+  height: 38px;
+  padding-right: 20px;
+  color: $main-color;
+}
 
 .checkbox-filter {
   color: $secondary-color;
@@ -208,7 +217,7 @@ h3 {
 }
 .filter-gallery-container {
   margin-top: 30px;
-  padding:0 5px;
+  padding: 0 5px;
 }
 // @media (min-width: 300px) {
 //   .filter-gallery-container{
@@ -219,19 +228,17 @@ h3 {
 // }
 
 // }
-.exit{
+.exit {
   cursor: pointer;
-    float: right;
-    padding-right: 10px;
+  float: right;
+  padding-right: 10px;
 }
 
 @media (min-width: 420px) {
-
-.filter-gallery-container {
-  padding:0 20px;
+  .filter-gallery-container {
+    padding: 0 20px;
+  }
 }
-}
-
 
 @media (min-width: 980px) {
   .search-in-gallery .search-input {
@@ -250,6 +257,9 @@ h3 {
   }
   .el-button + .el-button {
     margin-left: 0;
+  }
+  .btn-filter{
+    display: none;
   }
 }
 </style>
