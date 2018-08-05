@@ -62,7 +62,7 @@ export default {
             .then( () => {
                 this.$socket.emit('newMatch')
             })
-          },
+        },
         getUser() {
             let userId = this.game.userId;
             console.log("userId in game select:", userId);
