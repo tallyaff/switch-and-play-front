@@ -1,5 +1,5 @@
 <template>
-    <section>
+    <section class="edit-game-container">
     <h3 class="edit-title" >Edit your game!</h3>
         <div class="edit-game no-margin" v-if="gameCopy">
           <el-form class="no-margin" :label-position="labelPosition" @submit.native.prevent="saveGame"  style="width: 40%">
@@ -9,8 +9,15 @@
               <el-form-item label="Descreption">
               <el-input type="textarea" v-model="gameCopy.desc"/>
               </el-form-item>
+              <el-form-item label="Type">
+              <el-select class="select" v-model="gameCopy.type" placeholder="Type">
+                  <el-option class="option" value="baby">Baby</el-option>
+                  <el-option class="option" value="child">Child</el-option>
+                  <el-option class="option" value="teen">Teen</el-option>
+              </el-select>
+            </el-form-item>
               <el-form-item label="Category">
-              <el-select class="select" v-model="gameCopy.category">
+              <el-select class="select" v-model="gameCopy.category" placeholder="Category">
                   <el-option class="option" value="board-game">Board-game</el-option>
                   <el-option class="option" value="console">Console</el-option>
                   <el-option class="option" value="doll">Doll</el-option>
@@ -20,20 +27,13 @@
                   <el-option class="option" value="puzzle">Puzzle</el-option>
               </el-select>
               </el-form-item>
-          <el-form-item label="Type">
-              <el-select class="select" v-model="gameCopy.type">
-                  <el-option class="option" value="baby">Baby</el-option>
-                  <el-option class="option" value="child">Child</el-option>
-                  <el-option class="option" value="teen">Teen</el-option>
-              </el-select>
-              </el-form-item>
-          <el-form-item label="Condition">
-              <el-select class="select" v-model="gameCopy.condition">
+            <el-form-item label="Condition">
+              <el-select class="select" v-model="gameCopy.condition" placeholder="Condition">
                   <el-option class="option" value="brand-new">Brand new</el-option>
                   <el-option class="option" value="new">New</el-option>
                   <el-option class="option" value="used">Used</el-option>
               </el-select>
-              </el-form-item>
+            </el-form-item>
               <el-button class="btn-save" type="primary" @click="saveGame">Save</el-button>
               <el-button @click="$router.go(-1)">Cancel</el-button>
           </el-form>
@@ -96,13 +96,18 @@ export default {
 <style scoped lang="scss">
 // @import '~@/assets/scss/style.scss';
 // @import  'node_modules/sweetalert/src/sweetalert.scss';
+
+  .edit-game-container {
+    margin: rem(20px);
+  }
+
   .btn-save{
       background-color: $main-color;
   }
 
   .edit-title {
     font-family: 'Lato-regular';
-    margin: rem(20px), 0;
+    margin: 20px 0;
   }
   .edit-game {
     border: 1px solid $main-color;

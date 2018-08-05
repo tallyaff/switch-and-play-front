@@ -313,7 +313,7 @@ export default {
     height: rem(150px);
   }
   .image-card {
-    width: 100%;
+    width: 80%;
 
     // height: 100%;
     // width: auto;
@@ -353,6 +353,7 @@ export default {
     color: $secondary-color;
     font-family: "Ubuntu-regular";
     position: relative;
+    margin-bottom: 10px;
     // top: -40px;
     // left: -40px;
     // align-self: flex-end;
@@ -420,13 +421,13 @@ export default {
 
 @media (min-width: 540px) {
   .header-bg-image {
-    top: 208px;
+    top: 212px;
     font-size: rem(33px);
   }
-    .search {
-  margin-bottom: rem(18px);
-  bottom: rem(-70px);
-}
+  .search {
+    margin-bottom: rem(18px);
+    bottom: rem(-70px);
+  }
 }
 
 
@@ -435,7 +436,7 @@ export default {
 
 @media (min-width: 800px) {
   .header-bg-image {
-    top: 320px;
+    top: 309px;
     font-size: rem(50px);
   }
   .home-bg-img {
@@ -468,23 +469,21 @@ export default {
     justify-content: flex-start;
   }
   .search {
-  margin-bottom: rem(18px);
-  bottom: rem(-90px);
-}
+    margin-bottom: rem(18px);
+    bottom: rem(-80px);
+  }
 }
 
 @media (min-width: 1080px) {
   .header-bg-image {
-    top: 320px;
     font-size: rem(60px);
   }
   .type-title-home {
     font-size: rem(40px);
   }
   .search {
-  margin-bottom: rem(20px);
-  bottom: rem(-100px);
-}
+    margin-bottom: rem(20px);
+  }
 
 }
 </style>

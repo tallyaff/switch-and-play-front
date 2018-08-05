@@ -11,6 +11,7 @@ import moment from 'moment'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faCoffee, faUser, faBell,faArrowCircleLeft, faExchangeAlt, faSearch , faFilter, faTimes } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import i18n from 'vue-i18n';
 
 
 import { faInfo } from '@fortawesome/free-solid-svg-icons'
@@ -46,7 +47,7 @@ library.add(faTimes);
 //   template: '<App/>'
 // })
 
-
+Vue.use(i18n);
 Vue.use(require('vue-moment'));
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 

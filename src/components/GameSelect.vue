@@ -16,6 +16,7 @@
                     <p><span>Type: </span>{{game.type}}</p>
                     <p><span>Category: </span>{{game.category}}</p>
                     <p><span>Condition: </span>{{game.condition}}</p>
+                    <p v-if="user"><span>Location: </span>{{user.city}}</p>
                     <p><span>Added At: </span>{{game.addedAt | getDate }}</p>
                 </div>
             </div>
@@ -28,6 +29,7 @@
 
 <script>
 import ShowMatch from "@/components/ShowMatch.vue";
+import UserService from "@/services/UserService.js";
 
 export default {
     name: 'GameSelect',
@@ -38,12 +40,14 @@ export default {
     created() {
         // console.log('!!match: ', this.match)
         // console.log('!!game: ', this.game)
-},
+        this.getUser();
+    },
     data() {
         return {
             choosenGame: '',
             currRecieved: '',
             isMatch: false,
+            user: null,
         }
     },
     methods: {
@@ -57,6 +61,14 @@ export default {
             // console.log('match id', this.currRecieved);
             // console.log('###match:!!', match);
             this.$store.dispatch({ type: "updateMatch", matchDetails: match })
+          },
+        getUser() {
+            let userId = this.game.userId;
+            console.log("userId in game select:", userId);
+            UserService.getUserById(userId).then(user => {
+            console.log("this.user in game select:", user);
+                this.user = user;
+            });
         },
     },
 }
@@ -128,6 +140,7 @@ export default {
 
 .details {
     justify-content: space-around;
+    font-size: 18px;
 }
 
 .btn-choose {
