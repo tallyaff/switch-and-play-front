@@ -1,12 +1,12 @@
 <template>
     <section>
         <div class="activity-container flex column">
-            <div class="nav-container flex">
+            <div class="nav-container flex container">
                 <router-link :to="`/user/activity/${loggedinUser._id}/match`">Swapping
                 </router-link>
                 <router-link :to="`/user/activity/${loggedinUser._id}/request`">My Requests
                 </router-link>
-                <router-link :to="`/user/activity/${loggedinUser._id}/recieve`">Request From Me
+                <router-link :to="`/user/activity/${loggedinUser._id}/recieve`"> Request From Me
                 </router-link>
             </div>
             <router-view></router-view>
@@ -70,7 +70,7 @@ export default {
 .nav-container {
     align-items: center;
     // justify-content: space-around;
-    padding: 30px;
+    // padding: 30px;
     font-family: 'Ubuntu-regular';
     a {
         padding: 15px;

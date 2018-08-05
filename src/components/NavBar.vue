@@ -47,7 +47,7 @@ export default {
     min-width: 100%;
     transform: translate(100%, 0);
     transition: all .8s;
-    z-index: 1;
+    z-index: 2;
     background-color: $secondary-color;
     width: 100%;
     color: white;

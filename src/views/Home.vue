@@ -447,6 +447,7 @@ export default {
   }
   .search-btn-text {
     display: block;
+    font-family: "Ubuntu-regular";
     height: 50px;
     float: right;
     font-size: rem(18px);
