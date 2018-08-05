@@ -1,49 +1,42 @@
 <template>
-  <div class="filter-gallery-container flex flex-start ">
-    <button class="btn-filter" :class="{close: isFilterOpen}" @click="isFilterOpen=!isFilterOpen">
-        <font-awesome-icon icon="filter" class="fiter-icon" />
-</button>
-
-        <form @submit.prevent="setFilter" class="search-in-gallery">
+    <div class="filter-gallery-container flex flex-start ">
+        <button class="btn-filter" @click="isFilterOpen=!isFilterOpen">
+            <font-awesome-icon icon="filter" class="fiter-icon" />
+        </button>
+        <form @submit.prevent="setFilter" class="search-in-gallery flex">
             <el-input class="search-input" type="text" v-model="filterBy.name" placeholder="Search for games" autofocus></el-input>
-                <el-button class="btn search-btn" type="primary"><font-awesome-icon icon="search"></font-awesome-icon></el-button>
-                <el-button class="btn search-btn-text" type="primary">Search</el-button>
-
+            <el-button class="btn search-btn" type="primary">
+                <font-awesome-icon icon="search"></font-awesome-icon>
+            </el-button>
+            <el-button class="btn search-btn-text" type="primary">Search</el-button>
         </form>
-        <div v-if="isFilterOpen"  class="checkbox-filter-container capitalize" :class="{open: isFilterOpen}" >
-              <div class="exit">
-        <font-awesome-icon icon="times" class="exit-icon" 
-         :class="{close: isFilterOpen}" @click="isFilterOpen=!isFilterOpen"/>
-</div>
-        <el-checkbox v-show='false' class="checkbox-filter" label="All" value="all" v-model="filterBy.allByName" @change="setFilter"></el-checkbox>
-        <div>
-            <h3>Type</h3>
-                <!-- <el-checkbox class="checkbox-filter" label="All types" value="all-types" v-model="filterBy.allTypes" @change="setFilter"></el-checkbox>
-                <ul v-if="allFilterTypes">
-                  <li v-for="oneType in allFilterTypes" :key="oneType._id"> 
-                      <el-checkbox class="checkbox-filter" :label='oneType' :value="oneType" v-model="filterBy.type" @change="setFilter"></el-checkbox>
-                  </li>
-                </ul> -->
-            <el-checkbox class="checkbox-filter" label="All types" :value="filterBy.allTypes" @change="toggleAllTypes"></el-checkbox>
-              <el-checkbox-group v-model="filterBy.type" v-if="allFilterTypes" @change="setFilter">
-                <ul class="checkbox flex column">
-                  <li class="checkbox" v-for="oneType in allFilterTypes" :key="oneType">
-                    <el-checkbox class="checkbox-filter" :label="oneType"></el-checkbox>
-                  </li>
-                </ul>
-              </el-checkbox-group>
-            <h3>Category</h3>
-              <el-checkbox class="checkbox-filter" label="All categories" :value="filterBy.allCategories" @change="toggleAllCategories"></el-checkbox>
-              <el-checkbox-group class="checkbox-filter" v-model="filterBy.category" v-if="allFilterCategories" @change="setFilter">
-                <ul class="checkbox flex column">
-                  <li v-for="oneCategory in allFilterCategories" :key="oneCategory">
-                    <el-checkbox class="checkbox-filter" :label="oneCategory"></el-checkbox>
-                  </li>
-                </ul>
-              </el-checkbox-group>
+        <div class="checkbox-filter-container capitalize" :class="{open: isFilterOpen}">
+            <div class="exit">
+                <font-awesome-icon icon="times" class="exit-icon" :class="{close: isFilterOpen}" @click="isFilterOpen=!isFilterOpen" />
+            </div>
+            <!-- <el-checkbox v-show='false' class="checkbox-filter" label="All" value="all" v-model="filterBy.allByName" @change="setFilter"></el-checkbox> -->
+            <div class="filter-menue">
+                <h3>Type</h3>
+                <el-checkbox class="checkbox-filter" label="All types" :value="filterBy.allTypes" @change="toggleAllTypes"></el-checkbox>
+                <el-checkbox-group v-model="filterBy.type" v-if="allFilterTypes" @change="setFilter">
+                    <ul class="checkbox flex column">
+                        <li class="checkbox" v-for="oneType in allFilterTypes" :key="oneType">
+                            <el-checkbox class="checkbox-filter" :label="oneType"></el-checkbox>
+                        </li>
+                    </ul>
+                </el-checkbox-group>
+                <h3>Category</h3>
+                <el-checkbox class="checkbox-filter" label="All categories" :value="filterBy.allCategories" @change="toggleAllCategories"></el-checkbox>
+                <el-checkbox-group class="checkbox-filter" v-model="filterBy.category" v-if="allFilterCategories" @change="setFilter">
+                    <ul class="checkbox flex column">
+                        <li v-for="oneCategory in allFilterCategories" :key="oneCategory">
+                            <el-checkbox class="checkbox-filter" :label="oneCategory"></el-checkbox>
+                        </li>
+                    </ul>
+                </el-checkbox-group>
+            </div>
         </div>
-        </div>
-  </div>
+    </div>
 </template>
 
 <script>
@@ -126,7 +119,7 @@ body {
   padding-left: 20px;
   transition: 0.5s;
   overflow-y: scroll;
-  max-height: 100vh;
+  height: 400px;
   width: 200px;
   position: fixed;
   z-index: 7;
@@ -135,11 +128,7 @@ body {
   background-color: $card-text-color;
   padding-top: 15px;
 
-  // #e7e7e8bd
 }
-// .checkbox-filter-container.open {
-//   transform: translate(0, 0);
-// }
 
 .btn-filter {
   border: none;
@@ -160,16 +149,8 @@ body {
 .search-in-gallery .search-input {
   width: 350px;
   margin-bottom: rem(20px);
-  // height: 100px;
-  // box-shadow: inset 0 0 3px 0px #000000ab;
 }
 
-.search-in-gallery {
-  // position: absolute;
-  // top: 120px;
-  // margin: rem(20px);
-  // left: 143px;
-}
 h3 {
   text-align: left;
   margin-bottom: 10px;
@@ -183,14 +164,12 @@ h3 {
 }
 
 .filter {
-  // margin-top: 20px;
   width: 25px;
   height: 38px;
   text-align: left;
   background-color: $main-color;
   color: white;
   margin-right: 20px;
-  // position: absolute;
 }
 
 .search-btn-text {
@@ -198,8 +177,6 @@ h3 {
 }
 
 .search-btn {
-  // display: none;
-  // height: 50px;
   width: 25px;
   height: 38px;
   font-size: rem(14px);
@@ -209,27 +186,17 @@ h3 {
   width: 180px;
 
   margin-bottom: rem(20px);
-  // height: 100px;
-  // box-shadow: inset 0 0 3px 0px #000000ab;
+
 }
 
 .search-in-gallery {
-  // position: absolute;
   top: 20%;
 }
 .filter-gallery-container {
   margin-top: 30px;
   padding: 0 5px;
 }
-// @media (min-width: 300px) {
-//   .filter-gallery-container{
-//     display:none;
-//   }
-//   .filter-icon{
-//   display:block;
-// }
 
-// }
 .exit {
   cursor: pointer;
   float: right;
@@ -239,6 +206,15 @@ h3 {
 @media (min-width: 420px) {
   .filter-gallery-container {
     padding: 0 20px;
+  }
+}
+@media (max-width: 980px) {
+  .checkbox-filter-container {
+    display: none;
+
+    &.open {
+      display: block;
+    }
   }
 }
 
@@ -267,28 +243,45 @@ h3 {
     overflow: auto;
   }
   .checkbox-filter-container {
-  // text-align: left;
-  // padding-left: 20px;
-  // overflow-y: scroll;
-  // max-height: 100vh;
-  // width: 200px;
-  // position: unset;
-  // z-index: 7;
-  // top: 92px;
-  // left: 0;
-  // background-color: $card-text-color;
-  // padding-top: 15px;
+    text-align: left;
+    padding-left: 20px;
+    transition: 0;
+    overflow-y: unset;
+    max-height: 300px;
+    position: unset;
+    z-index: 7;
+    top: 92px;
+    left: 0;
+    background-color: white;
+    padding-top: 15px;
+    width: 140px;
+    position: absolute;
+    margin-top: 69px;
+    margin-left: 10px;
 
-  // #e7e7e8bd
-}
+    h3 {
+      margin-top: 5px;
+    }
+  }
+  .exit {
+    display: none;
+  }
+  .gallery-container {
+    flex-direction: row;
+  }
 
-  //   .checkbox-filter-container {
-  //   text-align: left;
-  //   position: unset;
-  //   z-index: 7;
-  //   padding-top: 15px;
+  .filter-gallery-container {
+    height: 50px;
+    flex-direction: column;
+    .container {
+      max-width: 1200px;
+    }
+  }
+  @media (min-width: 1130px) {
+      .checkbox-filter-container {
+    margin-left: 50px;
 
-  //   // #e7e7e8bd
-  // }
+      }
+  }
 }
 </style>

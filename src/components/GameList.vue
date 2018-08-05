@@ -12,21 +12,21 @@
 </template>
 
 <script>
-import GamePreview from '@/components/GamePreview.vue'
+import GamePreview from "@/components/GamePreview.vue";
 
 export default {
-  name: 'GameList',
-  props: ['games'],
+  name: "GameList",
+  props: ["games"],
   components: {
     GamePreview
   },
-    computed: {
+  computed: {
     // user() {
     //   return this.$store.getters.setLoginUser;
     //   console.log('user', this.$store.getters.setLoginUser);
     // },
   }
-}
+};
 </script>
 
 <style scoped lang="scss">
@@ -85,6 +85,8 @@ export default {
   @media (min-width: 980px) {
     .game-cards-container{
       justify-content: space-between;
-    }
+      margin-left: 120px;
+}
+
   }
 </style>
