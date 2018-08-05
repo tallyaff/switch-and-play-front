@@ -62,13 +62,13 @@ export default {
         const matchReq = {
           userPassive: {
             userId: this.ownerUserId,
-            gameId: this.game._id
+            gameId: this.game._id,
           },
           userActive: {
             userId: this.user._id,
-            games: this.gamesToSwitch
+            games: this.gamesToSwitch,
+            textareaReq: this.textareaReq,
           },
-          textareaReq: this.textareaReq,
           isMatch: false
         };
       this.$store.dispatch({ type: "createMatch", newMatch: matchReq })

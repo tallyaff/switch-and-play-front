@@ -14,7 +14,7 @@
                         </div>  
                         <div class="flex msg-box">
                             <GameUserImg :userId="recieve.userActive.userId"></GameUserImg>
-                            <h4>{{recieve.textareaReq}}</h4>
+                            <h4>{{recieve.userActive.textareaReq}}</h4>
                         </div>
                         <div class="img-activity-container flex">
                             <img :src="recieve.userPassiveGame.src"/>

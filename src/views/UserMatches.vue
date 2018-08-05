@@ -27,7 +27,7 @@
                         </div>
                         <div class="flex msg-box">
                             <GameUserImg :userId="match.userPassive.userId"></GameUserImg>
-                            <h4>{{match.textareaReq}}</h4>
+                            <h4>{{match.userPassive.textareaRes}}</h4>
                         </div>
                     <!-- </div> -->
                 </li>
