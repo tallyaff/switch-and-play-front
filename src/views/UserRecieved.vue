@@ -15,7 +15,7 @@
                         </div>  
                         <div class="flex msg-box">
                             <GameUserImg :userId="recieve.userActive.userId" class="msg-box-img"></GameUserImg>
-                            <h4>{{recieve.textareaReq}}</h4>
+                            <h4>{{recieve.userActive.textareaReq}}</h4>
                         </div>
                         <!-- <div class="user-img" :style="{backgroundImage: `url(${recieve.userPassiveGame.src})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundrepeat: 'no-repeat'}">
                         </div>  -->
@@ -120,6 +120,10 @@ export default {
   // border: 1px solid $border-color;
   // box-shadow: 0px 2px 4px 0px #d9d8d8;
   // border-radius: 2px;
+}
+
+.img-activity-container img {
+  width: 85%;
 }
 
 .choose-one {

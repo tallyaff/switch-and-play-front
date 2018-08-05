@@ -18,8 +18,10 @@
                     <p><span>Added At: </span>{{game.addedAt | getDate }}</p>
                 </div>
             </div>
-            <el-button @click="itsMatch(game._id, match._id)" type="primary" class="btn btn-choose">Choose me! 
+            <el-button @click="itsMatch" type="primary" class="btn btn-choose">Choose me! 
             </el-button>
+            <!-- <el-button @click="itsMatch(game._id, match._id)" type="primary" class="btn btn-choose">Choose me! 
+            </el-button> -->
         </div>
         <ShowMatch :match="match" :game="game" v-if="isMatch"></ShowMatch>
     </section>
@@ -49,11 +51,18 @@ export default {
         }
     },
     methods: {
-        itsMatch(game, recieveId) {
-            this.choosenGame = game;
-            this.currRecieved = recieveId;
-            // const match = {gameId: this.choosenGame, match: this.recieve}
-            const match = {gameId: this.choosenGame, matchId: this.currRecieved}
+        // itsMatch(game, recieveId) {
+        //     this.choosenGame = game;
+        //     this.currRecieved = recieveId;
+        //     // const match = {gameId: this.choosenGame, match: this.recieve}
+        //     const match = {gameId: this.choosenGame, matchId: this.currRecieved}
+        //     this.isMatch = true;
+        //     // console.log('game id', this.choosenGame);
+        //     // console.log('match id', this.currRecieved);
+        //     // console.log('###match:!!', match);
+        //     this.$store.dispatch({ type: "updateMatch", matchDetails: match })
+        //   },
+        itsMatch() {
             this.isMatch = true;
             // console.log('game id', this.choosenGame);
             // console.log('match id', this.currRecieved);
