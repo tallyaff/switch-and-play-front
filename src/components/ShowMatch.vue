@@ -11,29 +11,29 @@
                         <img class="game-image" :src="game.src"/>
                     </div>
                 </div>
-            <img class="swap-arrows" src="img/swaparrows.png"/>
-            <div v-if="gamePassive" class="game-match-container margin-bottom flex column align-center space-between">
-                <h2 class="card-title margin-bottom">You swapped it with your awesome</h2>
-                <div class="name-image-container flex column align-center space-between">
+                <img class="swap-arrows" src="img/swaparrows.png"/>
+                <div v-if="gamePassive" class="game-match-container margin-bottom flex column align-center space-between">
+                  <h2 class="card-title margin-bottom">You swapped it with your awesome</h2>
+                  <div class="name-image-container flex column align-center space-between">
                     <h2 class="game-name capitalize margin-bottom">{{match.userPassiveGame.name}}</h2>
                     <img class="game-image" :src="gamePassive.src"/>
+                  </div>
                 </div>
             </div>
-            </div>
-
             <el-button @click="schedule" class="btn-schedule" type="primary">Schedule swap</el-button>
+            <!-- <div v-if="userActive && isSchedule && currRecieved" class="meet-form align-center justify-center"> -->
             <div v-if="userActive && isSchedule" class="meet-form align-center justify-center">
                 <h3 class="text margin-bottom"><span class="username capitalize">{{userActive.username}}</span> lives in {{userActive.city}}</h3>
-                <form  @submit.prevent="sendMeetForm" class="form-meeting flex column align-center justify-center">
+                <div class="form-meeting flex column align-center justify-center">
                     <div class="form-input-title">
                         <!-- <h3 class="small-text">Type a message:</h3> -->
-                        <el-input class="form-input form-textarea" type="textarea" v-model="formDetails.text"></el-input>                    
+                        <el-input class="form-input form-textarea" type="textarea" v-model="textareaRes"></el-input>                    
                     </div>
                     <div class="btns-container">
-                    <el-button class="btn send-btn" type="primary" @click="sendMeetForm">Send</el-button>
+                    <el-button class="btn send-btn" type="primary" @click="itsMatch(game._id, match._id)">Send</el-button>
                     <el-button class="btn cancel-btn" type="info">Cancel</el-button>
                     </div>
-                </form>
+                </div>
             </div>
 
         <!-- <el-button @click="schedule" class="btn-schedule" type="primary">Schedule swap</el-button> -->

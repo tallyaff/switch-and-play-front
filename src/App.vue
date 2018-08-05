@@ -1,7 +1,8 @@
 <template>
-    <div id="app">
+    <div id="app" class="app">
+      <!-- <div class="loader"></div> -->
         <Header></Header>
-        <router-view/>
+        <router-view class="body"/>
         <!-- <footer class="footer"> @ Created by Liron, Tally &amp; Adi</footer> -->
     </div>
 </template>
@@ -25,30 +26,54 @@ export default {
           type: "setUser",
           currUser: this.currUser
         })
+      $(window).load(function(){
+        $('.loader').fadeOut();
+      });
   }
 };
 </script>
 
 
 <style lang="scss">
-#app {
+.app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   font-weight: 200;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  height: 100%;
+  position: relative;
+  min-height: 100%;
+  height: 100%;
 }
 
 .footer {
   color: #0D72FA;
-  background-color: #dadada54;
+  background-color: #dadada;
   font-family: 'PaytoneOne';
   font-size: 1.25rem;
-  padding: 10px;
+  display: block;
   position: absolute;
   width: 100%;
+  height: 50px;
+  margin-top: -50px;
   bottom: 0;
+  text-align: center;
+}
+
+.body {
+  padding-bottom: 50px;
+}
+
+.loader {
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	background: url('http://www.downgraf.com/wp-content/uploads/2014/09/01-progress.gif?e44397') 50% 50% no-repeat rgb(249,249,249);
 }
 
 </style>
