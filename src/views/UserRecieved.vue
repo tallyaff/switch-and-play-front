@@ -141,7 +141,6 @@ export default {
 }
 
 .user-ask {
-  justify-content: center;
   align-content: center;
   // margin-right: 50px; butal
 
@@ -184,6 +183,7 @@ export default {
   .game-box {
     height: 250px;
     justify-content: space-between;
+
   }
 }
 </style>

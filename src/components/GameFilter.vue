@@ -14,7 +14,7 @@
             <div class="exit">
                 <font-awesome-icon icon="times" class="exit-icon" :class="{close: isFilterOpen}" @click="isFilterOpen=!isFilterOpen" />
             </div>
-            <!-- <el-checkbox v-show='false' class="checkbox-filter" label="All" value="all" v-model="filterBy.allByName" @change="setFilter"></el-checkbox> -->
+            <el-checkbox v-show='false' class="checkbox-filter" label="All" value="all" v-model="filterBy.allByName" @change="setFilter"></el-checkbox>
             <div class="filter-menue">
                 <h3>Type</h3>
                 <el-checkbox class="checkbox-filter" label="All types" :value="filterBy.allTypes" @change="toggleAllTypes"></el-checkbox>
@@ -64,6 +64,7 @@ export default {
   },
   created() {
     // console.log("creted game filter", this.filterBy);
+
 
     this.allFilterTypes = this.$store.getters.types;
     // console.log("allFilterTypes in home", this.allFilterTypes);
@@ -146,6 +147,11 @@ body {
 .search-btn {
   background-color: $main-color;
 }
+
+.search-btn-text {
+  line-height: 1px;
+}
+
 .search-in-gallery .search-input {
   width: 350px;
   margin-bottom: rem(20px);
@@ -279,7 +285,7 @@ h3 {
   }
   @media (min-width: 1130px) {
       .checkbox-filter-container {
-    margin-left: 50px;
+    margin-left: 150px;
 
       }
   }
