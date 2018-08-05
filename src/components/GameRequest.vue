@@ -4,7 +4,7 @@
         <h1 class="title-game-request">It's time to create your request!</h1>   
         <h2 class="title-games">Choose optional games for swapping</h2>
         <el-form class="request-container flex column">
-          <div class="games-container flex">
+          <div class="games-container flex justify-center">
             <div class="game" v-for="game in games" :key="game._id">
                 <game-preview :game="game" :isGameRequest="true" :newIcon="true" :condition="true" :location="true" :username="true" :gameCheckbox="true" @check="updateGamesToSwitch"></game-preview>
            </div>
@@ -31,8 +31,7 @@ export default {
   name: "GameRequest",
   props: ["game"],
   created() {
-    this.$store.dispatch({ type: "gamesById", games: this.user.games })
-    
+    this.$store.dispatch({ type: "gamesById", games: this.user.games });
   },
   data() {
     return {
@@ -57,7 +56,7 @@ export default {
       }
     },
     sendRequest() {
-      this.$router.push('/');
+      this.$router.push("/");
       this.ownerUserId = this.game.userId;
         const matchReq = {
           userPassive: {
@@ -74,16 +73,16 @@ export default {
       this.$store.dispatch({ type: "createMatch", newMatch: matchReq })
         .then(match => {
           swal("Whoo Hoo! Your request has been sent!", {
-          className: "swal-text",
-          icon: "success",
-          timer: 2000,
-          button: false
+            className: "swal-text",
+            icon: "success",
+            timer: 2000,
+            button: false
+          });
+          console.log("match:", match);
         })
-          console.log('match:', match);
-        })
-        .catch(err =>{
-          console.log('error send a request',err)
-        })
+        .catch(err => {
+          console.log("error send a request", err);
+        });
     }
   },
   computed: {
@@ -98,102 +97,159 @@ export default {
   },
   watch: {
     games(games) {
-      this.gamesToSwitch = games.map(game => game._id)
-      }
+      this.gamesToSwitch = games.map(game => game._id);
+    }
   }
 };
 </script>
 
 <style scoped lang="scss">
-    @import "~@/assets/scss/style.scss";
+@import "~@/assets/scss/style.scss";
 
-  .game-request {
-     max-width: rem(1200px);
-   }
+.game-request {
+  max-width: rem(1200px);
+}
 
-   .checkbox-game-request {
-     color: $main-color;
-   }
+.checkbox-game-request {
+  color: $main-color;
+}
 
-   .title-game-request, .title-games,.title-txt-area {
-     font-family: 'Ubuntu-regular';
-   }
+.title-game-request,
+.title-games,
+.title-txt-area {
+  font-family: "Ubuntu-regular";
+}
 
-   .title-game-request{
-     font-size: rem(40px);
-     margin-bottom: rem(20px);
-     margin-top: rem(60px);
-     // color: $main-color;
-   }
+.title-game-request {
+  //  font-size: rem(40px);
+  font-size: rem(25px);
+  margin-bottom: rem(20px);
+  margin-top: rem(60px);
+  // color: $main-color;
+}
 
-   .btn-back{
-     font-size: 10px;
-   &:hover {
-     color: $main-color;
-     }
-   }
+.btn-back {
+  font-size: 10px;
+  &:hover {
+    color: $main-color;
+  }
+}
 
-   .title-games {
-     text-align: center;
-   }
+.title-games {
+  text-align: center;
+  font-size: rem(20px);
+}
 
-   .title-games,.title-txt-area {
-     color: $secondary-color;
-   }
-   .games-container {
-     margin-top: 20px;
-     min-width: 70vw;
-     max-width: rem(1200px);
-     display: grid;
-     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-   }
+.title-games,
+.title-txt-area {
+  color: $secondary-color;
+}
+.games-container {
+  margin-top: 20px;
+  max-width: rem(1200px);
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  margin: 0;
+  padding-top: 20px;
+}
 
-  //  .choose-checkbox {
-  //    background-color: red;
-  //  }
+.btn-request {
+  font-family: "Ubuntu-regular";
+}
 
-   .btn-request {
-     font-family: "Ubuntu-regular";
-   }
+.game {
+  border: 1px solid $border-color;
+  // padding: rem(20px);
+  margin: rem(10px);
+  width: 250px;
+  height: 250px;
+  //  transition: all 0.5s;
+  &:hover {
+    //  transform: scale(0.95, 0.95);
+  }
+}
 
-   .game {
-     border: 1px solid $border-color;
-     // padding: rem(20px);
-     margin: rem(10px);
-     width: 250px;
-     height: 250px;
-    //  transition: all 0.5s;
-       &:hover {
-        //  transform: scale(0.95, 0.95);
-       }
-   }
+li {
+  padding: 20px;
+  margin: auto;
+}
+.textarea {
+  width: 200px;
+  //  width: 40%;
+  margin-top: 20px;
+}
+.btn-request {
+  width: 220px;
+  height: 50px;
+  align-self: center;
+  margin: 20px 0;
+  background-color: $main-color;
+  font-size: 20px;
+  color: white;
+}
+.req-container {
+  align-items: center;
+}
+.swal-text {
+  font-family: sans-serif;
+  color: #0d72fa;
+  font-size: 30px;
 
-   li {
-   padding: 20px;
-   margin: auto;
-   }
-   .textarea {
-     width: 40%;
-     margin-top: 20px;
-   }
-   .btn-request {
-     width: 220px;
-     height: 50px;
-     align-self: center;
-     margin: 20px 0;
-     background-color: $main-color;
-     font-size: 20px;
-     color: white
-     
-   }
-   .req-container{
-     align-items: center;
-   }
-   .swal-text {
-    font-family: sans-serif;
-    color: #0d72fa;
-    font-size: 30px;
+  //  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
 
-       //  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
- }
+// @media (min-width: 350px){
+//      .games-container {
+//      margin-top: 20px;
+//      min-width: 70vw;
+//      max-width: rem(1200px);
+//      display: grid;
+//      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+//    }
+
+// }
+// @media (min-width: 740px) {
+//   .games-container {
+//     min-width: 70vw;
+//     margin:20;
+//     width: 90%;
+//     padding: 20px 40px;
+//     -webkit-box-align: center;
+//     -ms-flex-align: center;
+//     align-items: center;
+//     margin: auto;
+//   }
+//   .textarea {
+//   width: 40%;
+//   margin-top: 20px;
+// }
+// }
+
+
+
+
+
+@media (min-width: 900px) {
+  .games-container {
+    min-width: 70vw;
+    margin:20;
+    width: 90%;
+    padding: 20px 40px;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin: auto;
+  }
+  .title-game-request {
+    font-size: rem(40px);
+  }
+  .title-games {
+   font-size: rem(20px);
+}
+  .textarea {
+  width: 40%;
+  margin-top: 20px;
+}
+}
+
 </style>

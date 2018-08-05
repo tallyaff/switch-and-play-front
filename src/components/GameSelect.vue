@@ -1,5 +1,10 @@
 <template>
     <section class="flex justify-center">
+        <el-button class="btn-back">
+            <router-link :to="`/user/activity/${match.userPassive.userId}/recieve`">
+        <font-awesome-icon icon="arrow-circle-left" class="back" />
+        </router-link>
+        </el-button>
         <div v-if="!isMatch" class="game-box-container flex align-center justify-center column">
             <h3 class="game-name capitalize">{{game.name}}</h3>
             <p class="game-desc capitalize">{{game.desc}}</p>
@@ -76,10 +81,20 @@ export default {
 
 <style scoped lang="scss">
   @import "~@/assets/scss/style.scss";
-
+.btn-back{
+    width: 25px;
+    height: 38px;
+    font-size: 0.875rem;
+    background-color: #0D72FA;
+    margin-left: 20px;
+    color:white;
+    
+}
 .game-box-container {
+    margin-top: 50px;
+    line-height: 1.6;
     height: 60%;
-    width: 680px;
+    max-width: 680px;
     border: 1px solid $border-color;  
     box-shadow: 0px 2px 4px 0px #d9d8d8;
     border-radius: 2px;

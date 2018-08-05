@@ -4,9 +4,9 @@
     <h1>lalalalalala</h1>
     <img src="img/new-icon.png">
   </div> -->
-  <div class="gallery-container flex">
+  <div class="gallery-container flex container column">
     <div class="filter-gallery">
-              <Game-filter></Game-filter> 
+        <Game-filter></Game-filter> 
     </div>
     <div class="images-container-gallery flex">
         <game-list class="game-list container" :games="gamesForDisplay" @remove="removeGame"></game-list>
@@ -119,16 +119,18 @@ export default {
   padding: 0 20px;
 }
 .filter-gallery{
-      margin-top: 108px;
+      // margin-top: 108px;
 }
+
 
 </style>
 
 <style scoped lang="scss">
 @import "~@/assets/scss/style.scss";
 .images-container-gallery {
-  margin-top: rem(100px);
+  // margin-top: rem(100px);
 }
+
 
 
 </style>
