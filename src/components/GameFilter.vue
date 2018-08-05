@@ -10,13 +10,11 @@
                 <el-button class="btn search-btn-text" type="primary">Search</el-button>
 
         </form>
-
-        <div v-if="isFilterOpen" class="checkbox-filter-container capitalize" :class="{open: isFilterOpen}" >
+        <div v-if="isFilterOpen"  class="checkbox-filter-container capitalize" :class="{open: isFilterOpen}" >
               <div class="exit">
         <font-awesome-icon icon="times" class="exit-icon" 
          :class="{close: isFilterOpen}" @click="isFilterOpen=!isFilterOpen"/>
 </div>
-
         <el-checkbox v-show='false' class="checkbox-filter" label="All" value="all" v-model="filterBy.allByName" @change="setFilter"></el-checkbox>
         <div>
             <h3>Type</h3>
@@ -119,18 +117,22 @@ export default {
 <style scoped lang="scss">
 @import "~@/assets/scss/style.scss";
 
+body {
+  overflow: hidden;
+}
+
 .checkbox-filter-container {
   text-align: left;
   padding-left: 20px;
   transition: 0.5s;
-    overflow-y: scroll;
-    max-height: 100vh;
+  overflow-y: scroll;
+  max-height: 100vh;
   width: 200px;
   position: fixed;
   z-index: 7;
-  top: 92;
+  top: 92px;
   left: 0;
-  background-color:$card-text-color; 
+  background-color: $card-text-color;
   padding-top: 15px;
 
   // #e7e7e8bd
@@ -258,8 +260,35 @@ h3 {
   .el-button + .el-button {
     margin-left: 0;
   }
-  .btn-filter{
+  .btn-filter {
     display: none;
   }
+  body {
+    overflow: auto;
+  }
+  .checkbox-filter-container {
+  // text-align: left;
+  // padding-left: 20px;
+  // overflow-y: scroll;
+  // max-height: 100vh;
+  // width: 200px;
+  // position: unset;
+  // z-index: 7;
+  // top: 92px;
+  // left: 0;
+  // background-color: $card-text-color;
+  // padding-top: 15px;
+
+  // #e7e7e8bd
+}
+
+  //   .checkbox-filter-container {
+  //   text-align: left;
+  //   position: unset;
+  //   z-index: 7;
+  //   padding-top: 15px;
+
+  //   // #e7e7e8bd
+  // }
 }
 </style>
