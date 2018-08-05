@@ -9,26 +9,22 @@
 
 <script>
 import Header from "@/components/Header.vue";
-import UtilService from '@/services/UtilService.js'
+import UtilService from "@/services/UtilService.js";
 
 export default {
   components: {
     Header
   },
-  data(){
-    return{
-      currUser : UtilService.load('loggedinUser') || null
-    }
+  data() {
+    return {
+      currUser: UtilService.load("loggedinUser") || null
+    };
   },
-  created(){
-     this.$store
-        .commit({
-          type: "setUser",
-          currUser: this.currUser
-        })
-      $(window).load(function(){
-        $('.loader').fadeOut();
-      });
+  created() {
+    this.$store.commit({
+      type: "setUser",
+      currUser: this.currUser
+    });
   }
 };
 </script>
@@ -49,9 +45,9 @@ export default {
 }
 
 .footer {
-  color: #0D72FA;
+  color: #0d72fa;
   background-color: #dadada;
-  font-family: 'PaytoneOne';
+  font-family: "PaytoneOne";
   font-size: 1.25rem;
   display: block;
   position: absolute;
@@ -67,13 +63,13 @@ export default {
 }
 
 .loader {
-	position: fixed;
-	left: 0px;
-	top: 0px;
-	width: 100%;
-	height: 100%;
-	z-index: 9999;
-	background: url('http://www.downgraf.com/wp-content/uploads/2014/09/01-progress.gif?e44397') 50% 50% no-repeat rgb(249,249,249);
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  background: url("http://www.downgraf.com/wp-content/uploads/2014/09/01-progress.gif?e44397")
+    50% 50% no-repeat rgb(249, 249, 249);
 }
-
 </style>

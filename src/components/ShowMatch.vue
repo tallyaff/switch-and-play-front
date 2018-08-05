@@ -2,7 +2,7 @@
 <template>
     <section class="show-match flex column align-center space-between">
         <div class="show-match-container flex column align-center justify-center">
-            <h1 class="text congrats">Congrats we have a match!!!</h1>
+            <h1 class="text congrats animated jello">Congrats we have a match!!!</h1>
             <div class="images-container margin-bottom flex align-center space-between">
                 <div v-if="gameActive" class="your-choose-container margin-bottom flex column align-center space-between">
                     <h2 class="card-title margin-bottom">You chose this amazing</h2>

@@ -56,7 +56,10 @@ export default {
             // console.log('match id', this.currRecieved);
             // console.log('###match:!!', match);
             this.$store.dispatch({ type: "updateMatch", matchDetails: match })
-          },
+            .then( () => {
+                this.$socket.emit('newMatch')
+            })
+        },
         getUser() {
             let userId = this.game.userId;
             console.log("userId in game select:", userId);
