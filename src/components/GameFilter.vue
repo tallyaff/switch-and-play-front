@@ -1,5 +1,4 @@
 <template>
-<<<<<<< HEAD
   <div class="filter-gallery-container flex flex-start">
     <el-button class="filter">
         <font-awesome-icon icon="filter" class="fiter-icon" 
@@ -7,13 +6,6 @@
 </el-button>
 
         <form @submit.prevent="setFilter" class="search-in-gallery">
-=======
-    <div class="filter-gallery-container flex flex-start ">
-        <button class="btn-filter" @click="isFilterOpen=!isFilterOpen">
-            <font-awesome-icon icon="filter" class="fiter-icon" />
-        </button>
-        <form @submit.prevent="setFilter" class="search-in-gallery flex">
->>>>>>> 1cadb51705742fed569533f6c0f589dccb892dcc
             <el-input class="search-input" type="text" v-model="filterBy.name" placeholder="Search for games" autofocus></el-input>
             <el-button class="btn search-btn" type="primary">
                 <font-awesome-icon icon="search"></font-awesome-icon>
