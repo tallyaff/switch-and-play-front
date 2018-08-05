@@ -125,6 +125,10 @@ export default {
 
 }
 
+.img-activity-container img {
+  width: 85%;
+}
+
 .choose-one {
   margin-left: 30px;
 }
