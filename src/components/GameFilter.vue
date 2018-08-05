@@ -1,5 +1,6 @@
 <template>
     <div class="filter-gallery-container flex flex-start ">
+      lalalalaa
         <button class="btn-filter" @click="isFilterOpen=!isFilterOpen">
             <font-awesome-icon icon="filter" class="fiter-icon" />
         </button>
