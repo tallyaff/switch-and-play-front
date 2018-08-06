@@ -23,7 +23,7 @@ import { faAngleLeft } from '@fortawesome/free-solid-svg-icons'
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
 // import { faExchangeAlt } from '@fortawesome/free-solid-svg-icons'
 
-const PORT = process.env.NODE_ENV !== 'production' ? '//localhost:3000' : '';
+const PORT = process.env.NODE_ENV !== 'production' ? '//localhost:3000' : '/';
 Vue.use(socketIo, PORT, store);
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)

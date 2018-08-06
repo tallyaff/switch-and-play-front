@@ -65,12 +65,25 @@ export default {
       },
       signupForm: false,
       loginForm: true,
+      url: null,
     };
+  },
+  // computed: {
+  //   url() {
+  //     // return this.$store.getters.setUrl;
+  //     return '/game'
+  //   }
+
+  // },
+  created() {
+    this.url = this.$store.getters.setUrl;
   },
   methods: {
     login() {
-      this.$router.push('/game')
-      console.log("login user##", this.user);
+      // this.$router.push('/game')
+      this.$router.push(`${this.url}`)
+      // console.log("login user##", this.user);
+      // console.log("this.url", this.url);
       this.$store.dispatch ({
             type: "getUser",
             user: this.user
@@ -88,10 +101,11 @@ export default {
           return this.$store.getters.loggedUser;
         })
         .catch(err => console.log(err));
+        this.$store.commit({type: 'setUrl', url: '/game'})
     },
-
     signup() {
-      this.$router.push('/game')
+      // this.$router.push('/game')
+      this.$router.push(`${this.url}`)
       // console.log("signup user**", this.newUser);
       this.$store
         .dispatch({
@@ -102,6 +116,7 @@ export default {
           eventBus.$emit(EVENT_LOGIN_USER, user);
         })
         .catch(err => console.log(err));
+        this.$store.commit({type: 'setUrl', url: '/game'})
     },
     
     openSignupModal() {

@@ -4,6 +4,7 @@ import UserService from '../services/UserService.js'
 export default {
     state: {
         user: null,
+        url: null,
     },
     mutations: {
         setUser(state, payload ){
@@ -17,17 +18,22 @@ export default {
             state.user = payload.user
             // console.log('saveUser from mutation!!!',state.user);
         },
+        setUrl(state, payload ){
+            state.url = payload.url
+            console.log('setUrl from mutation!!!',state.url);
+        },
     },
     getters: {
         loggedUser(state){
             // console.log('user from usermodule:', state.user);
-            return state.user
+            return state.user;
         },
         userGames(state){
-            if (state.user) return state.user.games
+            if (state.user) return state.user.games;
         },
-
-        
+        setUrl(state){
+            return state.url;
+        },
     },
     actions: {
         createUser(context, {newUser}) {

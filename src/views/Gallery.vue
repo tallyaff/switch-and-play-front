@@ -28,6 +28,11 @@ export default {
     GameFilter,
     Header
   },
+  data() {
+    return {
+      url: null,
+    }
+  },
   created() {
     // this.$store.loadGames();
     // console.log('this.gamesForDisplay in gallery', this.gamesForDisplay);
@@ -48,7 +53,7 @@ export default {
     }
   },
   methods: {
-    checkIfDisplay() {
+    checkIfDisplay() { 
       // console.log("this.loggedinUser", this.loggedinUser);
       if (!this.loggedinUser) {
         swal({

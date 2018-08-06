@@ -6,7 +6,7 @@
             <form @submit.prevent="setSearchHome" class="search">
                 <input class="search-input" type="text" v-model="filterBy.name" placeholder="Search for games">
                 <el-button class="btn search-btn" type="primary"><font-awesome-icon icon="search"></font-awesome-icon></el-button>
-                <el-button class="btn search-btn-text" type="primary">Search</el-button>
+                <el-button class="btn search-btn-text" type="primary" @click="setSearchHome">Search</el-button>
                 <!-- <el-button class="btn search-btn" type="primary">Search</el-button> -->
             </form>
             <h1 class="header-bg-image">Do you want to swap some games?</h1>
