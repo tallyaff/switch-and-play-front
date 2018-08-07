@@ -22,19 +22,21 @@ export default {
     },
     getters: {
         getMatches(state){
+            console.log('inside getter getMatches');
             if (state.activities) {
                 return state.activities.filter(activity => activity.isMatch)
             }
         },
         getRecieves(state) {
-            console.log('state activity:', state.activities);
+            console.log('inside getter getRecieves');
             if (state.activities) {
                 return state.activities.filter(activity => {
                     return activity.userPassive.userId === state.userId && !activity.isMatch;
-                    })
+                })
             }
         },
         getRequestes(state) {
+            console.log('inside getter getRequests');
             if (state.activities) { 
                 return state.activities.filter(activity => {
                     return activity.userActive.userId === state.userId && !activity.isMatch
@@ -50,20 +52,22 @@ export default {
             context.commit({type: 'setCurrUserId', payload: payload.user})
             MatchService.getMatch(payload.user)
                .then(activities => {
-                   console.log('match from backend in front', activities);
+                   console.log('inside getMatch. activities are:', activities);
                    context.commit({type: 'setMatch', activities})
                    })
         },
         createMatch(context, payload) {
             MatchService.createMatch(payload.newMatch)
             .then(match => {
-                   console.log('match from backend in front', match);
+                   console.log('inside createMatch. match is:', match);
                })
         },
         updateMatch(context, payload) {
+            console.log('update after update chat: payload.matchDetails:', payload.matchDetails);
+            
             MatchService.updateMatch(payload.matchDetails)
             .then(activities => {
-                   console.log('match from backend in front', activities);
+                   console.log('inside updateMatch. activities are:', activities);
                })
         },
         logoutActivity(context) {

@@ -64,6 +64,7 @@ export default {
     onLogout() {
       this.$emit("update:loggedinUser", null);
       this.$emit("logout");
+      this.$socket.emit('loggedOut');
     }
   },
   computed: {
@@ -79,6 +80,7 @@ export default {
   },
   sockets: {
     newMatch() {
+      console.log('inside sockets: { newMatch } in UserBar');
       if (!this.loggedinUser) return;
       this.$store.dispatch({type: 'getMatch', user: this.loggedinUser._id});
     }

@@ -15,7 +15,7 @@
                         </div>  
                         <div class="flex msg-box">
                             <GameUserImg :userId="recieve.userActive.userId" class="msg-box-img"></GameUserImg>
-                            <h4>{{recieve.userActive.textareaReq}}</h4>
+                            <!-- <h4>{{recieve.userActive.textareaReq}}</h4> -->
                         </div>
                         <!-- <div class="user-img" :style="{backgroundImage: `url(${recieve.userPassiveGame.src})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundrepeat: 'no-repeat'}">
                         </div>  -->

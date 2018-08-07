@@ -2,20 +2,20 @@
 <template>
     <section class="show-match flex column align-center space-between">
         <div class="show-match-container flex column align-center justify-center">
-            <h1 class="text congrats animated jello">Congrats we have a match!!!</h1>
+            <h1 v-if="isNew" class="text congrats animated jello">Congrats we have a match!!!</h1>
             <div class="images-container margin-bottom flex align-center space-between">
                 <div v-if="gameActive" class="your-choose-container margin-bottom flex column align-center space-between">
                     <h2 class="card-title margin-bottom">You chose this amazing</h2>
                     <div class="name-image-container flex column align-center space-between">
-                        <h2 class="game-name margin-bottom capitalize">{{game.name}}</h2>
-                        <img class="game-image" :src="game.src"/>
+                        <h2 class="game-name margin-bottom capitalize">{{gameActive.name}}</h2>
+                        <img class="game-image" :src="gameActive.src"/>
                     </div>
                 </div>
                 <img class="swap-arrows" src="img/swaparrows.png"/>
                 <div v-if="gamePassive" class="game-match-container margin-bottom flex column align-center space-between">
                   <h2 class="card-title margin-bottom">You swapped it with your awesome</h2>
                   <div class="name-image-container flex column align-center space-between">
-                    <h2 class="game-name capitalize margin-bottom">{{match.userPassiveGame.name}}</h2>
+                    <h2 class="game-name capitalize margin-bottom">{{gamePassive.name}}</h2>
                     <img class="game-image" :src="gamePassive.src"/>
                   </div>
                 </div>
@@ -27,11 +27,21 @@
                 <div class="form-meeting flex column align-center justify-center">
                     <div class="form-input-title">
                         <!-- <h3 class="small-text">Type a message:</h3> -->
-                        <el-input class="form-input form-textarea" type="textarea" v-model="textareaRes" placeholder="Please type yours message"></el-input>                    
-                    </div>
-                    <div class="btns-container">
-                    <el-button class="btn send-btn" type="primary" @click="itsMatch(game._id, match._id)">Send</el-button>
-                    <!-- <el-button class="btn cancel-btn" type="info">Cancel</el-button> -->
+                        <show-chat :match="match"></show-chat>
+                        <!-- <ul v-if="match">
+                            <li v-for="msg in match.chat">
+                                <h2>{{msg.username}}: {{msg.txt}}, {{msg.timestamp | getDate }}</h2>
+                            </li>
+                        </ul> -->
+                        <!-- <h3>{{userActive.username}} : {{match.userActive.textareaReq}}</h3> -->
+                        <!-- <div class="name-text-chat flex">
+                            <h3>{{userPassive.username}} : </h3>
+                            <el-input class="form-input form-textarea" type="textarea" v-model="textareaRes" placeholder="Please type yours message"></el-input>                    
+                            <div class="btns-container">
+                            <el-button class="btn send-btn" type="primary" @click="updateMatch(game._id, match._id)">Send</el-button> -->
+                            <!-- <el-button class="btn cancel-btn" type="info">Cancel</el-button> -->
+                            <!-- </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -65,27 +75,48 @@
 <script>
 import GameService from "@/services/GameService.js";
 import UserService from "@/services/UserService.js";
+import MatchService from "@/services/MatchService.js";
+import ShowChat from "@/components/ShowChat.vue";
 
 export default {
   name: "showMatch",
-  props: ["game", "match"],
+//   props: ["game", "match"],
   data() {
     return {
+        match: null,
         choosenGameId: '',
         currMatchId: '',
         gameActive: null,
         userActive: null,
         gamePassive: null,
         textareaRes: ``,
+        isNew: false
         // isSchedule: false,
         };
   },
   created() {
-      console.log('####', this.match);
-      console.log('####@@9', this.game);
-        this.gameActive = this.game;
-        this.getUserActive();
-        this.getGamePassive();
+        console.log('this.$route.params', this.$route);
+        this.choosenGameId = this.$route.params.gameId;
+        console.log('this.choosenGameId', this.choosenGameId);
+        this.getGameActive(this.choosenGameId);
+        this.currMatchId = this.$route.params.matchId;
+        console.log('this.currMatchId', this.currMatchId);
+
+        this.getMatch(this.choosenGameId, this.currMatchId);
+      
+        this.isNew = Boolean(this.$route.query.new)
+        // this.gameActive = this.$route.params.matchId.userPas;
+//         this.match = this.$route.params.matchId;
+//         console.log('####', this.match);
+//         console.log('####@@9', this.game);
+
+        // console.log('####', this.match);
+        // console.log('####@@9', this.game);
+        // this.gameActive = this.game;
+        
+  },
+  components: {
+      ShowChat
   },
   computed: {
     userPassive() {
@@ -94,35 +125,54 @@ export default {
   },
   methods: {
     handleMatch() {
-      console.log("game from match@@:", this.game);
+    //   console.log("game from match@@:", this.game);
+    },
+    getMatch(gameId, matchId) {
+        // console.log('getMatch(matchId', matchId);
+        
+      MatchService.getMatchById(gameId, matchId)
+      .then(match => {
+        // console.log("this.match in show match:", match);
+        this.match = match;
+        this.getUserActive();
+        this.getGamePassive();
+      });
+    },
+    getGameActive(gameId) {
+      GameService.getGameById(gameId)
+      .then(game => {
+        // console.log("this.getGameActive in show match:", game);
+        this.gameActive = game;
+      });
     },
     getUserActive() {
       let userActiveId = this.match.userActive.userId;
       UserService.getUserById(userActiveId)
       .then(user => {
-        console.log("this.userActive in show match:", user);
+        // console.log("this.userActive in show match:", user);
         this.userActive = user;
       });
     },
     getGamePassive() {
       let gamePassiveId = this.match.userPassive.gameId;
-      console.log("gameId in show match", gamePassiveId);
+    //   console.log("gameId in show match", gamePassiveId);
       GameService.getGameById(gamePassiveId).then(game => {
-        console.log("this.gamePassive in show match:", game);
+        // console.log("this.gamePassive in show match:", game);
         this.gamePassive = game;
       });
     },
     // schedule() {
     //     this.isSchedule = !this.isSchedule;
     // },
-    itsMatch(gameId, matchId) {
+    updateMatch(gameId, matchId) {
         // this.choosenGameId = gameId;
         // console.log('this.choosenGame in itsMatch', this.choosenGame);
         console.log('this.gameeeeee', this.game._id);
         // this.currMatchId = matchId;
         console.log('this.currRecieved in itsMatch', this.match._id);
         // const match = {gameId: this.choosenGame, match: this.recieve}
-        const match = {gameId: this.game._id, matchId: this.match._id, textareaRes: this.textareaRes}
+        const match = {gameId: this.game._id, matchId: this.match._id}
+        // const match = {gameId: this.game._id, matchId: this.match._id, textareaRes: this.textareaRes}
         // console.log('game id', this.choosenGame);
         // console.log('match id', this.currRecieved);
         // console.log('###match:!!', match);

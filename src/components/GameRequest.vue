@@ -3,7 +3,7 @@
     <div class="game-request flex column align-center justify-center">
         <h1 class="title-game-request">It's time to create your request!</h1>   
         <h2 class="title-games">Choose optional games for swapping</h2>
-        <el-form class="request-container flex column">
+        <el-form class="request-container flex column" @submit.prevent="sendRequest">
           <div class="games-container flex justify-center">
             <div class="game" v-for="game in games" :key="game._id">
                 <game-preview :game="game" :isGameRequest="true" :newIcon="true" :condition="true" :location="true" :username="true" :gameCheckbox="true" @check="updateGamesToSwitch"></game-preview>
@@ -38,7 +38,8 @@ export default {
       textareaReq: "",
       // gameCheckbox: true,
       gamesToSwitch: [],
-      ownerUserId: null
+      ownerUserId: null,
+      msg: MatchService.craeteEmptyChatMsg(),
     };
   },
   components: {
@@ -58,6 +59,8 @@ export default {
     sendRequest() {
       this.$router.push("/");
       this.ownerUserId = this.game.userId;
+      this.msg.txt = this.textareaReq;
+      this.msg.username = this.user.username;
         const matchReq = {
           userPassive: {
             userId: this.ownerUserId,
@@ -66,10 +69,12 @@ export default {
           userActive: {
             userId: this.user._id,
             games: this.gamesToSwitch,
-            textareaReq: this.textareaReq,
+            // textareaReq: this.textareaReq,
           },
-          isMatch: false
+          isMatch: false,
+          chat: [this.msg],
         };
+      
       this.$store.dispatch({ type: "createMatch", newMatch: matchReq })
         .then(match => {
           swal("Whoo Hoo! Your request has been sent!", {
@@ -78,6 +83,7 @@ export default {
             timer: 2000,
             button: false
           });
+          this.$socket.emit('newMatch');          
           console.log("match:", match);
         })
         .catch(err => {

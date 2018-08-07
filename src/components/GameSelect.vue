@@ -22,13 +22,15 @@
                 <button class="btn-back" @click="back" title="back">
                     <font-awesome-icon icon="arrow-left" class="back" />
                 </button>
-                <el-button @click="itsMatch" type="primary" class="btn btn-choose" title="choose">Choose me! 
-                </el-button>
+                <!-- <el-button @click="itsMatch" type="primary" class="btn btn-choose" title="choose">Choose me! 
+                </el-button> -->
             </div>
-            <!-- <el-button @click="itsMatch(game._id, match._id)" type="primary" class="btn btn-choose">Choose me! 
-            </el-button> -->
+            <el-button @click="itsMatch(game._id, match._id)" type="primary" class="btn btn-choose">Choose me! 
+            </el-button>
         </div>
-        <ShowMatch :match="match" :game="game" v-if="isMatch"></ShowMatch>
+            <!-- <router-view :to="`/user/activity/${getUser._id}/match/${match._id}`"> -->
+                <!-- <ShowMatch :match="match" :game="game" v-if="isMatch"></ShowMatch> -->
+            <!-- </router-view> -->
     </section>
 </template>
 
@@ -68,18 +70,28 @@ export default {
         //     this.$store.dispatch({ type: "updateMatch", matchDetails: match })
         //   },
         itsMatch() {
+            // console.log('inside itsMatch()')
             this.isMatch = true;
+            // this.$router.push(`/game/${this.game._id}/match/${this.match._id}`)
+            // this.$router.push(`/user/activity/${this.user._id}/match/${this.match._id}`)
             // console.log('game id', this.choosenGame);
             // console.log('match id', this.currRecieved);
             // console.log('###match:!!', match);
+            const match = {gameId: this.game._id, matchId: this.match._id}
+            this.$store.dispatch({ type: "updateMatch", matchDetails: match })
+                .then( () => {
+                        // this.$router.push('/');
+                        this.$router.push(`/game/${this.game._id}/match/${this.match._id}?new=true`)
+                        this.$socket.emit('newMatch')
+                    })
             
         },
         getUser() {
             let userId = this.game.userId;
-            console.log("userId in game select:", userId);
+            // console.log("userId in game select:", userId);
             UserService.getUserById(userId).
             then(user => {
-            console.log("this.user in game select:", user);
+            // console.log("this.user in game select:", user);
                 this.user = user;
             });
         },

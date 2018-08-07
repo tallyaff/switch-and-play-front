@@ -12,6 +12,7 @@ import UserActivity from './views/UserActivities.vue'
 import UserMatch from './views/UserMatches.vue'
 import UserRequest from './views/UserRequests.vue'
 import UserRecieve from './views/UserRecieved.vue'
+import ShowMatch from './components/ShowMatch.vue'
 
 
 
@@ -70,7 +71,7 @@ export default new Router({
       component: UserActivity,
         children: [
           {
-            path: 'match/',
+            path: 'match',
             component: UserMatch
           },
           {
@@ -82,11 +83,16 @@ export default new Router({
             component: UserRecieve
           }
         ]
-    }
+    },
+    {
+      path: '/game/:gameId/match/:matchId?',
+      name: 'show-match',
+      component: ShowMatch
+    },
     // {
-    //   path: '/user/activity/match/:userId',
-    //   name: 'match',
-    //   component: UserMatch
+    //   path: '/user/activity/:userId/match/:matchId?',
+    //   name: 'game-Select',
+    //   component: GameSelect
     // },
     // {
     //   path: '/user/activity/request/:userId',

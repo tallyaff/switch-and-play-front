@@ -41,7 +41,7 @@ export default {
     removeGame,
     saveGame,
     createEmptyGame,
-    getUserById
+    getUserById,
     // sentFilter
 }
 
@@ -83,6 +83,8 @@ function getUserById(userId) {
         })
         .catch(err => console.log('Problem talking to server!', err))
 }
+
+
 
 
 

@@ -34,9 +34,12 @@
                         </div>
                     <!-- </div> -->
                     </div>
+                    <el-button type="primary" @click="showChat(match.userPassive.gameId, match._id)">See chat</el-button>
+                    <show-chat :match="match"></show-chat>
                 </li>
             </ul>
         </div>
+        <!-- this. matches{{matches}} -->
     </section>
 </template>
 
@@ -44,23 +47,29 @@
 import GameService from '../services/GameService.js';
 import GameUserImg from '@/components/GameUserImg.vue';
 import GameUserName from '@/components/GameUserName.vue';
+import ShowChat from '@/components/ShowChat.vue';
 
 export default {
     name: 'userMatch',
     data() {
         return {
-            passiveUser: null
+            passiveUser: null,
+            matchId: null,
+            gameId: null,
         }
     },
-    components: {GameUserName, GameUserImg},
+    components: {
+        GameUserName,
+        GameUserImg,
+        ShowChat
+        },
     created() {
         this.$store.dispatch({type: 'getMatch', 
             user: this.$route.params.userId
             });
         // console.log('matchhhhhh', this.matches);
         // console.log('usrtID^^^', this.userId);
-        this.getGameUser();
-        
+        this.getGameUser();        
     },
     computed: {
         matches() {
@@ -78,6 +87,11 @@ export default {
                     // console.log('user from server&&&', user);
                     this.passiveUser = user
                 })
+        },
+        showChat(gameId, matchId) {
+            console.log('2gameId in gameId', gameId, 'matchId in gameId', matchId);
+
+            this.$router.push(`/game/${gameId}/match/${matchId}`)
         }
     }
 }

@@ -2,12 +2,12 @@
 <template>
   <div class="login-container">
       <div class="form-container flex">
-        <el-form  v-if="loginForm" class="flex column">
+        <el-form @submit="login" v-if="loginForm" class="flex column">
             <el-form-item class="login-form flex column">
                 <h1>Log-In</h1>
                 <el-form-item class="flex insert-form">
                   <p>Enter user Name:</p>
-                  <el-input v-model="user.username" type="text" class="el-input-user"/>
+                  <el-input v-model="user.username" type="text" class="el-input-user" autofocus/>
                 </el-form-item>
                 <el-form-item class="flex insert-form">
                   <p>Enter password:</p>
@@ -23,7 +23,7 @@
                   Sign up
             </el-button>
         </el-form>
-        <el-form  v-if="signupForm">
+        <el-form @submit.prevent="signup" v-if="signupForm">
           <el-form-item class="login-form flex column">
             <h4>Sign up</h4>
             <p>Your Name:</p>
@@ -94,6 +94,7 @@ export default {
               type: 'getMatch', 
               user: user._id
             })
+            this.$socket.emit('loggedIn', user._id);
         })
         .then(_ => {
             // console.log(this.user.username,'res login function before emit eventbus')

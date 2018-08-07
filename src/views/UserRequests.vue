@@ -5,7 +5,7 @@
                 <li v-for="request in requestes" :key="request._id">
                     <div class="flex column game-box">
                         <h3>{{request.userPassiveGame.name}}</h3>
-                        <div class="img-activity-container">
+                        <div class="img-activity-container flex align-center justify-center">
                             <img :src="request.userPassiveGame.src"/>
                         </div>
                         <div type="text" class="user-details-container">
@@ -15,7 +15,7 @@
                 </li>
             </ul>
             <div v-else>
-                <h1> no requests for now...</h1>
+                <h1> No requests for now...</h1>
             </div>
         </div>
     </section>
@@ -59,5 +59,9 @@ export default {
     justify-content: space-around;
     height: 300px;
     width: 250px;
+}
+
+.img-activity-container {
+
 }
 </style>
