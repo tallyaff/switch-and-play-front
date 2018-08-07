@@ -9,14 +9,14 @@ const URL = process.env.NODE_ENV !== 'development'
     : 'http://localhost:3000/user'
 
 var loggedinUser = UtilService.load(STORAGE_KEY) || null;
-console.log('LOgged:', loggedinUser);
+console.log('Logged:', loggedinUser);
 if (loggedinUser) {
     eventBus.$emit(EVENT_LOGIN_USER, loggedinUser.username)
 
 }
 
 function createUser(userDetails) {
-    console.log(userDetails, 'newuser service front')
+    // console.log(userDetails, 'newuser service front')
     return axios.post(`${URL}/signup`, userDetails)
         .then(res => {
             const user = res.data;
@@ -37,7 +37,10 @@ function getUser(userCreds) {
             _setLoggedinUser(user);
             return user;
         })
-        .catch(err => err)
+        .catch(err => {
+            console.log('errrrrrr', err)
+            throw err
+        })
 }
 
 
@@ -69,7 +72,7 @@ function _setLoggedinUser(user) {
 }
 
 function getUserById(userId) {
-    console.log('getUserById in game service front', userId);
+    // console.log('getUserById in game service front', userId);
     return axios.get(`${URL}/${userId}`)
         .then(res => {
             console.log('getUserById from server', res.data)
