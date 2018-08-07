@@ -285,7 +285,7 @@ h3 {
   }
   @media (min-width: 1130px) {
       .checkbox-filter-container {
-    margin-left: 150px;
+    margin-left: 120px;
 
       }
   }

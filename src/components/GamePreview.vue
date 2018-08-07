@@ -28,11 +28,11 @@
             </div>
             <div class="card-text-container" :class="{gallery: isGallery}">
                 <li class="game-category-preview capitalize" :class="{gameRequest: isGameRequest}">
-                    <span>Category: </span>{{game.category}}</li>
+                    <span>Category  </span>{{game.category}}</li>
                 <li class="game-condition-preview capitalize" v-if="!condition">
-                    <span>Condition: </span>{{game.condition}}</li>
+                    <span>Condition  </span>{{game.condition}}</li>
                 <li class="game-addedAt-preview capitalize" :class="{gameRequest: isGameRequest}">
-                    <span>Added at: </span>{{game.addedAt | getDate }}</li>
+                    <span>Added at  </span>{{game.addedAt | getDate }}</li>
                 <!-- TODO: user location & name -->
                 <!-- <li class="game-location-preview capitalize" v-if="!location"> -->
                 <!-- <span>Location: </span> -->
@@ -104,7 +104,8 @@ export default {
 }
 
 
-.gameRequest.game-category-preview, .gameRequest.game-addedAt-preview {
+
+.gameRequest.game-category-preview, .gameRequest.game-addedAt-preview ,{
     color: grey;
     // font-family: 'Ubuntu';
     & span {   
@@ -169,13 +170,14 @@ export default {
 
 
 .gallery.game-preview-container {
-    width: 200px;
-    height: 260px;
+    width: 250px;
+    height: 300px;
+    margin: 10px;
     // pointer flex column align-center clean-list space-between
 }
 
 .gallery.card-text-container {
-    text-align: left;
+    text-align: center;
     font-size: 14px;
     background-color: $card-text-color;
     width: 100%;
@@ -280,6 +282,15 @@ ul {
     height: 27%;
     /* margin: 20px; */
     padding: 5px;
+}
+
+@media (min-width: 980px ){
+.gallery.game-preview-container {
+    width: 250px;
+    height: 250px;
+    margin: 0;
+    // pointer flex column align-center clean-list space-between
+}
 }
 
 </style>

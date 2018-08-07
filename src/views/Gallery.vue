@@ -4,7 +4,7 @@
     <h1>lalalalalala</h1>
     <img src="img/new-icon.png">
   </div> -->
-  <div class="gallery-container flex container column">
+  <div class="gallery-container flex container column container">
     <div class="filter-gallery">
         <Game-filter></Game-filter> 
     </div>
