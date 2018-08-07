@@ -14,9 +14,12 @@
                   <el-input v-model="user.password" type="password" class="el-input-user"/>
                 </el-form-item>
                 <el-form-item>
-                  <el-button type="primary" @click="login" class="btn">
-                  Login
-                  </el-button>
+                <div class="btns-container flex space-between">
+                  <el-button type="primary" @click="login" class="btn login-btn">Login</el-button>
+                  <router-link :to="`/game`">
+                    <el-button class="btn-cancel" type="submit">cancel</el-button>
+                  </router-link>
+                </div>
                 </el-form-item>
             </el-form-item>
             <el-button type="submit" @click="openSignupModal" class="btn-signup">
@@ -34,9 +37,14 @@
             <el-input v-model="newUser.email" type="email" class="el-input-user"/>
             <p>City:</p>
             <el-input v-model="newUser.city" type="text" class="el-input-user"/>
-            <el-button type="submit" @click="signup" class="btn-signup">
-            Signup
-            </el-button>
+            <div class="flex space-between">
+              <el-button type="submit" @click="signup" class="btn-signup">
+              Signup
+              </el-button>
+              <router-link :to="`/game`">
+                <el-button class="btn-cancel" @click="back" type="submit">cancel</el-button>
+              </router-link>
+            </div>
           </el-form-item>
         </el-form>
     </div>
@@ -69,32 +77,42 @@ export default {
   },
   methods: {
     login() {
-      this.$router.push('/game')
-      console.log("login user##", this.user);
+      // console.log("login user##", this.user);
       this.$store.dispatch ({
-            type: "getUser",
-            user: this.user
+        type: "getUser", user: this.user
         })
         .then(user => {
-            console.log('user$$:', user);
-            this.$store.dispatch({
-              type: 'getMatch', 
-              user: user._id
-            })
+            // this.$router.push(`${this.url}`)
+          this.$router.push(`/game`)
+          console.log('user$$:', user);
+          this.$store.dispatch({
+            type: 'getMatch', 
+            user: user._id
+          })
         })
-        .then(_ => {
+        .then(user => {
+          // console.log('user@@', user);
+          if (user) {
+            }
             // console.log(this.user.username,'res login function before emit eventbus')
           eventBus.$emit(EVENT_LOGIN_USER, this.user.username);
           return this.$store.getters.loggedUser;
         })
-        .catch(err => console.log(err));
+        .catch(err => {
+          console.log('Wrong user/ password', err)
+          this.$router.push(`/login`)
+          swal("Wrong user/ password", {
+            className: "swal-text",
+            icon: "error",
+            timer: 2000,
+            button: false
+          });
+        });
     },
-
     signup() {
       this.$router.push('/game')
       // console.log("signup user**", this.newUser);
-      this.$store
-        .dispatch({
+      this.$store.dispatch({
           type: "createUser",
           newUser: this.newUser
         })
@@ -103,11 +121,10 @@ export default {
         })
         .catch(err => console.log(err));
     },
-    
     openSignupModal() {
       this.signupForm = true;
       this.loginForm = false;
-    }
+    },
   },
   computed: {}
 };
@@ -143,21 +160,24 @@ export default {
   margin-top: 20px;
   margin-bottom: 20px;
 }
-.btn-signup {
-  background-color: #f1af37;
-  margin:  20px;
-  color: white;
-}
 
 .btn-signup {
   background-color: #f1af37;;
+  color: white;
   margin: 20px;
   width: 100px;
   margin: 20px auto;
   margin-top: 50px;
 }
 .el-form-item__content{
-      margin: 10px 50px;
+  margin: 10px 50px;
+}
+.btn-cancel {
+  margin: 20px auto;
+  margin-top: 50px;
 }
 
+.login-btn {
+  margin-top: 50px;
+}
 </style>

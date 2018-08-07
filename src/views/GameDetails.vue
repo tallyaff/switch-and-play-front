@@ -91,7 +91,7 @@ export default {
     checkIfLogin() {
       if (!this.loggedinUser) {
         swal({
-          title: "Please login to switch a game!",
+          title: "Please login to swap a game!",
           buttons: ["Not now", "Login"],
         }).then(willLogin => {
           if (willLogin) {

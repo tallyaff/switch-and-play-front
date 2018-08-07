@@ -29,9 +29,10 @@
                         <!-- <h3 class="small-text">Type a message:</h3> -->
                         <el-input class="form-input form-textarea" type="textarea" v-model="textareaRes" placeholder="Please type yours message"></el-input>                    
                     </div>
-                    <div class="btns-container">
-                    <el-button class="btn send-btn" type="primary" @click="itsMatch(game._id, match._id)">Send</el-button>
-                    <!-- <el-button class="btn cancel-btn" type="info">Cancel</el-button> -->
+                    <div class="btns-container flex">
+                        <el-button class="btn send-btn" type="primary" @click="itsMatch(game._id, match._id)">Send</el-button>
+                        <!-- <el-button class="btn cancel-btn" type="info">Cancel</el-button> -->
+                        <el-button class="btn-back" @click="back" type="submit" title="back">cancel</el-button>
                     </div>
                 </div>
             </div>
@@ -131,6 +132,9 @@ export default {
                 this.$router.push('/');
                 this.$socket.emit('newMatch')
             })
+    },
+    back(){
+        this.$router.go();
     },
   }
 };
