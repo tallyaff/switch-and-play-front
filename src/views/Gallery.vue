@@ -27,7 +27,13 @@ export default {
     GameFilter,
     Header
   },
+  data() {
+    return {
+      url: null,
+    }
+  },
   created() {
+    this.$store.commit({type: 'setUrl', url: '/game'})
     // this.$store.loadGames();
     // console.log('this.gamesForDisplay in gallery', this.gamesForDisplay);
     // this.gamesForDisplay;
@@ -47,21 +53,21 @@ export default {
     }
   },
   methods: {
-    checkIfDisplay() {
-      // console.log("this.loggedinUser", this.loggedinUser);
-      if (!this.loggedinUser) {
-        swal({
-          title: "Please login to add your game",
-          buttons: ["Not now", "Login"]
-        }).then(willLogin => {
-          if (willLogin) {
-            this.$router.push("/login");
-          } else {
-            swal.close();
-          }
-        });
-      } else this.$router.push("/game/edit");
-    },
+    // checkIfDisplay() { 
+    //   // console.log("this.loggedinUser", this.loggedinUser);
+    //   if (!this.loggedinUser) {
+    //     swal({
+    //       title: "Please login to add your game",
+    //       buttons: ["Not now", "Login"]
+    //     }).then(willLogin => {
+    //       if (willLogin) {
+    //         this.$router.push("/login");
+    //       } else {
+    //         swal.close();
+    //       }
+    //     });
+    //   } else this.$router.push("/game/edit");
+    // },
     // loadGames() {
     //   this.$store
     //     .dispatch({ type: "loadGames" })

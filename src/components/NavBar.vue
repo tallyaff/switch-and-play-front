@@ -12,8 +12,8 @@
             <router-link to="/">
                 <li @click="isOpen=!isOpen">Home</li>
             </router-link>
-            <router-link to="/gallery">
-                <li @click="isOpen=!isOpen">Gallery</li>
+            <router-link to="/game">
+                <li @click="isOpen=!isOpen; clearFilter()">Gallery</li>
             </router-link>
             <router-link to="/about">
                 <li @click="isOpen=!isOpen">About</li>
@@ -25,7 +25,9 @@
       </transition>
         <div class="nav">
             <router-link to="/">Home</router-link>
-            <router-link to="/gallery">Gallery</router-link>
+            <router-link to="/game">
+              <div @click="clearFilter">Gallery</div>
+            </router-link>
             <router-link to="/about">About</router-link>
             <router-link to="/contact">Contact</router-link>
         </div>
@@ -39,7 +41,23 @@ export default {
   data(){
     return{
       isOpen:false,
-
+      filterBy: {
+        allByName: true,
+        name: "",
+        allTypes: true,
+        type: [],
+        allCategories: true,
+        category: [],
+        userId: ""
+      },
+    }
+  },
+  methods: {
+    clearFilter() {
+      this.$store.dispatch({ type: "setFilter", filterBy: this.filterBy })
+        .then(games => {
+          console.log('clear games', games);
+        });
     }
   }
 };
