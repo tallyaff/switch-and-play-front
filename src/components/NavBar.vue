@@ -10,7 +10,7 @@
                 <li @click="isOpen=!isOpen">Home</li>
             </router-link>
             <router-link to="/game">
-                <li @click="isOpen=!isOpen">Gallery</li>
+                <li @click="isOpen=!isOpen; clearFilter()">Gallery</li>
             </router-link>
             <router-link to="/about">
                 <li @click="isOpen=!isOpen">About</li>
