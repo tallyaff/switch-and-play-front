@@ -3,17 +3,9 @@
 
     <section class="show-match flex column align-center space-between">
         <div class="show-match-container flex column align-center justify-center">
-
-
-            <!-- <div class="try">
-    <button @click="show = !show">
-        Toggle render
-    </button> -->
-            <transition name="custom-classes-transition" enter-class="animated jello">
-                <h1 v-if="show" class="text congrats">Congrats we have a match!!!</h1>
+            <transition name="custom-classes-transition" >
+                <h1 v-if="show" class="animated jello congrats">Congrats we have a match!!!</h1>
             </transition>
-            <!-- </div> -->
-
             <div class="images-container margin-bottom flex align-center space-between">
                 <div v-if="gameActive" class="your-choose-container margin-bottom flex column align-center space-between">
                     <h2 class="card-title margin-bottom">You chose this amazing</h2>
@@ -101,7 +93,6 @@ export default {
         this.gameActive = this.game;
         this.getUserActive();
         this.getGamePassive();
-        this.show = true
   },
   computed: {
     userPassive() {
