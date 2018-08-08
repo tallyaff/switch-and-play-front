@@ -15,6 +15,7 @@ import i18n from 'vue-i18n';
 import socketIo from 'vue-socket.io';
 
 
+
 import { faInfo } from '@fortawesome/free-solid-svg-icons'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { faPen } from '@fortawesome/free-solid-svg-icons'

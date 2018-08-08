@@ -14,9 +14,6 @@
         <!-- <div class="all-cards-home-container"> -->
 
         <div class="baby-cards-container space-between"  >
-            <!-- <div v-if="gamesLoading">
-            <h1>loading</h1>
-           </div> -->
             <div class="baby-cards flex container justify-center" >
                 <div class="filter-type home-filter-container home-filter-container-baby flex column align-center justify-center">
                     <router-link :to="'/game'" @click.native="setFilter('baby')">
@@ -56,7 +53,7 @@
 
             <div class="child-cards-container space-between">
                              <!-- <div v-if="gamesLoading">
-                             <h1>loading</h1>
+                               <div class="loader-circle"></div>
                              </div> -->
                 <div  class="child-cards flex container justify-center">
                     <div class="filter-type home-filter-container home-filter-container-child flex column align-center justify-center">
@@ -432,6 +429,10 @@ export default {
     bottom: rem(-70px);
   }
 }
+
+
+
+
 
 
 

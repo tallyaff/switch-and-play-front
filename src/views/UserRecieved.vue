@@ -50,7 +50,7 @@
             </ul>
             <div v-else>
                  <div class="noRecievesMsg">
-                   Sorry, No recieved requests yet
+                   <h1>No recieved requests yet...</h1>
                  </div>
             </div>
         </div>

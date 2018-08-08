@@ -1,6 +1,9 @@
 <template>
     <section class="game-details flex justify-center align-center" v-if="currGame && currUser">
-      <div class="game-details-all" v-if="!requesting">
+      <div v-if="gamesLoading">
+        <div class="loader-circle"></div>
+  </div>
+      <div v-else-if="!requesting" class="game-details-all" >
         <h2 class="game-name capitalize">{{currGame.name}}</h2>
         <h3 class="game-description" label="Description">{{currGame.desc}}</h3>
         <div class="game-details-container flex column content-center align-center" v-if="!requesting">
@@ -69,6 +72,9 @@ export default {
   computed: {
     loggedinUser() {
       return this.$store.getters.loggedUser;
+    },
+    gamesLoading() {
+      return this.$store.getters.gamesLoading;
     }
   },
   
@@ -204,7 +210,6 @@ export default {
   .game-details-container  {
     flex-direction: row;
   }
-
   .game-details-all {
    width: 980px;
  }
