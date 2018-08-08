@@ -64,6 +64,7 @@ export default {
     this.$store.commit({ type: "setFilter", filterBy });
     this.url = this.$route.fullPath;
     console.log("this.url in created",  this.url);
+    this.$store.commit({type: 'setUrl', url: this.url})
     this.loadGame();
 
 
@@ -93,7 +94,6 @@ export default {
     checkIfLogin() {
       if (!this.loggedinUser) {
         console.log("this.url in checkIfLogin",  this.url);
-        this.$store.commit({type: 'setUrl', url: this.url})
         swal({
           title: "Please login to switch a game!",
           buttons: ["Not now", "Login"],

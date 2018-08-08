@@ -34,6 +34,7 @@ export default {
     }
   },
   created() {
+    this.$store.commit({type: 'setUrl', url: '/game'})
     // this.$store.loadGames();
     // console.log('this.gamesForDisplay in gallery', this.gamesForDisplay);
     // this.gamesForDisplay;

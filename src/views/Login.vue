@@ -65,25 +65,16 @@ export default {
       },
       signupForm: false,
       loginForm: true,
-      url: null,
+      url: '/game',
     };
   },
-  // computed: {
-  //   url() {
-  //     // return this.$store.getters.setUrl;
-  //     return '/game'
-  //   }
-
-  // },
   created() {
-    this.url = this.$store.getters.setUrl;
+    console.log('this.url in login' , this.url);
+    if (this.$store.getters.setUrl) this.url = this.$store.getters.setUrl;
   },
   methods: {
     login() {
-      // this.$router.push('/game')
       this.$router.push(`${this.url}`)
-      // console.log("login user##", this.user);
-      // console.log("this.url", this.url);
       this.$store.dispatch ({
             type: "getUser",
             user: this.user

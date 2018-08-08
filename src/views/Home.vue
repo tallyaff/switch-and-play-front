@@ -159,10 +159,10 @@ export default {
         userId: ""
       },
       url: 'url("img/homepage-img.jpg")'
-      // url: 'url("img/home-img-3.png")',
     };
   },
   created() {
+    this.$store.commit({type: 'setUrl', url: '/'})
     this.loadGamesForHomepage();
   },
   mounted() {
