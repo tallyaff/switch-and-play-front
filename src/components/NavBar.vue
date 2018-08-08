@@ -5,6 +5,9 @@
             <span class="line line02"></span>
             <span class="line line03"></span>
         </div>
+      <transition 
+      name="slowDisplay"
+      >
         <ul class="nav-mobile flex column" v-if="isOpen" :class="{open: isOpen}">
             <router-link to="/">
                 <li @click="isOpen=!isOpen">Home</li>
@@ -19,6 +22,7 @@
                 <li @click="isOpen=!isOpen">Contact</li>
             </router-link>
         </ul>
+      </transition>
         <div class="nav">
             <router-link to="/">Home</router-link>
             <router-link to="/game">
@@ -60,11 +64,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
+
 .nav-mobile{
     position: fixed;
     min-width: 100%;
-    transform: translate(100%, 0);
-    transition: all .8s;
     z-index: 7;
     background-color: $secondary-color;
     width: 100%;

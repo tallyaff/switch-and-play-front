@@ -96,8 +96,10 @@ export default {
     }
   },
   watch: {
+    // this watch responsible that the array of games to switch will be full of user games
+    //helps when checkbox is checked/unchecked
     games(games) {
-      this.gamesToSwitch = games.map(game => game._id);
+      this.gamesToSwitch = this.games.map(game => game._id);
     }
   }
 };
