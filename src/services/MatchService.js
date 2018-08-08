@@ -27,7 +27,7 @@ function getMatchById(gameId, matchId) {
 
 
 function createMatch(matchStarter){
-    console.log('match service recived1:',matchStarter)
+    console.log('match service recived1*******************************************8:', matchStarter)
     return axios.post(`${MATCH_URL}`, matchStarter)
     .then(res => {
         // console.log('add match in front - res', res)
@@ -40,7 +40,11 @@ function createMatch(matchStarter){
 function updateMatch(matchDetails){
     console.log('&&&match service details:',matchDetails)
     return axios.put(`${MATCH_URL}/${matchDetails.matchId}`, {match: matchDetails})
-            .then(res => res.data)
+            .then(res => {
+                res.data;
+                console.log('back from server updateMatch, res.data:'. res.data);
+                
+            })
             .catch(err => console.log('Problem talking to server', err))
 }
 

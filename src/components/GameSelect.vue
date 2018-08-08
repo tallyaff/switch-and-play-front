@@ -77,7 +77,7 @@ export default {
             // console.log('game id', this.choosenGame);
             // console.log('match id', this.currRecieved);
             // console.log('###match:!!', match);
-            const match = {gameId: this.game._id, matchId: this.match._id}
+            const match = {gameId: this.game._id, _id: this.match._id}
             this.$store.dispatch({ type: "updateMatch", matchDetails: match })
                 .then( () => {
                         // this.$router.push('/');

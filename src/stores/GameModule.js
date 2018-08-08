@@ -70,7 +70,7 @@ export default {
         },
         loggedUserGames(state,{ games }){
             state.loggedUserGames = games;
-            console.log('@@@this.loggedUserGames', state.loggedUserGames)
+            // console.log('@@@this.loggedUserGames', state.loggedUserGames)
         }
     },
     getters: {

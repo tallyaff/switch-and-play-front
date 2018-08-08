@@ -50,7 +50,7 @@ import GameUserName from '@/components/GameUserName.vue';
 import ShowChat from '@/components/ShowChat.vue';
 
 export default {
-    name: 'userMatch',
+    name: 'userMatches',
     data() {
         return {
             passiveUser: null,
@@ -67,8 +67,8 @@ export default {
         this.$store.dispatch({type: 'getMatch', 
             user: this.$route.params.userId
             });
-        // console.log('matchhhhhh', this.matches);
-        // console.log('usrtID^^^', this.userId);
+        console.log('this.matches in userMatches', this.matches);
+        // console.log('usrtID^^^ in userMatches', this.userId);
         this.getGameUser();        
     },
     computed: {

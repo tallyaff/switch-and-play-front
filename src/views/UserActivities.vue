@@ -46,12 +46,12 @@ export default {
         loggedinUser(){
             return this.$store.getters.loggedUser
         },
-        // matches() {
-        //     // console.log('this.$store.getters.getMatches', this.$store.getters.getMatches);
-        //     return this.$store.getters.getMatches;
-        // },
+        matches() {
+            console.log('this.$store.getters.getMatches', this.$store.getters.getMatches);
+            return this.$store.getters.getMatches;
+        },
         recieves() {
-            // console.log('this.$store.getters.getRecieves', this.$store.getters.getRecieves);
+            console.log('this.$store.getters.getRecieves', this.$store.getters.getRecieves);
             // debugger
             return this.$store.getters.getRecieves;
         },

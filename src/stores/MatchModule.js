@@ -22,13 +22,13 @@ export default {
     },
     getters: {
         getMatches(state){
-            console.log('inside getter getMatches');
+            // console.log('inside getter getMatches');
             if (state.activities) {
                 return state.activities.filter(activity => activity.isMatch)
             }
         },
         getRecieves(state) {
-            console.log('inside getter getRecieves');
+            // console.log('inside getter getRecieves');
             if (state.activities) {
                 return state.activities.filter(activity => {
                     return activity.userPassive.userId === state.userId && !activity.isMatch;
@@ -36,7 +36,7 @@ export default {
             }
         },
         getRequestes(state) {
-            console.log('inside getter getRequests');
+            // console.log('inside getter getRequests');
             if (state.activities) { 
                 return state.activities.filter(activity => {
                     return activity.userActive.userId === state.userId && !activity.isMatch

@@ -82,14 +82,14 @@ export default {
             // console.log('match id', this.currRecieved);
             // console.log('###match:!!', match);
             this.$store.dispatch({ type: "updateMatch", matchDetails: this.match })
-            .then( () => {
-                    // this.$router.push('/'); //???
-                    this.$socket.emit('newMatch');
-                    //reset msg
-                    this.msg = MatchService.craeteEmptyChatMsg();
-                    this.textareaRes = '';
-                })
-    },
+                .then( () => {
+                        // this.$router.push('/'); //???
+                        this.$socket.emit('newMatch');
+                        //reset msg
+                        this.msg = MatchService.craeteEmptyChatMsg();
+                        this.textareaRes = '';
+                    })
+            },
     }
 }
 </script>
