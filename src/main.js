@@ -21,6 +21,7 @@ import { faPen } from '@fortawesome/free-solid-svg-icons'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { faAngleLeft } from '@fortawesome/free-solid-svg-icons'
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
+import { faComments } from '@fortawesome/free-solid-svg-icons'
 // import { faExchangeAlt } from '@fortawesome/free-solid-svg-icons'
 
 const PORT = process.env.NODE_ENV !== 'production' ? '//localhost:3000' : '/';
@@ -42,6 +43,7 @@ library.add(faExchangeAlt);
 library.add(faFilter); 
 library.add(faTimes); 
 library.add(faArrowLeft); 
+library.add(faComments); 
 
 
 /* eslint-disable no-new */

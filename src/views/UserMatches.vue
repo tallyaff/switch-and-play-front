@@ -22,20 +22,20 @@
                             <img class="swap-arrows" src="img/swaparrows.png"/>
                             <!-- <i class="fas fa-exchange-alt"></i> -->
                             <div class="flex column game-box">
-                                <h3>{{match.userActiveGames[0].name}}</h3>
+                                <!-- <h3>{{match.userActiveGames[0].name}}</h3> -->
                                 <div class="img-activity-container">
-                                    <img :src="match.userActiveGames[0].src"/> 
+                                    <!-- <img :src="match.userActiveGames[0].src"/>  -->
                                 </div>
                             </div>
                         </div>
-                        <div class="flex msg-box">
+                        <!-- <div class="flex msg-box"> -->
                             <GameUserImg :userId="match.userPassive.userId"></GameUserImg>
-                            <h4>{{match.userPassive.textareaRes}}</h4>
-                        </div>
+                            <!-- <h4>{{match.userPassive.textareaRes}}</h4> -->
+                        <!-- </div> -->
                     <!-- </div> -->
+                        <font-awesome-icon @click="showChat(match.userPassive.gameId, match._id)" icon="comments" class="chat-icon"/>
+                        <show-chat :match="match" v-if="isShow"></show-chat>
                     </div>
-                    <el-button type="primary" @click="showChat(match.userPassive.gameId, match._id)">See chat</el-button>
-                    <show-chat :match="match"></show-chat>
                 </li>
             </ul>
         </div>
@@ -56,6 +56,7 @@ export default {
             passiveUser: null,
             matchId: null,
             gameId: null,
+            isShow: false,
         }
     },
     components: {
@@ -73,7 +74,7 @@ export default {
     },
     computed: {
         matches() {
-            // console.log('%%%', this.$store.getters.getMatches);
+            console.log('matches in computed in userMatches', this.$store.getters.getMatches);
             return this.$store.getters.getMatches;
         },
         loggedinUser() {
@@ -89,6 +90,7 @@ export default {
                 })
         },
         showChat(gameId, matchId) {
+            this.isShow = !this.isShow;
             console.log('2gameId in gameId', gameId, 'matchId in gameId', matchId);
 
             this.$router.push(`/game/${gameId}/match/${matchId}`)
@@ -170,5 +172,15 @@ export default {
         font-size: 18px;
         font-family: 'Ubuntu';
         margin-top: 5px;
+    }
+
+    .chat-icon {
+        font-size: rem(40px);
+        color: $main-color;
+        transition: all 0.3s;
+        margin: rem(20px);
+        &:hover {
+            color: $border-color;
+        }
     }
 </style>

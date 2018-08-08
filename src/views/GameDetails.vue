@@ -63,7 +63,7 @@ export default {
     var filterBy = JSON.parse(JSON.stringify(this.filterBy));
     this.$store.commit({ type: "setFilter", filterBy });
     this.url = this.$route.fullPath;
-    // console.log("this.url in created",  this.url);
+    console.log("this.url in created",  this.url);
     this.loadGame();
 
 
@@ -79,15 +79,21 @@ export default {
       this.$store
         .dispatch({ type: "loadGame", gameId: this.$route.params.gameId })
         .then(game => {
+          console.log(game)
           this.currGame = game;
           this.getUser()
+
           // eventBusService.$emit(SHOW_MSG, {txt: `Todo was removed`})
         });
     },
     getUser(){
+      console.log('user id in ..', this.currGame.userId);
+      
       GameService.getUserById(this.currGame.userId)
       .then(user =>{
+        console.log('user' , user)
         this.currUser = user
+        
       })
     },
     checkIfLogin() {
