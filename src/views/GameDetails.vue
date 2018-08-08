@@ -64,7 +64,10 @@ export default {
   },
   created() {
     var filterBy = JSON.parse(JSON.stringify(this.filterBy));
-    this.$store.commit({ type: "setFilter", filterBy })
+    this.$store.commit({ type: "setFilter", filterBy });
+    this.url = this.$route.fullPath;
+    console.log("this.url in created",  this.url);
+    this.$store.commit({type: 'setUrl', url: this.url})
     this.loadGame();
 
 
@@ -96,6 +99,7 @@ export default {
     },
     checkIfLogin() {
       if (!this.loggedinUser) {
+        console.log("this.url in checkIfLogin",  this.url);
         swal({
           title: "Please login to swap a game!",
           buttons: ["Not now", "Login"],

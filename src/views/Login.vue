@@ -73,11 +73,16 @@ export default {
       },
       signupForm: false,
       loginForm: true,
+      url: '/game',
     };
+  },
+  created() {
+    console.log('this.url in login' , this.url);
+    if (this.$store.getters.setUrl) this.url = this.$store.getters.setUrl;
   },
   methods: {
     login() {
-      // console.log("login user##", this.user);
+      this.$router.push(`${this.url}`)
       this.$store.dispatch ({
         type: "getUser", user: this.user
         })
@@ -98,7 +103,9 @@ export default {
           eventBus.$emit(EVENT_LOGIN_USER, this.user.username);
           return this.$store.getters.loggedUser;
         })
-        .catch(err => {
+
+        .catch(err => console.log(err));
+        this.$store.commit({type: 'setUrl', url: '/game'})
           console.log('Wrong user/ password', err)
           this.$router.push(`/login`)
           swal("Wrong user/ password", {
@@ -110,7 +117,8 @@ export default {
         });
     },
     signup() {
-      this.$router.push('/game')
+      // this.$router.push('/game')
+      this.$router.push(`${this.url}`)
       // console.log("signup user**", this.newUser);
       this.$store.dispatch({
           type: "createUser",
@@ -120,6 +128,7 @@ export default {
           eventBus.$emit(EVENT_LOGIN_USER, user);
         })
         .catch(err => console.log(err));
+        this.$store.commit({type: 'setUrl', url: '/game'})
     },
     openSignupModal() {
       this.signupForm = true;

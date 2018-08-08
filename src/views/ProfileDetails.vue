@@ -162,6 +162,7 @@ export default {
 
 .profile-edit-container { 
     // justify-content: center;    
+    width: 980px;
     margin: 30px 100px;
 }
 

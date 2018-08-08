@@ -5,10 +5,10 @@
         </button>
         <form @submit.prevent="setFilter" class="search-in-gallery flex">
             <el-input class="search-input" type="text" v-model="filterBy.name" placeholder="Search for games" autofocus></el-input>
-            <el-button class="btn search-btn" type="primary">
+            <el-button class="btn search-btn" type="primary" @click="setFilter">
                 <font-awesome-icon icon="search"></font-awesome-icon>
             </el-button>
-            <el-button class="btn search-btn-text" type="primary">Search</el-button>
+            <el-button class="btn search-btn-text" type="primary" @click="setFilter">Search</el-button>
         </form>
 
     <transition name="slowDisplay">
