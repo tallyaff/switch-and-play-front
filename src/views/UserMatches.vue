@@ -37,7 +37,7 @@
             </ul>
                  <div v-else>
                  <div class="noMatchesMsg">
-                   <h1>No matches yet...</h1>
+                   <div>No matches yet...</div>
                  </div>
             </div>
         </div>
@@ -98,11 +98,12 @@ export default {
 }
 
 .noRecievesMsg{
+  font-size: 14px;
   color: #2c3e50
 }
 
 .match-container {
-  width: 980px;
+  // width: 980px;
 }
 
 .games-box-container {
@@ -130,10 +131,13 @@ export default {
 .msg-box {
   width: 55%;
   position: absolute;
-  top: 195px;
+  // top: 195px;
+  top: 220px;
   left: 30px;
 }
 .games-img {
+  margin-top:20px;
+  justify-content: center;
   width: 100%;
   .exchange {
     align-self: center;
@@ -151,8 +155,8 @@ export default {
   border: 1px solid $border-color;
   box-shadow: 0px 2px 4px 0px #d9d8d8;
   border-radius: 2px;
-  width: 400px;
-  height: 300px;
+  max-width: 400px;
+  max-height: 300px;
 }
 .game-box {
   justify-content: space-between;
@@ -160,6 +164,9 @@ export default {
   box-shadow: none;
   height: 150px;
   margin-bottom: 0;
+  padding-left: 5px;
+  padding-right: 5px;
+ 
 }
 
 .user-approved {
