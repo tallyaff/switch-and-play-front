@@ -150,11 +150,12 @@ export default {
                 })
         },
         saveGame(context, { savedGame }) {
-            // console.log('newgame in action', savedGame)
+            console.log('newgame in action', savedGame)
             return GameService.saveGame(savedGame)
                 .then((game) => {
-                    // console.log('savegame in store', game);
+                    console.log('savegame in store', game);
                     context.commit({ type: 'saveGame', game })
+                    return game;
                 })
         },
         setFilter(context, { filterBy }) {

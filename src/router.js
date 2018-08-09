@@ -55,6 +55,11 @@ export default new Router({
       component: EditGame
     },
     {
+      path: '/game/edit/user/:userId?',
+      name: 'edit',
+      component: EditGame
+    },
+    {
       path: '/game/:gameId?',
       name: 'game-details',
       component: GameDetails

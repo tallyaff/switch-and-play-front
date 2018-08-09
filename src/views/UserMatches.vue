@@ -20,7 +20,6 @@
                             </div>
                             <!-- <font-awesome-icon icon="exchange-alt" class="exchange"/> -->
                             <img class="swap-arrows" src="img/swaparrows.png"/>
-                            <!-- <i class="fas fa-exchange-alt"></i> -->
                             <div class="flex column game-box">
                                 <h3>{{match.userActiveGames[0].name}}</h3>
                                 <div class="img-activity-container">
@@ -49,22 +48,24 @@ export default {
     name: 'userMatch',
     data() {
         return {
-            passiveUser: null
+            passiveUser: null,
+            userId: null
         }
     },
     components: {GameUserName, GameUserImg},
     created() {
+        this.userId = this.$route.params.userId
         this.$store.dispatch({type: 'getMatch', 
-            user: this.$route.params.userId
+            userId: this.userId 
             });
-        // console.log('matchhhhhh', this.matches);
-        // console.log('usrtID^^^', this.userId);
-        this.getGameUser();
+        console.log('matchhhhhh', this.matches);
+        console.log('usrtID^^^', this.userId);
+        this.getGameUser(this.userId);
         
     },
     computed: {
         matches() {
-            // console.log('%%%', this.$store.getters.getMatches);
+            console.log('%%%', this.$store.getters.getMatches);
             return this.$store.getters.getMatches;
         },
         loggedinUser() {
@@ -72,10 +73,11 @@ export default {
         },
     },
     methods: {
-        getGameUser() {
-            return GameService.getUserById(this.userId)
+        getGameUser(userId) {
+            console.log('user $$$$$',userId);
+            return GameService.getUserById(userId)
                 .then(user => {
-                    // console.log('user from server&&&', user);
+                    console.log('user from server&&&', user);
                     this.passiveUser = user
                 })
         }
