@@ -94,6 +94,8 @@ export default {
     getUser(){
       GameService.getUserById(this.currGame.userId)
       .then(user =>{
+        console.log('user in gamedetails', user);
+        
         this.currUser = user
       })
     },

@@ -75,7 +75,7 @@ function getGameById(gameId) {
 }
 
 function getUserById(userId) {
-    // console.log('getUserById in game service front', userId);
+    console.log('getUserById in game service front', userId);
     return axios.get(`${GAME_URL}s/${userId}`)
         .then(res => {
             console.log('getUserById from server', res.data)
