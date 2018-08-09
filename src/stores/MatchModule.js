@@ -48,6 +48,7 @@ export default {
     actions: {
         getMatch(context, payload) {
             context.commit({type: 'setCurrUserId', payload: payload.user})
+            // console.log('user in store###', payload );
             MatchService.getMatch(payload.user)
                .then(activities => {
                 //    console.log('match from backend in front', activities);

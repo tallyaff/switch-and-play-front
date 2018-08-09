@@ -234,6 +234,7 @@ export default {
     text-transform: capitalize;
     padding: 10px;
     z-index: 5;
+    width: 60%;
 }
 
 .image-container {
@@ -241,7 +242,7 @@ export default {
  //  height: 150px; // i shut it for gamerequest - i think we dont need
 }
 img {
-    width: 55%; //todo in if class!!! - i think we dont need
+    width: 45%; //todo in if class!!! - i think we dont need
     height: auto;
     transition: all 0.5s;
     margin: 15px -10px; //was added to game request

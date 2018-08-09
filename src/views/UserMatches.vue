@@ -20,7 +20,6 @@
                             </div>
                             <!-- <font-awesome-icon icon="exchange-alt" class="exchange"/> -->
                             <img class="swap-arrows" src="img/swaparrows.png"/>
-                            <!-- <i class="fas fa-exchange-alt"></i> -->
                             <div class="flex column game-box">
                                 <h3>{{match.userActiveGames[0].name}}</h3>
                                 <div class="img-activity-container">
@@ -51,39 +50,43 @@ import GameUserImg from "@/components/GameUserImg.vue";
 import GameUserName from "@/components/GameUserName.vue";
 
 export default {
-  name: "userMatch",
-  data() {
-    return {
-      passiveUser: null
-    };
-  },
-  components: { GameUserName, GameUserImg },
-  created() {
-    this.$store.dispatch({
-      type: "getMatch",
-      user: this.$route.params.userId
-    });
-    // console.log('matchhhhhh', this.matches);
-    // console.log('usrtID^^^', this.userId);
-    this.getGameUser();
-  },
-  computed: {
-    matches() {
-      // console.log('%%%', this.$store.getters.getMatches);
-      return this.$store.getters.getMatches;
+    name: 'userMatch',
+    data() {
+        return {
+            passiveUser: null,
+            userId: null
+        }
     },
-    loggedinUser() {
-      return this.$store.getters.loggedUser;
-    }
+    components: {GameUserName, GameUserImg},
+    created() {
+        this.userId = this.$route.params.userId
+        this.$store.dispatch({type: 'getMatch', 
+            userId: this.userId 
+            });
+        console.log('matchhhhhh', this.matches);
+        console.log('usrtID^^^', this.userId);
+        this.getGameUser(this.userId);
+        
+    },
+    computed: {
+        matches() {
+            console.log('%%%', this.$store.getters.getMatches);
+            return this.$store.getters.getMatches;
+        },
+        loggedinUser() {
+             return this.$store.getters.loggedUser;
+        },
+    },
+    methods: {
+        getGameUser(userId) {
+            console.log('user $$$$$',userId);
+            return GameService.getUserById(userId)
+                .then(user => {
+                    console.log('user from server&&&', user);
+                    this.passiveUser = user
+                })
+        }
   },
-  methods: {
-    getGameUser() {
-      return GameService.getUserById(this.userId).then(user => {
-        // console.log('user from server&&&', user);
-        this.passiveUser = user;
-      });
-    }
-  }
 };
 </script>
 

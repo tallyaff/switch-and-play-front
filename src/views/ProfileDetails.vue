@@ -7,21 +7,20 @@
                 <!-- <h2 class="headres-in-profile-details my-profile-header">My profile</h2> -->
                 <!-- background image -->
                 <div class="user-img" :style="{backgroundImage: `url(${loggedinUser.src})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundrepeat: 'no-repeat'}">
-                  </div>   
+                </div>   
                 <!-- <div class="image-container" :style="{backgroundImage: `url(${loggedinUser.src})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundrepeat: 'no-repeat'}">
                     <img :src="loggedinUser.src" class="user-img profile-img-page"/>    
                 </div> -->
                 <div class="user-details-container flex column">
                     <p class="user-name">{{loggedinUser.username}}</p>
-                    <p>{{loggedinUser.city}}</p>
+                    <p class="capitalize">{{loggedinUser.city}}</p>
                     <p>{{loggedinUser.email}}</p>
                 </div>
                 <button v-if="loggedinUser && !editMode" class="btn icon-btn edit-profile-btn" type="primary" @click="editProfile"><font-awesome-icon icon="pen" /></button>
                 <div class="my-games-header-container flex">
                     <el-button v-if="loggedinUser" class="btn add-game-btn" type="primary" @click="checkIfDisplay"><font-awesome-icon icon="plus" />&nbsp;&nbsp;Game</el-button>
-                    <!-- <router-link :to="`/user/activity/recieve/${loggedinUser._id}`"> -->
                     <router-link :to="`/user/activity/${loggedinUser._id}/recieve`">
-                            <el-button v-if="loggedinUser" class="btn add-game-btn" type="primary" @click="checkIfDisplay">My activity</el-button>
+                        <el-button v-if="loggedinUser" class="btn add-game-btn" type="primary">My activity</el-button>
                     </router-link>
                 </div>
             </div>
@@ -40,33 +39,34 @@
                 <el-input class="form-input" v-model="copiedUser.city"/>
               </el-form-item>
               <el-button class="btn save-profile-btn" type="primary" @click="saveUserProfile">Save</el-button>
-              <!-- <el-button @click="$router.go(-1)">Cancel</el-button> -->
               <el-button @click="unSaveUserProfile">Cancel</el-button>
           </el-form>
         </div>
-        <h2 class="headres-in-profile-details">My games:</h2>
-        
-            <ul class="cards-in-profile-container flex align-center justify-center" v-if="games">
-            <li class="game" v-for="game in games" :key="game._id">
-                <!-- <game-preview :game="game" :gameCheckbox="gameCheckbox" @check="updateGamesToSwitch"> -->
-                <el-card class="card-in-profile-details flex justify-center align-center pointer">
-                    <!-- <game-preview :game="game"></game-preview> -->
-                    <img :src="game.src" class="image-card">
-                    <div style="padding: 14px;">
-                    <span class="card-game-name">{{game.name}}</span>
-                    <div class="bottom clearfix">
-                        <li class="game-category capitalize"><span>Category: </span> {{game.category}}</li>
-                        <time class="time">{{ game.addedAt | getDate }}</time>
-                    </div>
-                    </div>
-                    <div class="edit-remove-btns-container">
-                        <button class="btn icon-btn btn-remove" @click="$emit('remove', game._id)"> <font-awesome-icon icon="trash" /></button> 
-                        <!-- <button class="btn icon-btn btn-remove" @click="$emit('remove', game._id)"><i class="fa fa-trash"></i></button>  -->
-                        <router-link class="icon-btn btn-edit" :to="'/game/edit/'+game._id"><font-awesome-icon icon="pen" /></router-link> 
-                    </div>
-                </el-card>
-                </li>
-            </ul>
+        <div class="profile-games">
+            <h2 class="headres-in-profile-details">My games:</h2>
+                <!-- <el-button v-if="loggedinUser" class="btn add-game-btn" type="primary" @click="checkIfDisplay"><font-awesome-icon icon="plus" />&nbsp;&nbsp;Game</el-button> -->
+                <ul class="cards-in-profile-container flex align-center justify-center" v-if="games">
+                <li class="game" v-for="game in games" :key="game._id">
+                    <!-- <game-preview :game="game" :gameCheckbox="gameCheckbox" @check="updateGamesToSwitch"> -->
+                    <el-card class="card-in-profile-details flex justify-center align-center pointer">
+                        <!-- <game-preview :game="game"></game-preview> -->
+                        <img :src="game.src" class="image-card">
+                        <div style="padding: 14px;">
+                        <span class="card-game-name">{{game.name}}</span>
+                        <div class="bottom clearfix">
+                            <li class="game-category capitalize"><span>Category: </span> {{game.category}}</li>
+                            <time class="time">{{ game.addedAt | getDate }}</time>
+                        </div>
+                        </div>
+                        <div class="edit-remove-btns-container">
+                            <button class="btn icon-btn btn-remove" @click="$emit('remove', game._id)"> <font-awesome-icon icon="trash" /></button> 
+                            <!-- <button class="btn icon-btn btn-remove" @click="$emit('remove', game._id)"><i class="fa fa-trash"></i></button>  -->
+                            <router-link class="icon-btn btn-edit" :to="'/game/edit/'+game._id"><font-awesome-icon icon="pen" /></router-link> 
+                        </div>
+                    </el-card>
+                    </li>
+                </ul>
+            </div>
         </div>
     </section>
 </template>
@@ -74,23 +74,26 @@
 <script>
 import Header from '@/components/Header.vue';
 import GamePreview from '@/components/GamePreview.vue';
+import CloudinaryService from '@/services/CloudinaryService.js';
 
 export default {
     name: 'ProfileDetails',
     components: {
         Header,
-        GamePreview
+        GamePreview,
     },
     data() {
         return {
             labelPosition: 'left',
             isEdit: false,
+            // userId: this.$route.params.userId
             // url: `url("${this.loggedinUser.src}")`,
         }
     },
     created() {
         this.$store.dispatch({ type: "gamesById", games: this.loggedinUser.games });
-        // console.log('$$$games$$$', this.games);
+        // console.log('$$$user loggedin$$$', this.loggedinUser._id);
+        // console.log('user$$$', this.$route.params.userId);
         
     },
     computed: {
@@ -107,9 +110,6 @@ export default {
             // console.log('gamezzzzzz', this.$store.getters.getUserGames);
             return this.$store.getters.getUserGames || [];
         },
-        url() {
-            return `url("${this.loggedinUser.src}")`;
-        },
         editMode() {
             return this.isEdit;
         }
@@ -122,15 +122,13 @@ export default {
                 title: 'Please login to add your game',
                 buttons: ['Not now', 'Login']
                 }).then(willLogin => {
-                    if (willLogin) {
-                        this.$router.push('/login');
-                    } else {
-                        swal.close();
-                    }
+                    if (willLogin) this.$router.push('/login');
+                    else swal.close();
                 });
-            } else this.$router.push('/game/edit');
+            } else this.$router.push(`/game/edit/user/${this.loggedinUser._id}`);
+            // } else this.$router.push(`/game/edit/`);
         },
-        saveUserProfile() {
+        saveUserProfile() { 
             // this.$router.go(-1);
             this.$store.dispatch({ type: 'savedUserProfile', savedUserProfile: this.copiedUser })
                 .then(game => {
@@ -153,6 +151,9 @@ export default {
             console.log('copiedUser', this.copiedUser);
             this.isEdit = !this.isEdit;
         },
+        uploadImgs(img, event) {
+            CloudinaryService.uploadImg(img, ev);
+        }
     }
 }
 </script>
@@ -160,10 +161,21 @@ export default {
 <style scoped lang="scss">
     // @import "~@/assets/scss/style.scss";
 
+.profile-details-page {
+    // width: 980px;
+}
+
+.profile-games {
+    width: 980px;
+
+}
 .profile-edit-container { 
     // justify-content: center;    
     width: 980px;
     margin: 30px 100px;
+    background-color: aliceblue;
+    background-color: $card-text-color;
+    padding: rem(40px);
 }
 
 .image-container {
@@ -171,28 +183,54 @@ export default {
     height: 200px;
     border-radius: 50%;
 }
+
+.user-img {
+    margin: 0 20px;
+}
+
+.edit-name-container {
+
+}
 .profile-img-page {
     width: 100%;
     height: 100%;
 }
 .user-details-container {
-    // justify-content: space-around;
-    margin-top: 15px;
+    justify-content: space-around;
+    // margin: 20px 0;
+    width: 250px;
 }
 .user-details-container p {
     margin: 5px;
-    font-size: 1.5em;
     text-align: left;
 }
 .user-details-container p:first-child {
     font-weight: bold;
 }
 
+.user-name {
+    font-size: rem(22px);
+}
+
+.user-detail, .activities-btn {
+    font-size: rem(16px);
+}
+
 .my-games-header-container button{
     margin: 0 5px;
 }
 .btn {
-    background-color: $main-color;
+    color: $main-color;
+}
+
+.profile-btns {
+    align-self: flex-end;
+    font-size: rem(18px);
+}
+
+.activities-btn {
+    align-self: flex-start;
+    margin: 20px 0 0 5px;
 }
 
 .header-your-games {
@@ -216,12 +254,14 @@ export default {
 .add-game-btn {
     align-self: flex-start;
     position: relative;
+    color: white;
     left: rem(60px);
 }
 
 .cards-in-profile-container {
     flex-wrap: wrap;
-    width: 1200px;
+    // width: 1200px;
+    width: 100%;
 }
 
 .headres-in-profile-details {
@@ -314,6 +354,16 @@ font-family: sans-serif;
 
 .user-name {
     text-transform: capitalize;
+}
+.btn-submit {
+    color: white;
+}
+.publish-form {
+    // background-color: $secondary-color;
+    padding: 5px;
+}
+.publish-form  {
+    margin: 40px;
 }
 </style>
 
