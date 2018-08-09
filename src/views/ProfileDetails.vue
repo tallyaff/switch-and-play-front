@@ -11,21 +11,17 @@
                 <!-- <div class="image-container" :style="{backgroundImage: `url(${loggedinUser.src})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundrepeat: 'no-repeat'}">
                     <img :src="loggedinUser.src" class="user-img profile-img-page"/>    
                 </div> -->
-                <div class="user-details-container flex column content-center">
-                    <div class="edit-name-container flex space-between">
-                        <p class="user-name">{{loggedinUser.username}}</p>
-                        <button v-if="loggedinUser && !editMode" class="btn icon-btn edit-profile-btn" type="primary" @click="editProfile"><font-awesome-icon icon="pen" /></button>
-                    </div>
-                    <p class="user-detail">{{loggedinUser.city}}</p>
-                    <p class="user-detail">{{loggedinUser.email}}</p>
-                    <!-- <div class="profile-btns"> -->
-                    <!-- <div class="my-games-header-container flex"> -->
-                        <!-- <router-link :to="`/user/activity/recieve/${loggedinUser._id}`"> -->
-                    <!-- </div> -->
-                        <router-link :to="`/user/activity/${loggedinUser._id}/recieve`" v-if="loggedinUser" class="btn activities-btn" type="primary" @click="checkIfDisplay">
-                                My activities
-                        </router-link>
-                    <!-- </div> -->
+                <div class="user-details-container flex column">
+                    <p class="user-name">{{loggedinUser.username}}</p>
+                    <p class="capitalize">{{loggedinUser.city}}</p>
+                    <p>{{loggedinUser.email}}</p>
+                </div>
+                <button v-if="loggedinUser && !editMode" class="btn icon-btn edit-profile-btn" type="primary" @click="editProfile"><font-awesome-icon icon="pen" /></button>
+                <div class="my-games-header-container flex">
+                    <el-button v-if="loggedinUser" class="btn add-game-btn" type="primary" @click="checkIfDisplay"><font-awesome-icon icon="plus" />&nbsp;&nbsp;Game</el-button>
+                    <router-link :to="`/user/activity/${loggedinUser._id}/recieve`">
+                        <el-button v-if="loggedinUser" class="btn add-game-btn" type="primary">My activity</el-button>
+                    </router-link>
                 </div>
             </div>
             <div v-if="copiedUser">
@@ -43,7 +39,6 @@
                 <el-input class="form-input" v-model="copiedUser.city"/>
               </el-form-item>
               <el-button class="btn save-profile-btn" type="primary" @click="saveUserProfile">Save</el-button>
-              <!-- <el-button @click="$router.go(-1)">Cancel</el-button> -->
               <el-button @click="unSaveUserProfile">Cancel</el-button>
           </el-form>
         </div>
@@ -79,23 +74,26 @@
 <script>
 import Header from '@/components/Header.vue';
 import GamePreview from '@/components/GamePreview.vue';
+import CloudinaryService from '@/services/CloudinaryService.js';
 
 export default {
     name: 'ProfileDetails',
     components: {
         Header,
-        GamePreview
+        GamePreview,
     },
     data() {
         return {
             labelPosition: 'left',
             isEdit: false,
+            // userId: this.$route.params.userId
             // url: `url("${this.loggedinUser.src}")`,
         }
     },
     created() {
         this.$store.dispatch({ type: "gamesById", games: this.loggedinUser.games });
-        // console.log('$$$games$$$', this.games);
+        // console.log('$$$user loggedin$$$', this.loggedinUser._id);
+        // console.log('user$$$', this.$route.params.userId);
         
     },
     computed: {
@@ -112,9 +110,6 @@ export default {
             // console.log('gamezzzzzz', this.$store.getters.getUserGames);
             return this.$store.getters.getUserGames || [];
         },
-        url() {
-            return `url("${this.loggedinUser.src}")`;
-        },
         editMode() {
             return this.isEdit;
         }
@@ -127,15 +122,13 @@ export default {
                 title: 'Please login to add your game',
                 buttons: ['Not now', 'Login']
                 }).then(willLogin => {
-                    if (willLogin) {
-                        this.$router.push('/login');
-                    } else {
-                        swal.close();
-                    }
+                    if (willLogin) this.$router.push('/login');
+                    else swal.close();
                 });
-            } else this.$router.push('/game/edit');
+            } else this.$router.push(`/game/edit/user/${this.loggedinUser._id}`);
+            // } else this.$router.push(`/game/edit/`);
         },
-        saveUserProfile() {
+        saveUserProfile() { 
             // this.$router.go(-1);
             this.$store.dispatch({ type: 'savedUserProfile', savedUserProfile: this.copiedUser })
                 .then(game => {
@@ -158,6 +151,9 @@ export default {
             console.log('copiedUser', this.copiedUser);
             this.isEdit = !this.isEdit;
         },
+        uploadImgs(img, event) {
+            CloudinaryService.uploadImg(img, ev);
+        }
     }
 }
 </script>
@@ -176,6 +172,7 @@ export default {
 }
 .profile-edit-container { 
     // justify-content: center;    
+    width: 980px;
     margin: 30px 100px;
     background-color: aliceblue;
     background-color: $card-text-color;
@@ -200,7 +197,7 @@ export default {
     height: 100%;
 }
 .user-details-container {
-    // justify-content: space-around;
+    justify-content: space-around;
     // margin: 20px 0;
     width: 250px;
 }
@@ -359,6 +356,16 @@ font-family: sans-serif;
 
 .user-name {
     text-transform: capitalize;
+}
+.btn-submit {
+    color: white;
+}
+.publish-form {
+    // background-color: $secondary-color;
+    padding: 5px;
+}
+.publish-form  {
+    margin: 40px;
 }
 </style>
 

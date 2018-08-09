@@ -75,10 +75,10 @@ function getGameById(gameId) {
 }
 
 function getUserById(userId) {
-    // console.log('getUserById in game service front', userId);
+    console.log('getUserById in game service front', userId);
     return axios.get(`${GAME_URL}s/${userId}`)
         .then(res => {
-            // console.log('getUserById from server', res.data)
+            console.log('getUserById from server', res.data)
             return res.data
         })
         .catch(err => console.log('Problem talking to server!', err))
@@ -111,15 +111,19 @@ function saveGame(game) {
 }
 
 
-function createEmptyGame() {
+function createEmptyGame(userId) {
+    console.log('userrrrrr ', userId);    
     var game = {
-        name: '',
-        type: '',
-        desc: '',
-        img: '',
-        condition:'',
-        addedAt: Date.now(),
-        inStock: null,
+            name: '',
+            type: '',
+            desc: '',
+            src: '',
+            condition:'',
+            category: '',
+            addedAt: Date.now(),
+            isAvailble: true,
+            isNew: true,
+            userId: userId
     }
     return game;
 }

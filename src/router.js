@@ -24,11 +24,11 @@ export default new Router({
       name: 'home',
       component: Home
     },
-    {
-      path: '/gallery',
-      name: 'gallery',
-      component: Gallery
-    },
+    // { // TO DELETE
+    //   path: '/gallery',
+    //   name: 'gallery',
+    //   component: Gallery
+    // },
     {
       path: '/login',
       name: 'login',
@@ -51,6 +51,11 @@ export default new Router({
     },
     {
       path: '/game/edit/:gameId?',
+      name: 'edit',
+      component: EditGame
+    },
+    {
+      path: '/game/edit/user/:userId?',
       name: 'edit',
       component: EditGame
     },

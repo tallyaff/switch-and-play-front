@@ -1,7 +1,7 @@
 <template>
     <section>
         <div class="flex column match-container">
-            <ul v-if="requestes" class="flex games-box recieve">
+            <ul v-if="requestes && requestes.length" class="flex games-box recieve">
                 <li v-for="request in requestes" :key="request._id">
                     <div class="flex column game-box">
                         <h3>{{request.userPassiveGame.name}}</h3>
@@ -15,7 +15,9 @@
                 </li>
             </ul>
             <div v-else>
-                <h1> no requests for now...</h1>
+                 <div class="noSentReqMsg">
+                   <div>No sent requests yet...</div>
+                 </div>
             </div>
         </div>
     </section>
@@ -59,5 +61,9 @@ export default {
     justify-content: space-around;
     height: 300px;
     width: 250px;
+}
+.noSentReqMsg{
+    font-size: 14px;   
+    color: #2c3e50;
 }
 </style>

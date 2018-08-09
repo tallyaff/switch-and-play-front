@@ -1,6 +1,9 @@
 <template>
     <section class="game-details flex justify-center align-center" v-if="currGame && currUser">
-      <div class="game-details-all" v-if="!requesting">
+      <div v-if="gamesLoading">
+        <div class="loader-circle"></div>
+  </div>
+      <div v-else-if="!requesting" class="game-details-all" >
         <h2 class="game-name capitalize">{{currGame.name}}</h2>
         <h3 class="game-description" label="Description">{{currGame.desc}}</h3>
         <div class="game-details-container flex column content-center align-center" v-if="!requesting">
@@ -9,28 +12,27 @@
             </div>
             <div class="game-text-container flex">
               <div class="text-container-title flex column">
-                    <div class="detail-item" >Type:</div>
-                    <div class="detail-item" >Categoty:</div>
-                    <div class="detail-item" >Condition:</div>
-                    <div class="detail-item" >Added at:</div>
-                    <div class="detail-item" >Owner:</div>
-                    <div class="detail-item" >City:</div>
-                    </div>
-                <div class="text-container flex column capitalize">
-                    <div class="detail-item" label="Type">{{currGame.type}}
-                    <!-- <img class="details-img" :src="`img/details/${currGame.type}.png`"> -->
-                    </div>
-                    <!-- <img src="@/assets/img/details/baby.png"> -->
-                    <div class="detail-item" label="Category">{{currGame.category}}</div>
-                    <div class="detail-item" label="Condition">{{currGame.condition}}</div>
-                    <div class="detail-item" >{{ currGame.addedAt | getDate }}</div>
-                    <div class="detail-item" >{{currUser.username}}</div>
-                    <div class="detail-item" >{{currUser.city}}</div>
-                </div>
+                  <div class="detail-item" >Type:</div>
+                  <div class="detail-item" >Categoty:</div>
+                  <div class="detail-item" >Condition:</div>
+                  <div class="detail-item" >Added at:</div>
+                  <div class="detail-item" >Owner:</div>
+                  <div class="detail-item" >City:</div>
+              </div>
+              <div class="text-container flex column capitalize">
+                <div class="detail-item" label="Type">{{currGame.type}}</div>
+                <!-- <img class="details-img" :src="`img/details/${currGame.type}.png`"> -->
+                <!-- <img src="@/assets/img/details/baby.png"> -->
+                <div class="detail-item" label="Category">{{currGame.category}}</div>
+                <div class="detail-item" label="Condition">{{currGame.condition}}</div>
+                <div class="detail-item" >{{ currGame.addedAt | getDate }}</div>
+                <div class="detail-item" >{{currUser.username}}</div>
+                <div class="detail-item" >{{currUser.city}}</div>
+              </div>
             </div>
+          </div>
+            <el-button class="btn-want-game" v-if="!requesting" @click="checkIfLogin">I want this game!</el-button>
             </div>
-             <el-button class="btn-want-game" v-if="!requesting" @click="checkIfLogin">I want this game!</el-button>
-             </div>
             <game-request :game="currGame" v-if="requesting"></game-request>
         <!-- <show-match></show-match> -->
     </section>
@@ -61,7 +63,10 @@ export default {
   },
   created() {
     var filterBy = JSON.parse(JSON.stringify(this.filterBy));
-    this.$store.commit({ type: "setFilter", filterBy })
+    this.$store.commit({ type: "setFilter", filterBy });
+    this.url = this.$route.fullPath;
+    console.log("this.url in created",  this.url);
+    this.$store.commit({type: 'setUrl', url: this.url})
     this.loadGame();
 
 
@@ -69,6 +74,9 @@ export default {
   computed: {
     loggedinUser() {
       return this.$store.getters.loggedUser;
+    },
+    gamesLoading() {
+      return this.$store.getters.gamesLoading;
     }
   },
   
@@ -85,13 +93,16 @@ export default {
     getUser(){
       GameService.getUserById(this.currGame.userId)
       .then(user =>{
+        console.log('user in gamedetails', user);
+        
         this.currUser = user
       })
     },
     checkIfLogin() {
       if (!this.loggedinUser) {
+        console.log("this.url in checkIfLogin",  this.url);
         swal({
-          title: "Please login to switch a game!",
+          title: "Please login to swap a game!",
           buttons: ["Not now", "Login"],
         }).then(willLogin => {
           if (willLogin) {
@@ -113,7 +124,6 @@ export default {
  <style lang="scss" scoped>
 
  .game-details-all {
-   border: 1px solid $border-color;
    margin-top: rem(20px);
  }
 .img-container {
@@ -129,7 +139,7 @@ export default {
   width: 40px;
 }
 .game-details-container {
-  margin: 50px;
+  margin: 15px;
 }
 .game-name {
   font-family: 'PaytoneOne';
@@ -204,10 +214,13 @@ export default {
   .game-details-container  {
     flex-direction: row;
   }
-
   .game-details-all {
    width: 980px;
+   border: 1px solid $border-color;
  }
+ .game-details-container {
+  margin: 50px;
+}
 }
 
 // @media (min-width: 730px) {

@@ -135,11 +135,15 @@ export default {
         },
 
         loadGame(context, { gameId }) {
+            context.commit({ type: 'setGamesLoading', isLoading: true })
             // console.log('route, gameId', { gameId });
             return GameService.getGameById(gameId)
                 .then((game) => {
                     context.commit({ type: 'setGame', game })
                     return game;
+                })
+                .finally(() => {
+                    context.commit({ type: 'setGamesLoading', isLoading: false });
                 })
         },
         removeGame(context, { gameId }) {
@@ -150,20 +154,25 @@ export default {
                 })
         },
         saveGame(context, { savedGame }) {
-            // console.log('newgame in action', savedGame)
+            console.log('newgame in action', savedGame)
             return GameService.saveGame(savedGame)
                 .then((game) => {
-                    // console.log('savegame in store', game);
+                    console.log('savegame in store', game);
                     context.commit({ type: 'saveGame', game })
+                    return game;
                 })
         },
         setFilter(context, { filterBy }) {
+            context.commit({ type: 'setGamesLoading', isLoading: true })
             context.commit({ type: 'setFilter', filterBy })
             // console.log('setFilter in store: filterBy', filterBy)
             return GameService.query(filterBy)
                 .then((games) => {
                     // console.log('users from server after sentFilter in store', games);
                     context.commit({ type: 'gamesByFilterServer', games })
+                })
+                .finally(() => {
+                    context.commit({ type: 'setGamesLoading', isLoading: false });
                 })
         },
         setSearchHome(context, { filterBy }){

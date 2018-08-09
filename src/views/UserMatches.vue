@@ -1,7 +1,7 @@
 <template>
     <section class="user-matches flex align-center justify-center">
         <div class="flex column match-container align-center justify-center">
-            <ul v-if="matches" class="games-box-container flex">
+            <ul v-if="matches && matches.length>0" class="games-box-container flex">
                 <li v-for="match in matches" :key="match._id" class="flex games-box align-center justify-center">
                     <div class="whole-box">
                     <!-- <div class="flex column games-container"> -->
@@ -20,7 +20,6 @@
                             </div>
                             <!-- <font-awesome-icon icon="exchange-alt" class="exchange"/> -->
                             <img class="swap-arrows" src="img/swaparrows.png"/>
-                            <!-- <i class="fas fa-exchange-alt"></i> -->
                             <div class="flex column game-box">
                                 <h3>{{match.userActiveGames[0].name}}</h3>
                                 <div class="img-activity-container">
@@ -36,125 +35,142 @@
                     </div>
                 </li>
             </ul>
+                 <div v-else>
+                 <div class="noMatchesMsg">
+                   <div>No matches yet...</div>
+                 </div>
+            </div>
         </div>
     </section>
 </template>
 
 <script>
-import GameService from '../services/GameService.js';
-import GameUserImg from '@/components/GameUserImg.vue';
-import GameUserName from '@/components/GameUserName.vue';
+import GameService from "../services/GameService.js";
+import GameUserImg from "@/components/GameUserImg.vue";
+import GameUserName from "@/components/GameUserName.vue";
 
 export default {
-    name: 'userMatch',
-    data() {
-        return {
-            passiveUser: null
-        }
+  name: "userMatch",
+  data() {
+    return {
+      passiveUser: null,
+      userId: null
+    };
+  },
+  components: { GameUserName, GameUserImg },
+  created() {
+    this.userId = this.$route.params.userId;
+    this.$store.dispatch({
+      type: "getMatch",
+      userId: this.userId
+    });
+    console.log("matchhhhhh", this.matches);
+    console.log("usrtID^^^", this.userId);
+    this.getGameUser(this.userId);
+  },
+  computed: {
+    matches() {
+      console.log("%%%", this.$store.getters.getMatches);
+      return this.$store.getters.getMatches;
     },
-    components: {GameUserName, GameUserImg},
-    created() {
-        this.$store.dispatch({type: 'getMatch', 
-            user: this.$route.params.userId
-            });
-        // console.log('matchhhhhh', this.matches);
-        // console.log('usrtID^^^', this.userId);
-        this.getGameUser();
-        
-    },
-    computed: {
-        matches() {
-            // console.log('%%%', this.$store.getters.getMatches);
-            return this.$store.getters.getMatches;
-        },
-        loggedinUser() {
-             return this.$store.getters.loggedUser;
-        },
-    },
-    methods: {
-        getGameUser() {
-            return GameService.getUserById(this.userId)
-                .then(user => {
-                    // console.log('user from server&&&', user);
-                    this.passiveUser = user
-                })
-        }
+    loggedinUser() {
+      return this.$store.getters.loggedUser;
     }
-}
+  },
+  methods: {
+    getGameUser(userId) {
+      console.log("user $$$$$", userId);
+      return GameService.getUserById(userId).then(user => {
+        console.log("user from server&&&", user);
+        this.passiveUser = user;
+      });
+    }
+  }
+};
 </script>
 
 <style scoped lang="scss">
-  @import "~@/assets/scss/style.scss";
+@import "~@/assets/scss/style.scss";
 
-  .user-matches {
-      width: 100%;
+.user-matches {
+  width: 100%;
+}
+
+.noMatchesMsg {
+  font-weight: 600;
+  font-size: 14px;
+  color: #2c3e50;
+}
+
+.match-container {
+  // width: 980px;
+}
+
+.games-box-container {
+  width: 100%;
+  align-self: center;
+}
+
+.whole-box {
+  width: 122%;
+  height: 111%;
+  position: relative;
+}
+
+.user-approved-container {
+  height: 10%;
+}
+
+.game-box {
+  width: 5%;
+}
+
+.img-activity-container img {
+  width: 75%;
+}
+.msg-box {
+  width: 55%;
+  position: absolute;
+  // top: 195px;
+  top: 220px;
+  left: 30px;
+}
+.games-img {
+  margin-top: 20px;
+  justify-content: center;
+  width: 100%;
+  .exchange {
+    align-self: center;
+    font-size: 2em;
   }
+}
 
-  .match-container {
-      width: 980px;
-  }
+.swap-arrows {
+  width: 40px;
+  height: 40px;
+  align-self: center;
+}
 
-  .games-box-container {
-      width: 100%;
-      align-self: center;
-  }
-  
-  .whole-box {
-      width: 122%;
-      height: 111%;
-      position: relative;
-  }
+.games-box {
+  border: 1px solid $border-color;
+  box-shadow: 0px 2px 4px 0px #d9d8d8;
+  border-radius: 2px;
+  max-width: 400px;
+  max-height: 300px;
+}
+.game-box {
+  justify-content: space-between;
+  border: none;
+  box-shadow: none;
+  height: 150px;
+  margin-bottom: 0;
+  padding-left: 5px;
+  padding-right: 5px;
+}
 
-  .user-approved-container {
-      height: 10%;
-  }
-
-  .game-box {
-      width: 5%;
-  }
-
-
-  .img-activity-container img{
-      width: 75%;
-  }
-    .msg-box{
-      width: 55%;
-      position: absolute;
-      top: 195px;
-      left: 30px;
-  }
-    .games-img {
-        width: 100%;
-        .exchange {
-            align-self: center;
-            font-size: 2em;
-        }
-    }
-
-    .swap-arrows {
-        width: 40px;
-        height: 40px;
-        align-self: center;
-    }
-
-    .games-box {
-        border: 1px solid $border-color;  
-        box-shadow: 0px 2px 4px 0px #d9d8d8;
-        border-radius: 2px;
-        width: 400px;
-        height: 300px;
-    }
-    .game-box {
-       justify-content: space-between;
-       border: none;
-       box-shadow: none;
-       height: 150px;
-       margin-bottom: 0;
-    }
-
-    .user-approved {
-        font-size: 18px;
-        font-family: 'Ubuntu';
-        margin-top: 5px;
-    }
+.user-approved {
+  font-size: 18px;
+  font-family: "Ubuntu";
+  margin-top: 5px;
+}
 </style>

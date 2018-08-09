@@ -27,7 +27,7 @@ export default {
             }
         },
         getRecieves(state) {
-            console.log('state activity:', state.activities);
+            // console.log('state activity:', state.activities);
             if (state.activities) {
                 return state.activities.filter(activity => {
                     return activity.userPassive.userId === state.userId && !activity.isMatch;
@@ -48,9 +48,10 @@ export default {
     actions: {
         getMatch(context, payload) {
             context.commit({type: 'setCurrUserId', payload: payload.user})
+            // console.log('user in store###', payload );
             MatchService.getMatch(payload.user)
                .then(activities => {
-                   console.log('match from backend in front', activities);
+                //    console.log('match from backend in front', activities);
                    context.commit({type: 'setMatch', activities})
                    })
         },
