@@ -51,6 +51,9 @@ export default {
                    console.log('user from backend in front', currUser);
                    context.commit({type: 'setUser', currUser})
                    return currUser
+               }).catch( err => {
+                   console.log('errrrrrrrrrrrrrrrrrrrrrrr', err)
+                   throw err
                })
         },
         savedUserProfile(context, { savedUserProfile }) {

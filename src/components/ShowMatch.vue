@@ -1,43 +1,56 @@
-
 <template>
+
+
     <section class="show-match flex column align-center space-between">
         <div class="show-match-container flex column align-center justify-center">
-            <h1 class="text congrats animated jello">Congrats we have a match!!!</h1>
+
+
+            <!-- <div class="try">
+    <button @click="show = !show">
+        Toggle render
+    </button> -->
+            <transition name="custom-classes-transition" enter-class="animated jello">
+                <h1 v-if="show" class="text congrats">Congrats we have a match!!!</h1>
+            </transition>
+            <!-- </div> -->
+
             <div class="images-container margin-bottom flex align-center space-between">
                 <div v-if="gameActive" class="your-choose-container margin-bottom flex column align-center space-between">
                     <h2 class="card-title margin-bottom">You chose this amazing</h2>
                     <div class="name-image-container flex column align-center space-between">
                         <h2 class="game-name margin-bottom capitalize">{{game.name}}</h2>
-                        <img class="game-image" :src="game.src"/>
+                        <img class="game-image" :src="game.src" />
                     </div>
                 </div>
-                <img class="swap-arrows" src="img/swaparrows.png"/>
+                <img class="swap-arrows" src="img/swaparrows.png" />
                 <div v-if="gamePassive" class="game-match-container margin-bottom flex column align-center space-between">
-                  <h2 class="card-title margin-bottom">You swapped it with your awesome</h2>
-                  <div class="name-image-container flex column align-center space-between">
-                    <h2 class="game-name capitalize margin-bottom">{{match.userPassiveGame.name}}</h2>
-                    <img class="game-image" :src="gamePassive.src"/>
-                  </div>
+                    <h2 class="card-title margin-bottom">You swapped it with your awesome</h2>
+                    <div class="name-image-container flex column align-center space-between">
+                        <h2 class="game-name capitalize margin-bottom">{{match.userPassiveGame.name}}</h2>
+                        <img class="game-image" :src="gamePassive.src" />
+                    </div>
                 </div>
             </div>
             <!-- <el-button @click="schedule" class="btn-schedule" type="primary">Schedule swap</el-button> -->
             <!-- <div v-if="userActive && isSchedule && currRecieved" class="meet-form align-center justify-center"> -->
             <div v-if="userActive" class="meet-form align-center justify-center">
-                <h3 class="text margin-bottom"><span class="username capitalize">{{userActive.username}}</span> lives in {{userActive.city}}, send him/her a message</h3>
+                <h3 class="text margin-bottom">
+                    <span class="username capitalize">{{userActive.username}}</span> lives in {{userActive.city}}, send him/her a message</h3>
                 <div class="form-meeting flex column align-center justify-center">
                     <div class="form-input-title">
                         <!-- <h3 class="small-text">Type a message:</h3> -->
-                        <el-input class="form-input form-textarea" type="textarea" v-model="textareaRes" placeholder="Please type yours message"></el-input>                    
+                        <el-input class="form-input form-textarea" type="textarea" v-model="textareaRes" placeholder="Please type yours message"></el-input>
                     </div>
-                    <div class="btns-container">
-                    <el-button class="btn send-btn" type="primary" @click="itsMatch(game._id, match._id)">Send</el-button>
-                    <!-- <el-button class="btn cancel-btn" type="info">Cancel</el-button> -->
+                    <div class="btns-container flex">
+                        <el-button class="btn send-btn" type="primary" @click="itsMatch(game._id, match._id)">Send</el-button>
+                        <!-- <el-button class="btn cancel-btn" type="info">Cancel</el-button> -->
+                        <el-button class="btn-back" @click="back" type="submit" title="back">cancel</el-button>
                     </div>
                 </div>
             </div>
 
-        <!-- <el-button @click="schedule" class="btn-schedule" type="primary">Schedule swap</el-button> -->
-        <!-- <div v-if="userActive && isSchedule" class="meet-form">
+            <!-- <el-button @click="schedule" class="btn-schedule" type="primary">Schedule swap</el-button> -->
+            <!-- <div v-if="userActive && isSchedule" class="meet-form">
             <h3 class="text margin-bottom"><span class="username capitalize">{{userActive.username}}</span> leaves in {{userActive.city}}</h3>
             <el-form  @submit.prevent="sendMeetForm" class="form-meeting flex column">
                 <div class="form-input-title flex align-center space-between margin-bottom">
@@ -59,18 +72,20 @@
             </el-form>
         </div> -->
         </div>
-    </section>    
+    </section>
 </template>
 
 <script>
 import GameService from "@/services/GameService.js";
 import UserService from "@/services/UserService.js";
 
+
 export default {
   name: "showMatch",
   props: ["game", "match"],
   data() {
     return {
+        show: true,
         choosenGameId: '',
         currMatchId: '',
         gameActive: null,
@@ -86,6 +101,7 @@ export default {
         this.gameActive = this.game;
         this.getUserActive();
         this.getGamePassive();
+        this.show = true
   },
   computed: {
     userPassive() {
@@ -132,12 +148,16 @@ export default {
                 this.$socket.emit('newMatch')
             })
     },
+    back(){
+        this.$router.go();
+    },
   }
 };
 </script>
 
 <style scoped lang="scss">
 @import "~@/assets/scss/style.scss";
+
     .show-match {
         max-width: rem(760px);
     }
@@ -247,3 +267,5 @@ export default {
     .btns-container {
     }
 </style>
+
+<style src="animate.css/animate.min.css"></style> 
