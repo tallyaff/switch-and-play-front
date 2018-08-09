@@ -5,8 +5,7 @@
             <div class="activity-header flex">
                 <!-- <h3>Request From Me:</h3> -->
             </div>
-            <ul v-if="recieves" class="recieve">
-                
+            <ul v-if="recieves && recieves.length" class="recieve"> 
                 <li v-for="recieve in recieves" :key="recieve._id" class="flex games-container">
                     <div class="flex column user-ask">
                         <div class="user-ask-name">
@@ -36,6 +35,11 @@
                     </div>
                 </li>
             </ul>
+            <div v-else>
+                 <div class="noRecievesMsg">
+                   <h1>No recieved requests yet...</h1>
+                 </div>
+            </div>
         </div>
         <GameSelect :match="currRecieved" :game="choosenGame" v-if="openDetails"></GameSelect>
     </section>
@@ -150,6 +154,10 @@ export default {
   flex-direction: column;
   margin: 0;
   padding: 5px;
+}
+
+.noRecievesMsg{
+  color: #2c3e50
 }
 
 @media (min-width: 980px) {

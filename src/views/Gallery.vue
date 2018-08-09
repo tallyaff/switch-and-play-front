@@ -1,14 +1,13 @@
 <template>
 <section>
-  <!-- <div v-if="gamesLoading">
-    <h1>lalalalalala</h1>
-    <img src="img/new-icon.png">
-  </div> -->
-  <div class="gallery-container flex container column">
+  <div class="gallery-container flex container column container">
     <div class="filter-gallery">
         <Game-filter></Game-filter> 
     </div>
-    <div class="images-container-gallery flex">
+      <div v-if="gamesLoading">
+        <div class="loader-circle"></div>
+  </div>
+    <div v-else class="images-container-gallery flex">
         <game-list class="game-list container" :games="gamesForDisplay" @remove="removeGame"></game-list>
     </div>
   </div>
@@ -28,7 +27,13 @@ export default {
     GameFilter,
     Header
   },
+  data() {
+    return {
+      url: null,
+    }
+  },
   created() {
+    this.$store.commit({type: 'setUrl', url: '/game'})
     // this.$store.loadGames();
     // console.log('this.gamesForDisplay in gallery', this.gamesForDisplay);
     // this.gamesForDisplay;
@@ -48,21 +53,21 @@ export default {
     }
   },
   methods: {
-    checkIfDisplay() {
-      // console.log("this.loggedinUser", this.loggedinUser);
-      if (!this.loggedinUser) {
-        swal({
-          title: "Please login to add your game",
-          buttons: ["Not now", "Login"]
-        }).then(willLogin => {
-          if (willLogin) {
-            this.$router.push("/login");
-          } else {
-            swal.close();
-          }
-        });
-      } else this.$router.push("/game/edit");
-    },
+    // checkIfDisplay() { 
+    //   // console.log("this.loggedinUser", this.loggedinUser);
+    //   if (!this.loggedinUser) {
+    //     swal({
+    //       title: "Please login to add your game",
+    //       buttons: ["Not now", "Login"]
+    //     }).then(willLogin => {
+    //       if (willLogin) {
+    //         this.$router.push("/login");
+    //       } else {
+    //         swal.close();
+    //       }
+    //     });
+    //   } else this.$router.push("/game/edit");
+    // },
     // loadGames() {
     //   this.$store
     //     .dispatch({ type: "loadGames" })
@@ -120,6 +125,7 @@ export default {
 .filter-gallery {
   // margin-top: 108px;
 }
+
 </style>
 
 <style scoped lang="scss">

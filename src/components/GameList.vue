@@ -46,7 +46,7 @@ export default {
 }
   .game {
     border: 1px solid #dadada;
-    height: 263px;
+    // height: 263px;
     cursor: pointer;
     display: flex;
     flex-direction: column;

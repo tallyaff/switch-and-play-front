@@ -1,12 +1,15 @@
 <template>
     <section class="home">
+  <div v-if="gamesLoading">
+        <div class="loader-circle"></div>
+  </div>
         <div class="home-bg-img flex justify-center align-center" 
         :style="{backgroundImage: url, backgroundSize: 'cover', backgroundPosition: 'center', 
          backgroundrepeat: 'no-repeat'}">
             <form @submit.prevent="setSearchHome" class="search">
                 <input class="search-input" type="text" v-model="filterBy.name" placeholder="Search for games">
                 <el-button class="btn search-btn" type="primary"><font-awesome-icon icon="search"></font-awesome-icon></el-button>
-                <el-button class="btn search-btn-text" type="primary">Search</el-button>
+                <el-button class="btn search-btn-text" type="primary" @click="setSearchHome">Search</el-button>
                 <!-- <el-button class="btn search-btn" type="primary">Search</el-button> -->
             </form>
             <h1 class="header-bg-image">Do you want to swap some games?</h1>
@@ -14,9 +17,6 @@
         <!-- <div class="all-cards-home-container"> -->
 
         <div class="baby-cards-container space-between"  >
-            <!-- <div v-if="gamesLoading">
-            <h1>loading</h1>
-           </div> -->
             <div class="baby-cards flex container justify-center" >
                 <div class="filter-type home-filter-container home-filter-container-baby flex column align-center justify-center">
                     <router-link :to="'/game'" @click.native="setFilter('baby')">
@@ -56,7 +56,7 @@
 
             <div class="child-cards-container space-between">
                              <!-- <div v-if="gamesLoading">
-                             <h1>loading</h1>
+                               <div class="loader-circle"></div>
                              </div> -->
                 <div  class="child-cards flex container justify-center">
                     <div class="filter-type home-filter-container home-filter-container-child flex column align-center justify-center">
@@ -159,10 +159,10 @@ export default {
         userId: ""
       },
       url: 'url("img/homepage-img.jpg")'
-      // url: 'url("img/home-img-3.png")',
     };
   },
   created() {
+    this.$store.commit({type: 'setUrl', url: '/'})
     this.loadGamesForHomepage();
   },
   mounted() {
@@ -223,6 +223,10 @@ export default {
 <style scoped lang="scss">
 @import "~@/assets/scss/style.scss";
 .filter-type {
+}
+
+.loader-circle{
+ top: 40%;
 }
 
 .home-bg-img {
@@ -432,6 +436,10 @@ export default {
     bottom: rem(-70px);
   }
 }
+
+
+
+
 
 
 
