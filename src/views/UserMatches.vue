@@ -50,43 +50,42 @@ import GameUserImg from "@/components/GameUserImg.vue";
 import GameUserName from "@/components/GameUserName.vue";
 
 export default {
-    name: 'userMatch',
-    data() {
-        return {
-            passiveUser: null,
-            userId: null
-        }
-    },
-    components: {GameUserName, GameUserImg},
-    created() {
-        this.userId = this.$route.params.userId
-        this.$store.dispatch({type: 'getMatch', 
-            userId: this.userId 
-            });
-        console.log('matchhhhhh', this.matches);
-        console.log('usrtID^^^', this.userId);
-        this.getGameUser(this.userId);
-        
-    },
-    computed: {
-        matches() {
-            console.log('%%%', this.$store.getters.getMatches);
-            return this.$store.getters.getMatches;
-        },
-        loggedinUser() {
-             return this.$store.getters.loggedUser;
-        },
-    },
-    methods: {
-        getGameUser(userId) {
-            console.log('user $$$$$',userId);
-            return GameService.getUserById(userId)
-                .then(user => {
-                    console.log('user from server&&&', user);
-                    this.passiveUser = user
-                })
-        }
+  name: "userMatch",
+  data() {
+    return {
+      passiveUser: null,
+      userId: null
+    };
   },
+  components: { GameUserName, GameUserImg },
+  created() {
+    this.userId = this.$route.params.userId;
+    this.$store.dispatch({
+      type: "getMatch",
+      userId: this.userId
+    });
+    console.log("matchhhhhh", this.matches);
+    console.log("usrtID^^^", this.userId);
+    this.getGameUser(this.userId);
+  },
+  computed: {
+    matches() {
+      console.log("%%%", this.$store.getters.getMatches);
+      return this.$store.getters.getMatches;
+    },
+    loggedinUser() {
+      return this.$store.getters.loggedUser;
+    }
+  },
+  methods: {
+    getGameUser(userId) {
+      console.log("user $$$$$", userId);
+      return GameService.getUserById(userId).then(user => {
+        console.log("user from server&&&", user);
+        this.passiveUser = user;
+      });
+    }
+  }
 };
 </script>
 
@@ -97,9 +96,10 @@ export default {
   width: 100%;
 }
 
-.noRecievesMsg{
+.noMatchesMsg {
+  font-weight: 600;
   font-size: 14px;
-  color: #2c3e50
+  color: #2c3e50;
 }
 
 .match-container {
@@ -136,7 +136,7 @@ export default {
   left: 30px;
 }
 .games-img {
-  margin-top:20px;
+  margin-top: 20px;
   justify-content: center;
   width: 100%;
   .exchange {
@@ -166,7 +166,6 @@ export default {
   margin-bottom: 0;
   padding-left: 5px;
   padding-right: 5px;
- 
 }
 
 .user-approved {
