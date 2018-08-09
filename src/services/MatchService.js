@@ -42,6 +42,7 @@ function updateMatch(matchDetails){
     return axios.put(`${MATCH_URL}/${matchDetails.matchId}`, {match: matchDetails})
             .then(res => {
                 res.data;
+                console.log('back from server updateMatch, res:'. res);
                 console.log('back from server updateMatch, res.data:'. res.data);
                 
             })

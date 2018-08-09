@@ -76,6 +76,10 @@ export default {
             // console.log('this.currRecieved in itsMatch', this.match._id);
             // const match = {gameId: this.choosenGame, match: this.recieve}
             // const match = {gameId: this.game._id, matchId: this.match._id}
+            // const match = {gameId: this.game._id, _id: this.match._id, chat: this.match.chat}
+            const match = {gameId: null, _id: this.match._id, chat: this.match.chat}
+            console.log('const match in show chat', match);
+            
 
             // const match = {gameId: this.game._id, matchId: this.match._id, textareaRes: this.textareaRes}
             // console.log('game id', this.choosenGame);
