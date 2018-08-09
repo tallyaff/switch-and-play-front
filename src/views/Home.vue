@@ -1,5 +1,8 @@
 <template>
     <section class="home">
+  <div v-if="gamesLoading">
+        <div class="loader-circle"></div>
+  </div>
         <div class="home-bg-img flex justify-center align-center" 
         :style="{backgroundImage: url, backgroundSize: 'cover', backgroundPosition: 'center', 
          backgroundrepeat: 'no-repeat'}">
@@ -220,6 +223,10 @@ export default {
 <style scoped lang="scss">
 @import "~@/assets/scss/style.scss";
 .filter-type {
+}
+
+.loader-circle{
+ top: 40%;
 }
 
 .home-bg-img {
