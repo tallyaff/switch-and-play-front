@@ -86,16 +86,7 @@ export default {
                     this.passiveUser = user
                 })
         }
-    }
   },
-  methods: {
-    getGameUser() {
-      return GameService.getUserById(this.userId).then(user => {
-        // console.log('user from server&&&', user);
-        this.passiveUser = user;
-      });
-    }
-  }
 };
 </script>
 

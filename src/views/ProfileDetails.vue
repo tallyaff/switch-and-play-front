@@ -44,7 +44,7 @@
         </div>
         <div class="profile-games">
             <h2 class="headres-in-profile-details">My games:</h2>
-                <el-button v-if="loggedinUser" class="btn add-game-btn" type="primary" @click="checkIfDisplay"><font-awesome-icon icon="plus" />&nbsp;&nbsp;Game</el-button>
+                <!-- <el-button v-if="loggedinUser" class="btn add-game-btn" type="primary" @click="checkIfDisplay"><font-awesome-icon icon="plus" />&nbsp;&nbsp;Game</el-button> -->
                 <ul class="cards-in-profile-container flex align-center justify-center" v-if="games">
                 <li class="game" v-for="game in games" :key="game._id">
                     <!-- <game-preview :game="game" :gameCheckbox="gameCheckbox" @check="updateGamesToSwitch"> -->
@@ -196,7 +196,7 @@ export default {
     height: 100%;
 }
 .user-details-container {
-    // justify-content: space-around;
+    justify-content: space-around;
     // margin: 20px 0;
     width: 250px;
 }
@@ -254,6 +254,7 @@ export default {
 .add-game-btn {
     align-self: flex-start;
     position: relative;
+    color: white;
     left: rem(60px);
 }
 
