@@ -22,9 +22,9 @@
                             <img class="swap-arrows" src="img/swaparrows.png"/>
                             <!-- <i class="fas fa-exchange-alt"></i> -->
                             <div class="flex column game-box">
-                                <!-- <h3>{{match.userActiveGames[0].name}}</h3> -->
+                                <h3>{{match.userActiveGames[0].name}}</h3>
                                 <div class="img-activity-container">
-                                    <!-- <img :src="match.userActiveGames[0].src"/>  -->
+                                    <img :src="match.userActiveGames[0].src"/> 
                                 </div>
                             </div>
                         </div>
