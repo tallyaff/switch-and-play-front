@@ -11,21 +11,21 @@
                 <!-- <div class="image-container" :style="{backgroundImage: `url(${loggedinUser.src})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundrepeat: 'no-repeat'}">
                     <img :src="loggedinUser.src" class="user-img profile-img-page"/>    
                 </div> -->
-                <div class="user-details-container flex column">
-                    <div class="edit-name-container flex">
+                <div class="user-details-container flex column content-center">
+                    <div class="edit-name-container flex space-between">
                         <p class="user-name">{{loggedinUser.username}}</p>
                         <button v-if="loggedinUser && !editMode" class="btn icon-btn edit-profile-btn" type="primary" @click="editProfile"><font-awesome-icon icon="pen" /></button>
                     </div>
                     <p class="user-detail">{{loggedinUser.city}}</p>
                     <p class="user-detail">{{loggedinUser.email}}</p>
-                    <div class="profile-btns flex">
+                    <!-- <div class="profile-btns"> -->
                     <!-- <div class="my-games-header-container flex"> -->
                         <!-- <router-link :to="`/user/activity/recieve/${loggedinUser._id}`"> -->
                     <!-- </div> -->
                         <router-link :to="`/user/activity/${loggedinUser._id}/recieve`" v-if="loggedinUser" class="btn activities-btn" type="primary" @click="checkIfDisplay">
                                 My activities
                         </router-link>
-                    </div>
+                    <!-- </div> -->
                 </div>
             </div>
             <div v-if="copiedUser">
@@ -191,13 +191,17 @@ export default {
     margin: 0 20px;
 }
 
+.edit-name-container {
+
+}
 .profile-img-page {
     width: 100%;
     height: 100%;
 }
 .user-details-container {
     // justify-content: space-around;
-    margin-top: 15px;
+    // margin: 20px 0;
+    width: 250px;
 }
 .user-details-container p {
     margin: 5px;
@@ -211,8 +215,8 @@ export default {
     font-size: rem(22px);
 }
 
-.user-detail {
-    font-size: rem(18px);
+.user-detail, .activities-btn {
+    font-size: rem(16px);
 }
 
 .my-games-header-container button{
@@ -228,6 +232,8 @@ export default {
 }
 
 .activities-btn {
+    align-self: flex-start;
+    margin: 20px 0 0 5px;
 }
 
 .header-your-games {
