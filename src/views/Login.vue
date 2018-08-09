@@ -114,7 +114,6 @@ export default {
             timer: 2000,
             button: false
           });
-        });
     },
     signup() {
       // this.$router.push('/game')
