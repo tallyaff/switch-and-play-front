@@ -41,9 +41,9 @@ function updateMatch(matchDetails){
     console.log('&&&match service details:',matchDetails)
     return axios.put(`${MATCH_URL}/${matchDetails.matchId}`, {match: matchDetails})
             .then(res => {
-                res.data;
-                console.log('back from server updateMatch, res:'. res);
-                console.log('back from server updateMatch, res.data:'. res.data);
+                console.log('back from server updateMatch, res:', res);
+                console.log('back from server updateMatch, res.data:', res.data);
+                return res.data;
                 
             })
             .catch(err => console.log('Problem talking to server', err))
