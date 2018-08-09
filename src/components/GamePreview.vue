@@ -242,7 +242,7 @@ export default {
  //  height: 150px; // i shut it for gamerequest - i think we dont need
 }
 img {
-    width: 45%; //todo in if class!!! - i think we dont need
+    width: 100%; //todo in if class!!! - i think we dont need
     height: auto;
     transition: all 0.5s;
     margin: 15px -10px; //was added to game request
@@ -272,6 +272,9 @@ img:hover {
 }
 
 .game-new-icon {
+    img{
+        width: 45%;
+    }
     width: 55%;
     position: absolute;
     top: -40px;
