@@ -31,9 +31,9 @@
                     <span>Condition </span>{{game.condition}}</li>
                 <li class="game-addedAt-preview capitalize" :class="{gameRequest: isGameRequest}">
                     <!-- <span>Added at  </span> -->
-                    {{game.addedAt | getDate }}</li>
+                    <font-awesome-icon icon="clock" class="clock" /> {{game.addedAt | getDate }}</li>
                 <li class="game-location-preview capitalize" v-if="!location">
-                    {{currUser.city}}</li>
+                   <font-awesome-icon icon="home" class="home" /> {{currUser.city}}</li>
                 <!-- TODO: user location & name -->
 
                 <!-- <li class="game-user-name-preview capitalize" v-if="!username"> -->
@@ -261,7 +261,7 @@ img:hover {
  color: $secondary-color;
  font-family: "Lato-Bold";
  span {
-   color: #2c3e50;
+   color: gray;
  }
 }
 
