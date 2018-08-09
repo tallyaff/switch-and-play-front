@@ -66,6 +66,9 @@ button {
   align-items: center;
 }
 
+.capitalize {
+  text-transform: capitalize;
+}
 
 //Animation fade
 .slowDisplay-enter-active, .slowDisplay-leave-active {

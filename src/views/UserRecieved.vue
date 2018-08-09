@@ -16,14 +16,10 @@
                             <GameUserImg :userId="recieve.userActive.userId" class="msg-box-img"></GameUserImg>
                             <h4>{{recieve.userActive.textareaReq}}</h4>
                         </div>
-                        <!-- <div class="user-img" :style="{backgroundImage: `url(${recieve.userPassiveGame.src})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundrepeat: 'no-repeat'}">
-                        </div>  -->
                         <div class="img-activity-container flex">
                             <img :src="recieve.userPassiveGame.src"/>
                         </div>
                     </div>
-                    <!-- <div class="choose-game flex column"> -->
-                    <!-- </div> -->
                     <div class="offers flex column">
                         <h2 class="choose-one">choose one: </h2>
                         <ul class="flex games-box offer-box">
@@ -33,15 +29,6 @@
                                     <div class="img-activity-container">
                                         <img :src="game.src"/>
                                     </div>
-                                    <!-- <div class="flex btns-details"> -->
-                                        <!-- <el-button @click="getMatch(game, recieve)" type="primary" class="details-btn"> -->
-                                            <!-- <font-awesome-icon icon="info"/> 
-                                            <h5>choose</h5>
-                                        </el-button>
-                                        <el-button @click="getMatch(game, recieve)" type="primary" class="details-btn">
-                                            <font-awesome-icon icon="info" class="pen"/> 
-                                        </el-button>     -->
-                                    <!-- </div> -->
                                 </div>
                             </li>
                         </ul>
@@ -84,13 +71,12 @@ export default {
       type: "getMatch",
       user: this.$route.params.userId
     });
-    console.log("recieveddddd", this.matches);
-    // this.getActiveUser();
-    // console.log('get userrrrr', this.user);
+    // console.log("recieveddddd", this.matches);
+    // console.log('get userrrrr',  this.$route.params.userId);
   },
   computed: {
     recieves() {
-      console.log("****", this.$store.getters.getRecieves);
+      // console.log("****", this.$store.getters.getRecieves);
 
       return this.$store.getters.getRecieves;
     },

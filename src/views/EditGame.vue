@@ -1,8 +1,8 @@
 <template>
     <section class="edit-game-container">
-    <h3 class="edit-title" >Edit your game!</h3>
+    <h3 class="edit-title" >{{this.$route.params.gameId? 'Edit your game!': 'Add your game!'}}</h3>
         <div class="edit-game no-margin" v-if="gameCopy">
-          <el-form class="no-margin" :label-position="labelPosition" @submit.native.prevent="saveGame"  style="width: 40%">
+          <el-form class="no-margin" :label-position="labelPosition" @submit.native.prevent="saveGame" style="width: 40%">
               <el-form-item label="Name">
               <el-input  v-model="gameCopy.name"/>
               </el-form-item>
@@ -34,6 +34,12 @@
                   <el-option class="option" value="used">Used</el-option>
               </el-select>
             </el-form-item>
+            <div class="upload-container flex">
+              <input type="file" class="upload-form" name="img" ref="imageUpload" @change="handleImage"/>
+              <div class="img-preview-container flex">
+                <img v-for="(img, idx) in imgPreviews" :src="img" :key="idx" />
+              </div>
+            </div>
               <el-button class="btn-save" type="primary" @click="saveGame">Save</el-button>
               <el-button @click="$router.go(-1)">Cancel</el-button>
           </el-form>
@@ -42,20 +48,26 @@
 </template>
 
 <script>
-import GameService from "@/services/GameService.js";
 import swal from "sweetalert";
+import GameService from "@/services/GameService.js";
+import UserService from "@/services/UserService.js";
+import CloudinaryService from "@/services/CloudinaryService.js";
 
 export default {
   name: "editGame",
+  props: ["userId"],
   data() {
     return {
       currGame: null,
+      currUser: null,
       gameCopy: null,
-      labelPosition: "left"
+      labelPosition: "left",
+      imgPreviews: []
     };
   },
   created() {
     this.loadGame();
+    // console.log('userrrr:', this.$route.params.userId);
   },
   methods: {
     loadGame() {
@@ -71,59 +83,112 @@ export default {
             // console.log("this.gameCopy new in edit cmp", this.gameCopy);
           });
       } else {
-        console.log("has No params!!");
-        this.gameCopy = GameService.createEmptyGame();
+        console.log("has No params!! user>>", this.$route.params.userId);
+        this.gameCopy = GameService.createEmptyGame(this.$route.params.userId);
       }
     },
     saveGame() {
-      this.$router.go(-1);
-      this.$store
-        .dispatch({ type: "saveGame", savedGame: this.gameCopy })
-        .then(game => {
-          swal("Game has been saved!", {
-            className: "swal-text",
-            icon: "success",
-            timer: 1500,
-            button: false
+      // console.log('user@@@: ', this.userId);
+      this.handleImageUpload(this.imgPreviews[0])
+      .then(() => {
+        // console.log('game!!', this.gameCopy);        
+        this.$store.dispatch({ type: "saveGame", savedGame: this.gameCopy })
+          .then(game => {
+            // console.log('new gameeeee', game);
+            return UserService.getUserById(this.$route.params.userId) 
+              .then (user => {
+                this.currUser = JSON.parse(JSON.stringify(user));;
+                this.currUser.games.push(game._id);
+                // console.log('new userrrr', this.currUser);
+                this.$store.dispatch({ type: 'savedUserProfile', savedUserProfile: this.currUser })
+              })
+              .then (() => {
+                // console.log('new userrrr@@@@', this.user);
+                swal("Game has been saved!", {
+                  className: "swal-text",
+                  icon: "success",
+                  timer: 1500,
+                  button: false
+                })
+              })
+            // console.log("savedGame from game APP");
           });
-          console.log("savedGame from game APP");
-        });
+      })
+      this.$router.go(-1);
+    },
+    handleImage(ev) {
+      console.log("handleImage, ev is:", ev);
+      var image = ev.target.files[0];
+      getBase64(image).then(image => {
+        this.imgPreviews.push(image);
+      });
+    },
+    handleImageUpload(img) {
+      if (!img) return Promise.resolve()
+      return CloudinaryService.uploadImg(img).then(res =>
+        this.gameCopy.src = res.url
+      )
     }
   }
 };
+
+function getBase64(file) {
+  return new Promise((resolve, reject) => {
+    var reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = function() {
+      resolve(reader.result);
+    };
+    reader.onerror = function(error) {
+      reject(error);
+    };
+  });
+}
 </script>
 
 <style scoped lang="scss">
 // @import '~@/assets/scss/style.scss';
 // @import  'node_modules/sweetalert/src/sweetalert.scss';
 
-  .edit-game-container {
-    margin: rem(20px);
-  }
+.edit-game-container {
+  margin: rem(20px);
+}
 
-  .btn-save{
-      background-color: $main-color;
-  }
+.btn-save {
+  background-color: $main-color;
+}
 
-  .edit-title {
-    font-family: 'Lato-regular';
-    margin: 20px 0;
+.edit-title {
+  font-family: "Lato-regular";
+  margin: 20px 0;
+}
+.edit-game {
+  border: 1px solid $main-color;
+  width: 55%;
+  padding: 20px;
+}
+.select.option {
+  font-family: "Lato-regular";
+}
+
+.img-preview-container {
+  cursor: pointer;
+  img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
   }
-  .edit-game {
-    border: 1px solid $main-color;
-    width: 55%;
-    padding: 20px;
-  }
-  .select.option {
-    font-family: 'Lato-regular';
-  }
+}
+.upload-form {
+  margin: 20px;
+  cursor: pointer;
+  background-color: white;
+}
+.swal-text {
+  font-family: sans-serif;
+  color: #0d72fa;
+  font-size: 30px;
+}
 </style>
 
-<style>
-  .swal-text {
-    font-family: sans-serif;
-    color: #0d72fa;
-    font-size: 30px;
-  }
-</style>
 

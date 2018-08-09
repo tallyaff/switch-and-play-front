@@ -12,28 +12,27 @@
             </div>
             <div class="game-text-container flex">
               <div class="text-container-title flex column">
-                    <div class="detail-item" >Type:</div>
-                    <div class="detail-item" >Categoty:</div>
-                    <div class="detail-item" >Condition:</div>
-                    <div class="detail-item" >Added at:</div>
-                    <div class="detail-item" >Owner:</div>
-                    <div class="detail-item" >City:</div>
-                    </div>
-                <div class="text-container flex column capitalize">
-                    <div class="detail-item" label="Type">{{currGame.type}}
-                    <!-- <img class="details-img" :src="`img/details/${currGame.type}.png`"> -->
-                    </div>
-                    <!-- <img src="@/assets/img/details/baby.png"> -->
-                    <div class="detail-item" label="Category">{{currGame.category}}</div>
-                    <div class="detail-item" label="Condition">{{currGame.condition}}</div>
-                    <div class="detail-item" >{{ currGame.addedAt | getDate }}</div>
-                    <div class="detail-item" >{{currUser.username}}</div>
-                    <div class="detail-item" >{{currUser.city}}</div>
-                </div>
+                  <div class="detail-item" >Type:</div>
+                  <div class="detail-item" >Categoty:</div>
+                  <div class="detail-item" >Condition:</div>
+                  <div class="detail-item" >Added at:</div>
+                  <div class="detail-item" >Owner:</div>
+                  <div class="detail-item" >City:</div>
+              </div>
+              <div class="text-container flex column capitalize">
+                <div class="detail-item" label="Type">{{currGame.type}}</div>
+                <!-- <img class="details-img" :src="`img/details/${currGame.type}.png`"> -->
+                <!-- <img src="@/assets/img/details/baby.png"> -->
+                <div class="detail-item" label="Category">{{currGame.category}}</div>
+                <div class="detail-item" label="Condition">{{currGame.condition}}</div>
+                <div class="detail-item" >{{ currGame.addedAt | getDate }}</div>
+                <div class="detail-item" >{{currUser.username}}</div>
+                <div class="detail-item" >{{currUser.city}}</div>
+              </div>
             </div>
+          </div>
+            <el-button class="btn-want-game" v-if="!requesting" @click="checkIfLogin">I want this game!</el-button>
             </div>
-             <el-button class="btn-want-game" v-if="!requesting" @click="checkIfLogin">I want this game!</el-button>
-             </div>
             <game-request :game="currGame" v-if="requesting"></game-request>
         <!-- <show-match></show-match> -->
     </section>
