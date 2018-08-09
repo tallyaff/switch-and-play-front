@@ -6,7 +6,7 @@
         <div v-if="!isMatch" class="game-box-container flex align-center justify-center column">
             <h3 class="game-name capitalize">{{game.name}}</h3>
             <p class="game-desc capitalize">{{game.desc}}</p>
-            <div class="flex justify-center game-box-details capitalize">
+            <div class="flex justify-center column game-box-details capitalize">
                 <div class="image-container">
                     <img class="game-image" :src="game.src"/>
                 </div> 
@@ -107,6 +107,8 @@ export default {
 }
     
 .game-box-container {
+    
+    width: 100vw;
     margin-top: 50px;
     line-height: 1.6;
     height: 60%;
@@ -138,6 +140,7 @@ export default {
         margin: 40px 0;
         width: 100%;
         text-align: left;
+        align-items: center;
     }
 }
 
@@ -156,12 +159,13 @@ export default {
 .game-box-details .game-image {
     // max-width: 300px;
     margin: 0 20px;
-    width: 80%;
+    width: 100%;
 }
 
 .details {
     justify-content: space-around;
     font-size: 18px;
+    align-items: center;
 }
 
 .btn-choose {
@@ -177,5 +181,23 @@ export default {
     align-items: center;
     margin-bottom: rem(30px);
     width: 220px;
+}
+
+@media (min-width: 720px) {
+  .game-box-container {
+    font-size: rem(33px);
+    .game-box-details {
+        flex-direction: row;
+    }
+  }
+  .game-box-details .game-image {
+        width: 80%;
+    }
+    .details {
+        align-items: flex-start;
+    }
+    .btn-back {
+        font-size: 1.2em;
+    }
 }
 </style>
