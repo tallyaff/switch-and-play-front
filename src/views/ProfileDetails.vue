@@ -49,25 +49,25 @@
         </div>
         <div class="profile-games">
             <h2 class="headres-in-profile-details">My games:</h2>
-                <el-button v-if="loggedinUser" class="btn add-game-btn" type="primary" @click="checkIfDisplay"><font-awesome-icon icon="plus" />&nbsp;&nbsp;Game</el-button>
+                <button v-if="loggedinUser" class="btn add-game-btn" type="primary" @click="checkIfDisplay"><font-awesome-icon icon="plus" /></button>
                 <ul class="cards-in-profile-container flex align-center justify-center" v-if="games">
-                <li class="game" v-for="game in games" :key="game._id">
+                    <li class="game" v-for="game in games" :key="game._id">
                     <!-- <game-preview :game="game" :gameCheckbox="gameCheckbox" @check="updateGamesToSwitch"> -->
-                    <el-card class="card-in-profile-details flex justify-center align-center pointer">
-                        <!-- <game-preview :game="game"></game-preview> -->
-                        <img :src="game.src" class="image-card">
-                        <div style="padding: 14px;">
-                        <span class="card-game-name">{{game.name}}</span>
-                        <div class="bottom clearfix">
-                            <li class="game-category capitalize"><span>Category: </span> {{game.category}}</li>
-                            <time class="time">{{ game.addedAt | getDate }}</time>
-                        </div>
-                        </div>
-                        <div class="edit-remove-btns-container">
-                            <button class="btn icon-btn btn-remove" @click="$emit('remove', game._id)"> <font-awesome-icon icon="trash" /></button> 
-                            <!-- <button class="btn icon-btn btn-remove" @click="$emit('remove', game._id)"><i class="fa fa-trash"></i></button>  -->
-                            <router-link class="icon-btn btn-edit" :to="'/game/edit/'+game._id"><font-awesome-icon icon="pen" /></router-link> 
-                        </div>
+                        <el-card class="card-in-profile-details flex justify-center align-center pointer">
+                            <!-- <game-preview :game="game"></game-preview> -->
+                            <img :src="game.src" class="image-card">
+                            <div style="padding: 14px;">
+                            <span class="card-game-name">{{game.name}}</span>
+                            <div class="bottom clearfix">
+                                <li class="game-category capitalize"><span>Category: </span> {{game.category}}</li>
+                                <time class="time">{{ game.addedAt | getDate }}</time>
+                            </div>
+                            </div>
+                            <div class="edit-remove-btns-container">
+                                <button class="btn icon-btn btn-remove" @click="$emit('remove', game._id)"> <font-awesome-icon icon="trash" /></button> 
+                                <!-- <button class="btn icon-btn btn-remove" @click="$emit('remove', game._id)"><i class="fa fa-trash"></i></button>  -->
+                                <router-link class="icon-btn btn-edit" :to="'/game/edit/'+game._id"><font-awesome-icon icon="pen" /></router-link> 
+                            </div>
                     </el-card>
                     </li>
                 </ul>
@@ -171,6 +171,7 @@ export default {
 
 .profile-games {
     width: 980px;
+    position: relative;
 
 }
 .profile-edit-container { 
@@ -256,8 +257,9 @@ export default {
 
 .add-game-btn {
     align-self: flex-start;
-    position: relative;
+    position: absolute;
     left: rem(60px);
+    font-size: 20px;
 }
 
 .cards-in-profile-container {
@@ -311,10 +313,11 @@ export default {
     
     transition: all 0.3s;
 }
-.btn-remove, .edit-profile-btn {
+.btn-remove, .edit-profile-btn, .profile-games .add-game-btn {
     border: 0;
     background-color: transparent;
 }
+
 .btn-remove, .btn-edit {
 color: $secondary-color;
     &:hover {
