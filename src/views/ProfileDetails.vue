@@ -4,23 +4,19 @@
         </router-link>
         <div class="my-profile" v-if="loggedinUser">
             <div class="profile-edit-container flex">
-                <!-- <h2 class="headres-in-profile-details my-profile-header">My profile</h2> -->
-                <!-- background image -->
                 <div class="user-img" :style="{backgroundImage: `url(${loggedinUser.src})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundrepeat: 'no-repeat'}">
                 </div>   
-                <!-- <div class="image-container" :style="{backgroundImage: `url(${loggedinUser.src})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundrepeat: 'no-repeat'}">
-                    <img :src="loggedinUser.src" class="user-img profile-img-page"/>    
-                </div> -->
                 <div class="user-details-container flex column">
-                    <p class="user-name">{{loggedinUser.username}}</p>
-                    <p class="capitalize">{{loggedinUser.city}}</p>
-                    <p>{{loggedinUser.email}}</p>
-                </div>
-                <button v-if="loggedinUser && !editMode" class="btn icon-btn edit-profile-btn" type="primary" @click="editProfile"><font-awesome-icon icon="pen" /></button>
-                <div class="my-games-header-container flex">
-                    <el-button v-if="loggedinUser" class="btn add-game-btn" type="primary" @click="checkIfDisplay"><font-awesome-icon icon="plus" />&nbsp;&nbsp;Game</el-button>
-                    <router-link :to="`/user/activity/${loggedinUser._id}/recieve`">
-                        <el-button v-if="loggedinUser" class="btn add-game-btn" type="primary">My activity</el-button>
+                    <div class="user-data-container">
+                        <div class="edit-name-container flex space-between">
+                            <p class="user-name">{{loggedinUser.username}}</p>
+                            <button v-if="loggedinUser && !editMode" class="btn icon-btn edit-profile-btn" type="primary" @click="editProfile"><font-awesome-icon icon="pen" /></button>
+                        </div>                        
+                        <p class="capitalize"><font-awesome-icon icon="home" class="home" />&nbsp;{{loggedinUser.city}}</p>
+                        <p><font-awesome-icon icon="envelope" class="envelop" />&nbsp;{{loggedinUser.email}}</p>
+                    </div>
+                    <router-link :to="`/user/activity/${loggedinUser._id}/recieve`" v-if="loggedinUser" class="btn activities-btn" type="primary">
+                        My activities
                     </router-link>
                 </div>
             </div>
@@ -44,28 +40,29 @@
         </div>
         <div class="profile-games">
             <h2 class="headres-in-profile-details">My games:</h2>
-                <button v-if="loggedinUser" class="btn add-game-btn" type="primary" @click="checkIfDisplay"><font-awesome-icon icon="plus" /></button>
-                <ul class="cards-in-profile-container flex align-center justify-center" v-if="games">
-                    <li class="game" v-for="game in games" :key="game._id">
-                    <!-- <game-preview :game="game" :gameCheckbox="gameCheckbox" @check="updateGamesToSwitch"> -->
-                        <el-card class="card-in-profile-details flex justify-center align-center pointer">
-                            <!-- <game-preview :game="game"></game-preview> -->
+            <button v-if="loggedinUser" class="btn add-game-btn" type="primary" @click="checkIfDisplay"><font-awesome-icon icon="plus" /></button>
+            <ul class="cards-in-profile-container flex align-center justify-center" v-if="games">
+                <li class="game" v-for="game in games" :key="game._id">
+                    <div class="card-in-profile-details flex align-center pointer column clean-list space-between">
+                        <div class="card-image-container flex content-center align-center justify-center">
                             <img :src="game.src" class="image-card">
-                            <div style="padding: 14px;">
-                            <span class="card-game-name">{{game.name}}</span>
-                            <div class="bottom clearfix">
-                                <li class="game-category capitalize"><span>Category: </span> {{game.category}}</li>
-                                <time class="time">{{ game.addedAt | getDate }}</time>
-                            </div>
+                        </div>
+                        <div class="text-btns-container flex column">
+                            <div class="text-container flex column">
+                                <p class="card-game-name">{{game.name}}</p>
+                                <!-- <div class="bottom clearfix"> -->
+                                <div class="game-category capitalize bottom clearfix"><span>Category </span> {{game.category}}</div>
+                                <time class="time bottom clearfix"><font-awesome-icon icon="clock" class="clock" />&nbsp;{{ game.addedAt | getDate }}</time>
+                                <!-- </div> -->
                             </div>
                             <div class="edit-remove-btns-container">
                                 <button class="btn icon-btn btn-remove" @click="$emit('remove', game._id)"> <font-awesome-icon icon="trash" /></button> 
-                                <!-- <button class="btn icon-btn btn-remove" @click="$emit('remove', game._id)"><i class="fa fa-trash"></i></button>  -->
                                 <router-link class="icon-btn btn-edit" :to="'/game/edit/'+game._id"><font-awesome-icon icon="pen" /></router-link> 
                             </div>
-                    </el-card>
-                    </li>
-                </ul>
+                        </div>
+                    </div>
+                </li>
+            </ul>
             </div>
         </div>
     </section>
@@ -192,6 +189,11 @@ export default {
 .edit-name-container {
 
 }
+
+.user-data-container {
+    color: gray;
+}
+
 .profile-img-page {
     width: 100%;
     height: 100%;
@@ -200,6 +202,7 @@ export default {
     justify-content: space-around;
     // margin: 20px 0;
     width: 250px;
+    height: 200px;
 }
 .user-details-container p {
     margin: 5px;
@@ -232,6 +235,11 @@ export default {
 .activities-btn {
     align-self: flex-start;
     margin: 20px 0 0 5px;
+    transition: all 0.3s;
+    font-size: 18px;
+    &:hover {
+        color: $border-color;
+    }
 }
 
 .header-your-games {
@@ -252,11 +260,17 @@ export default {
     text-transform: capitalize;
 }
 
+.save-profile-btn {
+    color: white;
+    background-color: $main-color;
+}
+
 .add-game-btn {
     align-self: flex-start;
     position: absolute;
-    left: rem(60px);
-    font-size: 20px;
+    left: rem(70px);
+    top: rem(-1px);
+    font-size: 35px;
 }
 
 .cards-in-profile-container {
@@ -268,20 +282,20 @@ export default {
 .headres-in-profile-details {
     font-size: rem(30px);
     font-family: 'Ubuntu';
+    width: 980px;
     // margin-bottom: rem(20px);
 }
 
 .card-in-profile-details {
     width: rem(250px);
+    height: rem(315px);
     margin: rem(20px);
     padding: rem(10px);
-    transition: all 0.5s;
-    height: 400px;
+    border: 1px solid $border-color;
     .image-card {
-        width: 100%;
-    }
-    &:hover {
-        transform: scale(0.95, 0.95);
+        max-height: 170px;
+        max-width: 190px;
+        margin: 0;
     }
     .card-game-name {
         text-transform: capitalize;
@@ -292,10 +306,47 @@ export default {
     }
 }
 
-.bottom {
-    margin-top: 13px;
-    line-height: 12px;
+.text-btns-container {
+    background-color: $card-text-color;
+    width: 109%;   
+    height: 115px;
+    padding: 10px 0;
+    margin: 0 20px;
+    position: relative;
+    top: 10px;
+}
+
+.text-container {
+    // align-self: flex-start;
+
+}
+
+.card-game-name, .game-category, .time {
+    align-self: flex-start;
+    padding: 0 20px;
+}
+
+.game-category {
+    color: $secondary-color;
+}
+
+.game-category span {
     color: grey;
+}
+
+.edit-remove-btns-container {
+    align-self: flex-end;
+    padding: 0 20px;
+}
+
+.card-image-container {
+    height: 200px;
+}
+
+.bottom {
+    margin-top: 10px;
+    line-height: 12px;
+    // color: grey;
 }
 .clearfix:before,
 .clearfix:after {
@@ -306,7 +357,7 @@ export default {
     clear: both
 }
 .icon-btn {
-    font-size: rem(25px);
+    font-size: rem(30px);
     
     transition: all 0.3s;
 }
@@ -315,13 +366,17 @@ export default {
     background-color: transparent;
 }
 
+.btn-remove {
+    margin-right: 10px;
+}
+
 .btn-remove, .btn-edit {
 color: $secondary-color;
     &:hover {
         color: $main-color;
     }
 }
-.edit-profile-btn {
+.edit-profile-btn, .add-game-btn {
     color: $main-color;
     align-self: flex-start;
     &:hover {
@@ -330,16 +385,17 @@ color: $secondary-color;
 }
 
 .game-category {
-font-family: 'Ubuntu-regular';
-white-space: nowrap;
-margin-bottom: rem(20px);
-    & span {
-        font-family: 'Lato-Bold';
-    }
+    font-family: 'Ubuntu-regular';
+    white-space: nowrap;
+    // margin-bottom: rem(20px);
+        & span {
+            font-family: 'Lato-Bold';
+        }
 }
 
 .time {
     font-family: 'Ubuntu-regular';
+    color: $secondary-color;
 }
 .edit-remove-btns-container {
 //   justify-content: flex-end;

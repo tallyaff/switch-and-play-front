@@ -13,7 +13,8 @@
 
     <transition name="slowDisplay">
 
-        <div class="checkbox-filter-container capitalize" v-if="isFilterOpen" :class="{open: isFilterOpen}">
+        <!-- <div class="checkbox-filter-container capitalize" v-if="isFilterOpen" :class="{open: isFilterOpen}"> -->
+        <div class="checkbox-filter-container capitalize" :class="{open: isFilterOpen}">
             <div class="exit">
                 <font-awesome-icon icon="times" class="exit-icon" :class="{close: isFilterOpen}" @click="isFilterOpen=!isFilterOpen" />
             </div>
