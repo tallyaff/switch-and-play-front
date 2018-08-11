@@ -14,8 +14,8 @@
                         <font-awesome-icon icon="envelope" class="envelop" />
                     </div>
                 </router-link>
-                <router-link v-if="loggedinUser" :to="`/user/activity/${loggedinUser._id}/recieve`" class="flex not-container">    
-                    <el-badge :value="recieveCount.length" v-if="recieveCount.length > 0">
+                <router-link v-if="loggedinUser" :to="`/user/activity/${loggedinUser._id}/recieve`" class="flex not-container badge">    
+                    <el-badge :class="{isNewMatch}" :value="recieveCount.length" v-if="recieveCount.length > 0" class="badge">
                         <font-awesome-icon icon="bell" class="bell" />
                     </el-badge>
                     <div v-else>
@@ -92,8 +92,10 @@ export default {
 .btn {
   cursor: pointer;
 }
+
 .notification {
   background-color: #f56c6c;
+  // background-color: green;
   border-radius: 10px;
   color: #fff;
   display: absolute;
@@ -105,6 +107,15 @@ export default {
   white-space: nowrap;
   border: 1px solid #fff;
 }
+
+.badge.notification {
+  background-color: green;
+}
+
+.badge.el-badge__content {
+  background-color: green;
+}
+
 .no-notification {
   display: none;
 }
