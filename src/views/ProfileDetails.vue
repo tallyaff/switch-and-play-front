@@ -464,7 +464,7 @@ color: $secondary-color;
   .profile-edit-container {
     margin: 30px 0;
     padding: rem(40px);
-    justify-content: space-evenly;
+    // justify-content: space-evenly;
   }
     .user-img {
     width: 200px;
@@ -480,9 +480,6 @@ color: $secondary-color;
   }
   .el-button {
     padding: 14px 20px;
-  }
-  .icon-btn {
-    margin-right: 50px;
   }
   .profile-edit-container {
     margin: 30px 0;

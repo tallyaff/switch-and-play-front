@@ -12,22 +12,20 @@
         <div class="user-img" :style="{backgroundImage: tally, 
             backgroundSize: 'cover', backgroundPosition: 'center', backgroundrepeat: 'no-repeat'}">
         </div>  
-        <h1>Tally Afek</h1>
+        <h1>Tally Affek</h1>
         <h3 class="secondary-haeder">Full Stuck Developer</h3>
         <div class="icons-container flex">
-          <a class="link" href="https://github.com/tallyaff" target="_blank"><font-awesome-icon icon="at"/> </a> 
-          <!-- <a href="https://www.facebook.com/" class="no-cursor" target="_blank"><font-awesome-icon icon="at"/> </a>  -->
-          <!-- <li><a class="social-icon"><i class="fa fa-linkedin"></i></a></li> -->
-          <a class="link" href="https://www.linkedin.com/in/tally-affek-7b3a12140/" target="_blank"><font-awesome-icon icon="at"/> </a> 
-          <a class="link" id="tally-mail" @click="submitMail('tally')" action="mailto:tallyaff@gmail.com" method="post" enctype="text/plain" ><font-awesome-icon icon="at"/> </a> 
+          <a class="link" href="https://github.com/tallyaff" target="_blank"><i class="fab fa-github-square"></i></a> 
+          <!-- <a href="https://www.facebook.com/" class="no-cursor" target="_blank"><i class="fab fa-facebook"></i></a>  -->
+          <a class="link" href="https://www.linkedin.com/in/tally-affek-7b3a12140/" target="_blank"><i class="fab fa-linkedin"></i></a>
+          <a class="link" id="tally-mail" @click="submitMail('tally')" action="mailto:tallyaff@gmail.com" method="post" enctype="text/plain"><font-awesome-icon icon="envelope"/></a> 
         </div>
-
         <p class="about-me">After five years of being a QA person, I've decided to become a programmer. At my free time I like to cook, travel and dive.</p>
         <p class="about-me">
           I hope you will enjoy my portfolio, and would like to hear from you in case you have any suggestions by my Linkdin account.</p>
         <div class="icons-container flex">
-          <a id="liron-github" class="fa fa-github git link" href="https://github.com/LironReshefSteinberger" target="_blank"></a>
-          <a id="liron-mail" class="fa fa-at git link" onclick="submitMail('liron')" action="mailto:reshef.liron@gmail.com" method="post" enctype="text/plain"></a>
+          <!-- <a id="liron-github" class="fa fa-github git link" href="https://github.com/LironReshefSteinberger" target="_blank"></a> -->
+          <!-- <a id="liron-mail" class="fa fa-at git link" onclick="submitMail('liron')" action="mailto:reshef.liron@gmail.com" method="post" enctype="text/plain"></a> -->
         </div>
       </div>
       <div class="member-container flex column">
@@ -37,10 +35,10 @@
         <h1>Liron Reshef Steinberger</h1>
         <h3 class="secondary-haeder">Full Stuck Developer</h3>
         <div class="icons-container flex">
-          <a class="link" href="https://github.com/LironReshefSteinberger" target="_blank"><font-awesome-icon icon="at"/> </a> 
-          <a class="link" href="https://www.facebook.com/liron.reshef.1" target="_blank"><font-awesome-icon icon="at"/> </a> 
-          <a class="link" href="https://www.linkedin.com/in/liron-reshef-steinberger/" target="_blank"><font-awesome-icon icon="at"/> </a> 
-          <a class="link" id="liron-mail" @click="submitMail('liron')" action="mailto:reshef.liron@gmail.com" method="post" enctype="text/plain"><font-awesome-icon icon="at"/> </a> 
+          <a class="link" href="https://github.com/LironReshefSteinberger" target="_blank"><i class="fab fa-github-square"></i></a> 
+          <a class="link" href="https://www.facebook.com/liron.reshef.1" target="_blank"><i class="fab fa-facebook"></i></a> 
+          <a class="link" href="https://www.linkedin.com/in/liron-reshef-steinberger/" target="_blank"><i class="fab fa-linkedin"></i></a> 
+          <a class="link" id="liron-mail" @click="submitMail('liron')" action="mailto:reshef.liron@gmail.com" method="post" enctype="text/plain"><font-awesome-icon icon="envelope"/></a> 
         </div>
           <p class="about-me">I'm a Coding Academy Bootcamp graduate.</p>
           <p class="about-me">
@@ -57,10 +55,10 @@
         <h1>Adi Gonnen</h1>
         <h3 class="secondary-haeder">Full Stuck Developer</h3>
         <div class="icons-container flex">
-          <a class="link" href="https://github.com/adi-gonnen" target="_blank"><font-awesome-icon icon="at"/> </a> 
-          <a class="link" href="https://www.facebook.com/adi.shachamgonnen" target="_blank"><font-awesome-icon icon="at"/> </a> 
-          <a class="link" href="https://www.linkedin.com/in/adi-gonnen/" target="_blank"><font-awesome-icon icon="at"/> </a> 
-          <a class="link" id="adi-mail" @click="submitMail('adi')" action="mailto:adigonnen@gmail.com" method="post" enctype="text/plain" ><font-awesome-icon icon="at"/> </a> 
+          <a class="link" href="https://github.com/adi-gonnen" target="_blank"><i class="fab fa-github-square"></i></a> 
+          <a class="link" href="https://www.facebook.com/adi.shachamgonnen" target="_blank"><i class="fab fa-facebook"></i></a> 
+          <a class="link" href="https://www.linkedin.com/in/adi-gonnen/" target="_blank"><i class="fab fa-linkedin"></i></a> 
+          <a class="link" id="adi-mail" @click="submitMail('adi')" action="mailto:adigonnen@gmail.com" method="post" enctype="text/plain" ><font-awesome-icon icon="envelope"/></a> 
         </div>
         <p class="about-me">Lives in Ramat-Gan.</p>
           <p class="about-me">
@@ -117,7 +115,7 @@
 }
 
 .header-desc {
-  margin: 0 auto;
+  margin: 50px auto 0 auto;
   width: 70%;
   font-size: 1.3em;
 }

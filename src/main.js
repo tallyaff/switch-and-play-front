@@ -24,7 +24,7 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { faAngleLeft } from '@fortawesome/free-solid-svg-icons'
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
 import { faUpload} from '@fortawesome/free-solid-svg-icons'
-import { faAt } from '@fortawesome/free-solid-svg-icons'
+// import { faAt } from '@fortawesome/free-solid-svg-icons'
 // import { faLinkedin } from '@fortawesome/free-solid-svg-icons'
 // import { faFacebook } from '@fortawesome/free-solid-svg-icons'
 // import { faGithub } from '@fortawesome/free-solid-svg-icons'
@@ -52,7 +52,7 @@ library.add(faArrowLeft);
 library.add(faHome); 
 library.add(faClock); 
 library.add(faUpload); 
-library.add(faAt); 
+// library.add(faAt); 
 // library.add(faLinkedin); 
 // library.add(faFacebook); 
 // library.add(faGithub); 
