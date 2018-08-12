@@ -8,8 +8,15 @@
           </router-link>
         </div>
         </router-link>
-         <user-bar :loggedinUser="loggedinUser" @logout="logout"></user-bar>
+        <!-- v-if="!loggedinUser" -->
+        <div class="user-nav-container flex">
+        <user-bar :loggedinUser="loggedinUser" @logout="logout"></user-bar>
         <nav-bar  :loggedinUser.sync="loggedinUser"></nav-bar>
+        </div>
+        <!-- <div v-else>
+        <user-bar :loggedinUser="loggedinUser" @logout="logout"></user-bar>
+        <nav-bar  :loggedinUser.sync="loggedinUser"></nav-bar>
+        </div> -->
     </div>
   </section>
 </template>
@@ -34,7 +41,7 @@ export default {
     logout() {
       UserService.logout();
       this.$store.commit({ type: "logoutUser" });
-      this.$store.dispatch({type: 'logoutActivity'});
+      this.$store.dispatch({ type: "logoutActivity" });
       this.$router.push("/");
     }
   },
@@ -54,14 +61,12 @@ export default {
   height: 90px;
 }
 
-.header-container {
-  box-shadow: 0px 0.5px 4px 0px #d9d8d8;
+img {
+  margin-right: 0;
 }
 
-@media (min-width: 890px) {
-  .user-bar {
-    order: 2;
-  }
+.header-container {
+  box-shadow: 0px 0.5px 4px 0px #d9d8d8;
 }
 
 @media (min-width: 420px) {
@@ -70,6 +75,22 @@ export default {
   }
   img {
     content: url("/img/logo.png");
+  }
+}
+
+@media (min-width: 480px) {
+  .user-nav-container {
+    width: 50%;
+    justify-content: space-between;
+  }
+}
+
+@media (min-width: 890px) {
+  .user-nav-container {
+    justify-content: flex-start;
+  }
+  .user-bar {
+    order: 2;
   }
 }
 </style>
