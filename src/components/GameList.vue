@@ -39,6 +39,7 @@ export default {
 
   .game-cards-container {
     flex-wrap: wrap;  
+    margin-top: 40px;
     // padding-right: 20px;  
   }
 .game img{
@@ -61,6 +62,7 @@ export default {
       // margin: rem(10px);
       transition: all 0.5s;
       // height: 100%;
+      margin-bottom: 25px;
       
   }
 

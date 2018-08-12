@@ -1,12 +1,13 @@
 <template>
   <div class="about">
+    <h1 class="header">about</h1>
     <div class="header-desc">
       <p class="prolog">This application was designed and implemented as a final project of Coding Academy bootcamp.</p>
       <p class="prolog">We used Vue.js framework and combined pure css as well as other libraries.</p>
       <p class="prolog">In the backend side, we used Node.js and Mongo DB + Cloudinary to store the data.</p>
       <p class="prolog">Enjoy our site! Feel free to contact us </p>
     </div>
-    <h1 class="header">meet us:</h1>
+    <h1 class="header">meet us</h1>
     <div class="team-container flex">
       <div class="member-container flex column">
         <div class="user-img" :style="{backgroundImage: tally, 

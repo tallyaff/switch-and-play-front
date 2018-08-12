@@ -4,7 +4,7 @@
        <router-link to="/">
         <div class="img ">
           <router-link :to="`/`" class="pointer">
-            <img  src="img/logo-mobile.png">
+            <img class="img-logo" src="img/logo-mobile.png">
           </router-link>
         </div>
         </router-link>
@@ -56,6 +56,16 @@ export default {
 
 .header-container {
   box-shadow: 0px 0.5px 4px 0px #d9d8d8;
+}
+
+.img-logo {
+  width: 70px;
+}
+
+@media (min-width: 660px) {
+  .img-logo {
+  width: 120px;
+  }
 }
 
 @media (min-width: 890px) {

@@ -130,6 +130,10 @@ export default {
 
 <style scoped lang="scss">
 @import "~@/assets/scss/style.scss";
+
+.container {
+  max-width: 830px;
+}
 .images-container-gallery {
   // margin-top: rem(100px);
 }
