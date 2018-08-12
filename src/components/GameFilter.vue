@@ -10,10 +10,9 @@
             </el-button>
             <el-button class="btn search-btn-text" type="primary" @click="setFilter">Search</el-button>
         </form>
-
+<!-- to ask about this transition -->
     <transition name="slowDisplay">
-
-        <div class="checkbox-filter-container capitalize" v-if="isFilterOpen" :class="{open: isFilterOpen}">
+        <div class="checkbox-filter-container capitalize" :class="{open: isFilterOpen}">
             <div class="exit">
                 <font-awesome-icon icon="times" class="exit-icon" :class="{close: isFilterOpen}" @click="isFilterOpen=!isFilterOpen" />
             </div>

@@ -2,21 +2,21 @@
     <section class="edit-game-container">
     <h3 class="edit-title" >{{this.$route.params.gameId? 'Edit your game!': 'Add your game!'}}</h3>
         <div class="edit-game no-margin" v-if="gameCopy">
-          <el-form class="no-margin" :label-position="labelPosition" @submit.native.prevent="saveGame" style="width: 40%">
+          <el-form class="form-container no-margin flex column" :label-position="labelPosition" @submit.native.prevent="saveGame">
               <el-form-item label="Name">
-              <el-input  v-model="gameCopy.name"/>
+                <el-input class="input-name" v-model="gameCopy.name"/>
               </el-form-item>
               <el-form-item label="Descreption">
-              <el-input type="textarea" v-model="gameCopy.desc"/>
+                <el-input class="input-desc" type="textarea" v-model="gameCopy.desc"/>
               </el-form-item>
-              <el-form-item label="Type">
-              <el-select class="select" v-model="gameCopy.type" placeholder="Type">
-                  <el-option class="option" value="baby">Baby</el-option>
-                  <el-option class="option" value="child">Child</el-option>
-                  <el-option class="option" value="teen">Teen</el-option>
-              </el-select>
+              <el-form-item label="Type" class="header-select-container flex space-between content">
+                <el-select class="select" v-model="gameCopy.type" placeholder="Type">
+                    <el-option class="option" value="baby">Baby</el-option>
+                    <el-option class="option" value="child">Child</el-option>
+                    <el-option class="option" value="teen">Teen</el-option>
+                </el-select>
             </el-form-item>
-              <el-form-item label="Category">
+            <el-form-item label="Category" class="header-select-container flex space-between">
               <el-select class="select" v-model="gameCopy.category" placeholder="Category">
                   <el-option class="option" value="board-game">Board-game</el-option>
                   <el-option class="option" value="console">Console</el-option>
@@ -26,22 +26,30 @@
                   <el-option class="option" value="wheels">Wheels</el-option>
                   <el-option class="option" value="puzzle">Puzzle</el-option>
               </el-select>
-              </el-form-item>
-            <el-form-item label="Condition">
-              <el-select class="select" v-model="gameCopy.condition" placeholder="Condition">
-                  <el-option class="option" value="brand-new">Brand new</el-option>
-                  <el-option class="option" value="new">New</el-option>
-                  <el-option class="option" value="used">Used</el-option>
-              </el-select>
             </el-form-item>
+              <el-form-item label="Condition" class="header-select-container flex space-between">
+                <el-select class="select" v-model="gameCopy.condition" placeholder="Condition">
+                    <el-option class="option" value="brand-new">Brand new</el-option>
+                    <el-option class="option" value="new">New</el-option>
+                    <el-option class="option" value="used">Used</el-option>
+                </el-select>
+            </el-form-item>  
             <div class="upload-container flex">
-              <input type="file" class="upload-form" name="img" ref="imageUpload" @change="handleImage"/>
+              <label for="file">
+                <input type="file" class="upload-form" id="file" name="file" ref="imageUpload" @change="handleImage"/>
+                <font-awesome-icon icon="upload" class="upload-icon" />&nbsp;Choose a file
+              </label>
+              <!-- <input type="file" name="file" id="file" class="inputfile" />
+              <label for="file">Choose a file</label> -->
+              <!-- <el-input type="file" class="upload-form" name="img" ref="imageUpload" @change="handleImage"></el-input> -->
               <div class="img-preview-container flex">
                 <img v-for="(img, idx) in imgPreviews" :src="img" :key="idx" />
               </div>
             </div>
+            <div class="btns-container flex justify-center align-center">
               <el-button class="btn-save" type="primary" @click="saveGame">Save</el-button>
-              <el-button @click="$router.go(-1)">Cancel</el-button>
+              <el-button class="btn-cancel" @click="$router.go(-1)">Cancel</el-button>
+            </div>
           </el-form>
         </div>
     </section>
@@ -154,23 +162,43 @@ function getBase64(file) {
   margin: rem(20px);
 }
 
-.btn-save {
-  background-color: $main-color;
-}
-
 .edit-title {
   font-family: "Lato-regular";
-  margin: 20px 0;
+  font-size: rem(30px);
+  margin: 40px 0 20px 0;
 }
+
+.form-container {
+  width: 100%;
+}
+
 .edit-game {
   border: 1px solid $main-color;
-  width: 55%;
-  padding: 20px;
+  width: 100%;
+  padding: 30px;
 }
 .select.option {
   font-family: "Lato-regular";
 }
 
+.select {
+  width: 150px;
+  align-self: flex-start;
+}
+
+.header-select-container {
+  
+  // flex-direction: row;
+}
+
+.content::before {
+  content: 'ccc';
+  visibility: hidden;
+}
+
+.form-item {  
+  width: 300px;
+}
 .img-preview-container {
   cursor: pointer;
   img {
@@ -179,16 +207,87 @@ function getBase64(file) {
     object-fit: cover;
   }
 }
+
+  .upload-container {
+    align-self: center;
+    margin: 20PX;
+    color: $main-color;
+    font-size: rem(18px);
+    transition: all 0.3s;
+    &:hover{
+      color: $secondary-color;
+    }
+  }
+
 .upload-form {
   margin: 20px;
   cursor: pointer;
-  background-color: white;
+  // background-color: white;
+  // font-size: 40px;
+  // background-color: transparent;
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
 }
+
+.upload-form + label {
+    font-size: 1.25em;
+    font-weight: 700;
+    color: white;
+    background-color: black;
+    display: inline-block;
+    cursor: pointer;
+    // outline: 1px dotted #000;
+}
+
+.upload-form:focus + label,
+.upload-form + label:hover {
+    background-color: red;
+}
+
 .swal-text {
   font-family: sans-serif;
   color: #0d72fa;
   font-size: 30px;
 }
+
+
+.btn-save {
+  background-color: $main-color;
+}
+
+.btn-cancel, .btn-save {
+  margin: 0 10px;
+}
+
+
+@media (min-width: 580px) {
+  .edit-game {
+    width: 100%;
+  }
+
+  .form-container {
+    width: 90%;
+  }
+
+  .select {
+    width: 200px;
+  }
+}
+
+@media (min-width: 980px) {
+  .edit-game {
+    width: 55%;
+  }
+
+  .form-container {
+    width: 55%;
+  }
+}
+
 </style>
 
 

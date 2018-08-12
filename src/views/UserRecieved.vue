@@ -37,7 +37,7 @@
             </ul>
             <div v-else>
                  <div class="noRecievesMsg">
-                   <h1>No recieved requests yet...</h1>
+                   <div>No recieved requests yet...</div>
                  </div>
             </div>
         </div>
@@ -157,6 +157,8 @@ export default {
 }
 
 .noRecievesMsg{
+  font-weight: 600;
+  font-size: 14px;
   color: #2c3e50
 }
 

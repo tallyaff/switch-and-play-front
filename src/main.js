@@ -54,6 +54,7 @@ library.add(faAt);
 // library.add(faLinkedin); 
 // library.add(faFacebook); 
 // library.add(faGithub); 
+// library.add(faUpload); 
 
 
 /* eslint-disable no-new */

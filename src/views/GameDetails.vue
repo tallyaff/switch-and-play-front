@@ -124,7 +124,6 @@ export default {
  <style lang="scss" scoped>
 
  .game-details-all {
-   border: 1px solid $border-color;
    margin-top: rem(20px);
  }
 .img-container {
@@ -140,7 +139,7 @@ export default {
   width: 40px;
 }
 .game-details-container {
-  margin: 50px;
+  margin: 15px;
 }
 .game-name {
   font-family: 'PaytoneOne';
@@ -217,7 +216,11 @@ export default {
   }
   .game-details-all {
    width: 980px;
+   border: 1px solid $border-color;
  }
+ .game-details-container {
+  margin: 50px;
+}
 }
 
 // @media (min-width: 730px) {

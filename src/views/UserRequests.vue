@@ -16,7 +16,7 @@
             </ul>
             <div v-else>
                  <div class="noSentReqMsg">
-                   <h1>No sent requests yet...</h1>
+                   <div>No sent requests yet...</div>
                  </div>
             </div>
         </div>
@@ -63,6 +63,7 @@ export default {
     width: 250px;
 }
 .noSentReqMsg{
+    font-size: 14px;   
     color: #2c3e50;
 }
 </style>
