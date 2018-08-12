@@ -132,7 +132,7 @@ export default {
 @import "~@/assets/scss/style.scss";
 
 .container {
-  max-width: 830px;
+  max-width: 850px;
 }
 .images-container-gallery {
   // margin-top: rem(100px);

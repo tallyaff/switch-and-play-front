@@ -343,7 +343,7 @@ export default {
     // width: auto;
   }
   &:hover {
-    transform: scale(0.95, 0.95);
+    transform: scale(1.1, 1.1);
   }
   .card-text-container {
     background-color: #dadada54;
@@ -426,7 +426,7 @@ export default {
   align-self: flex-end;
   &:hover {
     color: $secondary-color;
-    transform: scale(0.95, 0.95);
+    transform: scale(1.1, 1.1);
   }
   // h2{
   //   margin-right: 85px;

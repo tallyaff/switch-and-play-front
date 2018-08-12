@@ -17,7 +17,7 @@
                 <font-awesome-icon icon="times" class="exit-icon" :class="{close: isFilterOpen}" @click="isFilterOpen=!isFilterOpen" />
             </div>
             <el-checkbox v-show='false' class="checkbox-filter" label="All" value="all" v-model="filterBy.allByName" @change="setFilter"></el-checkbox>
-            <div class="filter-menue">
+            <div class="filter-menu">
                 <h3 class="filter-header">Type</h3>
                 <el-checkbox class="checkbox-filter" label="All types" :value="filterBy.allTypes" @change="toggleAllTypes"></el-checkbox>
                 <el-checkbox-group v-model="filterBy.type" v-if="allFilterTypes" @change="setFilter">
@@ -165,16 +165,23 @@ body {
   left: 5px;
 }
 
+.search-in-gallery {
+  position: relative;
+  left: -28px;
+}
+
 .search-input {
   width: 200px;
   // width: 500px;
   // height: 30px;
-  height: 38px;
+  height: 40px;
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
   border: 1px solid $border-color;
   padding: rem(10px);
   font-size: rem(18px);
+  position: relative;
+  top: 1px;
 }
 
 .search-btn-text, .search-btn {
@@ -228,6 +235,7 @@ h3 {
 
 .search-btn-text {
   display: none;
+  height: 40px;
 }
 
 .search-btn {
@@ -250,7 +258,9 @@ h3 {
 }
 .filter-gallery-container {
   margin-top: 50px;
-  padding: 0 5px;
+  // position: absolute;
+
+  // padding: 0 5px;
 }
 
 .exit {
@@ -261,7 +271,7 @@ h3 {
 
 @media (min-width: 420px) {
   .filter-gallery-container {
-    padding: 0 20px;
+    // padding: 0 20px;
   }
 }
 @media (max-width: 980px) {
@@ -284,7 +294,7 @@ h3 {
   .search-btn-text {
     font-family: "Ubuntu-regular";
     display: block;
-    height: 40px;
+    height: 42px;
     float: right;
     font-size: 1.125rem;
     background-color: $main-color;
@@ -335,7 +345,7 @@ h3 {
   }
   @media (min-width: 1130px) {
     .checkbox-filter-container {
-      margin-left: 400px;
+      margin-left: 378px;
       margin-top: 126px;
 
     }
