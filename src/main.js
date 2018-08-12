@@ -9,6 +9,7 @@ import './assets/scss/style.scss'
 import axios from 'axios'
 import moment from 'moment'
 import { library } from '@fortawesome/fontawesome-svg-core'
+// import { faGithub } from '@fortawesome/fontawesome-svg-core'
 import { faCoffee, faUser, faBell, faExchangeAlt, faArrowLeft, faSearch , faFilter, faTimes, faHome, faClock } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import i18n from 'vue-i18n';
@@ -22,6 +23,10 @@ import { faPen } from '@fortawesome/free-solid-svg-icons'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import { faAngleLeft } from '@fortawesome/free-solid-svg-icons'
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
+import { faAt } from '@fortawesome/free-solid-svg-icons'
+// import { faLinkedin } from '@fortawesome/free-solid-svg-icons'
+// import { faFacebook } from '@fortawesome/free-solid-svg-icons'
+// import { faGithub } from '@fortawesome/free-solid-svg-icons'
 // import { faExchangeAlt } from '@fortawesome/free-solid-svg-icons'
 
 const PORT = process.env.NODE_ENV !== 'production' ? '//localhost:3000' : '/';
@@ -45,6 +50,10 @@ library.add(faTimes);
 library.add(faArrowLeft); 
 library.add(faHome); 
 library.add(faClock); 
+library.add(faAt); 
+// library.add(faLinkedin); 
+// library.add(faFacebook); 
+// library.add(faGithub); 
 
 
 /* eslint-disable no-new */

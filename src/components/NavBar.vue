@@ -19,7 +19,7 @@
                 <li @click="isOpen=!isOpen">About</li>
             </router-link>
             <router-link to="/contact">
-                <li @click="isOpen=!isOpen">Contact</li>
+                <!-- <li @click="isOpen=!isOpen">Contact</li> -->
             </router-link>
         </ul>
       </transition>
@@ -29,7 +29,7 @@
               <div @click="clearFilter">Gallery</div>
             </router-link>
             <router-link to="/about">About</router-link>
-            <router-link to="/contact">Contact</router-link>
+            <!-- <router-link to="/contact">Contact</router-link> -->
         </div>
     </div>
 </template>

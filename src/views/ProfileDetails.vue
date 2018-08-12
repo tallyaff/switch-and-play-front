@@ -196,7 +196,7 @@ export default {
     height: 100%;
 }
 .user-details-container {
-    justify-content: space-around;
+    justify-content: space-around;  
     // margin: 20px 0;
     width: 250px;
 }
