@@ -26,9 +26,9 @@
             </div>
             <div class="card-text-container" :class="{gallery: isGallery}">
                 <li class="game-category-preview capitalize" :class="{gameRequest: isGameRequest}">
-                    <span>Category </span>{{game.category}}</li>
+                    <span :class="{gallery: isGallery}">Category </span>{{game.category}}</li>
                 <li class="game-condition-preview capitalize" v-if="!condition">
-                    <span>Condition </span>{{game.condition}}</li>
+                    <span :class="{gallery: isGallery}">Condition </span>{{game.condition}}</li>
                 <li class="game-addedAt-preview capitalize" :class="{gameRequest: isGameRequest}">
                     <!-- <span>Added at  </span> -->
                     <font-awesome-icon icon="clock" class="clock" /> {{game.addedAt | getDate }}</li>
@@ -119,6 +119,10 @@ export default {
     }
 }
 
+.game-category-preview .gallery, .game-condition-preview .gallery {
+    color: #adaaaa;
+}
+
 .gameRequest.check {
   width: 60px;
   height: 60px;
@@ -176,17 +180,17 @@ export default {
 
 
 .gallery.game-preview-container {
-    width: 250px;
-    height: 315px;
+    width: 200px;
+    height: 280px;
     // pointer flex column align-center clean-list space-between
 }
 
 .gallery.card-text-container {
     text-align: left;
-    font-size: 14px;
+    font-size: 13px;
     background-color: $card-text-color;
     width: 100%;
-    height: 37%;   
+    height: 38%;   
     /* margin: 20px; */
     padding: 5px;
 }
@@ -242,7 +246,7 @@ export default {
  //  height: 150px; // i shut it for gamerequest - i think we dont need
 }
 img {
-    width: 100%; //todo in if class!!! - i think we dont need
+    width: 85%; //todo in if class!!! - i think we dont need
     height: auto;
     transition: all 0.5s;
     margin: 15px -10px; //was added to game request
@@ -273,7 +277,7 @@ img:hover {
 
 .game-new-icon {
     img{
-        width: 45%;
+        width: 40%;
     }
     width: 55%;
     position: absolute;

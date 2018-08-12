@@ -4,7 +4,7 @@
        <router-link to="/">
         <div class="img ">
           <router-link :to="`/`" class="pointer">
-            <img  src="img/logo-mobile.png">
+            <img class="img-logo" src="img/logo-mobile.png">
           </router-link>
         </div>
         </router-link>

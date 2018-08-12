@@ -35,10 +35,14 @@ export default {
   .game-list {
     max-width: 1800px;
     // width: 1800px;
+        position: relative;
+    right: -59px;
   }
 
   .game-cards-container {
     flex-wrap: wrap;  
+    margin-top: 40px;
+    padding: 0;
     // padding-right: 20px;  
   }
 .game img{
@@ -61,12 +65,13 @@ export default {
       // margin: rem(10px);
       transition: all 0.5s;
       // height: 100%;
+      margin-bottom: 30px;
       
   }
 
 
    .game:hover {
-      transform: scale(0.95, 0.95);
+      transform: scale(1.1, 1.1);
       // box-shadow: 0px 2px 4px 0px $secondary-color;
       // background-color: #d9d8d82b;
       // bactransition: all 0.5s;kground-color:  #f7b2532b;
