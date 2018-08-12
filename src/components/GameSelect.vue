@@ -44,7 +44,6 @@ export default {
     },
     created() {
         // console.log('!!match: ', this.match)
-        // console.log('!!game: ', this.game)
         this.getUser();
     },
     data() {
