@@ -88,6 +88,7 @@ img {
 @media (min-width: 890px) {
   .user-nav-container {
     justify-content: flex-start;
+    width: unset;
   }
   .user-bar {
     order: 2;
