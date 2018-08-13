@@ -25,7 +25,7 @@
                             <router-link :to="`/game/${game._id}/`">
                                 <el-card class="card-home">
                                     <div v-if="game.isNew" class="game-new-icon">
-                                        <img src="img/new-icon.png">
+                                        <!-- <img src="img/new-icon.png"> -->
                                     </div>
                                     <div class="image-container flex align-center justify-center">
                                         <img :src="game.src" class="image-card">
@@ -62,7 +62,7 @@
                                 <router-link :to="`/game/${game._id}/`">
                                     <el-card class="card-home">
                                         <div v-if="game.isNew" class="game-new-icon">
-                                            <img src="img/new-icon.png">
+                                            <!-- <img src="img/new-icon.png"> -->
                                         </div>
                                         <div class="image-container flex align-center justify-center">
                                             <img :src="game.src" class="image-card">
@@ -97,7 +97,7 @@
                                   <router-link :to="`/game/${game._id}/`">
                                       <el-card class="card-home">
                                           <div v-if="game.isNew" class="game-new-icon">
-                                              <img src="img/new-icon.png">
+                                              <!-- <img src="img/new-icon.png"> -->
                                           </div>
                                           <div class="image-container flex align-center justify-center">
                                               <img :src="game.src" class="image-card">
