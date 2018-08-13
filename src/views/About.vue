@@ -6,7 +6,7 @@
       <p class="prolog">In the backend side, we used Node.js and Mongo DB + Cloudinary to store the data.</p>
       <p class="prolog">Enjoy our site! Feel free to contact us. </p>
     </div>
-    <h1 class="header">meet us:</h1>
+    <h1 class="header">meet us</h1>
     <div class="team-container flex">
       <div class="member-container flex column">
         <div class="user-img" :style="{backgroundImage: tally, 

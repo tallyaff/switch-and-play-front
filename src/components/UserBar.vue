@@ -2,10 +2,6 @@
     <div class="user-bar flex">
         <div v-if="loggedinUser" class="user-bar-container flex space-evenly">
             <div class="user-icon-container flex">
-                <router-link v-if="loggedinUser" :to="`/user/${loggedinUser._id}/`">
-                  <div class="user-img" :style="{backgroundImage: `url(${loggedinUser.src})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundrepeat: 'no-repeat'}">
-                  </div>                
-                </router-link>
                 <router-link v-if="loggedinUser" :to="`/user/activity/${loggedinUser._id}/match`" class="flex not-container">
                     <el-badge :value="matchCount.length" v-if="matchCount.length > 0">
                         <font-awesome-icon icon="envelope" class="envelop" />
@@ -22,12 +18,16 @@
                         <font-awesome-icon icon="bell" class="bell" />
                     </div>
                 </router-link>
+                  <router-link v-if="loggedinUser" :to="`/user/${loggedinUser._id}/`">
+                  <div class="user-img" :style="{backgroundImage: `url(${loggedinUser.src})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundrepeat: 'no-repeat'}">
+                  </div>                
+                </router-link>
                 <button class="btn-logout" @click="onLogout">Logout</button>
             </div>
         </div>
-        <div v-else class="hello-login flex">
+        <!-- <div v-else class="hello-login flex">
             <router-link class="login-link" to="/login">Login</router-link>
-        </div>
+        </div> -->
     </div>
 </template>
                
@@ -38,7 +38,7 @@ import UtilService from "../services/UtilService.js";
 export default {
   created() {
     // console.log('loggedinUser', this.loggedinUser);
-    
+
     if (this.loggedinUser) {
       this.$store.dispatch({
         type: "getMatch",
@@ -66,7 +66,7 @@ export default {
   sockets: {
     newMatch() {
       if (!this.loggedinUser) return;
-      this.$store.dispatch({type: 'getMatch', user: this.loggedinUser._id});
+      this.$store.dispatch({ type: "getMatch", user: this.loggedinUser._id });
     }
   }
 };
@@ -136,17 +136,16 @@ p {
   position: absolute;
   margin-top: -30px;
 }
-  a {
-    &:hover {
-      color: $main-color;
-    }
+a {
+  &:hover {
+    color: $main-color;
+  }
 }
 .user-icon-container {
   color: $secondary-color;
   display: flex;
   width: 190px;
   justify-content: space-around;
-  
 
   a {
     transition: all 0.3s ease;
@@ -156,9 +155,9 @@ p {
   display: relative;
   align-items: center;
 }
-.user-img{
-    transition: all 0.3s ease;
-    &:hover {
+.user-img {
+  transition: all 0.3s ease;
+  &:hover {
     border-color: $main-color;
   }
 }

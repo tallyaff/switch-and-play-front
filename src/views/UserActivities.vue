@@ -64,7 +64,7 @@ export default {
 
 a {
   padding: 15px;
-  color: #f6ab2b;
+  color: $secondary-color;
   transition: all 0.3s ease;
   position: relative;
   font-size: 1.3em;

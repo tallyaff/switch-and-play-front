@@ -20,6 +20,9 @@
             </router-link>
             <router-link to="/contact">
             </router-link>
+            <router-link to="/login" v-if="!loggedinUser">
+            <li @click="isOpen=!isOpen">Login</li>
+            </router-link>
         </ul>
       </transition>
         <div class="nav">
@@ -32,13 +35,19 @@
     </div>
 </template>
 <script>
-
 export default {
   name: "NavBar",
-
-  data(){
-    return{
-      isOpen:false,
+  created() {
+    if (this.loggedinUser) {
+      this.$store.dispatch({
+        type: "getMatch",
+        user: this.loggedinUser._id
+      });
+    }
+  },
+  data() {
+    return {
+      isOpen: false,
       filterBy: {
         allByName: true,
         name: "",
@@ -47,71 +56,75 @@ export default {
         allCategories: true,
         category: [],
         userId: ""
-      },
-    }
+      }
+    };
   },
   methods: {
     clearFilter() {
-      this.$store.dispatch({ type: "setFilter", filterBy: this.filterBy })
+      this.$store
+        .dispatch({ type: "setFilter", filterBy: this.filterBy })
         .then(games => {
-          console.log('clear games', games);
+          console.log("clear games", games);
         });
+    }
+  },
+  computed: {
+    loggedinUser() {
+      return this.$store.getters.loggedUser;
     }
   }
 };
 </script>
 
 <style scoped lang="scss">
-
-.nav-mobile{
-    position: fixed;
-    min-width: 100%;
-    z-index: 7;
-    background-color: $secondary-color;
-    width: 100%;
-    color: white;
-    top: 0;
-    right: 0;
-    margin-top: 90px;
-    font-size: rem(20px);
-    line-height: 50px;
+.nav-mobile {
+  position: fixed;
+  min-width: 100%;
+  z-index: 7;
+  background-color: $secondary-color;
+  width: 100%;
+  color: white;
+  top: 0;
+  right: 0;
+  margin-top: 90px;
+  font-size: rem(20px);
+  line-height: 50px;
 }
 
-.nav-mobile.open{
-    transform: translate(0, 0);
+.nav-mobile.open {
+  transform: translate(0, 0);
 }
 
-
-.mobile-menue{
-  float:right;
-  order:1;
+.mobile-menue {
+  float: right;
+  order: 1;
 }
 
 .nav-mobile a {
-
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    text-decoration: none;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
 }
 
-.nav-mobile li{
+.nav-mobile li {
   width: 100%;
   height: 50px;
-   color: white;
+  color: white;
 }
 
-.nav-mobile  li:hover{
-    background-color: $main-hover-color;
-    transition: all .3s ease;
+.nav-mobile li:hover {
+  background-color: $main-hover-color;
+  transition: all 0.3s ease;
 }
 
 .nav {
   display: none;
   align-items: center;
   justify-content: space-around;
-  padding: 30px;
+  // padding: 30px;
+  padding: 5px;
 
   a {
     padding: 10px;
@@ -135,58 +148,56 @@ export default {
 .mobile-menue {
   width: 35px;
   height: 35px;
-  position:relative;
-   cursor: pointer;
+  position: relative;
+  cursor: pointer;
 }
 
 .line {
-	position: absolute;
-	height: 15px;
+  position: absolute;
+  height: 15px;
   width: 80%;
   left: 2%;
-	background:$main-color;
-  border-radius:10px;
+  background: $main-color;
+  border-radius: 10px;
   cursor: pointer;
-	transition: all cubic-bezier(0.25, 0.1, 0.28, 1.54) 0.32s;
+  transition: all cubic-bezier(0.25, 0.1, 0.28, 1.54) 0.32s;
 }
 
 .line01 {
-  top:19%;
+  top: 19%;
   height: 3px;
 }
 
 .line02 {
-  top:49%;
+  top: 49%;
   height: 3px;
 }
 
 .line03 {
-  top:79%;
+  top: 79%;
   height: 3px;
 }
 
 .mobile-menue.close .line01 {
-	transform:rotate(45deg);
-	top:49%;
+  transform: rotate(45deg);
+  top: 49%;
 }
 
-.mobile-menue.close .line02, .mobile-menue.close .line03 {
-	transform:rotate(-45deg);
-	top:49%;
+.mobile-menue.close .line02,
+.mobile-menue.close .line03 {
+  transform: rotate(-45deg);
+  top: 49%;
 }
 
-
-
-@media (min-width: 890px){
-  .nav{
+@media (min-width: 890px) {
+  .nav {
     display: flex;
     order: 1;
   }
- .mobile-menue{
+  .mobile-menue {
     display: none;
-
   }
-  .user-icon-container{
+  .user-icon-container {
     display: flex;
   }
 }

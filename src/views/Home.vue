@@ -229,10 +229,12 @@ export default {
   position: relative;
   bottom: rem(-50px);
 }
+
 .search-input {
   width: 200px;
   height: 36px;
-  border-radius: 4px;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
   border: 1px solid $border-color;
   padding: rem(10px);
   font-size: rem(18px);
@@ -240,6 +242,25 @@ export default {
 
 .search-btn-text {
   display: none;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  display: inline-block;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  border: 1px solid #dcdfe6;
+  color: white;
+  text-align: center;
+  box-sizing: border-box;
+  outline: 0;
+  margin: 0;
+  transition: .1s;
+  font-weight: 500;
+  padding: 12px 20px;
+  font-size: 14px;
+  &:hover {
+    background-color: #9ec6fc;
+  }
 }
 
 .search-btn {
@@ -287,7 +308,7 @@ export default {
     width: 80%;
   }
   &:hover {
-    transform: scale(0.95, 0.95);
+    transform: scale(1.1, 1.1);
   }
   .card-text-container {
     background-color: #dadada54;
@@ -365,7 +386,7 @@ export default {
   align-self: flex-end;
   &:hover {
     color: $secondary-color;
-    transform: scale(0.95, 0.95);
+    transform: scale(1.1, 1.1);
   }
 }
 

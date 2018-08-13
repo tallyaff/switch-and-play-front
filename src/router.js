@@ -24,11 +24,6 @@ export default new Router({
       name: 'home',
       component: Home
     },
-    // { // TO DELETE
-    //   path: '/gallery',
-    //   name: 'gallery',
-    //   component: Gallery
-    // },
     {
       path: '/login',
       name: 'login',

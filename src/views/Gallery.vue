@@ -87,6 +87,9 @@ export default {
   padding: 0 20px;
 }
 
+.container {
+  max-width: 850px;
+}
 
 @media (min-width: 980px) {
   .filter-images-container-gallery {

@@ -4,11 +4,11 @@
             <font-awesome-icon icon="filter" class="fiter-icon" />
         </button>
         <form @submit.prevent="setFilter" class="search-in-gallery flex">
-            <el-input class="search-input" type="text" v-model="filterBy.name" placeholder="Search for games" autofocus></el-input>
-            <el-button class="btn search-btn" type="primary" @click="setFilter">
+            <input class="search-input" type="text" v-model="filterBy.name" placeholder="Search for games" autofocus/>
+            <button class="btn search-btn" type="primary" @click="setFilter">
                 <font-awesome-icon icon="search"></font-awesome-icon>
-            </el-button>
-            <el-button class="btn search-btn-text" type="primary" @click="setFilter">Search</el-button>
+            </button>
+            <button class="btn search-btn-text" type="primary" @click="setFilter">Search</button>
         </form>
     <transition name="slowDisplay">
         <div class="checkbox-filter-container capitalize" :class="{open: isFilterOpen}">
@@ -16,8 +16,8 @@
                 <font-awesome-icon icon="times" class="exit-icon" :class="{close: isFilterOpen}" @click="isFilterOpen=!isFilterOpen" />
             </div>
             <el-checkbox v-show='false' class="checkbox-filter" label="All" value="all" v-model="filterBy.allByName" @change="setFilter"></el-checkbox>
-            <div class="filter-menue">
-                <h3>Type</h3>
+            <div class="filter-menu">
+                <h3 class="filter-header">Type</h3>
                 <el-checkbox class="checkbox-filter" label="All types" :value="filterBy.allTypes" @change="toggleAllTypes"></el-checkbox>
                 <el-checkbox-group v-model="filterBy.type" v-if="allFilterTypes" @change="setFilter">
                     <ul class="checkbox flex column">
@@ -26,7 +26,7 @@
                         </li>
                     </ul>
                 </el-checkbox-group>
-                <h3>Category</h3>
+                <h3 class="filter-header category">Category</h3>
                 <el-checkbox class="checkbox-filter" label="All categories" :value="filterBy.allCategories" @change="toggleAllCategories"></el-checkbox>
                 <el-checkbox-group class="checkbox-filter" v-model="filterBy.category" v-if="allFilterCategories" @change="setFilter">
                     <ul class="checkbox flex column">
@@ -125,7 +125,15 @@ body {
   left: 0;
   background-color: $card-text-color;
   padding-top: 15px;
+}
 
+.filter-header {
+  color: #adaaaa;
+
+}
+
+.filter-header.category {
+  margin-top: 20px;
 }
 
 .btn-filter {
@@ -143,15 +151,59 @@ body {
 
 .search-btn {
   background-color: $main-color;
+  position: relative;
 }
 
-.search-btn-text {
+.search {
+  position: absolute;
+  left: 5px;
+}
+
+.search-in-gallery {
+  position: relative;
+  left: -28px;
+}
+
+.search-input {
+  width: 200px;
+  // width: 500px;
+  // height: 30px;
+  height: 40px;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  border: 1px solid $border-color;
+  padding: rem(10px);
+  font-size: rem(18px);
+  position: relative;
+  top: 1px;
+}
+
+.search-btn-text, .search-btn {
+  display: none;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  display: inline-block;
   line-height: 1px;
+  white-space: nowrap;
+  cursor: pointer;
+  border: 1px solid #dcdfe6;
+  color: white;
+  text-align: center;
+  box-sizing: border-box;
+  outline: 0;
+  margin: 0;
+  transition: .1s;
+  font-weight: 500;
+  padding: 12px 20px;
+  font-size: 14px;
+  &:hover {
+    background-color: #9ec6fc;
+  }
 }
 
 .search-in-gallery .search-input {
   width: 350px;
-  margin-bottom: rem(20px);
+  margin-bottom: rem(50px);
 }
 
 h3 {
@@ -177,6 +229,7 @@ h3 {
 
 .search-btn-text {
   display: none;
+  height: 40px;
 }
 
 .search-btn {
@@ -188,16 +241,20 @@ h3 {
 .search-in-gallery .search-input {
   width: 180px;
 
-  margin-bottom: rem(20px);
+  margin-bottom: rem(25px);
 
 }
 
 .search-in-gallery {
   top: 20%;
+  height: 70px;
+  margin-bottom: 50px;
 }
 .filter-gallery-container {
-  margin-top: 30px;
-  padding: 0 5px;
+  margin-top: 50px;
+  // position: absolute;
+
+  // padding: 0 5px;
 }
 
 .exit {
@@ -208,7 +265,7 @@ h3 {
 
 @media (min-width: 420px) {
   .filter-gallery-container {
-    padding: 0 20px;
+    // padding: 0 20px;
   }
 }
 @media (max-width: 980px) {
@@ -231,7 +288,7 @@ h3 {
   .search-btn-text {
     font-family: "Ubuntu-regular";
     display: block;
-    height: 40px;
+    height: 42px;
     float: right;
     font-size: 1.125rem;
     background-color: $main-color;
@@ -281,10 +338,11 @@ h3 {
     }
   }
   @media (min-width: 1130px) {
-      .checkbox-filter-container {
-    margin-left: 120px;
+    .checkbox-filter-container {
+      margin-left: 378px;
+      margin-top: 126px;
 
-      }
+    }
   }
 }
 </style>

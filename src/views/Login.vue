@@ -158,7 +158,7 @@ export default {
 }
 
 .btn-signup {
-  background-color: #f1af37;
+  background-color: $secondary-color;
   color: white;
   margin: 20px;
   width: 100px;
@@ -175,5 +175,6 @@ export default {
 
 .login-btn {
   margin-top: 50px;
+  background-color: $main-color;
 }
 </style>

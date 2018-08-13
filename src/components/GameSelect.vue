@@ -38,6 +38,7 @@ export default {
         ShowMatch
     },
     created() {
+        // console.log('!!match: ', this.match)
         this.getUser();
     },
     data() {
