@@ -1,10 +1,9 @@
 <template>
     <section class="user-matches flex align-center justify-center">
         <div class="flex column match-container align-center justify-center">
-            <ul v-if="matches && matches.length>0" class="games-box-container flex">
+            <ul v-if="matches.length>0" class="games-box-container flex">
                 <li v-for="match in matches" :key="match._id" class="flex games-box align-center justify-center">
                     <div class="whole-box">
-                    <!-- <div class="flex column games-container"> -->
                         <div class="user-approved-container">
                             <h2 class="user-approved">
                                 <GameUserName :userId="match.userPassive.userId"></GameUserName> 
@@ -18,7 +17,6 @@
                                     <img :src="match.userPassiveGame.src" />
                                 </div>
                             </div>
-                            <!-- <font-awesome-icon icon="exchange-alt" class="exchange"/> -->
                             <img class="swap-arrows" src="img/swaparrows.png"/>
                             <div class="flex column game-box">
                                 <h3>{{match.userActiveGames[0].name}}</h3>
@@ -31,14 +29,11 @@
                             <GameUserImg :userId="match.userPassive.userId"></GameUserImg>
                             <h4>{{match.userPassive.textareaRes}}</h4>
                         </div>
-                    <!-- </div> -->
                     </div>
                 </li>
             </ul>
-                 <div v-else>
-                 <div class="noMatchesMsg">
-                   <div>No matches yet...</div>
-                 </div>
+            <div v-else class="noMatchesMsg">
+              <h3>No swaps approved yet...</h3>
             </div>
         </div>
     </section>
@@ -60,17 +55,14 @@ export default {
   components: { GameUserName, GameUserImg },
   created() {
     this.userId = this.$route.params.userId;
-    this.$store.dispatch({
-      type: "getMatch",
-      userId: this.userId
-    });
-    console.log("matchhhhhh", this.matches);
-    console.log("usrtID^^^", this.userId);
+    // console.log("^userID^^^", this.userId);
+    this.$store.dispatch({type: "getMatch", user: this.$route.params.userId });
+    // console.log("matchhhhhh", this.matches);
     this.getGameUser(this.userId);
   },
   computed: {
     matches() {
-      console.log("%%%", this.$store.getters.getMatches);
+      // console.log("@@@match%%%", this.$store.getters.getMatches);
       return this.$store.getters.getMatches;
     },
     loggedinUser() {
@@ -79,9 +71,9 @@ export default {
   },
   methods: {
     getGameUser(userId) {
-      console.log("user $$$$$", userId);
+      // console.log("user $$$$$", userId);
       return GameService.getUserById(userId).then(user => {
-        console.log("user from server&&&", user);
+        // console.log("user from server&&&", user);
         this.passiveUser = user;
       });
     }
@@ -94,12 +86,6 @@ export default {
 
 .user-matches {
   width: 100%;
-}
-
-.noMatchesMsg {
-  font-weight: 600;
-  font-size: 14px;
-  color: #2c3e50;
 }
 
 .match-container {

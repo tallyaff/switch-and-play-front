@@ -2,11 +2,6 @@
     <div class="game-preview" :class="{checkedBorder: checked, gameRequest: isGameRequest}">
         <ul :class="{gallery: isGallery}" class="game-preview-container pointer flex column align-center clean-list space-between"
             v-if="game && currUser">
-            <!-- <li>
-            <el-checkbox class="offer-game" checked @change=" $emit('check', {gameId :game._id, checked:checked})
-                  " v-model="checked" v-if="gameCheckbox"></el-checkbox>
-          </li> -->
-
             <li class="offer-game-2" :class="{gameRequest: isGameRequest}">
                 <label class="check" :class="{gameRequest: isGameRequest}">
                     <input type="checkbox" checked @change=" $emit('check', {gameId :game._id, checked:checked})
@@ -30,29 +25,11 @@
                 <li class="game-condition-preview capitalize" v-if="!condition">
                     <span>Condition </span>{{game.condition}}</li>
                 <li class="game-addedAt-preview capitalize" :class="{gameRequest: isGameRequest}">
-                    <!-- <span>Added at  </span> -->
                     <font-awesome-icon icon="clock" class="clock" /> {{game.addedAt | getDate }}</li>
                 <li class="game-location-preview capitalize" v-if="!location">
                    <font-awesome-icon icon="home" class="home" /> {{currUser.city}}</li>
-                <!-- TODO: user location & name -->
-
-                <!-- <li class="game-user-name-preview capitalize" v-if="!username"> -->
-                <!-- <span>by </span>{{username}} -->
-                <!-- </li> -->
-                <!-- <button v-if="loggedinUser === 'game.userId'" class="btn btn-remove" @click="$emit('remove', game._id)">Remove</button> 
-                      <router-link v-if="loggedinUser === 'game.userId'" tag="button" :to="'/game/edit/'+game._id">Edit</router-link>  -->
-
-                <!-- <div type="text" class="user-name-card-home">
-                <gameUser :userId="game.userId" class="user-game-container flex column"></gameUser>
-            </div> -->
             </div>
         </ul>
-        <!-- <div class="card-text-container flex justify-center align-center column">
-                  <span class="card-game-name">{{game.name}}</span>
-                  <div class="username-time-container flex space-between align-center space-between">
-                      <div type="text" class="user-name-card-home">User Name</div>
-                      <time class="time">{{ game.addedAt | getDate }}</time>
-                  </div>-->
     </div>
 </template>
 <script>
@@ -89,13 +66,6 @@ export default {
       // console.log(this.$store.getters.loggedUser);
       return this.$store.getters.loggedUser || {};
     }
-    // checked(){
-    //   $emit('check', game._id,this.checked)
-    // }
-    // user() {
-    //   // console.log('user!!!!!!!!!!!!!!!!!!', this.$store.getters.setLoginUser);
-    //   return this.$store.getters.setLoginUser;
-    // },
   }
 };
 </script>
@@ -106,14 +76,11 @@ export default {
 
 .gameRequest.checkedBorder.game-preview {
     border: 2px solid $secondary-color;
-    // border: 2px solid #bcbab5;
 }
 
-
-
-.gameRequest.game-category-preview, .gameRequest.game-addedAt-preview ,{
+.gameRequest.game-category-preview, 
+.gameRequest.game-addedAt-preview , {
     color: grey;
-    // font-family: 'Ubuntu';
     & span {   
         color: #adaaaa;
     }
@@ -178,7 +145,6 @@ export default {
 .gallery.game-preview-container {
     width: 250px;
     height: 315px;
-    // pointer flex column align-center clean-list space-between
 }
 
 .gallery.card-text-container {
@@ -196,7 +162,6 @@ export default {
 
 }
 .game-preview-container {
- // width: 200px; // i shut it for gamerequest ****
     position: relative;
     transition: all 0.5s;
     height: 100%;
@@ -212,20 +177,12 @@ export default {
 }
 
 .el-checkbox.offer-game {
-//  background-color: $secondary-color;
- // border-color: $secondary-color;
     padding: 15px;
     position: absolute;
     top: 0;
     left: 0;
     transform: scale(1.5);
-    // width: 15px;
-    // height: 15px;
 }
-
-// .isChecked {
-//   border: 3px solid $main-color;
-// }
 
 .game-name-preview {
     font-size: rem(16px);
@@ -237,33 +194,25 @@ export default {
     width: 60%;
 }
 
-.image-container {
- // width: 300px;
- //  height: 150px; // i shut it for gamerequest - i think we dont need
-}
 img {
-    width: 100%; //todo in if class!!! - i think we dont need
+    width: 100%; 
     height: auto;
     transition: all 0.5s;
-    margin: 15px -10px; //was added to game request
+    margin: 15px -10px; 
 }
 
-img:hover {
- // background-color: #d9d8d82b;
- // background-color: #f7b2532b;
-}
 
 .game-category-preview,
 .game-condition-preview,
 .game-addedAt-preview,
 .game-location-preview,
 .game-user-name-preview {
- padding: rem(5px);
- color: $secondary-color;
- font-family: "Lato-Bold";
- span {
-   color: gray;
- }
+    padding: rem(5px);
+    color: $secondary-color;
+    font-family: "Lato-Bold";
+    span {
+    color: gray;
+    }
 }
 
 .game-user-name-preview span {
@@ -294,12 +243,9 @@ ul {
 }
 
 @media (min-width: 980px ){
-.gallery.game-preview-container {
-    // width: 250px;
-    // height: 250px;
-    margin: 0;
-    // pointer flex column align-center clean-list space-between
-}
+    .gallery.game-preview-container {
+        margin: 0;
+    }
 }
 
 </style>

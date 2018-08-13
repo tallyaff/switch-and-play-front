@@ -15,7 +15,7 @@
                     </div>
                 </router-link>
                 <router-link v-if="loggedinUser" :to="`/user/activity/${loggedinUser._id}/recieve`" class="flex not-container badge">    
-                    <el-badge :class="{isNewMatch}" :value="recieveCount.length" v-if="recieveCount.length > 0" class="badge">
+                    <el-badge :value="recieveCount.length" v-if="recieveCount.length > 0" class="badge">
                         <font-awesome-icon icon="bell" class="bell" />
                     </el-badge>
                     <div v-else>
@@ -44,23 +44,9 @@ export default {
         type: "getMatch",
         user: this.loggedinUser._id
       });
-      // .then(_ => {
-      //   this.setNotification();
-      // });
     }
   },
-  data() {
-    return {
-      // notification: false,
-    };
-  },
   methods: {
-    // logout() {
-    //   UserService.logout();
-    //   this.$store.commit({ type: "logoutUser" });
-    //   this.$router.push("/");
-    // },
-  
     onLogout() {
       this.$emit("update:loggedinUser", null);
       this.$emit("logout");
@@ -95,7 +81,6 @@ export default {
 
 .notification {
   background-color: #f56c6c;
-  // background-color: green;
   border-radius: 10px;
   color: #fff;
   display: absolute;

@@ -1,10 +1,10 @@
 <template>
-  <div class="about">
+  <div class="about flex column">
     <div class="header-desc">
       <p class="prolog">This application was designed and implemented as a final project of Coding Academy bootcamp.</p>
       <p class="prolog">We used Vue.js framework and combined pure css as well as other libraries.</p>
       <p class="prolog">In the backend side, we used Node.js and Mongo DB + Cloudinary to store the data.</p>
-      <p class="prolog">Enjoy our site! Feel free to contact us </p>
+      <p class="prolog">Enjoy our site! Feel free to contact us. </p>
     </div>
     <h1 class="header">meet us:</h1>
     <div class="team-container flex">
@@ -16,7 +16,6 @@
         <h3 class="secondary-haeder">Full Stuck Developer</h3>
         <div class="icons-container flex">
           <a class="link" href="https://github.com/tallyaff" target="_blank"><i class="fab fa-github-square"></i></a> 
-          <!-- <a href="https://www.facebook.com/" class="no-cursor" target="_blank"><i class="fab fa-facebook"></i></a>  -->
           <a class="link" href="https://www.linkedin.com/in/tally-affek-7b3a12140/" target="_blank"><i class="fab fa-linkedin"></i></a>
           <a class="link" id="tally-mail" @click="submitMail('tally')" action="mailto:tallyaff@gmail.com" method="post" enctype="text/plain"><font-awesome-icon icon="envelope"/></a> 
         </div>
@@ -24,8 +23,6 @@
         <p class="about-me">
           I hope you will enjoy my portfolio, and would like to hear from you in case you have any suggestions by my Linkdin account.</p>
         <div class="icons-container flex">
-          <!-- <a id="liron-github" class="fa fa-github git link" href="https://github.com/LironReshefSteinberger" target="_blank"></a> -->
-          <!-- <a id="liron-mail" class="fa fa-at git link" onclick="submitMail('liron')" action="mailto:reshef.liron@gmail.com" method="post" enctype="text/plain"></a> -->
         </div>
       </div>
       <div class="member-container flex column">
@@ -62,7 +59,7 @@
         </div>
         <p class="about-me">Lives in Ramat-Gan.</p>
           <p class="about-me">
-          I have M.Sc. in Biocemitry from the Hebrew University and B.Sc in Biotechnology Engineering from Ben gurion university.</p>
+          I have M.Sc. in Biochemistry from the Hebrew University and B.Sc in Biotechnology Engineering from Ben Gurion university.</p>
           <p class="about-me">
                     Worked for 10 years in Nestle Ice Cream as technical lead and project manager.</p>
           <p class="about-me">
@@ -116,8 +113,12 @@
 
 .header-desc {
   margin: 50px auto 0 auto;
-  width: 70%;
-  font-size: 1.3em;
+  width: 85%;
+  overflow-wrap: break-word;
+  // margin: auto;
+  p {
+    font-size: 1.5em;
+  }
 }
 
 .about {
@@ -153,20 +154,8 @@
   color: grey;
   font-size: 20px;
   text-align: left;
-  // width: 80%;
- 
   line-height: 1.5;
-  .contact {
-    // text-decoration: underline;
-  }
 }
-
-// .prolog:first-child:first-letter {
-//   float: left;
-//   font-size: 2.2em;
-//   line-height: 1em;
-//   padding: 0 4px;
-// }
 
 .icons-container {
   justify-content: space-around;
@@ -206,24 +195,36 @@
   }
 }
 @media (max-width: 670px){
-  .prolog {
-    width: 95%;
-  }
+  
   .team-container {
     flex-direction: column;
   }
   .member-container {
-     width: 95%;
-     margin: auto;
+    width: 70%;
+    //  margin: 25px auto;
      h1 {
        margin: 15px;
        height: 30px;
      }
      p {
        margin-bottom: 30px;
-       width: 100%;
+       width: 70%;
        padding: 5px;
      }
+  }
+  .header-desc {
+    width: 95%;
+    margin: auto;
+    p {
+      text-align: left;
+      font-size: 1em;
+    }
+  }
+  .icons-container {
+    justify-content: center;
+    a {
+      margin: 15px;
+    }
   }
 }
 </style>

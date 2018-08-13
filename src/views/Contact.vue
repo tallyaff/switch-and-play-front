@@ -1,6 +1,6 @@
 <template>
     <div class="contact">
-        <h1>contact us!</h1>
+        <h1>upload soon...</h1>
         
     </div>
 </template>

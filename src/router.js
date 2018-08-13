@@ -56,7 +56,7 @@ export default new Router({
     },
     {
       path: '/game/edit/user/:userId?',
-      name: 'edit',
+      name: 'edit-user',
       component: EditGame
     },
     {
@@ -88,20 +88,5 @@ export default new Router({
           }
         ]
     }
-    // {
-    //   path: '/user/activity/match/:userId',
-    //   name: 'match',
-    //   component: UserMatch
-    // },
-    // {
-    //   path: '/user/activity/request/:userId',
-    //   name: 'request',
-    //   component: UserRequest
-    // },
-    // {
-    //   path: '/user/activity/recieve/:userId',
-    //   name: 'recieve',
-    //   component: UserRecieve
-    // },
   ]
 })

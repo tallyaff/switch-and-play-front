@@ -10,7 +10,6 @@
             </el-button>
             <el-button class="btn search-btn-text" type="primary" @click="setFilter">Search</el-button>
         </form>
-<!-- to ask about this transition -->
     <transition name="slowDisplay">
         <div class="checkbox-filter-container capitalize" :class="{open: isFilterOpen}">
             <div class="exit">
@@ -66,14 +65,10 @@ export default {
     };
   },
   created() {
-    // console.log("creted game filter", this.filterBy);
-
-
     this.allFilterTypes = this.$store.getters.types;
     // console.log("allFilterTypes in home", this.allFilterTypes);
     this.allFilterCategories = this.$store.getters.categories;
     // console.log("allFilterCategories in home", this.allFilterCategories);
-
     this.filterBy = JSON.parse(
       JSON.stringify(this.$store.state.GameModule.filterBy)
     );
@@ -117,10 +112,6 @@ export default {
 body {
   overflow: hidden;
 }
-
-
-
-
 .checkbox-filter-container {
   text-align: left;
   padding-left: 20px;

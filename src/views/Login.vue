@@ -73,53 +73,46 @@ export default {
       },
       signupForm: false,
       loginForm: true,
-      url: '/game',
+      url: "/game"
     };
   },
   created() {
-    console.log('this.url in login' , this.url);
+    // console.log("this.url in login", this.url);
     if (this.$store.getters.setUrl) this.url = this.$store.getters.setUrl;
   },
   methods: {
     login() {
-      this.$router.push(`${this.url}`)
-      this.$store.dispatch ({
-        type: "getUser", user: this.user
+      this.$store
+        .dispatch({
+          type: "getUser",
+          user: this.user
         })
         .then(user => {
-            // this.$router.push(`${this.url}`)
-          this.$router.push(`/game`)
-          console.log('user$$:', user);
+          this.$router.push(`${this.url}`);
+          console.log("user$$----:", user);
           this.$store.dispatch({
-            type: 'getMatch', 
+            type: "getMatch",
             user: user._id
-          })
+          });
         })
-        .then(user => {
-          // console.log('user@@', user);
-          if (user) {
-            }
-            // console.log(this.user.username,'res login function before emit eventbus')
-          eventBus.$emit(EVENT_LOGIN_USER, this.user.username);
-          return this.$store.getters.loggedUser;
-        })
-
-        .catch(err => console.log(err));
-        this.$store.commit({type: 'setUrl', url: '/game'})
-          console.log('Wrong user/ password', err)
-          this.$router.push(`/login`)
+        .catch(err => {
+          console.log(err)
+          this.$store.commit({ type: "setUrl", url: "/game" });
+          console.log("Wrong user/ password", err);
+          this.$router.push(`/login`);
           swal("Wrong user/ password", {
             className: "swal-text",
             icon: "error",
             timer: 2000,
             button: false
           });
+        })
     },
     signup() {
-      // this.$router.push('/game')
-      this.$router.push(`${this.url}`)
+      this.$router.push(`${this.url}`);
       // console.log("signup user**", this.newUser);
-      this.$store.dispatch({
+      this.$store
+        .dispatch({
           type: "createUser",
           newUser: this.newUser
         })
@@ -127,22 +120,22 @@ export default {
           eventBus.$emit(EVENT_LOGIN_USER, user);
         })
         .catch(err => console.log(err));
-        this.$store.commit({type: 'setUrl', url: '/game'})
+      this.$store.commit({ type: "setUrl", url: "/game" });
     },
     openSignupModal() {
       this.signupForm = true;
       this.loginForm = false;
-    },
+    }
   },
   computed: {}
 };
 </script>
 
 <style scoped lang="scss">
-    @import "~@/assets/scss/style.scss";
-    
+@import "~@/assets/scss/style.scss";
+
 .login-form {
-  border: 1px solid $border-color;  
+  border: 1px solid $border-color;
   box-shadow: 0px 2px 4px 0px #d9d8d8;
   margin: auto;
   padding: 5px;
@@ -152,15 +145,10 @@ export default {
 
 .form-container {
   margin: 20px auto;
-  justify-content: center
+  justify-content: center;
 }
 .login-container {
   margin-top: 60px;
- 
-}
-.insert-form {
-  // justify-content: space-between;
-  // width: 80%;
 }
 
 .btn {
@@ -170,14 +158,14 @@ export default {
 }
 
 .btn-signup {
-  background-color: #f1af37;;
+  background-color: #f1af37;
   color: white;
   margin: 20px;
   width: 100px;
   margin: 20px auto;
   margin-top: 50px;
 }
-.el-form-item__content{
+.el-form-item__content {
   margin: 10px 50px;
 }
 .btn-cancel {

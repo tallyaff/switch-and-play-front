@@ -37,9 +37,6 @@
 .games-box {
     align-items: center;
     margin: 20px;
-    // border: 1px solid $border-color;  
-    // box-shadow: 0px 2px 4px 0px #d9d8d8;
-    // border-radius: 2px;
     padding: 25px 0;
     flex-wrap: wrap;
     justify-content: center;
@@ -105,25 +102,31 @@
     
 }
 
-.user-ask{
-    margin: auto;
+.user-ask {
+    margin-right: 50px;
     -webkit-box-align: center;
     -ms-flex-align: center;
-    align-items: center;
+    // align-items: center;
 }
 
 
-    img {
+img {
     max-height: 150px;
     max-width: 150px;
     align-self: center;
     margin: 20px;
-    }
+}
 
-    .username {
-        margin-bottom: 4px;
-        font-size: 2em;
-    }
+.username {
+    margin-bottom: 4px;
+    font-size: 2em;
+}
+
+.noMatchesMsg {
+    font-weight: 600;
+    font-size: 14px;
+    color: #2c3e50;
+}
 
 @media only screen and  (max-width: 767px) {
 	.games-box {
@@ -138,7 +141,7 @@
     }
     .game-box {
         // width: 120px;
-        // height: 150px;
+        height: 250px;
     }
 } 
 

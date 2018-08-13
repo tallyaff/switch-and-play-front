@@ -20,7 +20,7 @@ export default {
         },
         setUrl(state, payload ){
             state.url = payload.url
-            console.log('setUrl from mutation!!!',state.url);
+            // console.log('setUrl from mutation!!!',state.url);
         },
     },
     getters: {
@@ -48,7 +48,7 @@ export default {
             // console.log('currUser from action***', payload.user);
             return UserService.getUser(payload.user)
                .then(currUser => {
-                   console.log('user from backend in front', currUser);
+                //    console.log('user from backend in front', currUser);
                    context.commit({type: 'setUser', currUser})
                    return currUser
                }).catch( err => {
