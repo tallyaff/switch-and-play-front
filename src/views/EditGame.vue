@@ -39,9 +39,6 @@
                 <input type="file" class="upload-form" id="file" name="file" ref="imageUpload" @change="handleImage"/>
                 <font-awesome-icon icon="upload" class="upload-icon" />&nbsp;Choose a file
               </label>
-              <!-- <input type="file" name="file" id="file" class="inputfile" />
-              <label for="file">Choose a file</label> -->
-              <!-- <el-input type="file" class="upload-form" name="img" ref="imageUpload" @change="handleImage"></el-input> -->
               <div class="img-preview-container flex">
                 <img v-for="(img, idx) in imgPreviews" :src="img" :key="idx" />
               </div>
@@ -81,7 +78,7 @@ export default {
     loadGame() {
       // console.log("this.$route.params in edit cmp", this.$route.params.gameId);
       if (this.$route.params.gameId) {
-        console.log("has params!!");
+        // console.log("has params!!");
         this.$store
           .dispatch({ type: "loadGame", gameId: this.$route.params.gameId })
           .then(game => {
@@ -186,11 +183,6 @@ function getBase64(file) {
   align-self: flex-start;
 }
 
-.header-select-container {
-  
-  // flex-direction: row;
-}
-
 .content::before {
   content: 'ccc';
   visibility: hidden;
@@ -222,9 +214,6 @@ function getBase64(file) {
 .upload-form {
   margin: 20px;
   cursor: pointer;
-  // background-color: white;
-  // font-size: 40px;
-  // background-color: transparent;
 	width: 0.1px;
 	height: 0.1px;
 	opacity: 0;
@@ -240,7 +229,6 @@ function getBase64(file) {
     background-color: black;
     display: inline-block;
     cursor: pointer;
-    // outline: 1px dotted #000;
 }
 
 .upload-form:focus + label,

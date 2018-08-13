@@ -9,13 +9,10 @@
             <form @submit.prevent="setSearchHome" class="search">
                 <input class="search-input" type="text" v-model="filterBy.name" placeholder="Search for games">
                 <el-button class="btn search-btn" type="primary"><font-awesome-icon icon="search"></font-awesome-icon></el-button>
-                <button class="btn search-btn-text" type="primary" @click="setSearchHome">Search</button>
-                <!-- <el-button class="btn search-btn" type="primary">Search</el-button> -->
+                <el-button class="btn search-btn-text" type="primary" @click="setSearchHome">Search</el-button>
             </form>
             <h1 class="header-bg-image">Do you want to swap some games?</h1>
         </div>
-        <!-- <div class="all-cards-home-container"> -->
-
         <div class="baby-cards-container space-between"  >
             <div class="baby-cards flex container justify-center" >
                 <div class="filter-type home-filter-container home-filter-container-baby flex column align-center justify-center">
@@ -55,9 +52,6 @@
             </div>
 
             <div class="child-cards-container space-between">
-                             <!-- <div v-if="gamesLoading">
-                               <div class="loader-circle"></div>
-                             </div> -->
                 <div  class="child-cards flex container justify-center">
                     <div class="filter-type home-filter-container home-filter-container-child flex column align-center justify-center">
                         <router-link :to="'/game'" @click.native="setFilter('child')">
@@ -138,14 +132,11 @@ import GameFilter from "@/components/GameFilter.vue";
 import GameUser from "@/components/GameUser.vue";
 import { eventBus, EVENT_SET_FILTER } from "@/services/EventBusService.js";
 
-// import Gallery from '@/views/Gallery.vue'
-
 export default {
   name: "home",
   components: {
     GameFilter,
     GameUser
-    // Gallery,
   },
   data() {
     return {
@@ -164,9 +155,6 @@ export default {
   created() {
     this.$store.commit({type: 'setUrl', url: '/'})
     this.loadGamesForHomepage();
-  },
-  mounted() {
-    // this.loadGamesForHomepage();
   },
   computed: {
     gamesForBabyHomeDisplay() {
@@ -209,21 +197,12 @@ export default {
       this.filterBy.type = [type];
       this.$store.dispatch({ type: "setFilter", filterBy: this.filterBy });
     }
-    // setFilter(criteria = {type: [], name: ''}) {
-    //   console.log('this.filterBy in home', type);
-    //   // eventBus.$emit(EVENT_SET_FILTER, this.filterBy);
-    //   if(criteria.name) this.filterBy.name = criteria.name;
-    //   if(criteria.type) this.filterBy.type = criteria.type;
-    //   this.$store.dispatch({ type: "setFilter", filterBy: this.filterBy });
-    // },
   }
 };
 </script>
 
 <style scoped lang="scss">
 @import "~@/assets/scss/style.scss";
-.filter-type {
-}
 
 .loader-circle{
  top: 40%;
@@ -238,13 +217,11 @@ export default {
 .header-bg-image {
   position: absolute;
   top: 195px;
-  // top: 300px;
   width: 100%;
   color: white;
   font-size: rem(25px);
-  // font-size: rem(50px);
   font-family: "Ubuntu-regular";
-  text-shadow: 3px 1px black;
+  text-shadow: 3px 3px 3px black, 0 0 0 black, 0 0 0.2em black;
 }
 
 .search {
@@ -255,8 +232,6 @@ export default {
 
 .search-input {
   width: 200px;
-  // width: 500px;
-  // height: 30px;
   height: 36px;
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
@@ -292,8 +267,6 @@ button.search-btn-text {
 }
 
 .search-btn {
-  // display: none;
-  // height: 50px;
   height: 38px;
   font-size: rem(14px);
   background-color: $main-color;
@@ -302,14 +275,9 @@ button.search-btn-text {
 .type-title-home {
   align-self: flex-start;
   font-size: rem(20px);
-  // font-size: rem(40px);
   font-family: "Ubuntu";
   margin-top: rem(30px);
   margin-bottom: rem(10px);
-}
-
-.all-cards-home-container {
-  // width: 1200px;
 }
 
 .home-filter-container-baby,
@@ -341,9 +309,6 @@ button.search-btn-text {
   }
   .image-card {
     width: 80%;
-
-    // height: 100%;
-    // width: auto;
   }
   &:hover {
     transform: scale(1.1, 1.1);
@@ -370,7 +335,6 @@ button.search-btn-text {
     white-space: nowrap; 
     overflow:hidden;
     text-overflow:ellipsis;
-    // text-shadow: 2px 1px $secondary-color;
   }
   .game-new-icon .game-new-icon {
     position: absolute;
@@ -385,10 +349,6 @@ button.search-btn-text {
     font-family: "Ubuntu-regular";
     position: relative;
     margin-bottom: 10px;
-    // top: -40px;
-    // left: -40px;
-    // align-self: flex-end;
-    // align-items: center;
   }
   .time {
     font-size: rem(14px);
@@ -431,8 +391,6 @@ button.search-btn-text {
     color: $secondary-color;
     transform: scale(1.1, 1.1);
   }
-  // h2{
-  //   margin-right: 85px;
 }
 
 .card-home {

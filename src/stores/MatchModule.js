@@ -41,9 +41,9 @@ export default {
                 })
             }
         },
-        getNewMatch(state) {
-            return state.newMatch;
-        }
+        // getNewMatch(state) {
+        //     return state.newMatch;
+        // }
     },
     actions: {
         getMatch(context, payload) {

@@ -1,8 +1,5 @@
 <template>
     <section class="flex justify-center">
-        
-        
-        
         <div v-if="!isMatch" class="game-box-container flex align-center justify-center column">
             <h3 class="game-name capitalize">{{game.name}}</h3>
             <p class="game-desc capitalize">{{game.desc}}</p>
@@ -25,8 +22,6 @@
                 <el-button @click="itsMatch" type="primary" class="btn btn-choose" title="choose">Choose me! 
                 </el-button>
             </div>
-            <!-- <el-button @click="itsMatch(game._id, match._id)" type="primary" class="btn btn-choose">Choose me! 
-            </el-button> -->
         </div>
         <ShowMatch :match="match" :game="game" v-if="isMatch"></ShowMatch>
     </section>
@@ -55,30 +50,15 @@ export default {
         }
     },
     methods: {
-        // itsMatch(game, recieveId) {
-        //     this.choosenGame = game;
-        //     this.currRecieved = recieveId;
-        //     // const match = {gameId: this.choosenGame, match: this.recieve}
-        //     const match = {gameId: this.choosenGame, matchId: this.currRecieved}
-        //     this.isMatch = true;
-        //     // console.log('game id', this.choosenGame);
-        //     // console.log('match id', this.currRecieved);
-        //     // console.log('###match:!!', match);
-        //     this.$store.dispatch({ type: "updateMatch", matchDetails: match })
-        //   },
         itsMatch() {
             this.isMatch = true;
-            // console.log('game id', this.choosenGame);
-            // console.log('match id', this.currRecieved);
-            // console.log('###match:!!', match);
-            
         },
         getUser() {
             let userId = this.game.userId;
-            console.log("userId in game select:", userId);
+            // console.log("userId in game select:", userId);
             UserService.getUserById(userId).
             then(user => {
-            console.log("this.user in game select:", user);
+            // console.log("this.user in game select:", user);
                 this.user = user;
             });
         },
@@ -146,9 +126,6 @@ export default {
 .details p span {
     font-family: 'Ubuntu';
 }
-// .game-box-details {
-//     height: 80%;
-// }
 
 .image-container {
     width: 50%;
@@ -156,7 +133,6 @@ export default {
 }
 
 .game-box-details .game-image {
-    // max-width: 300px;
     margin: 0 20px;
     width: 100%;
 }
@@ -197,6 +173,12 @@ export default {
     }
     .btn-back {
         font-size: 1.2em;
+    }
+}
+@media only screen and  (max-width: 540px) {
+    .game-box-container {
+        margin: auto;
+        width: 95%;
     }
 }
 </style>

@@ -1,5 +1,4 @@
 <template class="game-request-container">
-<!-- test for see if master updated with SAP-27 -->
     <div class="game-request flex column align-center justify-center">
         <h1 class="title-game-request">It's time to create your request!</h1>   
         <h2 class="title-games">Choose optional games for swapping</h2>
@@ -36,7 +35,6 @@ export default {
   data() {
     return {
       textareaReq: "",
-      // gameCheckbox: true,
       gamesToSwitch: [],
       ownerUserId: null
     };
@@ -78,26 +76,24 @@ export default {
             timer: 2000,
             button: false
           });
-          console.log("match:", match);
+          // console.log("match:", match);
         })
         .catch(err => {
-          console.log("error send a request", err);
+          // console.log("error send a request", err);
         });
     }
   },
   computed: {
     user() {
-      console.log(this.$store.getters.loggedUser);
+      // console.log(this.$store.getters.loggedUser);
       return this.$store.getters.loggedUser || {};
     },
     games() {
-      console.log(this.$store.getters.getUserGames);
+      // console.log(this.$store.getters.getUserGames);
       return this.$store.getters.getUserGames || [];
     }
   },
   watch: {
-    // this watch responsible that the array of games to switch will be full of user games
-    //helps when checkbox is checked/unchecked
     games(games) {
       this.gamesToSwitch = this.games.map(game => game._id);
     }
@@ -123,7 +119,6 @@ export default {
 }
 
 .title-game-request {
-  //  font-size: rem(40px);
   font-size: rem(25px);
   margin-bottom: rem(20px);
   margin-top: rem(60px);
@@ -161,14 +156,9 @@ export default {
 
 .game {
   border: 1px solid $border-color;
-  // padding: rem(20px);
   margin: rem(10px);
   width: 250px;
   height: 250px;
-  //  transition: all 0.5s;
-  &:hover {
-    //  transform: scale(0.95, 0.95);
-  }
 }
 
 li {
@@ -177,7 +167,6 @@ li {
 }
 .textarea {
   width: 200px;
-  //  width: 40%;
   margin-top: 20px;
 }
 .btn-request {
@@ -197,38 +186,7 @@ li {
   color: #0d72fa;
   font-size: 30px;
 
-  //  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
 }
-
-// @media (min-width: 350px){
-//      .games-container {
-//      margin-top: 20px;
-//      min-width: 70vw;
-//      max-width: rem(1200px);
-//      display: grid;
-//      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-//    }
-
-// }
-// @media (min-width: 740px) {
-//   .games-container {
-//     min-width: 70vw;
-//     margin:20;
-//     width: 90%;
-//     padding: 20px 40px;
-//     -webkit-box-align: center;
-//     -ms-flex-align: center;
-//     align-items: center;
-//     margin: auto;
-//   }
-//   .textarea {
-//   width: 40%;
-//   margin-top: 20px;
-// }
-// }
-
-
-
 
 
 @media (min-width: 900px) {

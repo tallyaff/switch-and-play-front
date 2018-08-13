@@ -21,8 +21,6 @@
               </div>
               <div class="text-container flex column capitalize">
                 <div class="detail-item" label="Type">{{currGame.type}}</div>
-                <!-- <img class="details-img" :src="`img/details/${currGame.type}.png`"> -->
-                <!-- <img src="@/assets/img/details/baby.png"> -->
                 <div class="detail-item" label="Category">{{currGame.category}}</div>
                 <div class="detail-item" label="Condition">{{currGame.condition}}</div>
                 <div class="detail-item" >{{ currGame.addedAt | getDate }}</div>
@@ -34,7 +32,6 @@
             <el-button class="btn-want-game" v-if="!requesting" @click="checkIfLogin">I want this game!</el-button>
             </div>
             <game-request :game="currGame" v-if="requesting"></game-request>
-        <!-- <show-match></show-match> -->
     </section>
 
 </template>
@@ -65,7 +62,7 @@ export default {
     var filterBy = JSON.parse(JSON.stringify(this.filterBy));
     this.$store.commit({ type: "setFilter", filterBy });
     this.url = this.$route.fullPath;
-    console.log("this.url in created",  this.url);
+    // console.log("this.url in created",  this.url);
     this.$store.commit({type: 'setUrl', url: this.url})
     this.loadGame();
 
@@ -93,14 +90,14 @@ export default {
     getUser(){
       GameService.getUserById(this.currGame.userId)
       .then(user =>{
-        console.log('user in gamedetails', user);
+        // console.log('user in gamedetails', user);
         
         this.currUser = user
       })
     },
     checkIfLogin() {
       if (!this.loggedinUser) {
-        console.log("this.url in checkIfLogin",  this.url);
+        // console.log("this.url in checkIfLogin",  this.url);
         swal({
           title: "Please login to swap a game!",
           buttons: ["Not now", "Login"],
@@ -198,7 +195,6 @@ export default {
 .detail-item {
   text-align: left;
   width: 100%; // Default to full width
-  // padding: 0.6em 1.0em;
   padding: 0.8em 1.2em;
   overflow: hidden; // Or flex might break
   list-style: none;
@@ -209,61 +205,6 @@ export default {
   margin-left: 40px;
 }
 
-@media (min-width: 730px) {
-
-  .game-details-container  {
-    flex-direction: row;
-  }
-  .game-details-all {
-   width: 980px;
-   border: 1px solid $border-color;
- }
- .game-details-container {
-  margin: 50px;
-}
-}
-
-// @media (min-width: 730px) {
-
-//   .img-container {
-//     max-width: 300px;
-//   }
-//   .text-container-title, .text-container {
-//       font-size: 16px;
-//   }
-
-//   .text-container {
-//       width: 50%;
-//   }
-
-//   .game-image {
-//     width: 80%;
-//   }
-
-
-// }
-
-// @media (min-width: 790px) {
-//   .text-container-title, .text-container {
-//       font-size: 18px;
-//   }
-
-//   .text-container {
-//       width: 60%;
-//   }
-
-//   .game-image {
-//     width: 100%;
-//   }
-
-//   .detail-item {
-//     padding: 0.8em 1.2em;
-//   }
-// }
-
-
-</style>
-<style>
 .swal-title {
     color: #0D72FA !important;
     font-weight: 600;
@@ -282,5 +223,20 @@ export default {
 }
 .swal-button--confirm{
       background-color: #F6AB2B;
- }  
+}  
+
+@media (min-width: 730px) {
+
+  .game-details-container  {
+    flex-direction: row;
+  }
+  .game-details-all {
+   width: 980px;
+   border: 1px solid $border-color;
+  }
+ .game-details-container {
+  margin: 50px;
+  }
+}
+
 </style>

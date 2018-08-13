@@ -14,10 +14,8 @@
                     </div>
                 </li>
             </ul>
-            <div v-else>
-                 <div class="noSentReqMsg">
-                   <div>No sent requests yet...</div>
-                 </div>
+            <div v-else class="noMatchesMsg">
+                <h3>No sent requests yet...</h3>
             </div>
         </div>
     </section>
@@ -49,10 +47,6 @@ export default {
 <style scoped lang="scss">
   @import "~@/assets/scss/style.scss";
 
-.recieve {
-    // border: none;
-    // box-shadow: none;
-}
 .my-request {
     margin: 20px;
 }
@@ -62,8 +56,5 @@ export default {
     height: 300px;
     width: 250px;
 }
-.noSentReqMsg{
-    font-size: 14px;   
-    color: #2c3e50;
-}
+
 </style>

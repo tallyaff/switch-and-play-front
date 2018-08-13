@@ -1,9 +1,7 @@
 <template>
     <section class="user-recieved container">
-        <!-- <showMatch v-if="isMatch" :game="choosenGame" :match="currRecieved"></showMatch>   -->
         <div v-if="!openDetails" class="flex column match-container ">
             <div class="activity-header flex">
-                <!-- <h3>Request From Me:</h3> -->
             </div>
             <ul v-if="recieves && recieves.length" class="recieve"> 
                 <li v-for="recieve in recieves" :key="recieve._id" class="flex games-container">
@@ -35,10 +33,8 @@
                     </div>
                 </li>
             </ul>
-            <div v-else>
-                 <div class="noRecievesMsg">
-                   <div>No recieved requests yet...</div>
-                 </div>
+            <div v-else class="noMatchesMsg">
+              <h3>No recieved requests yet...</h3>
             </div>
         </div>
         <GameSelect :match="currRecieved" :game="choosenGame" v-if="openDetails"></GameSelect>
@@ -77,7 +73,6 @@ export default {
   computed: {
     recieves() {
       // console.log("****", this.$store.getters.getRecieves);
-
       return this.$store.getters.getRecieves;
     },
     loggedinUser() {
@@ -99,17 +94,10 @@ export default {
 
 .details-btn {
   line-height: 0;
-  // width: 30px;
   height: 35px;
   h5 {
     color: white;
   }
-}
-
-.recieve {
-  // border: 1px solid $border-color;
-  // box-shadow: 0px 2px 4px 0px #d9d8d8;
-  // border-radius: 2px;
 }
 
 .img-activity-container img {
@@ -124,7 +112,7 @@ export default {
   margin-top: 30px;
   border: none;
   box-shadow: none;
-  margin-left: 1px;
+  margin: auto;
   li {
     cursor: pointer;
   }
@@ -132,7 +120,6 @@ export default {
 
 .user-ask {
   align-content: center;
-  // margin-right: 50px; butal
 
   img {
     max-height: 150px;
@@ -156,11 +143,6 @@ export default {
   padding: 5px;
 }
 
-.noRecievesMsg{
-  font-weight: 600;
-  font-size: 14px;
-  color: #2c3e50
-}
 
 @media (min-width: 980px) {
   .h4-recieve {
@@ -175,7 +157,6 @@ export default {
   .games-container {
     flex-direction: row;
   }
-
   .game-box {
     height: 250px;
     justify-content: space-between;
