@@ -262,6 +262,9 @@ export default {
     background-color: #9ec6fc;
   }
 }
+button.search-btn-text {
+  display: none;
+}
 
 .search-btn {
   height: 38px;
@@ -414,6 +417,9 @@ export default {
     margin-bottom: rem(18px);
     bottom: rem(-70px);
   }
+  .search-btn-text {
+    display: none;
+  }
 }
 
 @media (min-width: 800px) {
@@ -426,8 +432,12 @@ export default {
   }
   .search-btn {
     display: none;
-
   }
+
+  button.search-btn-text {
+  display: block;
+}
+
   .search-btn-text {
     display: block;
     font-family: "Ubuntu-regular";
