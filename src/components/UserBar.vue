@@ -25,9 +25,6 @@
                 <button class="btn-logout" @click="onLogout">Logout</button>
             </div>
         </div>
-        <!-- <div v-else class="hello-login flex">
-            <router-link class="login-link" to="/login">Login</router-link>
-        </div> -->
     </div>
 </template>
                
