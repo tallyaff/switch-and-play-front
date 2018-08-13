@@ -20,7 +20,6 @@
                     </router-link>
                 </div>
             </div>
-            <!-- </div> -->
             <div v-if="copiedUser">
             <el-form v-if="editMode" class="edit-user-profile no-margin" :label-position="labelPosition" @submit.native.prevent="saveUserProfile">
               <el-form-item class="form-item" label="username">
@@ -51,10 +50,8 @@
                         <div class="text-btns-container flex column">
                             <div class="text-container flex column">
                                 <p class="card-game-name">{{game.name}}</p>
-                                <!-- <div class="bottom clearfix"> -->
                                 <div class="game-category capitalize bottom clearfix"><span>Category </span> {{game.category}}</div>
                                 <time class="time bottom clearfix"><font-awesome-icon icon="clock" class="clock" />&nbsp;{{ game.addedAt | getDate }}</time>
-                                <!-- </div> -->
                             </div>
                             <div class="edit-remove-btns-container">
                                 <button class="btn icon-btn btn-remove" @click="$emit('remove', game._id)"> <font-awesome-icon icon="trash" /></button> 
@@ -84,8 +81,6 @@ export default {
     return {
       labelPosition: "left",
       isEdit: false
-      // userId: this.$route.params.userId
-      // url: `url("${this.loggedinUser.src}")`,
     };
   },
   created() {
@@ -123,7 +118,6 @@ export default {
           else swal.close();
         });
       } else this.$router.push(`/game/edit/user/${this.loggedinUser._id}`);
-      // } else this.$router.push(`/game/edit/`);
     },
     saveUserProfile() {
       // this.$router.go(-1);
@@ -148,7 +142,7 @@ export default {
     },
     editProfile() {
       // console.log('this.loggedinUser in profileDetailes',this.loggedinUser)
-      console.log("copiedUser", this.copiedUser);
+      // console.log("copiedUser", this.copiedUser);
       this.isEdit = !this.isEdit;
     },
     uploadImgs(img, event) {
@@ -161,17 +155,12 @@ export default {
 <style scoped lang="scss">
 // @import "~@/assets/scss/style.scss";
 
-.profile-details-page {
-  // width: 980px;
-}
-
 .profile-games {
     max-width: 980px;
     position: relative;
 
 }
 .profile-edit-container {
-  // justify-content: center;
   max-width: 980px;
   // margin: 30px 100px;
   background-color: aliceblue;
@@ -188,9 +177,6 @@ export default {
 
 .user-img {
   margin: 0 20px;
-}
-
-.edit-name-container {
 }
 
 .user-data-container {
@@ -274,13 +260,10 @@ export default {
 .add-game-btn {
   align-self: flex-start;
   color: white;
-//   left: rem(60px);
-//     align-self: flex-start;
-    // position: absolute;
-    float: left;
-    left: rem(70px);
-    top: rem(-1px);
-    font-size: 35px;
+  float: left;
+  left: rem(70px);
+  top: rem(-1px);
+  font-size: 35px;
 }
 
 .cards-in-profile-container {
@@ -311,7 +294,6 @@ export default {
         font-family: 'PaytoneOne';
         font-size: rem(20px);
         color: $main-color;
-        // text-shadow: 2px 1px $secondary-color;
     }
 }
 
@@ -323,11 +305,6 @@ export default {
     margin: 0 20px;
     position: relative;
     top: 10px;
-}
-
-.text-container {
-    // align-self: flex-start;
-
 }
 
 .card-game-name, .game-category, .time {
@@ -411,9 +388,6 @@ color: $secondary-color;
     font-family: 'Ubuntu-regular';
     color: $secondary-color;
 }
-.edit-remove-btns-container {
-  //   justify-content: flex-end;
-}
 
 .swal-text {
   font-size: 50px;
@@ -483,6 +457,13 @@ color: $secondary-color;
   }
   .profile-edit-container {
     margin: 30px 0;
+  }
+}
+
+@media only screen and  (max-width: 540px) {
+  .edit-user-profile {
+    width: 95%;
+    margin: 20px auto;
   }
 }
 </style>

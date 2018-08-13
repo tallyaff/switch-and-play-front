@@ -17,7 +17,6 @@ export default {
     },
     created() {
         this.getGameUser()
-        // debugger
     },
     methods: {
         getGameUser() {

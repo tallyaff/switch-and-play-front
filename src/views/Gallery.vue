@@ -34,14 +34,8 @@ export default {
   },
   created() {
     this.$store.commit({type: 'setUrl', url: '/game'})
-    // this.$store.loadGames();
-    // console.log('this.gamesForDisplay in gallery', this.gamesForDisplay);
-    // this.gamesForDisplay;
   },
   computed: {
-    // gamesForDisplay() {
-    //   return this.$store.getters.gamesForDisplay;
-    // },
     gamesForDisplay() {
       return this.$store.getters.gamesByFilterServer;
     },
@@ -53,36 +47,6 @@ export default {
     }
   },
   methods: {
-    // checkIfDisplay() { 
-    //   // console.log("this.loggedinUser", this.loggedinUser);
-    //   if (!this.loggedinUser) {
-    //     swal({
-    //       title: "Please login to add your game",
-    //       buttons: ["Not now", "Login"]
-    //     }).then(willLogin => {
-    //       if (willLogin) {
-    //         this.$router.push("/login");
-    //       } else {
-    //         swal.close();
-    //       }
-    //     });
-    //   } else this.$router.push("/game/edit");
-    // },
-    // loadGames() {
-    //   this.$store
-    //     .dispatch({ type: "loadGames" })
-    //     .then(games => {})
-    //     .catch(err => {
-    //       console.log("err", err);
-    //     });
-    // },
-    // setNotification() {
-    //   // console.log("setNotification");
-    //   if (this.getNotificationCount.length > 0) {
-    //     this.notificationCount = this.getNotificationCount.length;
-    //     this.notification = true;
-    //   }
-    // },
     removeGame(gameId) {
       swal({
         title: "Are you sure you want to delete this game?",
@@ -100,9 +64,7 @@ export default {
               button: false
             });
           });
-        } else {
-          swal.close();
-        }
+        } else swal.close();
       });
     }
   }
@@ -110,6 +72,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import "~@/assets/scss/style.scss";
+
 .swal-text {
   font-family: "Ubuntu";
   color: #0d72fa;
@@ -122,20 +86,9 @@ export default {
 .game-list {
   padding: 0 20px;
 }
-.filter-gallery {
-  // margin-top: 108px;
-}
-
-</style>
-
-<style scoped lang="scss">
-@import "~@/assets/scss/style.scss";
 
 .container {
   max-width: 850px;
-}
-.images-container-gallery {
-  // margin-top: rem(100px);
 }
 
 @media (min-width: 980px) {

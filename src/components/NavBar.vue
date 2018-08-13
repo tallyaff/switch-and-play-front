@@ -19,7 +19,6 @@
                 <li @click="isOpen=!isOpen">About</li>
             </router-link>
             <router-link to="/contact">
-                <!-- <li @click="isOpen=!isOpen">Contact</li> -->
             </router-link>
             <router-link to="/login" v-if="!loggedinUser">
             <li @click="isOpen=!isOpen">Login</li>
@@ -32,8 +31,6 @@
               <div @click="clearFilter">Gallery</div>
             </router-link>
             <router-link to="/about">About</router-link>
-            <router-link  v-if="!loggedinUser" to="/login">Login</router-link>
-            <!-- <router-link to="/contact">Contact</router-link> -->
         </div>
     </div>
 </template>

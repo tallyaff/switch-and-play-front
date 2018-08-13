@@ -3,7 +3,6 @@
         <ul class="game-cards-container flex justify-center" v-if="games">
           <div class="game game-preview clean-list" v-for="game in games" :key="game._id">
             <router-link class="btn btn-more-details" :to="'/game/'+game._id">
-            <!-- <el-c class="masonry" v-if="games" v-for="game in games" :key="game._id"> -->
                 <game-preview :isGallery="true" :game="game" @remove="$emit('remove', game._id)"></game-preview>
             </router-link>
           </div>
@@ -20,12 +19,6 @@ export default {
   components: {
     GamePreview
   },
-  computed: {
-    // user() {
-    //   return this.$store.getters.setLoginUser;
-    //   console.log('user', this.$store.getters.setLoginUser);
-    // },
-  }
 };
 </script>
 
@@ -41,16 +34,12 @@ export default {
 
   .game-cards-container {
     flex-wrap: wrap;  
-    margin-top: 40px;
-    padding: 0;
-    // padding-right: 20px;  
   }
-.game img{
-  width: 55%;
-}
+  .game img {
+    width: 55%;
+  }
   .game {
     border: 1px solid #dadada;
-    // height: 263px;
     cursor: pointer;
     display: flex;
     flex-direction: column;
@@ -69,23 +58,12 @@ export default {
       
   }
 
-
    .game:hover {
       transform: scale(1.1, 1.1);
       // box-shadow: 0px 2px 4px 0px $secondary-color;
       // background-color: #d9d8d82b;
       // bactransition: all 0.5s;kground-color:  #f7b2532b;
   }
-
-  // .btn-more-details {
-  //   color: $main-color;
-  //   font-size: rem(20px);
-  //   transition: all 0.3s;
-
-  //   &:hover {
-  //     color: $secondary-color;
-  //   }
-  // }
 
   @media (min-width: 980px) {
     .game-cards-container{
