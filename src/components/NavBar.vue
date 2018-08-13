@@ -31,6 +31,9 @@
               <div @click="clearFilter">Gallery</div>
             </router-link>
             <router-link to="/about">About</router-link>
+            <router-link to="/login" v-if="!loggedinUser">
+              <li>Login</li>
+            </router-link>
         </div>
     </div>
 </template>

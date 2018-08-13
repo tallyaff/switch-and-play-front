@@ -9,14 +9,15 @@
         </div>
         </router-link>
         <!-- v-if="!loggedinUser" -->
+
         <div class="user-nav-container flex">
         <user-bar :loggedinUser="loggedinUser" @logout="logout"></user-bar>
         <nav-bar  :loggedinUser.sync="loggedinUser"></nav-bar>
         </div>
-        <!-- <div v-else>
-        <user-bar :loggedinUser="loggedinUser" @logout="logout"></user-bar>
-        <nav-bar  :loggedinUser.sync="loggedinUser"></nav-bar>
-        </div> -->
+        <!-- <div v-else> -->
+        <!-- <user-bar :loggedinUser="loggedinUser" @logout="logout"></user-bar>
+        <nav-bar  :loggedinUser.sync="loggedinUser"></nav-bar> -->
+        <!-- </div> -->
     </div>
   </section>
 </template>
