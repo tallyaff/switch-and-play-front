@@ -158,7 +158,7 @@ export default {
   },
   computed: {
     gamesForBabyHomeDisplay() {
-      // console.log('gamesForBabyHomeDisplay in home', this.$store.getters.gamesForBabyHomeDisplay);
+      // console.log('gamesForBabyHomeDisplay in home-', this.$store.getters.gamesForBabyHomeDisplay);
       return this.$store.getters.gamesForBabyHomeDisplay;
     },
     gamesForChildHomeDisplay() {
