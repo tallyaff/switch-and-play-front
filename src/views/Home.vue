@@ -500,5 +500,8 @@ button.search-btn-text {
   .search {
     margin-bottom: rem(20px);
   }
+  .cards-container-home {
+    flex-wrap: nowrap;
+  }
 }
 </style>
