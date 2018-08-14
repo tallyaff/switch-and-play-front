@@ -124,7 +124,7 @@
 .about {
   margin: 30px auto;
   font-family: "Ubuntu";
-  width: 980px;
+  max-width: 980px;
   h1 {
     text-transform: capitalize;
     margin: 40px;
@@ -201,6 +201,7 @@
   }
   .member-container {
     width: 70%;
+    width: 90%;
     //  margin: 25px auto;
      h1 {
        margin: 15px;
@@ -208,12 +209,12 @@
      }
      p {
        margin-bottom: 30px;
-       width: 70%;
+      //  width: 70%;
        padding: 5px;
      }
   }
   .header-desc {
-    width: 95%;
+    // width: 95%;
     margin: auto;
     p {
       text-align: left;

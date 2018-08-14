@@ -122,7 +122,7 @@ body {
   position: fixed;
   z-index: 7;
   top: 92px;
-  left: 0;
+  // left: 30%;
   background-color: $card-text-color;
   padding-top: 15px;
 }
@@ -339,7 +339,7 @@ h3 {
   }
   @media (min-width: 1130px) {
     .checkbox-filter-container {
-      margin-left: 378px;
+      // margin-left: 378px;
       margin-top: 126px;
 
     }
