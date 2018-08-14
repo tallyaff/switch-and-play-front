@@ -202,10 +202,6 @@ export default {
   font-weight: bold;
 }
 
-.user-name {
-  font-size: rem(22px);
-}
-
 .user-detail,
 .activities-btn {
   font-size: rem(16px);
@@ -367,12 +363,17 @@ color: $secondary-color;
   }
 
 .edit-profile-btn {
-  margin-top: 10px;
+  // margin-top: 10px;
   color: $main-color;
   align-self: flex-start;
   &:hover {
     color: $secondary-color;
   }
+}
+
+.edit-name-container p {
+  font-size: 35px;
+  font-family: 'Ubuntu';  
 }
 
 .game-category {
@@ -393,6 +394,7 @@ color: $secondary-color;
   font-size: 50px;
   font-family: sans-serif;
 }
+
 .user-img {
   width: 200px;
   height: 200px;
@@ -401,6 +403,7 @@ color: $secondary-color;
 .user-name {
   text-transform: capitalize;
 }
+
 .btn-submit {
   color: white;
 }
@@ -444,6 +447,11 @@ color: $secondary-color;
     width: 200px;
     height: 200px;
   }
+
+  .edit-name-container p {
+    font-size: 35px;
+    font-family: 'Ubuntu';  
+}
 
 }
 
