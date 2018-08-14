@@ -153,7 +153,7 @@ export default {
     };
   },
   created() {
-    this.$store.commit({type: 'setUrl', url: '/'})
+    this.$store.commit({ type: "setUrl", url: "/" });
     this.loadGamesForHomepage();
   },
   computed: {
@@ -204,8 +204,8 @@ export default {
 <style scoped lang="scss">
 @import "~@/assets/scss/style.scss";
 
-.loader-circle{
- top: 40%;
+.loader-circle {
+  top: 40%;
 }
 
 .home-bg-img {
@@ -254,7 +254,7 @@ export default {
   box-sizing: border-box;
   outline: 0;
   margin: 0;
-  transition: .1s;
+  transition: 0.1s;
   font-weight: 500;
   padding: 12px 20px;
   font-size: 14px;
@@ -290,11 +290,18 @@ button.search-btn-text {
 }
 
 .cards-container-home {
-  width: 100%;
+  width: 90%;
   flex-wrap: wrap;
   li {
     padding: 10px;
+    width: 100%;
   }
+}
+.cards-container-home a {
+  width: 100%;
+}
+.el-card.is-always-shadow {
+  width: 100%;
 }
 
 .card-home {
@@ -306,6 +313,7 @@ button.search-btn-text {
   cursor: pointer;
   .image-container {
     height: rem(150px);
+    width: 100%;
   }
   .image-card {
     width: 80%;
@@ -332,9 +340,9 @@ button.search-btn-text {
     color: $main-color;
     padding: 0;
     width: 170px;
-    white-space: nowrap; 
-    overflow:hidden;
-    text-overflow:ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   .game-new-icon .game-new-icon {
     position: absolute;
@@ -405,7 +413,7 @@ button.search-btn-text {
 .user-game-container {
   position: absolute;
   top: -62px;
-  left: -15px;
+  left: -120px;
 }
 
 @media (min-width: 540px) {
@@ -419,6 +427,22 @@ button.search-btn-text {
   }
   .search-btn-text {
     display: none;
+  }
+  .cards-container-home {
+    width: unset;
+    flex-wrap: wrap;
+    li {
+      width: unset;
+    }
+  }
+  .cards-container-home a {
+    width: unset;
+  }
+  .el-card.is-always-shadow {
+    width: unset;
+  }
+  .user-game-container {
+    left: -15px;
   }
 }
 
@@ -435,8 +459,8 @@ button.search-btn-text {
   }
 
   button.search-btn-text {
-  display: block;
-}
+    display: block;
+  }
 
   .search-btn-text {
     display: block;
@@ -447,7 +471,7 @@ button.search-btn-text {
     background-color: $main-color;
     margin-left: 0px;
   }
-  .el-button+.el-button{
+  .el-button + .el-button {
     margin-left: 0;
   }
   .search-input {
@@ -457,7 +481,7 @@ button.search-btn-text {
   .type-title-home {
     font-size: rem(35px);
   }
-  .cards-container-home{
+  .cards-container-home {
     justify-content: flex-start;
   }
   .search {
@@ -476,6 +500,5 @@ button.search-btn-text {
   .search {
     margin-bottom: rem(20px);
   }
-
 }
 </style>
