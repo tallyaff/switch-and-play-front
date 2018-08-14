@@ -1,14 +1,14 @@
 <template>
 <section>
-  <div class="gallery-container flex container column container">
+  <div class="gallery-container flex  column justify-center align-center ">
     <div class="filter-gallery">
         <Game-filter></Game-filter> 
     </div>
       <div v-if="gamesLoading">
         <div class="loader-circle"></div>
   </div>
-    <div v-else class="images-container-gallery flex">
-        <game-list class="game-list container" :games="gamesForDisplay" @remove="removeGame"></game-list>
+    <div v-else class="images-container-gallery flex ">
+        <game-list class="game-list container flex" :games="gamesForDisplay" @remove="removeGame"></game-list>
     </div>
   </div>
 </section>
@@ -84,12 +84,15 @@ export default {
   font-size: 20px;
 }
 .game-list {
+  max-width: 850px;
   padding: 0 20px;
 }
 
 .container {
   max-width: 850px;
 }
+
+
 
 @media (min-width: 980px) {
   .filter-images-container-gallery {
