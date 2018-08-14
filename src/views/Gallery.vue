@@ -1,17 +1,19 @@
 <template>
-<section>
-  <div class="gallery-container flex  column justify-center align-center ">
-    <div class="filter-gallery">
-        <Game-filter></Game-filter> 
-    </div>
-      <div v-if="gamesLoading">
-        <div class="loader-circle"></div>
-  </div>
-    <div v-else class="images-container-gallery flex ">
-        <game-list class="game-list container flex" :games="gamesForDisplay" @remove="removeGame"></game-list>
-    </div>
-  </div>
-</section>
+    <section>
+        <div class="gallery-container flex  column justify-center align-center ">
+            <div class="filter-gallery container">
+                <Game-filter></Game-filter>
+            </div>
+            <div class="games-loader-container">
+                <div v-if="gamesLoading">
+                    <div class="loader-circle"></div>
+                </div>
+                <div v-else class="images-container-gallery flex ">
+                    <game-list class="game-list container flex" :games="gamesForDisplay" @remove="removeGame"></game-list>
+                </div>
+            </div>
+        </div>
+    </section>
 </template>
 
 <script>
@@ -29,11 +31,11 @@ export default {
   },
   data() {
     return {
-      url: null,
-    }
+      url: null
+    };
   },
   created() {
-    this.$store.commit({type: 'setUrl', url: '/game'})
+    this.$store.commit({ type: "setUrl", url: "/game" });
   },
   computed: {
     gamesForDisplay() {
@@ -84,7 +86,8 @@ export default {
   font-size: 20px;
 }
 .game-list {
-  max-width: 850px;
+  justify-content: flex-end;
+  max-width: 990px;
   padding: 0 20px;
 }
 
@@ -92,12 +95,20 @@ export default {
   max-width: 850px;
 }
 
-
-
 @media (min-width: 980px) {
   .filter-images-container-gallery {
     margin-top: rem(30px);
   }
+  .game-list {
+    max-width: 990px;
+  }
+  .filter-gallery {
+    margin: 0;
+  }
+  .filter-gallery-container {
+    margin-left: 70px;
+  }
+
 }
 </style>
     

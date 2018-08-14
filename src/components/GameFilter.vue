@@ -1,5 +1,5 @@
 <template>
-    <div class="filter-gallery-container flex flex-start ">
+    <div class="filter-gallery-container  flex flex-start ">
         <button class="btn-filter" @click="isFilterOpen=!isFilterOpen">
             <font-awesome-icon icon="filter" class="fiter-icon" />
         </button>
@@ -122,6 +122,7 @@ body {
   position: fixed;
   z-index: 7;
   top: 92px;
+  // top: 160px;
   // left: 30%;
   background-color: $card-text-color;
   padding-top: 15px;
@@ -129,7 +130,6 @@ body {
 
 .filter-header {
   color: #adaaaa;
-
 }
 
 .filter-header.category {
@@ -160,6 +160,8 @@ body {
 }
 
 .search-in-gallery {
+  width: 100%;
+  justify-content: center;
   position: relative;
   left: -28px;
 }
@@ -178,7 +180,8 @@ body {
   top: 1px;
 }
 
-.search-btn-text, .search-btn {
+.search-btn-text,
+.search-btn {
   display: none;
   border-top-right-radius: 4px;
   border-bottom-right-radius: 4px;
@@ -192,7 +195,7 @@ body {
   box-sizing: border-box;
   outline: 0;
   margin: 0;
-  transition: .1s;
+  transition: 0.1s;
   font-weight: 500;
   padding: 12px 20px;
   font-size: 14px;
@@ -242,7 +245,6 @@ h3 {
   width: 180px;
 
   margin-bottom: rem(25px);
-
 }
 
 .search-in-gallery {
@@ -251,6 +253,7 @@ h3 {
   margin-bottom: 50px;
 }
 .filter-gallery-container {
+  width: 300px;
   margin-top: 50px;
   // position: absolute;
 
@@ -310,8 +313,8 @@ h3 {
     max-height: 300px;
     position: unset;
     z-index: 7;
-    top: 92px;
-    left: 0;
+    top: 160px;
+    left: 10%;
     background-color: white;
     padding-top: 15px;
     width: 140px;
@@ -333,16 +336,20 @@ h3 {
   .filter-gallery-container {
     height: 50px;
     flex-direction: column;
+    margin-bottom: 50px;
     .container {
+      margin:0;
       max-width: 1200px;
     }
+    width: 100%;
+    margin-left: 120px;
   }
-  @media (min-width: 1130px) {
-    .checkbox-filter-container {
-      // margin-left: 378px;
-      margin-top: 126px;
+}
 
-    }
+@media (min-width: 1130px) {
+  .checkbox-filter-container {
+    // margin-left: 378px;
+    // margin-top: 126px;
   }
 }
 </style>

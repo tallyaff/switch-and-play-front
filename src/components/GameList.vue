@@ -67,7 +67,7 @@ export default {
 
   @media (min-width: 980px) {
     .game-cards-container{
-      justify-content: space-between;
+      justify-content: flex-end;
       margin-left: 120px;
 }
 
