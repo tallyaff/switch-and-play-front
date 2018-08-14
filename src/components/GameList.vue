@@ -29,7 +29,7 @@ export default {
     max-width: 1800px;
     // width: 1800px;
         position: relative;
-    right: -59px;
+    // right: -59px;
   }
 
   .game-cards-container {
