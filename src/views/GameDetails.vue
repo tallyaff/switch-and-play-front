@@ -65,8 +65,6 @@ export default {
     // console.log("this.url in created",  this.url);
     this.$store.commit({type: 'setUrl', url: this.url})
     this.loadGame();
-
-
   },
   computed: {
     loggedinUser() {
@@ -82,6 +80,7 @@ export default {
       this.$store
         .dispatch({ type: "loadGame", gameId: this.$route.params.gameId })
         .then(game => {
+          console.log('game:', game);
           this.currGame = game;
           this.getUser()
           // eventBusService.$emit(SHOW_MSG, {txt: `Todo was removed`})
@@ -91,7 +90,6 @@ export default {
       GameService.getUserById(this.currGame.userId)
       .then(user =>{
         // console.log('user in gamedetails', user);
-        
         this.currUser = user
       })
     },
