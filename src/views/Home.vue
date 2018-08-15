@@ -184,7 +184,7 @@ export default {
     },
     setSearchHome() {
       this.allByName = true;
-      // console.log('setSearchHome in cmp');
+      // console.log('setSearchHome in -cmp');
       this.$store
         .dispatch({ type: "setSearchHome", filterBy: this.filterBy })
         .then(games => {

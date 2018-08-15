@@ -271,6 +271,8 @@ h3 {
     // padding: 0 20px;
   }
 }
+
+
 @media (max-width: 980px) {
   .checkbox-filter-container {
     display: none;
@@ -346,11 +348,25 @@ h3 {
   }
 }
 
-@media (min-width: 1130px) {
+@media (min-width: 1180px) and (max-width: 1250px) {
+  .checkbox-filter-container {
+    left: 11%;
+  }
+}
+
+@media (min-width: 1250px) and (max-width: 1449px) {
+  .checkbox-filter-container {
+    left: 16%;
+  }
+}
+
+@media (min-width: 1450px) {
   .checkbox-filter-container {
         margin-left: 210px;
     // margin-left: 378px;
     // margin-top: 126px;
   }
 }
+
+
 </style>
