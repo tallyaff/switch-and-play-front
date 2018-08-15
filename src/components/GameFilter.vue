@@ -237,7 +237,7 @@ h3 {
 
 .search-btn {
   width: 25px;
-  height: 38px;
+  height: 41px;
   font-size: rem(14px);
   background-color: $main-color;
 }
@@ -348,6 +348,7 @@ h3 {
 
 @media (min-width: 1130px) {
   .checkbox-filter-container {
+        margin-left: 210px;
     // margin-left: 378px;
     // margin-top: 126px;
   }

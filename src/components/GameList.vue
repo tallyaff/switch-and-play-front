@@ -54,7 +54,7 @@ export default {
       // margin: rem(10px);
       transition: all 0.5s;
       // height: 100%;
-      margin-bottom: 30px;
+      // margin-bottom: 30px;
       
   }
 

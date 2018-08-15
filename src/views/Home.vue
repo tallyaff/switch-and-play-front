@@ -8,8 +8,8 @@
          backgroundrepeat: 'no-repeat'}">
             <form @submit.prevent="setSearchHome" class="search">
                 <input class="search-input" type="text" v-model="filterBy.name" placeholder="Search for games">
-                <el-button class="btn search-btn" type="primary"><font-awesome-icon icon="search"></font-awesome-icon></el-button>
-                <el-button class="btn search-btn-text" type="primary" @click="setSearchHome">Search</el-button>
+                <button class="btn search-btn" type="primary"><font-awesome-icon icon="search"></font-awesome-icon></button>
+                <button class="btn search-btn-text" type="primary" @click="setSearchHome">Search</button>
             </form>
             <h1 class="header-bg-image">Do you want to swap some games?</h1>
         </div>
@@ -232,7 +232,7 @@ export default {
 
 .search-input {
   width: 200px;
-  height: 36px;
+  height: 40px;
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
   border: 1px solid $border-color;
@@ -266,11 +266,7 @@ button.search-btn-text {
   display: none;
 }
 
-.search-btn {
-  height: 38px;
-  font-size: rem(14px);
-  background-color: $main-color;
-}
+
 
 .type-title-home {
   align-self: flex-start;
@@ -416,6 +412,29 @@ button.search-btn-text {
   left: -120px;
 }
 
+@media (max-width: 800px) {
+  .btn.search-btn {
+    height: 40px;
+    font-size: rem(14px);
+    background-color: $main-color;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    display: inline-block;
+    line-height: -1;
+    white-space: nowrap;
+    cursor: pointer;
+    border: 1px solid #dcdfe6;
+    color: white;
+    text-align: center;
+    font-size: rem(20px);
+    outline: 0;
+    margin: 0;
+    transition: 0.1s;
+    font-weight: 500;
+    padding: 0px 19px;
+  }
+}
+
 @media (min-width: 540px) {
   .header-bg-image {
     top: 212px;
@@ -447,6 +466,24 @@ button.search-btn-text {
 }
 
 @media (min-width: 800px) {
+  .btn.search-btn-text {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    display: inline-block;
+    line-height: 1;
+    white-space: nowrap;
+    cursor: pointer;
+    border: 1px solid #dcdfe6;
+    color: white;
+    text-align: center;
+    font-size: rem(20px);
+    outline: 0;
+    margin: 0;
+    transition: 0.1s;
+    font-weight: 500;
+    padding: 0px 19px;
+  }
+
   .header-bg-image {
     top: 309px;
     font-size: rem(50px);

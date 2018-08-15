@@ -158,7 +158,7 @@ export default {
     font-size: 13px;
     background-color: $card-text-color;
     width: 100%;
-    height: 38%;   
+    height: 39%;   
     /* margin: 20px; */
     padding: 5px;
 }
